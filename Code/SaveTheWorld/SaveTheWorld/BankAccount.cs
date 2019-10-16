@@ -10,5 +10,7 @@ namespace SaveTheWorld
     {
         private String accountNo;
         private int cvc;
+        private double amount;
+        private String address;
     }
 }
