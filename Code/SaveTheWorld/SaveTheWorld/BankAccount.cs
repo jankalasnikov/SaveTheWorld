@@ -14,5 +14,6 @@ namespace SaveTheWorld
         private String address;
         private String textxx;
         private String name;
+        private double price;
     }
 }
