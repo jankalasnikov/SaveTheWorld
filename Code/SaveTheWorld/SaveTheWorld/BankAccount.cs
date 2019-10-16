@@ -12,5 +12,6 @@ namespace SaveTheWorld
         private int cvc;
         private double amount;
         private String address;
+        private String name;
     }
 }
