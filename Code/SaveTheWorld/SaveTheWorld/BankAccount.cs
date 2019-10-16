@@ -13,5 +13,6 @@ namespace SaveTheWorld
         private double amount;
         private String address;
         private String textxx;
+        private String name;
     }
 }
