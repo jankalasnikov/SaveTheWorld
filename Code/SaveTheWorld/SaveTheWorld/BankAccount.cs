@@ -8,13 +8,27 @@ namespace SaveTheWorld
 {
     class BankAccount
     {
-        private String accountNo;
-        private int cvc;
-        private double amount;
-        private String address;
-        private String textxx;
-        private String name;
-        private double price;
-        private String lastName;
+        private int accountNo { get; set; }
+        private DateTime expiryDate { get; set; }
+        private int CCV { get; set; }
+        private double amount { get; set; }
+        private String address { get; set; }
+
+
+        public BankAccount()
+        {
+
+        }
+
+        public BankAccount(int accountNo, DateTime expiryDate, int CCV, double amount, String address)
+        {
+            this.accountNo = accountNo;
+            this.expiryDate = expiryDate;
+            this.CCV = CCV;
+            this.amount = amount;
+            this.address = address;
+        }
+
+        
     }
 }
