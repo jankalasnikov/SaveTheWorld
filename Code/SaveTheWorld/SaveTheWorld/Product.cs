@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace SaveTheWorld
 {
-    class Product
-    {
-        private String name { get; set; }
-        private double price { get; set; }
-        private String itemDescription { get; set; }
-        private int stock { get; set; }
-
-        public Product()
+        class Product
         {
+            private String Name { get; set; }
+            private double Price { get; set; }
+            private String ItemDescription { get; set; }
+            private int Stock { get; set; }
 
-        }
+            public Product()
+            {
 
-        public Product(String name, double price, String itemDescription, int stock)
-        {
-            this.name = name;
-            this.price = price;
-            this.itemDescription = itemDescription;
-            this.stock = stock;
+            }
+
+            public Product(String name, double price, String itemDescription, int stock)
+            {
+                Name = name;
+                Price = price;
+                ItemDescription = itemDescription;
+                Stock = stock;
+            }
         }
-    }
 }
