@@ -8,22 +8,22 @@ namespace SaveTheWorld
 {
     class Subscription
     {
-        private int periodOfTime { get; set; }
-        private String typeOfSubscription { get; set; }
-        private int amount { get; set; }
-        private String startDate { get; set; }
+        private int PeriodOfTime { get; set; }
+        private String TypeOfSubscription { get; set; }
+        private int Amount { get; set; }
+        private DateTime StartDate { get; set; }
 
         public Subscription()
         {
 
         }
 
-        public Subscription(int periodOfTime, String typeOfSubscription, int amount, String startDate)
+        public Subscription(int periodOfTime, String typeOfSubscription, int amount, DateTime startDate)
         {
-            this.periodOfTime = periodOfTime;
-            this.typeOfSubscription = typeOfSubscription;
-            this.amount = amount;
-            this.startDate = startDate;
+            PeriodOfTime = periodOfTime;
+            TypeOfSubscription = typeOfSubscription;
+            Amount = amount;
+            StartDate = startDate;
         }
     }
 }
