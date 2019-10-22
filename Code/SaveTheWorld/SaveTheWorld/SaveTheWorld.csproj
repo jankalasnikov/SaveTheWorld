@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccount.cs" />
+    <Compile Include="Class2.cs" />
     <Compile Include="Disaster.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
