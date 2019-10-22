@@ -8,12 +8,12 @@ namespace SaveTheWorld
 {
     class Disaster
     {
-        private String name { get; set; }
-        private String description { get; set; } 
-        private String region { get; set; }
-        private String category { get; set; }
-        private double priority { get; set; }
-        private int victims { get; set; }
+        private String Name { get; set; }
+        private String Description { get; set; } 
+        private String Region { get; set; }
+        private String Category { get; set; }
+        private double Priority { get; set; }
+        private int Victims { get; set; }
 
         public Disaster()
         {
@@ -22,12 +22,12 @@ namespace SaveTheWorld
 
         public Disaster(String name, String description, String region, String category, double priority, int victims)
         {
-            this.name = name;
-            this.description = description;
-            this.region = region;
-            this.category = category;
-            this.priority = priority;
-            this.victims = victims;
+            Name = name;
+            Description = description;
+            Region = region;
+            Category = category;
+            Priority = priority;
+            Victims = victims;
         }
     }
 }

@@ -8,11 +8,11 @@ namespace SaveTheWorld
 {
     class BankAccount
     {
-        private int accountNo { get; set; }
-        private DateTime expiryDate { get; set; }
+        private int AccountNo { get; set; }
+        private DateTime ExpiryDate { get; set; }
         private int CCV { get; set; }
-        private double amount { get; set; }
-        private String address { get; set; }
+        private double Amount { get; set; }
+        private String Address { get; set; }
 
 
         public BankAccount()
@@ -22,11 +22,11 @@ namespace SaveTheWorld
 
         public BankAccount(int accountNo, DateTime expiryDate, int CCV, double amount, String address)
         {
-            this.accountNo = accountNo;
-            this.expiryDate = expiryDate;
+            AccountNo = accountNo;
+            ExpiryDate = expiryDate;
             this.CCV = CCV;
-            this.amount = amount;
-            this.address = address;
+            Amount = amount;
+            Address = address;
         }
 
         
