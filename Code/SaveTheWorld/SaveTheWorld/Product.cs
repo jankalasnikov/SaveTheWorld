@@ -8,6 +8,7 @@ namespace SaveTheWorld
 {
         class Product
         {
+            private String LName { get; set; }
             private String Name { get; set; }
             private double Price { get; set; }
             private String ItemDescription { get; set; }
@@ -18,8 +19,9 @@ namespace SaveTheWorld
 
             }
 
-            public Product(String name, double price, String itemDescription, int stock)
+            public Product(String lname, String name, double price, String itemDescription, int stock)
             {
+                LName = lname;
                 Name = name;
                 Price = price;
                 ItemDescription = itemDescription;
