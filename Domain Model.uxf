@@ -5,16 +5,17 @@
     <id>UMLClass</id>
     <coordinates>
       <x>585</x>
-      <y>72</y>
+      <y>45</y>
       <w>126</w>
-      <h>81</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>User
 --
 name
 password
 typeOfUser
-email</panel_attributes>
+email
+address</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -23,7 +24,7 @@ email</panel_attributes>
       <x>945</x>
       <y>81</y>
       <w>126</w>
-      <h>108</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>BankAccount
 --
@@ -31,7 +32,7 @@ accountNo
 expiryDate
 CCV
 amount
-address</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
