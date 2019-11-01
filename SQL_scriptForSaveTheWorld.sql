@@ -1,5 +1,5 @@
 
-
+/*USE dmaj0918_1074278;*/
 /*DROP ALL TABLES*/
 
 DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
@@ -24,13 +24,9 @@ EXEC sp_MSforeachtable 'DROP TABLE ?'
 GO
 
 
-/*IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'saveTheWorld')
-    CREATE DATABASE saveTheWorld
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'dmaj0918_1074278')
+    CREATE DATABASE  dmaj0918_1074278
 
-GO
-
-USE saveTheWorld;
-*/
 GO
 
 
@@ -41,8 +37,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='bankAccount' and xtype='U')
 		expiryDate DATE NOT NULL,
 		ccv int NOT NULL,
 		amount float NOT NULL,
-		address varchar(150) NOT NULL,
-		
+	
 	)
 
 GO
@@ -50,16 +45,44 @@ GO
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='users' and xtype='U')
     CREATE TABLE users (
 		id INT PRIMARY KEY IDENTITY(1,1) not null,
-        email varchar (200) not null unique,
 		name varchar(75) not null,
 		password varchar(400) not null,
 		typeOfUser int not null,
+		email varchar (200) not null unique,
 		address VARCHAR(200) NOT NULL,
-		city VARCHAR(30) NOT NULL,
 		phoneno VARCHAR(15) NOT NULL,
 		accountId int FOREIGN KEY REFERENCES bankAccount(id),
 		
     )
+GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tbOrder' and xtype='U')
+	CREATE TABLE tbOrder (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		userId int FOREIGN KEY REFERENCES users(id),
+		date DATE NOT NULL,
+		
+	)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='propertyValues' and xtype='U')
+	CREATE TABLE propertyValues (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	    value varchar(50) NOT NULL,
+	
+	)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='property' and xtype='U')
+	CREATE TABLE property (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		name varchar(50) NOT NULL,
+		sortOrder int NOT NULL,
+		propertyValuesId int FOREIGN KEY REFERENCES propertyValues(id),
+	)
+
 GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
@@ -69,9 +92,25 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
 		price FLOAT NOT NULL,
 		description VARCHAR(5000) NOT NULL,
 		minStock INT NOT NULL, 
-		
+		property int FOREIGN KEY REFERENCES property(id),
 	)
 GO
+
+
+
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='orderLine' and xtype='U')
+	CREATE TABLE orderLine (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		productId int FOREIGN KEY REFERENCES product(id),
+	    quantity float NOT NULL,
+	    orderId int FOREIGN KEY REFERENCES tbOrder(id),
+	)
+
+GO
+
+
+
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='invoice' and xtype='U')
 	CREATE TABLE invoice (
@@ -79,30 +118,14 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='invoice' and xtype='U')
 		invoiceNo INT NOT NULL,
 		paymentDate Date NOT NULL,
 		amount float NOT NULL,
+		orderId int FOREIGN KEY REFERENCES tbOrder(id),
 	)
 
 GO
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='orderLine' and xtype='U')
-	CREATE TABLE orderLine (
-		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-		productId int FOREIGN KEY REFERENCES product(id),
-	    quantity float NOT NULL,
 
-	)
 
-GO
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tbOrder' and xtype='U')
-	CREATE TABLE tbOrder (
-		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-		userId int FOREIGN KEY REFERENCES users(id),
-		date DATE NOT NULL,
-    	orderLineId int FOREIGN KEY REFERENCES orderLine(id),
-		
-	)
-
-GO
 
 
 
@@ -147,6 +170,17 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='subscription' and xtype='U')
 		amount float NOT NULL,
 	    startDate Date NOT NULL,
 		
+	)
+
+GO
+
+
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='productPropertyValues' and xtype='U')
+	CREATE TABLE productPropertyValues (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		propertyValuesId int FOREIGN KEY REFERENCES propertyValues(id),
+		productId int FOREIGN KEY REFERENCES product(id),
 	)
 
 GO
