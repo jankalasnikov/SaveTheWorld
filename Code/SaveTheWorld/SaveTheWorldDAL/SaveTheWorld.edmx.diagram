@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1403f99b45f74808bad0258861c781b6" Name="Diagram1">
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.bankAccount" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.category" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.disaster" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.invoice" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.orderLine" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.product" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.productPropertyValues" Width="1.5" PointX="7.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.property" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.propertyValues" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.subscription" Width="1.5" PointX="5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.tbOrder" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.typeOfSubscription" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dmaj0918_1074278Model.users" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__disaster__accoun__4C364F0E" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__users__accountId__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__disaster__catego__4B422AD5" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__invoice__orderId__467D75B8" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__orderLine__order__43A1090D" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__orderLine__produ__42ACE4D4" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__product__propert__3FD07829" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__productPr__produ__54CB950F" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__productPr__prope__53D770D6" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__property__proper__3BFFE745" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__subscript__typeO__50FB042B" ManuallyRouted="false" />
+        <AssociationConnector Association="dmaj0918_1074278Model.FK__tbOrder__userId__373B3228" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

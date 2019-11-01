@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaveTheWorld
+namespace SaveTheWorldModel
 {
         class Product
         {
+
+            public int ProductId { get; set; } 
             private String LName { get; set; }
             private String Name { get; set; }
             private double Price { get; set; }
