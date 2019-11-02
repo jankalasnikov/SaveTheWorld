@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dmaj0918_1074278Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SaveTheWorldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="bankAccount">
           <Key>
             <PropertyRef Name="id" />
@@ -63,7 +63,6 @@
           <Property Name="price" Type="float" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="5000" Nullable="false" />
           <Property Name="minStock" Type="int" Nullable="false" />
-          <Property Name="property" Type="int" />
         </EntityType>
         <EntityType Name="productPropertyValues">
           <Key>
@@ -127,7 +126,7 @@
           <Property Name="phoneno" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="accountId" Type="int" />
         </EntityType>
-        <Association Name="FK__disaster__accoun__4C364F0E">
+        <Association Name="FK__disaster__accoun__14B10FFA">
           <End Role="bankAccount" Type="Self.bankAccount" Multiplicity="0..1" />
           <End Role="disaster" Type="Self.disaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -139,7 +138,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__disaster__catego__4B422AD5">
+        <Association Name="FK__disaster__catego__13BCEBC1">
           <End Role="category" Type="Self.category" Multiplicity="0..1" />
           <End Role="disaster" Type="Self.disaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -151,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__invoice__orderId__467D75B8">
+        <Association Name="FK__invoice__orderId__0EF836A4">
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="0..1" />
           <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,7 +162,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orderLine__order__43A1090D">
+        <Association Name="FK__orderLine__order__0C1BC9F9">
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="0..1" />
           <End Role="orderLine" Type="Self.orderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -175,7 +174,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orderLine__produ__42ACE4D4">
+        <Association Name="FK__orderLine__produ__0B27A5C0">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="orderLine" Type="Self.orderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -187,19 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__product__propert__3FD07829">
-          <End Role="property" Type="Self.property" Multiplicity="0..1" />
-          <End Role="product" Type="Self.product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="property">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product">
-              <PropertyRef Name="property" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__productPr__produ__54CB950F">
+        <Association Name="FK__productPr__produ__1D4655FB">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="productPropertyValues" Type="Self.productPropertyValues" Multiplicity="*" />
           <ReferentialConstraint>
@@ -211,7 +198,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__productPr__prope__53D770D6">
+        <Association Name="FK__productPr__prope__1C5231C2">
           <End Role="propertyValues" Type="Self.propertyValues" Multiplicity="0..1" />
           <End Role="productPropertyValues" Type="Self.productPropertyValues" Multiplicity="*" />
           <ReferentialConstraint>
@@ -223,7 +210,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__property__proper__3BFFE745">
+        <Association Name="FK__property__proper__0662F0A3">
           <End Role="propertyValues" Type="Self.propertyValues" Multiplicity="0..1" />
           <End Role="property" Type="Self.property" Multiplicity="*" />
           <ReferentialConstraint>
@@ -235,7 +222,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__subscript__typeO__50FB042B">
+        <Association Name="FK__subscript__typeO__1975C517">
           <End Role="typeOfSubscription" Type="Self.typeOfSubscription" Multiplicity="0..1" />
           <End Role="subscription" Type="Self.subscription" Multiplicity="*" />
           <ReferentialConstraint>
@@ -247,7 +234,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbOrder__userId__373B3228">
+        <Association Name="FK__tbOrder__userId__019E3B86">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -259,7 +246,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__users__accountId__345EC57D">
+        <Association Name="FK__users__accountId__7EC1CEDB">
           <End Role="bankAccount" Type="Self.bankAccount" Multiplicity="0..1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -271,7 +258,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dmaj0918_1074278ModelStoreContainer">
+        <EntityContainer Name="SaveTheWorldModelStoreContainer">
           <EntitySet Name="bankAccount" EntityType="Self.bankAccount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="disaster" EntityType="Self.disaster" Schema="dbo" store:Type="Tables" />
@@ -285,51 +272,47 @@
           <EntitySet Name="tbOrder" EntityType="Self.tbOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="typeOfSubscription" EntityType="Self.typeOfSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__disaster__accoun__4C364F0E" Association="Self.FK__disaster__accoun__4C364F0E">
+          <AssociationSet Name="FK__disaster__accoun__14B10FFA" Association="Self.FK__disaster__accoun__14B10FFA">
             <End Role="bankAccount" EntitySet="bankAccount" />
             <End Role="disaster" EntitySet="disaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__disaster__catego__4B422AD5" Association="Self.FK__disaster__catego__4B422AD5">
+          <AssociationSet Name="FK__disaster__catego__13BCEBC1" Association="Self.FK__disaster__catego__13BCEBC1">
             <End Role="category" EntitySet="category" />
             <End Role="disaster" EntitySet="disaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__invoice__orderId__467D75B8" Association="Self.FK__invoice__orderId__467D75B8">
+          <AssociationSet Name="FK__invoice__orderId__0EF836A4" Association="Self.FK__invoice__orderId__0EF836A4">
             <End Role="tbOrder" EntitySet="tbOrder" />
             <End Role="invoice" EntitySet="invoice" />
           </AssociationSet>
-          <AssociationSet Name="FK__orderLine__order__43A1090D" Association="Self.FK__orderLine__order__43A1090D">
+          <AssociationSet Name="FK__orderLine__order__0C1BC9F9" Association="Self.FK__orderLine__order__0C1BC9F9">
             <End Role="tbOrder" EntitySet="tbOrder" />
             <End Role="orderLine" EntitySet="orderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__orderLine__produ__42ACE4D4" Association="Self.FK__orderLine__produ__42ACE4D4">
+          <AssociationSet Name="FK__orderLine__produ__0B27A5C0" Association="Self.FK__orderLine__produ__0B27A5C0">
             <End Role="product" EntitySet="product" />
             <End Role="orderLine" EntitySet="orderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__product__propert__3FD07829" Association="Self.FK__product__propert__3FD07829">
-            <End Role="property" EntitySet="property" />
-            <End Role="product" EntitySet="product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__productPr__produ__54CB950F" Association="Self.FK__productPr__produ__54CB950F">
+          <AssociationSet Name="FK__productPr__produ__1D4655FB" Association="Self.FK__productPr__produ__1D4655FB">
             <End Role="product" EntitySet="product" />
             <End Role="productPropertyValues" EntitySet="productPropertyValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__productPr__prope__53D770D6" Association="Self.FK__productPr__prope__53D770D6">
+          <AssociationSet Name="FK__productPr__prope__1C5231C2" Association="Self.FK__productPr__prope__1C5231C2">
             <End Role="propertyValues" EntitySet="propertyValues" />
             <End Role="productPropertyValues" EntitySet="productPropertyValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__property__proper__3BFFE745" Association="Self.FK__property__proper__3BFFE745">
+          <AssociationSet Name="FK__property__proper__0662F0A3" Association="Self.FK__property__proper__0662F0A3">
             <End Role="propertyValues" EntitySet="propertyValues" />
             <End Role="property" EntitySet="property" />
           </AssociationSet>
-          <AssociationSet Name="FK__subscript__typeO__50FB042B" Association="Self.FK__subscript__typeO__50FB042B">
+          <AssociationSet Name="FK__subscript__typeO__1975C517" Association="Self.FK__subscript__typeO__1975C517">
             <End Role="typeOfSubscription" EntitySet="typeOfSubscription" />
             <End Role="subscription" EntitySet="subscription" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbOrder__userId__373B3228" Association="Self.FK__tbOrder__userId__373B3228">
+          <AssociationSet Name="FK__tbOrder__userId__019E3B86" Association="Self.FK__tbOrder__userId__019E3B86">
             <End Role="users" EntitySet="users" />
             <End Role="tbOrder" EntitySet="tbOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__users__accountId__345EC57D" Association="Self.FK__users__accountId__345EC57D">
+          <AssociationSet Name="FK__users__accountId__7EC1CEDB" Association="Self.FK__users__accountId__7EC1CEDB">
             <End Role="bankAccount" EntitySet="bankAccount" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
@@ -338,7 +321,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="dmaj0918_1074278Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SaveTheWorldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="bankAccount">
           <Key>
             <PropertyRef Name="id" />
@@ -348,8 +331,8 @@
           <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ccv" Type="Int32" Nullable="false" />
           <Property Name="amount" Type="Double" Nullable="false" />
-          <NavigationProperty Name="disaster" Relationship="Self.FK__disaster__accoun__4C364F0E" FromRole="bankAccount" ToRole="disaster" />
-          <NavigationProperty Name="users" Relationship="Self.FK__users__accountId__345EC57D" FromRole="bankAccount" ToRole="users" />
+          <NavigationProperty Name="disaster" Relationship="Self.FK__disaster__accoun__14B10FFA" FromRole="bankAccount" ToRole="disaster" />
+          <NavigationProperty Name="users" Relationship="Self.FK__users__accountId__7EC1CEDB" FromRole="bankAccount" ToRole="users" />
         </EntityType>
         <EntityType Name="category">
           <Key>
@@ -357,7 +340,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nameOfCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="disaster" Relationship="Self.FK__disaster__catego__4B422AD5" FromRole="category" ToRole="disaster" />
+          <NavigationProperty Name="disaster" Relationship="Self.FK__disaster__catego__13BCEBC1" FromRole="category" ToRole="disaster" />
         </EntityType>
         <EntityType Name="disaster">
           <Key>
@@ -371,8 +354,8 @@
           <Property Name="priority" Type="Int32" Nullable="false" />
           <Property Name="victims" Type="Int32" Nullable="false" />
           <Property Name="accountId" Type="Int32" />
-          <NavigationProperty Name="bankAccount" Relationship="Self.FK__disaster__accoun__4C364F0E" FromRole="disaster" ToRole="bankAccount" />
-          <NavigationProperty Name="category" Relationship="Self.FK__disaster__catego__4B422AD5" FromRole="disaster" ToRole="category" />
+          <NavigationProperty Name="bankAccount" Relationship="Self.FK__disaster__accoun__14B10FFA" FromRole="disaster" ToRole="bankAccount" />
+          <NavigationProperty Name="category" Relationship="Self.FK__disaster__catego__13BCEBC1" FromRole="disaster" ToRole="category" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -383,7 +366,7 @@
           <Property Name="paymentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="amount" Type="Double" Nullable="false" />
           <Property Name="orderId" Type="Int32" />
-          <NavigationProperty Name="tbOrder" Relationship="Self.FK__invoice__orderId__467D75B8" FromRole="invoice" ToRole="tbOrder" />
+          <NavigationProperty Name="tbOrder" Relationship="Self.FK__invoice__orderId__0EF836A4" FromRole="invoice" ToRole="tbOrder" />
         </EntityType>
         <EntityType Name="orderLine">
           <Key>
@@ -393,8 +376,8 @@
           <Property Name="productId" Type="Int32" />
           <Property Name="quantity" Type="Double" Nullable="false" />
           <Property Name="orderId" Type="Int32" />
-          <NavigationProperty Name="tbOrder" Relationship="Self.FK__orderLine__order__43A1090D" FromRole="orderLine" ToRole="tbOrder" />
-          <NavigationProperty Name="product" Relationship="Self.FK__orderLine__produ__42ACE4D4" FromRole="orderLine" ToRole="product" />
+          <NavigationProperty Name="tbOrder" Relationship="Self.FK__orderLine__order__0C1BC9F9" FromRole="orderLine" ToRole="tbOrder" />
+          <NavigationProperty Name="product" Relationship="Self.FK__orderLine__produ__0B27A5C0" FromRole="orderLine" ToRole="product" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -405,10 +388,8 @@
           <Property Name="price" Type="Double" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="minStock" Type="Int32" Nullable="false" />
-          <Property Name="property" Type="Int32" />
-          <NavigationProperty Name="orderLine" Relationship="Self.FK__orderLine__produ__42ACE4D4" FromRole="product" ToRole="orderLine" />
-          <NavigationProperty Name="property1" Relationship="Self.FK__product__propert__3FD07829" FromRole="product" ToRole="property" />
-          <NavigationProperty Name="productPropertyValues" Relationship="Self.FK__productPr__produ__54CB950F" FromRole="product" ToRole="productPropertyValues" />
+          <NavigationProperty Name="orderLine" Relationship="Self.FK__orderLine__produ__0B27A5C0" FromRole="product" ToRole="orderLine" />
+          <NavigationProperty Name="productPropertyValues" Relationship="Self.FK__productPr__produ__1D4655FB" FromRole="product" ToRole="productPropertyValues" />
         </EntityType>
         <EntityType Name="productPropertyValues">
           <Key>
@@ -417,8 +398,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="propertyValuesId" Type="Int32" />
           <Property Name="productId" Type="Int32" />
-          <NavigationProperty Name="product" Relationship="Self.FK__productPr__produ__54CB950F" FromRole="productPropertyValues" ToRole="product" />
-          <NavigationProperty Name="propertyValues" Relationship="Self.FK__productPr__prope__53D770D6" FromRole="productPropertyValues" ToRole="propertyValues" />
+          <NavigationProperty Name="product" Relationship="Self.FK__productPr__produ__1D4655FB" FromRole="productPropertyValues" ToRole="product" />
+          <NavigationProperty Name="propertyValues" Relationship="Self.FK__productPr__prope__1C5231C2" FromRole="productPropertyValues" ToRole="propertyValues" />
         </EntityType>
         <EntityType Name="property">
           <Key>
@@ -428,8 +409,7 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sortOrder" Type="Int32" Nullable="false" />
           <Property Name="propertyValuesId" Type="Int32" />
-          <NavigationProperty Name="product" Relationship="Self.FK__product__propert__3FD07829" FromRole="property" ToRole="product" />
-          <NavigationProperty Name="propertyValues" Relationship="Self.FK__property__proper__3BFFE745" FromRole="property" ToRole="propertyValues" />
+          <NavigationProperty Name="propertyValues" Relationship="Self.FK__property__proper__0662F0A3" FromRole="property" ToRole="propertyValues" />
         </EntityType>
         <EntityType Name="propertyValues">
           <Key>
@@ -437,8 +417,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="productPropertyValues" Relationship="Self.FK__productPr__prope__53D770D6" FromRole="propertyValues" ToRole="productPropertyValues" />
-          <NavigationProperty Name="property" Relationship="Self.FK__property__proper__3BFFE745" FromRole="propertyValues" ToRole="property" />
+          <NavigationProperty Name="productPropertyValues" Relationship="Self.FK__productPr__prope__1C5231C2" FromRole="propertyValues" ToRole="productPropertyValues" />
+          <NavigationProperty Name="property" Relationship="Self.FK__property__proper__0662F0A3" FromRole="propertyValues" ToRole="property" />
         </EntityType>
         <EntityType Name="subscription">
           <Key>
@@ -448,7 +428,7 @@
           <Property Name="typeOfSubscriptionId" Type="Int32" />
           <Property Name="amount" Type="Double" Nullable="false" />
           <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="typeOfSubscription" Relationship="Self.FK__subscript__typeO__50FB042B" FromRole="subscription" ToRole="typeOfSubscription" />
+          <NavigationProperty Name="typeOfSubscription" Relationship="Self.FK__subscript__typeO__1975C517" FromRole="subscription" ToRole="typeOfSubscription" />
         </EntityType>
         <EntityType Name="tbOrder">
           <Key>
@@ -457,9 +437,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userId" Type="Int32" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="invoice" Relationship="Self.FK__invoice__orderId__467D75B8" FromRole="tbOrder" ToRole="invoice" />
-          <NavigationProperty Name="orderLine" Relationship="Self.FK__orderLine__order__43A1090D" FromRole="tbOrder" ToRole="orderLine" />
-          <NavigationProperty Name="users" Relationship="Self.FK__tbOrder__userId__373B3228" FromRole="tbOrder" ToRole="users" />
+          <NavigationProperty Name="invoice" Relationship="Self.FK__invoice__orderId__0EF836A4" FromRole="tbOrder" ToRole="invoice" />
+          <NavigationProperty Name="orderLine" Relationship="Self.FK__orderLine__order__0C1BC9F9" FromRole="tbOrder" ToRole="orderLine" />
+          <NavigationProperty Name="users" Relationship="Self.FK__tbOrder__userId__019E3B86" FromRole="tbOrder" ToRole="users" />
         </EntityType>
         <EntityType Name="typeOfSubscription">
           <Key>
@@ -468,7 +448,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="periodOfTimeInDays" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="subscription" Relationship="Self.FK__subscript__typeO__50FB042B" FromRole="typeOfSubscription" ToRole="subscription" />
+          <NavigationProperty Name="subscription" Relationship="Self.FK__subscript__typeO__1975C517" FromRole="typeOfSubscription" ToRole="subscription" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -482,10 +462,10 @@
           <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="phoneno" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="accountId" Type="Int32" />
-          <NavigationProperty Name="bankAccount" Relationship="Self.FK__users__accountId__345EC57D" FromRole="users" ToRole="bankAccount" />
-          <NavigationProperty Name="tbOrder" Relationship="Self.FK__tbOrder__userId__373B3228" FromRole="users" ToRole="tbOrder" />
+          <NavigationProperty Name="bankAccount" Relationship="Self.FK__users__accountId__7EC1CEDB" FromRole="users" ToRole="bankAccount" />
+          <NavigationProperty Name="tbOrder" Relationship="Self.FK__tbOrder__userId__019E3B86" FromRole="users" ToRole="tbOrder" />
         </EntityType>
-        <Association Name="FK__disaster__accoun__4C364F0E">
+        <Association Name="FK__disaster__accoun__14B10FFA">
           <End Role="bankAccount" Type="Self.bankAccount" Multiplicity="0..1" />
           <End Role="disaster" Type="Self.disaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -497,7 +477,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__users__accountId__345EC57D">
+        <Association Name="FK__users__accountId__7EC1CEDB">
           <End Role="bankAccount" Type="Self.bankAccount" Multiplicity="0..1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -509,7 +489,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__disaster__catego__4B422AD5">
+        <Association Name="FK__disaster__catego__13BCEBC1">
           <End Role="category" Type="Self.category" Multiplicity="0..1" />
           <End Role="disaster" Type="Self.disaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -521,7 +501,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__invoice__orderId__467D75B8">
+        <Association Name="FK__invoice__orderId__0EF836A4">
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="0..1" />
           <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
           <ReferentialConstraint>
@@ -533,7 +513,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orderLine__order__43A1090D">
+        <Association Name="FK__orderLine__order__0C1BC9F9">
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="0..1" />
           <End Role="orderLine" Type="Self.orderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -545,7 +525,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orderLine__produ__42ACE4D4">
+        <Association Name="FK__orderLine__produ__0B27A5C0">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="orderLine" Type="Self.orderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -557,19 +537,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__product__propert__3FD07829">
-          <End Role="property" Type="Self.property" Multiplicity="0..1" />
-          <End Role="product" Type="Self.product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="property">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product">
-              <PropertyRef Name="property" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__productPr__produ__54CB950F">
+        <Association Name="FK__productPr__produ__1D4655FB">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="productPropertyValues" Type="Self.productPropertyValues" Multiplicity="*" />
           <ReferentialConstraint>
@@ -581,7 +549,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__productPr__prope__53D770D6">
+        <Association Name="FK__productPr__prope__1C5231C2">
           <End Role="propertyValues" Type="Self.propertyValues" Multiplicity="0..1" />
           <End Role="productPropertyValues" Type="Self.productPropertyValues" Multiplicity="*" />
           <ReferentialConstraint>
@@ -593,7 +561,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__property__proper__3BFFE745">
+        <Association Name="FK__property__proper__0662F0A3">
           <End Role="propertyValues" Type="Self.propertyValues" Multiplicity="0..1" />
           <End Role="property" Type="Self.property" Multiplicity="*" />
           <ReferentialConstraint>
@@ -605,7 +573,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__subscript__typeO__50FB042B">
+        <Association Name="FK__subscript__typeO__1975C517">
           <End Role="typeOfSubscription" Type="Self.typeOfSubscription" Multiplicity="0..1" />
           <End Role="subscription" Type="Self.subscription" Multiplicity="*" />
           <ReferentialConstraint>
@@ -617,7 +585,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbOrder__userId__373B3228">
+        <Association Name="FK__tbOrder__userId__019E3B86">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -629,7 +597,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dmaj0918_1074278Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SaveTheWorldEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="bankAccount" EntityType="Self.bankAccount" />
           <EntitySet Name="category" EntityType="Self.category" />
           <EntitySet Name="disaster" EntityType="Self.disaster" />
@@ -643,51 +611,47 @@
           <EntitySet Name="tbOrder" EntityType="Self.tbOrder" />
           <EntitySet Name="typeOfSubscription" EntityType="Self.typeOfSubscription" />
           <EntitySet Name="users" EntityType="Self.users" />
-          <AssociationSet Name="FK__disaster__accoun__4C364F0E" Association="Self.FK__disaster__accoun__4C364F0E">
+          <AssociationSet Name="FK__disaster__accoun__14B10FFA" Association="Self.FK__disaster__accoun__14B10FFA">
             <End Role="bankAccount" EntitySet="bankAccount" />
             <End Role="disaster" EntitySet="disaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__users__accountId__345EC57D" Association="Self.FK__users__accountId__345EC57D">
+          <AssociationSet Name="FK__users__accountId__7EC1CEDB" Association="Self.FK__users__accountId__7EC1CEDB">
             <End Role="bankAccount" EntitySet="bankAccount" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
-          <AssociationSet Name="FK__disaster__catego__4B422AD5" Association="Self.FK__disaster__catego__4B422AD5">
+          <AssociationSet Name="FK__disaster__catego__13BCEBC1" Association="Self.FK__disaster__catego__13BCEBC1">
             <End Role="category" EntitySet="category" />
             <End Role="disaster" EntitySet="disaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__invoice__orderId__467D75B8" Association="Self.FK__invoice__orderId__467D75B8">
+          <AssociationSet Name="FK__invoice__orderId__0EF836A4" Association="Self.FK__invoice__orderId__0EF836A4">
             <End Role="tbOrder" EntitySet="tbOrder" />
             <End Role="invoice" EntitySet="invoice" />
           </AssociationSet>
-          <AssociationSet Name="FK__orderLine__order__43A1090D" Association="Self.FK__orderLine__order__43A1090D">
+          <AssociationSet Name="FK__orderLine__order__0C1BC9F9" Association="Self.FK__orderLine__order__0C1BC9F9">
             <End Role="tbOrder" EntitySet="tbOrder" />
             <End Role="orderLine" EntitySet="orderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__orderLine__produ__42ACE4D4" Association="Self.FK__orderLine__produ__42ACE4D4">
+          <AssociationSet Name="FK__orderLine__produ__0B27A5C0" Association="Self.FK__orderLine__produ__0B27A5C0">
             <End Role="product" EntitySet="product" />
             <End Role="orderLine" EntitySet="orderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__product__propert__3FD07829" Association="Self.FK__product__propert__3FD07829">
-            <End Role="property" EntitySet="property" />
-            <End Role="product" EntitySet="product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__productPr__produ__54CB950F" Association="Self.FK__productPr__produ__54CB950F">
+          <AssociationSet Name="FK__productPr__produ__1D4655FB" Association="Self.FK__productPr__produ__1D4655FB">
             <End Role="product" EntitySet="product" />
             <End Role="productPropertyValues" EntitySet="productPropertyValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__productPr__prope__53D770D6" Association="Self.FK__productPr__prope__53D770D6">
+          <AssociationSet Name="FK__productPr__prope__1C5231C2" Association="Self.FK__productPr__prope__1C5231C2">
             <End Role="propertyValues" EntitySet="propertyValues" />
             <End Role="productPropertyValues" EntitySet="productPropertyValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__property__proper__3BFFE745" Association="Self.FK__property__proper__3BFFE745">
+          <AssociationSet Name="FK__property__proper__0662F0A3" Association="Self.FK__property__proper__0662F0A3">
             <End Role="propertyValues" EntitySet="propertyValues" />
             <End Role="property" EntitySet="property" />
           </AssociationSet>
-          <AssociationSet Name="FK__subscript__typeO__50FB042B" Association="Self.FK__subscript__typeO__50FB042B">
+          <AssociationSet Name="FK__subscript__typeO__1975C517" Association="Self.FK__subscript__typeO__1975C517">
             <End Role="typeOfSubscription" EntitySet="typeOfSubscription" />
             <End Role="subscription" EntitySet="subscription" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbOrder__userId__373B3228" Association="Self.FK__tbOrder__userId__373B3228">
+          <AssociationSet Name="FK__tbOrder__userId__019E3B86" Association="Self.FK__tbOrder__userId__019E3B86">
             <End Role="users" EntitySet="users" />
             <End Role="tbOrder" EntitySet="tbOrder" />
           </AssociationSet>
@@ -697,9 +661,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dmaj0918_1074278ModelStoreContainer" CdmEntityContainer="dmaj0918_1074278Entities">
+        <EntityContainerMapping StorageEntityContainer="SaveTheWorldModelStoreContainer" CdmEntityContainer="SaveTheWorldEntities">
           <EntitySetMapping Name="bankAccount">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.bankAccount">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.bankAccount">
               <MappingFragment StoreEntitySet="bankAccount">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="accountNo" ColumnName="accountNo" />
@@ -710,7 +674,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="category">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.category">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.category">
               <MappingFragment StoreEntitySet="category">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nameOfCategory" ColumnName="nameOfCategory" />
@@ -718,7 +682,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="disaster">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.disaster">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.disaster">
               <MappingFragment StoreEntitySet="disaster">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="disasterName" ColumnName="disasterName" />
@@ -732,7 +696,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="invoice">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.invoice">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.invoice">
               <MappingFragment StoreEntitySet="invoice">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
@@ -743,7 +707,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orderLine">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.orderLine">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.orderLine">
               <MappingFragment StoreEntitySet="orderLine">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="productId" ColumnName="productId" />
@@ -753,19 +717,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="product">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.product">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.product">
               <MappingFragment StoreEntitySet="product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="productName" ColumnName="productName" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="minStock" ColumnName="minStock" />
-                <ScalarProperty Name="property" ColumnName="property" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="productPropertyValues">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.productPropertyValues">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.productPropertyValues">
               <MappingFragment StoreEntitySet="productPropertyValues">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="propertyValuesId" ColumnName="propertyValuesId" />
@@ -774,7 +737,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="property">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.property">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.property">
               <MappingFragment StoreEntitySet="property">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -784,7 +747,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="propertyValues">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.propertyValues">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.propertyValues">
               <MappingFragment StoreEntitySet="propertyValues">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="value" ColumnName="value" />
@@ -792,7 +755,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="subscription">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.subscription">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.subscription">
               <MappingFragment StoreEntitySet="subscription">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeOfSubscriptionId" ColumnName="typeOfSubscriptionId" />
@@ -802,7 +765,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tbOrder">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.tbOrder">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.tbOrder">
               <MappingFragment StoreEntitySet="tbOrder">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
@@ -811,7 +774,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="typeOfSubscription">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.typeOfSubscription">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.typeOfSubscription">
               <MappingFragment StoreEntitySet="typeOfSubscription">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -820,7 +783,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="dmaj0918_1074278Model.users">
+            <EntityTypeMapping TypeName="SaveTheWorldModel.users">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />

@@ -24,11 +24,11 @@ EXEC sp_MSforeachtable 'DROP TABLE ?'
 GO
 
 
-IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'dmaj0918_1074278')
-    CREATE DATABASE  dmaj0918_1074278
+/*IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'saveTheWorld')
+    CREATE DATABASE  saveTheWorld
 
 GO
-
+*/
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='bankAccount' and xtype='U')
 	CREATE TABLE bankAccount (
@@ -88,11 +88,11 @@ GO
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
 	CREATE TABLE product (
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-		productName VARCHAR(100) NOT NULL UNIQUE,
+		productName VARCHAR(100) NOT NULL,
 		price FLOAT NOT NULL,
 		description VARCHAR(5000) NOT NULL,
 		minStock INT NOT NULL, 
-		property int FOREIGN KEY REFERENCES property(id),
+		/*property int FOREIGN KEY REFERENCES property(id),*/
 	)
 GO
 
@@ -200,16 +200,18 @@ insert into users(username,name, password, typeOfUser) values (002,'Lyudmil','$2
 insert into users(username,name, password, typeOfUser) values (003,'Jan','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
 insert into users(username,name, password, typeOfUser) values (004,'Henrique','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
 insert into users(username,name, password, typeOfUser) values (005,'Valentin','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
+*/
+
+insert into product(productName, price, description, minStock) values ('Shirt1',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt2',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt3',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt4',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt5',20.20,'very cool shirt',10);
 
 
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (30.00,'Pork', 50.00,'BulgarianMafia','Sausage');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (20.00,'Chicken', 60.00,'MafiaOfVarna','Chilli Sausage');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (20.00,'Chicken', 60.00,'LotOfBalls','Meatball');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (40.00,'Beef', 30.00,'LotOfMeat','Steak');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (40.00,'Beef', 30.00,'WeHaveMeat','Ground Meat');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (30.00,'Pork', 70.00,'GiveMeMeat','Pork Meatball');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (30.00,'Lamb', 70.00,'BeatMyMeat','Lamb Sausage');
+insert into category(nameOfCategory) values('pyrva categoria');
 
+/*
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Petyr Borisov','ul. Vasil Levski','10','Varna','+35900123456');
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Boyko Borissov','ul. Tsar Osvoboditel','13','Varna','+35900567488');
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Hristo Stoichkov','ul. Doyran','22','Varna','+359654098');

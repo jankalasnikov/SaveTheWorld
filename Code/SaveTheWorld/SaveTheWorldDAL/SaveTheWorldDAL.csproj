@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD2635F3-1DA7-4497-8580-16F49697664B}</ProjectGuid>
+    <ProjectGuid>{58387D16-2E9E-4BA5-A78E-12D42A87F4B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SaveTheWorldDAL</RootNamespace>
@@ -59,7 +59,6 @@
     <Compile Include="category.cs">
       <DependentUpon>SaveTheWorld.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductDAO.cs" />
     <Compile Include="disaster.cs">
       <DependentUpon>SaveTheWorld.tt</DependentUpon>
     </Compile>
@@ -72,6 +71,7 @@
     <Compile Include="product.cs">
       <DependentUpon>SaveTheWorld.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductDAO.cs" />
     <Compile Include="productPropertyValues.cs">
       <DependentUpon>SaveTheWorld.tt</DependentUpon>
     </Compile>
@@ -137,13 +137,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SaveTheWorldModelL\SaveTheWorldModelL.csproj">
-      <Project>{9CCDA9F6-844A-4AAC-B611-E35257A27664}</Project>
-      <Name>SaveTheWorldModelL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SaveTheWorld\SaveTheWorldModel.csproj">
-      <Project>{4eca42ce-8132-4321-bfea-80acd06c84ce}</Project>
-      <Name>SaveTheWorldModel</Name>
+    <ProjectReference Include="..\SaveTheWorldBDO\SaveTheWorldBDO.csproj">
+      <Project>{f4d09faa-b7de-4530-ad77-997c81cdc5bf}</Project>
+      <Name>SaveTheWorldBDO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

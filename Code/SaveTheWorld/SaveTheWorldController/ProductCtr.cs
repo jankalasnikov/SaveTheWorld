@@ -1,4 +1,5 @@
-﻿using SaveTheWorldDAL;
+﻿using SaveTheWorldBDO;
+using SaveTheWorldDAL;
 using SaveTheWorldModelL;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,17 @@ namespace SaveTheWorldController
     {
         ProductDAO productDAO = new ProductDAO();
 
-        public Product GetProduct(int id)
+        public ProductBDO GetProduct(int id)
         {
             return productDAO.GetProduct(id);
         }
 
         public bool UpdateProduct(
-            ref Product product,
+            ref ProductBDO productBDO,
             ref string message)
         {
             var productInDB =
-                GetProduct(product.ProductId);
+                GetProduct(productBDO.ProductId);
             // invalid product to update
             if (productInDB == null)
             {
@@ -31,17 +32,17 @@ namespace SaveTheWorldController
             }
             // a product cannot be discontinued 
             // if there are non-fulfilled orders
-            if (product.Discontinued == true
+            /*if (product.Discontinued == true
                 && productInDB.UnitsOnOrder > 0)
             {
                 message = "cannot discontinue this product";
                 return false;
             }
             else
-            {
-                return productDAO.UpdateProduct(ref product,
+            {*/
+                return productDAO.UpdateProduct(ref productBDO,
                     ref message);
-            }
+           // }
         }
     }
 }

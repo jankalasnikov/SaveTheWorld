@@ -27,12 +27,16 @@ namespace SaveTheWorldModelL
 
             }
 
-        /* public Product(String name, double price, String itemDescription, int stock)
-         {
-             ProductName = name;
-             ProductName = price;
-             ProductDescription = itemDescription;
-             Stock = stock;
-         }*/
+    
+    }
+    [DataContract]
+    public class ProductFault
+    {
+        [DataMember]
+        public string FaultMessage;
+        public ProductFault(string msg)
+        {
+            FaultMessage = msg;
+        }
     }
 }

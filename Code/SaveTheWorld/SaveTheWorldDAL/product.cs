@@ -26,11 +26,9 @@ namespace SaveTheWorldDAL
         public double price { get; set; }
         public string description { get; set; }
         public int minStock { get; set; }
-        public Nullable<int> property { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<orderLine> orderLine { get; set; }
-        public virtual property property1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<productPropertyValues> productPropertyValues { get; set; }
     }

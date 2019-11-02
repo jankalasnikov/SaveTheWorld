@@ -1,38 +1,38 @@
-﻿using System;
+﻿using SaveTheWorldBDO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SaveTheWorld;
-using SaveTheWorldModelL;
 
 namespace SaveTheWorldDAL
 {
     public class ProductDAO
     {
-        public Product GetProduct(int id)
+        public ProductBDO GetProduct(int id)
         {
-            Product productBase= null;
+            ProductBDO productBDO = null;
             using (var NWEntities = new SaveTheWorldEntities())
             {
                 var product = (from p in NWEntities.product
                                where p.id == id
                                select p).FirstOrDefault();
                 if (product != null)
-                    productBase = new Product()
+                    productBDO = new ProductBDO()
                     {
                         ProductId = product.id,
                         ProductName = product.productName,
                         Price = product.price,
                         ProductDescription = product.description,
-                        Stock = (int)product.minStock
+                        Stock = product.minStock,
+                      
                     };
             }
-            return productBase;
+            return productBDO;
         }
 
         public bool UpdateProduct(
-            ref Product product,
+            ref ProductBDO productBDO,
             ref string message)
         {
             message = "product updated successfully";
@@ -40,7 +40,7 @@ namespace SaveTheWorldDAL
 
             using (var NWEntities = new SaveTheWorldEntities())
             {
-                var productID = product.ProductId;
+                var productID = productBDO.ProductId;
                 var productInDB =
                         (from p
                         in NWEntities.product
@@ -50,15 +50,15 @@ namespace SaveTheWorldDAL
                 if (productInDB == null)
                 {
                     throw new Exception("No product with ID " +
-                                        product.ProductId);
+                                        productBDO.ProductId);
                 }
 
                 // update product
-                productInDB.productName = product.ProductName;
-                productInDB.price = product.Price;
-                productInDB.description = product.ProductDescription;
-                productInDB.minStock = product.Stock;
-        
+                productInDB.productName = productBDO.ProductName;
+                productInDB.description = productBDO.ProductDescription;
+                productInDB.price = productBDO.Price;
+                productInDB.minStock = productBDO.Stock;
+                
 
                 NWEntities.product.Attach(productInDB);
 
@@ -68,8 +68,7 @@ namespace SaveTheWorldDAL
                 /*If the object state is not set to Modified, Entity Framework will not honor your changes to the entity object and you will not be able to save any of the changes to the database.*/
                 var num = NWEntities.SaveChanges();
 
-                //product.RowVersion = productInDB.RowVersion;
-
+           
                 if (num != 1)
                 {
                     ret = false;
@@ -78,5 +77,6 @@ namespace SaveTheWorldDAL
             }
             return ret;
         }
+
     }
 }

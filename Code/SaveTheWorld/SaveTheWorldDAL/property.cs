@@ -14,19 +14,11 @@ namespace SaveTheWorldDAL
     
     public partial class property
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public property()
-        {
-            this.product = new HashSet<product>();
-        }
-    
         public int id { get; set; }
         public string name { get; set; }
         public int sortOrder { get; set; }
         public Nullable<int> propertyValuesId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<product> product { get; set; }
         public virtual propertyValues propertyValues { get; set; }
     }
 }
