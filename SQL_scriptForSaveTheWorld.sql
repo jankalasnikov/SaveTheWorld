@@ -195,12 +195,19 @@ insert into store(storeName, address) values ('store5','address5');
 insert into store(storeName, address) values ('store6','address6');
 
 
-insert into users(username,name, password, typeOfUser) values (001,'Yordan','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 1);
-insert into users(username,name, password, typeOfUser) values (002,'Lyudmil','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 1);
-insert into users(username,name, password, typeOfUser) values (003,'Jan','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
-insert into users(username,name, password, typeOfUser) values (004,'Henrique','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
-insert into users(username,name, password, typeOfUser) values (005,'Valentin','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
 */
+
+
+
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234,'2019-02-20', 123, 501.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (12341232,'2019-02-20', 123, 502.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234341233,'2019-02-20', 123, 503.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234441234,'2019-02-20', 123, 504.00);
+
+insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 1, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
+insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
+insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Yordan','123', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
+
 
 insert into product(productName, price, description, minStock) values ('Shirt1',20.20,'very cool shirt',10);
 insert into product(productName, price, description, minStock) values ('Shirt2',20.20,'very cool shirt',10);

@@ -15,6 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveTheWorldBDO", "SaveTheW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveTheWorldDAL", "SaveTheWorldDAL\SaveTheWorldDAL.csproj", "{58387D16-2E9E-4BA5-A78E-12D42A87F4B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveTheWorldWPFClient", "SaveTheWorldWPFClient\SaveTheWorldWPFClient.csproj", "{59539F30-AD60-4A10-9765-524FEDD17F2A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10F2AC77-3BEE-41BC-AC36-2318CA356429} = {10F2AC77-3BEE-41BC-AC36-2318CA356429}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +50,10 @@ Global
 		{58387D16-2E9E-4BA5-A78E-12D42A87F4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58387D16-2E9E-4BA5-A78E-12D42A87F4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58387D16-2E9E-4BA5-A78E-12D42A87F4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59539F30-AD60-4A10-9765-524FEDD17F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59539F30-AD60-4A10-9765-524FEDD17F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59539F30-AD60-4A10-9765-524FEDD17F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59539F30-AD60-4A10-9765-524FEDD17F2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
