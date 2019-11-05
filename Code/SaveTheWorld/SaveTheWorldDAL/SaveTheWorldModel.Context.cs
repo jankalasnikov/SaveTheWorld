@@ -25,6 +25,7 @@ namespace SaveTheWorldDAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<auser> auser { get; set; }
         public virtual DbSet<bankAccount> bankAccount { get; set; }
         public virtual DbSet<category> category { get; set; }
         public virtual DbSet<disaster> disaster { get; set; }
@@ -37,6 +38,5 @@ namespace SaveTheWorldDAL
         public virtual DbSet<subscription> subscription { get; set; }
         public virtual DbSet<tbOrder> tbOrder { get; set; }
         public virtual DbSet<typeOfSubscription> typeOfSubscription { get; set; }
-        public virtual DbSet<users> users { get; set; }
     }
 }

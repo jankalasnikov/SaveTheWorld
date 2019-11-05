@@ -42,8 +42,8 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='bankAccount' and xtype='U')
 
 GO
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='users' and xtype='U')
-    CREATE TABLE users (
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='auser' and xtype='U')
+    CREATE TABLE auser (
 		id INT PRIMARY KEY IDENTITY(1,1) not null,
 		name varchar(75) not null,
 		password varchar(400) not null,
@@ -59,7 +59,7 @@ GO
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tbOrder' and xtype='U')
 	CREATE TABLE tbOrder (
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-		userId int FOREIGN KEY REFERENCES users(id),
+		userId int FOREIGN KEY REFERENCES auser(id),
 		date DATE NOT NULL,
 		
 	)
@@ -204,9 +204,9 @@ insert into bankAccount(accountNo,expiryDate, ccv, amount) values (12341232,'201
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234341233,'2019-02-20', 123, 503.00);
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234441234,'2019-02-20', 123, 504.00);
 
-insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 1, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
-insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
-insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Yordan','123', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
+insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 1, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
+insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
+insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Yordan','123', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
 
 
 insert into product(productName, price, description, minStock) values ('Shirt1',20.20,'very cool shirt',10);

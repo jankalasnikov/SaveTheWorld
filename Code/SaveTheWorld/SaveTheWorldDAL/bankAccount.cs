@@ -17,8 +17,8 @@ namespace SaveTheWorldDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public bankAccount()
         {
+            this.auser = new HashSet<auser>();
             this.disaster = new HashSet<disaster>();
-            this.users = new HashSet<users>();
         }
     
         public int id { get; set; }
@@ -28,8 +28,8 @@ namespace SaveTheWorldDAL
         public double amount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<disaster> disaster { get; set; }
+        public virtual ICollection<auser> auser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<users> users { get; set; }
+        public virtual ICollection<disaster> disaster { get; set; }
     }
 }

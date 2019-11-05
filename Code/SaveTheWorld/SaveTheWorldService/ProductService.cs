@@ -17,7 +17,7 @@ namespace SaveTheWorldService
 
         public Product GetProduct(int id)
         {
-            ProductBDO productBDO = null;
+            Product productBDO = null;
             try
             {
                 productBDO = productController.GetProduct(id);
@@ -72,7 +72,7 @@ namespace SaveTheWorldService
             {
                 try
                 {
-                    var productBDO = new ProductBDO();
+                    var productBDO = new Product();
                     TranslateProductDTOToProductBDO(product,
                     productBDO);
                     result = productController.UpdateProduct(
@@ -90,7 +90,7 @@ namespace SaveTheWorldService
         }
 
         private void TranslateProductBDOToProductDTO(
-            ProductBDO productBDO,
+            Product productBDO,
             Product product)
         {
             product.ProductId = productBDO.ProductId;
@@ -102,7 +102,7 @@ namespace SaveTheWorldService
 
         private void TranslateProductDTOToProductBDO(
             Product product,
-            ProductBDO productBDO)
+            Product productBDO)
         {
             productBDO.ProductId = product.ProductId;
             productBDO.ProductName = product.ProductName;

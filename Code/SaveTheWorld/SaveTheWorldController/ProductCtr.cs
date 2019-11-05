@@ -13,13 +13,23 @@ namespace SaveTheWorldController
     {
         ProductDAO productDAO = new ProductDAO();
 
-        public ProductBDO GetProduct(int id)
+        public Product GetProduct(int id)
         {
-            return productDAO.GetProduct(id);
+            try
+            {
+
+                return productDAO.GetProduct(id);
+            }
+            catch (Exception e)
+            {
+               
+                
+                throw new Exception(e.Message);
+            }
         }
 
         public bool UpdateProduct(
-            ref ProductBDO productBDO,
+            ref Product productBDO,
             ref string message)
         {
             var productInDB =
