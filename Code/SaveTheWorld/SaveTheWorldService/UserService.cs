@@ -31,9 +31,34 @@ namespace SaveTheWorldService
             return user;
         }
 
-        public void AddUser(string name, string password, string typeOfUser, string email, string address, string phone)
+        public User CheckLogin(string email, string pass)
+        {
+            User userbd = null;
+
+            userbd = userController.CheckLogin(email, pass);
+
+            if (userbd == null)
+            {
+                var msg =
+                    string.Format("No user found for email {0}",
+                    email);
+                var reason = "GetUser Empty User";
+                throw new Exception(reason);
+            }
+            var user = new User();
+            TranslateUserBDOToUserDTO(userbd, user);
+            return user;
+        }
+
+
+        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone)
         {
             userController.AddUser(name, password, typeOfUser, email, address, phone);
+        }
+
+        public void DeleteUser(int id)
+        {
+            userController.DeleteUser(id);
         }
 
         private void TranslateUserBDOToUserDTO(

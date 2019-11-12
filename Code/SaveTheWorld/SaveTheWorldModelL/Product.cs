@@ -14,15 +14,30 @@ namespace SaveTheWorldModelL
         [DataMember]
         public int ProductId { get; set; }
         [DataMember]
-        public String ProductName { get; set; }
+        public string ProductName { get; set; }
         [DataMember]
         public double Price { get; set; }
         [DataMember]
-        public String ProductDescription { get; set; }
+        public string ProductDescription { get; set; }
         [DataMember]
         public int Stock { get; set; }
 
-            public Product()
+
+        public int productId { get; set; }
+        public string productName { get; set; }
+        public double price { get; set; }
+        public string productDescription { get; set; }
+        public int stock { get; set; }
+
+        public Product(string productName, double price, string productDescription, int stock)
+        {
+            ProductName = productName;
+            Price = price;
+            ProductDescription = productDescription;
+            Stock = stock;
+          
+        }
+        public Product()
             {
 
             }

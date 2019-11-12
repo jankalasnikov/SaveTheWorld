@@ -32,6 +32,23 @@ namespace SaveTheWorldDAL
             return productBDO;
         }
 
+        public void AddProduct(string productName, double price, string productDescription, int stock)
+        {
+            Product prod = new Product();
+            prod.ProductName = productName;
+            prod.Price = price;
+            prod.ProductDescription = productDescription;
+            prod.Stock = stock;
+
+            using (SaveTheWorldEntities dbEntities = new SaveTheWorldEntities())
+
+            {
+
+             //   dbEntities.product.Add(prod);
+                dbEntities.SaveChanges();
+            }
+        }
+
         public bool UpdateProduct(
             ref Product productBDO,
             ref string message)

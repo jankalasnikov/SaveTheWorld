@@ -23,35 +23,16 @@ namespace SaveTheWorldWPFClient
         public MainWindow()
         {
             InitializeComponent();
+            Load(); 
         }
 
-        private void btn_Shop(object sender, RoutedEventArgs e)
-        {
-            LogInPage page1 = new LogInPage();
-            // this.Content = page1; it show only the page in tho whole window
-            mainFrame.Navigate(page1);
-        
-        }
-        private void btn_Disaster(object sender, RoutedEventArgs e)
-        {
+           public void Load()
+           {
+                MainPage mainPage = new MainPage();
+               this.Content = mainPage;
+           }
+
           
-
-        }
-        private void btn_Subscription(object sender, RoutedEventArgs e)
-        {
-            LogInPage page1 = new LogInPage();
-            // this.Content = page1; it show only the page in tho whole window
-            mainFrame.Navigate(page1);
-
-        }
-
-        private void btn_LogIn(object sender, RoutedEventArgs e)
-        {
-            LogInPage page1 = new LogInPage();
-            // this.Content = page1; it show only the page in tho whole window
-            mainFrame.Navigate(page1);
-
-        }
 
     }
 }

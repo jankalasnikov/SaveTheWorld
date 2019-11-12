@@ -16,7 +16,13 @@ namespace SaveTheWorldService
         User GetUser(int id);
 
         [OperationContract]
-        void AddUser(string name, string password, string typeOfUser, string email, string address, string phone);
+        void AddUser(string name, string password, int typeOfUser, string email, string address, string phone);
+
+        [OperationContract]
+        void DeleteUser(int id);
+
+        [OperationContract]
+        User CheckLogin(string email, string pass);
 
 
     }

@@ -13,10 +13,10 @@
             <ColumnDefinition Width="199*"/>
             <ColumnDefinition Width="508*"/>
         </Grid.ColumnDefinitions>
-        <TextBox HorizontalAlignment="Left" Height="26" Margin="270.066,241,0,0" TextWrapping="Wrap" Name="txt_email" Text="Your e-mail address" VerticalAlignment="Top" Width="156" IsEnabled="False" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="270.066,241,0,0" TextWrapping="Wrap" Name="txt_email"  VerticalAlignment="Top" Width="156" Grid.Column="1"/>
         <Label Content="E-mail:" HorizontalAlignment="Left" Margin="192.066,241,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="192.066,292,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="270.066,292,0,0" VerticalAlignment="Top" Width="156"  Height="26" Name="password" Grid.Column="1"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="270.066,292,0,0" VerticalAlignment="Top" Width="156"  Height="26" Name="psw_password" Grid.Column="1"/>
         <Label Content="Log in" HorizontalAlignment="Left" Margin="270.066,148,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Sitka Display" FontWeight="Bold" FontStyle="Italic" RenderTransformOrigin="0.5,0.5" Grid.Column="1"/>
         <Button Content="Log in" Background="green" HorizontalAlignment="Left" Margin="286.066,357,0,0" VerticalAlignment="Top" Width="75" Click="btn_LogInProfile" Grid.Column="1"/>
         <Button Content="Make new registration" Background="#FF9A9ACB" HorizontalAlignment="Left" Margin="214.066,407,0,0" VerticalAlignment="Top" Width="223" Click="btn_registration" Grid.Column="1"/>

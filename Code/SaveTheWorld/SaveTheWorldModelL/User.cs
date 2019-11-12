@@ -18,7 +18,7 @@ namespace SaveTheWorldModelL
         [DataMember]
         public string Password { get; set; }
         [DataMember]
-        public string TypeOfUser { get; set; }
+        public int TypeOfUser { get; set; }
         [DataMember]
         public string Email { get; set; }
         [DataMember]
@@ -33,16 +33,16 @@ namespace SaveTheWorldModelL
         
         public string password { get; set; }
        
-        public string typeOfUser { get; set; }
+        public int typeOfUser { get; set; }
         
         public string email { get; set; }
         
         public string address { get; set; }
        
         public string phoneno { get; set; }
-  
 
-        public User(string name, string password, string typeOfUser, string email, string address, string phone)
+
+        public User(string name, string password, int typeOfUser, string email, string address, string phone)
         {
             Name = name;
             Password = password;
