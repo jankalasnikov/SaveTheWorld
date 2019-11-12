@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aff3a6f85de44ae88cb149622fb95cec" Name="Diagram1">
+        <EntityTypeShape EntityType="SaveTheWorldModel.bankAccount" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.category" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.disaster" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.invoice" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.orderLine" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.product" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.productPropertyValues" Width="1.5" PointX="12" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.property" Width="1.5" PointX="12" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.propertyValues" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.subscription" Width="1.5" PointX="5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.tbOrder" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.typeOfSubscription" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaveTheWorldModel.users" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__disaster__accoun__14B10FFA" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__users__accountId__7EC1CEDB" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__disaster__catego__13BCEBC1" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__invoice__orderId__0EF836A4" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__orderLine__order__0C1BC9F9" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__orderLine__produ__0B27A5C0" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__productPr__produ__1D4655FB" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__productPr__prope__1C5231C2" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__property__proper__0662F0A3" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__subscript__typeO__1975C517" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveTheWorldModel.FK__tbOrder__userId__019E3B86" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

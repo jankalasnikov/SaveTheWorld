@@ -1,5 +1,5 @@
 
-
+/*USE dmaj0918_1074278;*/
 /*DROP ALL TABLES*/
 
 DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
@@ -25,14 +25,10 @@ GO
 
 
 /*IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'saveTheWorld')
-    CREATE DATABASE saveTheWorld
+    CREATE DATABASE  saveTheWorld
 
 GO
-
-USE saveTheWorld;
 */
-GO
-
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='bankAccount' and xtype='U')
 	CREATE TABLE bankAccount (
@@ -41,8 +37,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='bankAccount' and xtype='U')
 		expiryDate DATE NOT NULL,
 		ccv int NOT NULL,
 		amount float NOT NULL,
-		address varchar(150) NOT NULL,
-		
+	
 	)
 
 GO
@@ -50,47 +45,15 @@ GO
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='users' and xtype='U')
     CREATE TABLE users (
 		id INT PRIMARY KEY IDENTITY(1,1) not null,
-        email varchar (200) not null unique,
 		name varchar(75) not null,
 		password varchar(400) not null,
 		typeOfUser int not null,
+		email varchar (200) not null unique,
 		address VARCHAR(200) NOT NULL,
-		city VARCHAR(30) NOT NULL,
 		phoneno VARCHAR(15) NOT NULL,
 		accountId int FOREIGN KEY REFERENCES bankAccount(id),
 		
     )
-GO
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
-	CREATE TABLE product (
-		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-		productName VARCHAR(100) NOT NULL UNIQUE,
-		price FLOAT NOT NULL,
-		description VARCHAR(5000) NOT NULL,
-		minStock INT NOT NULL, 
-		
-	)
-GO
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='invoice' and xtype='U')
-	CREATE TABLE invoice (
-		id int PRIMARY KEY IDENTITY(1,1) NOT NULL,
-		invoiceNo INT NOT NULL,
-		paymentDate Date NOT NULL,
-		amount float NOT NULL,
-	)
-
-GO
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='orderLine' and xtype='U')
-	CREATE TABLE orderLine (
-		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-		productId int FOREIGN KEY REFERENCES product(id),
-	    quantity float NOT NULL,
-
-	)
-
 GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tbOrder' and xtype='U')
@@ -98,11 +61,71 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tbOrder' and xtype='U')
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 		userId int FOREIGN KEY REFERENCES users(id),
 		date DATE NOT NULL,
-    	orderLineId int FOREIGN KEY REFERENCES orderLine(id),
 		
 	)
 
 GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='propertyValues' and xtype='U')
+	CREATE TABLE propertyValues (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	    value varchar(50) NOT NULL,
+	
+	)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='property' and xtype='U')
+	CREATE TABLE property (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		name varchar(50) NOT NULL,
+		sortOrder int NOT NULL,
+		propertyValuesId int FOREIGN KEY REFERENCES propertyValues(id),
+	)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
+	CREATE TABLE product (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		productName VARCHAR(100) NOT NULL,
+		price FLOAT NOT NULL,
+		description VARCHAR(5000) NOT NULL,
+		minStock INT NOT NULL, 
+		/*property int FOREIGN KEY REFERENCES property(id),*/
+	)
+GO
+
+
+
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='orderLine' and xtype='U')
+	CREATE TABLE orderLine (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		productId int FOREIGN KEY REFERENCES product(id),
+	    quantity float NOT NULL,
+	    orderId int FOREIGN KEY REFERENCES tbOrder(id),
+	)
+
+GO
+
+
+
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='invoice' and xtype='U')
+	CREATE TABLE invoice (
+		id int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		invoiceNo INT NOT NULL,
+		paymentDate Date NOT NULL,
+		amount float NOT NULL,
+		orderId int FOREIGN KEY REFERENCES tbOrder(id),
+	)
+
+GO
+
+
+
+
 
 
 
@@ -152,6 +175,17 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='subscription' and xtype='U')
 GO
 
 
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='productPropertyValues' and xtype='U')
+	CREATE TABLE productPropertyValues (
+		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+		propertyValuesId int FOREIGN KEY REFERENCES propertyValues(id),
+		productId int FOREIGN KEY REFERENCES product(id),
+	)
+
+GO
+
+
 /*
 insert into store(storeName, address) values ('store1','address1');
 insert into store(storeName, address) values ('store2','address2');
@@ -161,21 +195,30 @@ insert into store(storeName, address) values ('store5','address5');
 insert into store(storeName, address) values ('store6','address6');
 
 
-insert into users(username,name, password, typeOfUser) values (001,'Yordan','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 1);
-insert into users(username,name, password, typeOfUser) values (002,'Lyudmil','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 1);
-insert into users(username,name, password, typeOfUser) values (003,'Jan','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
-insert into users(username,name, password, typeOfUser) values (004,'Henrique','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
-insert into users(username,name, password, typeOfUser) values (005,'Valentin','$2a$12$9GrLfe8kUqSl2yrvN3IBPO9NTx6je90B1OLPBISOnRXlpmeMN411q', 2);
+*/
 
 
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (30.00,'Pork', 50.00,'BulgarianMafia','Sausage');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (20.00,'Chicken', 60.00,'MafiaOfVarna','Chilli Sausage');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (20.00,'Chicken', 60.00,'LotOfBalls','Meatball');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (40.00,'Beef', 30.00,'LotOfMeat','Steak');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (40.00,'Beef', 30.00,'WeHaveMeat','Ground Meat');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (30.00,'Pork', 70.00,'GiveMeMeat','Pork Meatball');
-insert into product(price, typeOfMeat, minStock, nameOfSupplier, name) values (30.00,'Lamb', 70.00,'BeatMyMeat','Lamb Sausage');
 
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234,'2019-02-20', 123, 501.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (12341232,'2019-02-20', 123, 502.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234341233,'2019-02-20', 123, 503.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234441234,'2019-02-20', 123, 504.00);
+
+insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 1, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
+insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
+insert into users(name, password, typeOfUser, email, address, phoneno, accountId) values ('Yordan','123', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
+
+
+insert into product(productName, price, description, minStock) values ('Shirt1',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt2',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt3',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt4',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt5',20.20,'very cool shirt',10);
+
+
+insert into category(nameOfCategory) values('pyrva categoria');
+
+/*
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Petyr Borisov','ul. Vasil Levski','10','Varna','+35900123456');
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Boyko Borissov','ul. Tsar Osvoboditel','13','Varna','+35900567488');
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Hristo Stoichkov','ul. Doyran','22','Varna','+359654098');
