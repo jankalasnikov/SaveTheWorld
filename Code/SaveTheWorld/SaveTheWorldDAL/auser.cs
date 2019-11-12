@@ -12,10 +12,10 @@ namespace SaveTheWorldDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class users
+    public partial class auser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public users()
+        public auser()
         {
             this.tbOrder = new HashSet<tbOrder>();
         }

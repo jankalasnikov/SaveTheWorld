@@ -15,28 +15,25 @@ namespace SaveTheWorldService
         public User GetUser(int id)
         {
             User userbd = null;
-            try
-            {
+          
                 userbd = userController.GetUser(id);
-            }
-            catch (Exception e)
-            {
-                var msg = e.Message;
-                var reason = "GetProduct Exception";
-                throw new Exception(reason);
-            }
-
+           
             if (userbd == null)
             {
                 var msg =
-                    string.Format("No product found for id {0}",
+                    string.Format("No user found for id {0}",
                     id);
-                var reason = "GetProduct Empty Product";
+                var reason = "GetUser Empty User";
                 throw new Exception(reason);
             }
             var user = new User();
             TranslateUserBDOToUserDTO(userbd, user);
             return user;
+        }
+
+        public void AddUser(string name, string password, string typeOfUser, string email, string address, string phone)
+        {
+            userController.AddUser(name, password, typeOfUser, email, address, phone);
         }
 
         private void TranslateUserBDOToUserDTO(

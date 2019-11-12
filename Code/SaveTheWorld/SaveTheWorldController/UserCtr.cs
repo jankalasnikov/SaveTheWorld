@@ -17,6 +17,11 @@ namespace SaveTheWorldController
             return userDAO.GetUser(id);
         }
 
+        public void AddUser(string name, string password, string typeOfUser, string email, string address, string phone)
+        {
+            userDAO.AddUser(name, password, typeOfUser, email, address, phone);
+        }
+
        /* public bool UpdateProduct(
             ref ProductBDO productBDO,
             ref string message)

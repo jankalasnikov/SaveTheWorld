@@ -9,12 +9,13 @@ namespace SaveTheWorldDAL
 {
   public  class UserDAO
     {
+       
         public User GetUser(int id)
         {
             User userbd = null;
             using (var NWEntities = new SaveTheWorldEntities())
             {
-                var user = (from p in NWEntities.users
+                var user = (from p in NWEntities.auser
                                where p.id == id
                                select p).FirstOrDefault();
                 if (user != null)
@@ -32,6 +33,25 @@ namespace SaveTheWorldDAL
             return userbd;
         }
 
+        public void AddUser(string name, string password, string typeofUser, string email, string address, string phone)
+        {
+            User user = new User();
+            user.Name = name;
+            user.Password = password;
+            user.TypeOfUser = typeofUser;
+            user.Email = email;
+            user.Address = address;
+            user.Phone = phone;
+
+           using(SaveTheWorldEntities dbEntities = new SaveTheWorldEntities())
+
+            {
+
+               // dbEntities.Users.Add(user);
+                dbEntities.SaveChanges();
+            }
+        }
+
       /*  public bool UpdateProduct(
             ref User productBDO,
             ref string message)
@@ -39,12 +59,12 @@ namespace SaveTheWorldDAL
             message = "product updated successfully";
             var ret = true;
 
-            using (var NWEntities = new SaveTheWorldEntities())
+            using (var dbEntities = new SaveTheWorldEntities())
             {
                 var productID = productBDO.ProductId;
                 var productInDB =
                         (from p
-                        in NWEntities.product
+                        in dbEntities.product
                          where p.id == productID
                          select p).FirstOrDefault();
                 // check product
@@ -61,13 +81,13 @@ namespace SaveTheWorldDAL
                 productInDB.minStock = productBDO.Stock;
 
 
-                NWEntities.product.Attach(productInDB);
+                dbEntities.product.Attach(productInDB);
 
                 //If Attach is not called, RowVersion (from the database, not from the client) will be used when submitting to the database, even though you have updated its value before submitting to the database. An update will always succeed, but without a concurrency control.
-                NWEntities.Entry(productInDB).State = System.Data.Entity.EntityState.Modified;
+                dbEntities.Entry(productInDB).State = System.Data.Entity.EntityState.Modified;
 
                 //If the object state is not set to Modified, Entity Framework will not honor your changes to the entity object and you will not be able to save any of the changes to the database.
-                var num = NWEntities.SaveChanges();
+                var num = dbEntities.SaveChanges();
 
 
                 if (num != 1)

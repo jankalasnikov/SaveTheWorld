@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -53,86 +53,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="auser.cs">
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="bankAccount.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="category.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="disaster.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="invoice.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="orderLine.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="product.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductDAO.cs" />
     <Compile Include="productPropertyValues.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="property.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="propertyValues.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SaveTheWorld.Context.cs">
+    <Compile Include="SaveTheWorldModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SaveTheWorld.Context.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SaveTheWorld.cs">
+    <Compile Include="SaveTheWorldModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SaveTheWorld.Designer.cs">
+    <Compile Include="SaveTheWorldModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SaveTheWorld.edmx</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="subscription.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbOrder.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="typeOfSubscription.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
+      <DependentUpon>SaveTheWorldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserDAO.cs" />
-    <Compile Include="users.cs">
-      <DependentUpon>SaveTheWorld.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-    <EntityDeploy Include="SaveTheWorld.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SaveTheWorld.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="SaveTheWorld.edmx.diagram">
-      <DependentUpon>SaveTheWorld.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SaveTheWorld.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SaveTheWorld.edmx</DependentUpon>
-      <LastGenOutput>SaveTheWorld.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="SaveTheWorld.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SaveTheWorld.edmx</DependentUpon>
-      <LastGenOutput>SaveTheWorld.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -146,6 +123,34 @@
       <Project>{9ccda9f6-844a-4aac-b611-e35257a27664}</Project>
       <Name>SaveTheWorldModelL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SaveTheWorldModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SaveTheWorldModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SaveTheWorldModel.edmx.diagram">
+      <DependentUpon>SaveTheWorldModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SaveTheWorldModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SaveTheWorldModel.Context.cs</LastGenOutput>
+      <DependentUpon>SaveTheWorldModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="SaveTheWorldModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SaveTheWorldModel.edmx</DependentUpon>
+      <LastGenOutput>SaveTheWorldModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

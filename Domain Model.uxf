@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>80</y>
-      <w>112</w>
-      <h>104</h>
+      <x>549</x>
+      <y>27</y>
+      <w>126</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>User
 --
@@ -22,10 +22,10 @@ phoneNumber</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>880</x>
-      <y>144</y>
-      <w>112</w>
-      <h>80</h>
+      <x>909</x>
+      <y>99</y>
+      <w>126</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>BankAccount
 --
@@ -39,10 +39,10 @@ amount
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1000</x>
-      <y>312</y>
-      <w>112</w>
-      <h>88</h>
+      <x>1044</x>
+      <y>288</y>
+      <w>126</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Subscription
 --
@@ -56,10 +56,10 @@ startDate
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>760</x>
-      <y>312</y>
-      <w>112</w>
-      <h>104</h>
+      <x>774</x>
+      <y>288</y>
+      <w>126</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>Disaster
 --
@@ -76,10 +76,10 @@ victims
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>664</x>
-      <y>160</y>
-      <w>232</w>
-      <h>40</h>
+      <x>666</x>
+      <y>117</y>
+      <w>261</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -90,10 +90,10 @@ m2=1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>352</y>
-      <w>152</w>
-      <h>40</h>
+      <x>891</x>
+      <y>333</y>
+      <w>171</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -104,10 +104,10 @@ m2=1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>664</x>
-      <y>96</y>
-      <w>432</w>
-      <h>232</h>
+      <x>666</x>
+      <y>45</y>
+      <w>486</w>
+      <h>261</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
@@ -118,10 +118,10 @@ m2=0..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>200</y>
-      <w>80</w>
-      <h>128</h>
+      <x>837</x>
+      <y>162</y>
+      <w>90</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -132,10 +132,10 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>584</y>
-      <w>112</w>
-      <h>88</h>
+      <x>549</x>
+      <y>594</y>
+      <w>126</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Product
 --
@@ -150,10 +150,10 @@ stock
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>264</y>
-      <w>112</w>
-      <h>88</h>
+      <x>549</x>
+      <y>234</y>
+      <w>126</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Order
 --
@@ -165,10 +165,10 @@ orderDate
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>424</y>
-      <w>112</w>
-      <h>88</h>
+      <x>549</x>
+      <y>414</y>
+      <w>126</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>OrderLine
 --
@@ -180,10 +180,10 @@ quantity
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>176</y>
-      <w>40</w>
-      <h>104</h>
+      <x>594</x>
+      <y>135</y>
+      <w>45</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..*
@@ -194,10 +194,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>344</y>
-      <w>40</w>
-      <h>96</h>
+      <x>594</x>
+      <y>324</y>
+      <w>45</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
@@ -208,10 +208,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
+      <x>603</x>
       <y>504</y>
-      <w>32</w>
-      <h>96</h>
+      <w>36</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -222,10 +222,10 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>344</x>
-      <y>272</y>
-      <w>112</w>
-      <h>72</h>
+      <x>306</x>
+      <y>243</y>
+      <w>126</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>Invoice
 --
@@ -237,10 +237,10 @@ totalPrice</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>296</y>
-      <w>128</w>
-      <h>40</h>
+      <x>423</x>
+      <y>270</y>
+      <w>144</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -251,10 +251,10 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>776</x>
-      <y>584</y>
-      <w>112</w>
-      <h>88</h>
+      <x>792</x>
+      <y>594</y>
+      <w>126</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Property
 --
@@ -267,10 +267,10 @@ sortOrder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>992</x>
-      <y>584</y>
-      <w>112</w>
-      <h>88</h>
+      <x>1035</x>
+      <y>594</y>
+      <w>126</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>PropertyValues
 --
@@ -283,10 +283,10 @@ value
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>552</x>
-      <y>800</y>
-      <w>152</w>
-      <h>88</h>
+      <x>540</x>
+      <y>837</y>
+      <w>171</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>ProductPropertyValues
 --
@@ -298,10 +298,10 @@ value
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>664</x>
-      <y>608</y>
-      <w>128</w>
-      <h>40</h>
+      <x>666</x>
+      <y>621</y>
+      <w>144</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
@@ -312,10 +312,10 @@ m2=1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>616</y>
-      <w>128</w>
-      <h>40</h>
+      <x>909</x>
+      <y>630</y>
+      <w>144</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
@@ -326,10 +326,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>664</y>
-      <w>376</w>
-      <h>200</h>
+      <x>702</x>
+      <y>684</y>
+      <w>423</w>
+      <h>225</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*
@@ -340,10 +340,10 @@ m2=1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>664</y>
-      <w>40</w>
-      <h>152</h>
+      <x>603</x>
+      <y>684</y>
+      <w>45</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1..*

@@ -25,10 +25,10 @@ namespace SaveTheWorldDAL
         public Nullable<int> userId { get; set; }
         public System.DateTime date { get; set; }
     
+        public virtual auser auser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<invoice> invoice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<orderLine> orderLine { get; set; }
-        public virtual users users { get; set; }
     }
 }
