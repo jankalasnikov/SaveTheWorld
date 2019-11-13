@@ -1,6 +1,6 @@
 ﻿using SaveTheWorldController;
 using SaveTheWorldModelL;
-using SaveTheWorldWPFClient.UserReference;
+using SaveTheWorldWPFClient.UserRef;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +27,7 @@ namespace SaveTheWorldWPFClient
         public LogInPage()
         {
             InitializeComponent();
+            
         }
 
 
@@ -44,37 +45,41 @@ namespace SaveTheWorldWPFClient
             string userEmail = txt_email.Text;
             string originalPassword = psw_password.Password;
 
-          //  var myUser = new UserServiceClient();
-
-                UserCtr myUser = new UserCtr();
+            var myUser = new UserServiceClient();
+           
+              //  UserCtr myUser = new UserCtr();
                 User usr = myUser.CheckLogin(userEmail, originalPassword);
-                if (usr != null)
-                {
-                    // Get the user unique ID from the database and save it to send as an argument
-                    int userId = usr.UserId;
-                    string userIdS = userId.ToString();
-                    userInfo[0] = userIdS;
+            if (usr != null)
+            {
+                // Get the user unique ID from the database and save it to send as an argument
+                int userId = usr.UserId;
+                string userIdS = userId.ToString();
+                userInfo[0] = userIdS;
 
-                    // Username to send as an argument
-                    userInfo[1] =usr.Name;
+                // Username to send as an argument
+                userInfo[1] = usr.Name;
                 string name = usr.Name;
-                
+
 
                 // Get the type of user from the database and save it to send as an argument
                 int typeOfUser = usr.TypeOfUser;
-                    string typeOfUserS = typeOfUser.ToString();
-                    userInfo[2] = typeOfUserS;
+                string typeOfUserS = typeOfUser.ToString();
+                userInfo[2] = typeOfUserS;
 
                 MessageBox.Show(userId + name + typeOfUserS);
             }
-                else
-                {
-                    MessageBox.Show("You entered the wrong password or email. Try again");
-                    
-                }
-            //this.Content = null;
-                MainPage main = new MainPage(userInfo[1]);
-            NavigationService.Navigate(main);
+            else
+            {
+                MessageBox.Show("You entered wrong password or email. Try again!");
+            }
+
+
+                this.Content = null;
+                MainPage main = new MainPage(userInfo);
+          
+              // HomePage main = new HomePage(userInfo);
+           
+                NavigationService.Navigate(main);
 
         }
 

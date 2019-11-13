@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaveTheWorldWPFClient.UserReference {
+namespace SaveTheWorldWPFClient.UserRef {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserReference.IUserService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserRef.IUserService")]
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
@@ -32,15 +32,21 @@ namespace SaveTheWorldWPFClient.UserReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
         System.Threading.Tasks.Task DeleteUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CheckLogin", ReplyAction="http://tempuri.org/IUserService/CheckLoginResponse")]
+        SaveTheWorldModelL.User CheckLogin(string email, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CheckLogin", ReplyAction="http://tempuri.org/IUserService/CheckLoginResponse")]
+        System.Threading.Tasks.Task<SaveTheWorldModelL.User> CheckLoginAsync(string email, string pass);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserServiceChannel : SaveTheWorldWPFClient.UserReference.IUserService, System.ServiceModel.IClientChannel {
+    public interface IUserServiceChannel : SaveTheWorldWPFClient.UserRef.IUserService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<SaveTheWorldWPFClient.UserReference.IUserService>, SaveTheWorldWPFClient.UserReference.IUserService {
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<SaveTheWorldWPFClient.UserRef.IUserService>, SaveTheWorldWPFClient.UserRef.IUserService {
         
         public UserServiceClient() {
         }
@@ -83,6 +89,14 @@ namespace SaveTheWorldWPFClient.UserReference {
         
         public System.Threading.Tasks.Task DeleteUserAsync(int id) {
             return base.Channel.DeleteUserAsync(id);
+        }
+        
+        public SaveTheWorldModelL.User CheckLogin(string email, string pass) {
+            return base.Channel.CheckLogin(email, pass);
+        }
+        
+        public System.Threading.Tasks.Task<SaveTheWorldModelL.User> CheckLoginAsync(string email, string pass) {
+            return base.Channel.CheckLoginAsync(email, pass);
         }
     }
 }

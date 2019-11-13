@@ -22,7 +22,7 @@ namespace SaveTheWorldService
         void DeleteUser(int id);
 
         [OperationContract]
-        User CheckLogin(string email, string pass);
+         User CheckLogin(string email, string pass);
 
 
     }

@@ -37,7 +37,7 @@ namespace SaveTheWorldDAL
         public User CheckLogin(string userEmail, string password)
         {
 
-            User userbd = new User();
+            User userbd =null;
             using (var NWEntities = new SaveTheWorldEntities())
             {
                 /* var user = (from p in NWEntities.auser
@@ -50,6 +50,7 @@ namespace SaveTheWorldDAL
                         && u.password == password);
 
                 if (user != null)
+                {
                     userbd = new User()
                     {
                         UserId = user.id,
@@ -60,7 +61,12 @@ namespace SaveTheWorldDAL
                         Phone = user.phoneno,
 
                     };
-           
+                }
+             /*   else
+                {
+                    throw new ArgumentNullException("user is null");
+                }
+           */
               
             }
 

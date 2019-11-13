@@ -24,12 +24,16 @@ namespace SaveTheWorldWPFClient
         public MainPage()
         {
             InitializeComponent();
+
         }
         public string username;
-        public MainPage(string userName) : this()
+        public string usernId;
+        public MainPage(string[] userInfo) : this()
         {
-            username = userName;
+            username = userInfo[1];
+            usernId = userInfo[0];
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+          
 
         }
         void MainPage_Loaded(object sender, RoutedEventArgs e)
@@ -39,9 +43,9 @@ namespace SaveTheWorldWPFClient
 
         private void btn_Shop(object sender, RoutedEventArgs e)
         {
-            LogInPage page1 = new LogInPage();
+           ShopPage shopPage = new ShopPage();
             // this.Content = page1; it show only the page in tho whole window
-            mainFrame.Navigate(page1);
+            mainFrame.Navigate(shopPage);
 
         }
         private void btn_Disaster(object sender, RoutedEventArgs e)
@@ -61,7 +65,7 @@ namespace SaveTheWorldWPFClient
         {
             LogInPage page1 = new LogInPage();
             // this.Content = page1; it show only the page in tho whole window
-            mainFrame.Navigate(page1);
+            mainFrame2.Navigate(page1);
 
         }
     }

@@ -25,11 +25,9 @@
         <Label Content="Account №" HorizontalAlignment="Left" Margin="833,240,0,0" VerticalAlignment="Top"/>
         <Label Content="Expiry date" HorizontalAlignment="Left" Margin="833,290,0,0" VerticalAlignment="Top"/>
         <Label Content="CCV" HorizontalAlignment="Left" Margin="833,340,0,0" VerticalAlignment="Top"/>
-        <Label Content="Amount" HorizontalAlignment="Left" Margin="833,390,0,0" VerticalAlignment="Top"/>
         <PasswordBox HorizontalAlignment="Left"   Height="23"  Margin="937,340,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="937,240,0,0" TextWrapping="Wrap" Text="1234-1234-1234-1234" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="937,290,0,0" TextWrapping="Wrap" Text="month/year" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="937,390,0,0" TextWrapping="Wrap" Text="20.50" VerticalAlignment="Top" Width="120" Cursor="None"/>
         <Button Content="Create profile" Click="btn_createProfile" Background="Green" HorizontalAlignment="Left" Margin="617,562,0,0" VerticalAlignment="Top" Width="201" Height="45" FontSize="22" FontWeight="Bold" FontFamily="NEw roman"/>
 
     </Grid>

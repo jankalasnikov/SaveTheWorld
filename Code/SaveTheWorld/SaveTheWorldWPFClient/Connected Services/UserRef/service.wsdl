@@ -25,6 +25,12 @@
   <wsdl:message name="IUserService_DeleteUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_CheckLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLogin" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CheckLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLoginResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="GetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUser" message="tns:IUserService_GetUser_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="DeleteUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/DeleteUser" message="tns:IUserService_DeleteUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/DeleteUserResponse" message="tns:IUserService_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/CheckLogin" message="tns:IUserService_CheckLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/CheckLoginResponse" message="tns:IUserService_CheckLogin_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="http://tempuri.org/IUserService/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLogin">
+      <soap:operation soapAction="http://tempuri.org/IUserService/CheckLogin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

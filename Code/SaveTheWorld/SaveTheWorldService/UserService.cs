@@ -33,21 +33,11 @@ namespace SaveTheWorldService
 
         public User CheckLogin(string email, string pass)
         {
-            User userbd = null;
+            User userbd = new User();
 
             userbd = userController.CheckLogin(email, pass);
 
-            if (userbd == null)
-            {
-                var msg =
-                    string.Format("No user found for email {0}",
-                    email);
-                var reason = "GetUser Empty User";
-                throw new Exception(reason);
-            }
-            var user = new User();
-            TranslateUserBDOToUserDTO(userbd, user);
-            return user;
+            return userbd;
         }
 
 

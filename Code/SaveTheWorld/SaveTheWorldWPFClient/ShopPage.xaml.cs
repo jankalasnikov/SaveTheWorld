@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace SaveTheWorldWPFClient
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ShopPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ShopPage : Page
     {
-        public MainWindow()
+        public ShopPage()
         {
             InitializeComponent();
-            Load(); 
-            
         }
-
-           public void Load()
-           {
-                MainPage mainPage = new MainPage();
-               this.Content = mainPage;
-           }
-
-          
-
     }
 }

@@ -67,7 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Connected Services\UserReference\Reference.cs">
+    <Compile Include="Connected Services\UserRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -77,6 +77,9 @@
     </Compile>
     <Compile Include="RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShopPage.xaml.cs">
+      <DependentUpon>ShopPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
@@ -107,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SubscriptionPage.xaml">
+    <Page Include="ShopPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,14 +152,14 @@
     <None Include="Connected Services\ServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserReference\SaveTheWorldModelL.xsd">
+    <None Include="Connected Services\UserRef\SaveTheWorldModelL.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserReference\service.wsdl" />
-    <None Include="Connected Services\UserReference\service.xsd">
+    <None Include="Connected Services\UserRef\service.wsdl" />
+    <None Include="Connected Services\UserRef\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserReference\service1.xsd">
+    <None Include="Connected Services\UserRef\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -174,7 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
-    <WCFMetadataStorage Include="Connected Services\UserReference\" />
+    <WCFMetadataStorage Include="Connected Services\UserRef\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
@@ -199,13 +202,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserReference\configuration91.svcinfo" />
+    <None Include="Connected Services\UserRef\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserReference\configuration.svcinfo" />
+    <None Include="Connected Services\UserRef\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserReference\Reference.svcmap">
+    <None Include="Connected Services\UserRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
