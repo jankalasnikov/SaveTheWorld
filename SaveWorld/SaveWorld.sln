@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveWorldModel", "SaveWorld\SaveWorldModel.csproj", "{D7D40C80-67CC-4AD5-8899-97B7F5BA4696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveWorldDAL", "SaveWorldDAL\SaveWorldDAL.csproj", "{50F2B601-1F7B-40C0-A7C5-78254A574CF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveWorldController", "SaveWorldController\SaveWorldController.csproj", "{74BA135C-FC14-4A11-A3DB-D61EECA0EF14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveWorldService", "SaveWorldService\SaveWorldService.csproj", "{808A0CC6-B1CE-4888-A367-BCBDD98C3EE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveWorldWPFClient", "SaveWorldWPFClient\SaveWorldWPFClient.csproj", "{6A7815C2-C72C-4014-A9F3-1DF597B00C2F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{808A0CC6-B1CE-4888-A367-BCBDD98C3EE1} = {808A0CC6-B1CE-4888-A367-BCBDD98C3EE1}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7D40C80-67CC-4AD5-8899-97B7F5BA4696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D40C80-67CC-4AD5-8899-97B7F5BA4696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D40C80-67CC-4AD5-8899-97B7F5BA4696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D40C80-67CC-4AD5-8899-97B7F5BA4696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F2B601-1F7B-40C0-A7C5-78254A574CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F2B601-1F7B-40C0-A7C5-78254A574CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F2B601-1F7B-40C0-A7C5-78254A574CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F2B601-1F7B-40C0-A7C5-78254A574CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BA135C-FC14-4A11-A3DB-D61EECA0EF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BA135C-FC14-4A11-A3DB-D61EECA0EF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BA135C-FC14-4A11-A3DB-D61EECA0EF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BA135C-FC14-4A11-A3DB-D61EECA0EF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{808A0CC6-B1CE-4888-A367-BCBDD98C3EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{808A0CC6-B1CE-4888-A367-BCBDD98C3EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{808A0CC6-B1CE-4888-A367-BCBDD98C3EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{808A0CC6-B1CE-4888-A367-BCBDD98C3EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7815C2-C72C-4014-A9F3-1DF597B00C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7815C2-C72C-4014-A9F3-1DF597B00C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7815C2-C72C-4014-A9F3-1DF597B00C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7815C2-C72C-4014-A9F3-1DF597B00C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F5F755E-43B5-4CA4-B7FA-06E1BF34B98E}
+	EndGlobalSection
+EndGlobal
