@@ -3,6 +3,7 @@ using SaveWorldDAL;
 using SaveWorldModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace SaveWorldController
                         Address = user.address,
                         Phone = user.phoneno,
                         TypeOfUser = user.typeOfUser,
+                        BankAccountId = (int)user.accountId,
 
                     };
             }
@@ -41,14 +43,15 @@ namespace SaveWorldController
            
         }
 
-        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone)
+        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc)
         {
            
             using (SaveWorldEntities dbEntities = new SaveWorldEntities())
 
             {
-
-                auser user = new auser()
+                try
+                {
+                    auser user = new auser()
                 {
 
                    name = name,
@@ -57,12 +60,73 @@ namespace SaveWorldController
                     address = address,
                     phoneno = phone,
                     typeOfUser = typeOfUser,
+                    accountId = bankAcc,
                 };
 
                 dbEntities.Ausers.Add(user);
                 dbEntities.SaveChanges();
+               
+                    
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
+                }
             }
         }
+
+        public void CreateUser(User newUser)
+        {
+
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+
+            {
+
+                auser user = new auser()
+                {
+  
+                        name= newUser.Name,
+                        email = newUser.Email,
+                        password = newUser.Password,
+                        address = newUser.Address,
+                        phoneno = newUser.Phone,
+                        typeOfUser = 1,
+                        accountId = newUser.BankAccountId,
+                };
+
+                    dbEntities.Ausers.Add(user);
+
+                try
+                {
+                    dbEntities.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+
+                }
+            }
+        }
+
 
         public User CheckLogin(string userEmail, string password)
         {

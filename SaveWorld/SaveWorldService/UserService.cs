@@ -17,9 +17,9 @@ namespace SaveWorldService
         {
             return userCtr.GetUser(id);
         }
-        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone)
+        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone,int bankAcc)
         {
-             userCtr.AddUser(name,password,typeOfUser,email,address,phone);
+             userCtr.AddUser(name,password,typeOfUser,email,address,phone, bankAcc);
         }
 
         public User CheckLogin(string email, string pass)
@@ -30,5 +30,12 @@ namespace SaveWorldService
 
             return userbd;
         }
+
+        public void CreateUser(User newUser)
+        {
+            userCtr.CreateUser(newUser);
+        }
+
+      
     }
 }

@@ -24,5 +24,7 @@ namespace SaveWorldModel
         public string Address { get; set; }
         [DataMember]
         public string Phone { get; set; }
+        [DataMember]
+        public int BankAccountId { get; set; }
     }
 }

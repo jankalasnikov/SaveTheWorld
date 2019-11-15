@@ -44,7 +44,7 @@ GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='auser' and xtype='U')
     CREATE TABLE auser (
-		id INT PRIMARY KEY IDENTITY(1,1) not null,
+		id INT PRIMARY KEY IDENTITY(1,1),
 		name varchar(75) not null,
 		password varchar(400) not null,
 		typeOfUser int not null,
@@ -199,10 +199,10 @@ insert into store(storeName, address) values ('store6','address6');
 
 
 
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234,'2019-02-20', 123, 501.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (12341232,'2019-02-20', 123, 502.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234341233,'2019-02-20', 123, 503.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1234441234,'2019-02-20', 123, 504.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1,'2019-02-20', 123, 501.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (2,'2019-02-20', 123, 502.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (3,'2019-02-20', 123, 503.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (4,'2019-02-20', 123, 504.00);
 
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 1, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);

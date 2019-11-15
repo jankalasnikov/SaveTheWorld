@@ -175,6 +175,12 @@ namespace SaveWorldWPFClient.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CheckLogin", ReplyAction="http://tempuri.org/IUser/CheckLoginResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.User> CheckLoginAsync(string email, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CreateUser", ReplyAction="http://tempuri.org/IUser/CreateUserResponse")]
+        void CreateUser(SaveWorldWPFClient.UserService.User newUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CreateUser", ReplyAction="http://tempuri.org/IUser/CreateUserResponse")]
+        System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.User newUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -226,6 +232,14 @@ namespace SaveWorldWPFClient.UserService {
         
         public System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.User> CheckLoginAsync(string email, string pass) {
             return base.Channel.CheckLoginAsync(email, pass);
+        }
+        
+        public void CreateUser(SaveWorldWPFClient.UserService.User newUser) {
+            base.Channel.CreateUser(newUser);
+        }
+        
+        public System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.User newUser) {
+            return base.Channel.CreateUserAsync(newUser);
         }
     }
 }
