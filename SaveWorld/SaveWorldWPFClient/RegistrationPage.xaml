@@ -26,9 +26,13 @@
         <Label Content="Expiry date" HorizontalAlignment="Left" Margin="833,290,0,0" VerticalAlignment="Top"/>
         <Label Content="CCV" HorizontalAlignment="Left" Margin="833,340,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txt_accountNo" HorizontalAlignment="Left" Height="23" Margin="937,240,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_expiryDate" HorizontalAlignment="Left" Height="23" Margin="937,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_expiryDate" Text="{Binding Path=DateTimeValue, StringFormat=yyyy-dd-mm}" HorizontalAlignment="Left" Height="23" Margin="937,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Create profile" Click="btn_createProfile" Background="Green" HorizontalAlignment="Left" Margin="617,562,0,0" VerticalAlignment="Top" Width="201" Height="45" FontSize="22" FontWeight="Bold" FontFamily="NEw roman"/>
         <TextBox Name="txt_CCV" HorizontalAlignment="Left" Height="23" Margin="937,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Profile Information" HorizontalAlignment="Left" Margin="226,161,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Content="Bank Account Information" HorizontalAlignment="Left" Margin="833,161,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="322" Margin="189,218,0,0" VerticalAlignment="Top" Width="323"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="169" Margin="818,218,0,0" VerticalAlignment="Top" Width="273"/>
 
     </Grid>
 </Page>

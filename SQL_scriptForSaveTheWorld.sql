@@ -198,11 +198,18 @@ insert into store(storeName, address) values ('store6','address6');
 */
 
 
-
+--Bank accounts that will be used for users
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1,'2019-02-20', 123, 501.00);
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (2,'2019-02-20', 123, 502.00);
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (3,'2019-02-20', 123, 503.00);
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (4,'2019-02-20', 123, 504.00);
+
+
+--Bank accounts that will be used for disasters
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (5,'2019-02-20', 123, 1.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (6,'2019-02-20', 123, 2.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (7,'2019-02-20', 123, 3.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (8,'2019-02-20', 123, 4.00);
 
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 1, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);

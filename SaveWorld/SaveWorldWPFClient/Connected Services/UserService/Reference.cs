@@ -26,6 +26,9 @@ namespace SaveWorldWPFClient.UserService {
         private string AddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BankAccountIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -62,6 +65,19 @@ namespace SaveWorldWPFClient.UserService {
                 if ((object.ReferenceEquals(this.AddressField, value) != true)) {
                     this.AddressField = value;
                     this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BankAccountId {
+            get {
+                return this.BankAccountIdField;
+            }
+            set {
+                if ((this.BankAccountIdField.Equals(value) != true)) {
+                    this.BankAccountIdField = value;
+                    this.RaisePropertyChanged("BankAccountId");
                 }
             }
         }
@@ -165,10 +181,10 @@ namespace SaveWorldWPFClient.UserService {
         System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.User> GetUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/AddUser", ReplyAction="http://tempuri.org/IUser/AddUserResponse")]
-        void AddUser(string name, string password, int typeOfUser, string email, string address, string phone);
+        void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/AddUser", ReplyAction="http://tempuri.org/IUser/AddUserResponse")]
-        System.Threading.Tasks.Task AddUserAsync(string name, string password, int typeOfUser, string email, string address, string phone);
+        System.Threading.Tasks.Task AddUserAsync(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CheckLogin", ReplyAction="http://tempuri.org/IUser/CheckLoginResponse")]
         SaveWorldWPFClient.UserService.User CheckLogin(string email, string pass);
@@ -218,12 +234,12 @@ namespace SaveWorldWPFClient.UserService {
             return base.Channel.GetUserAsync(id);
         }
         
-        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone) {
-            base.Channel.AddUser(name, password, typeOfUser, email, address, phone);
+        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc) {
+            base.Channel.AddUser(name, password, typeOfUser, email, address, phone, bankAcc);
         }
         
-        public System.Threading.Tasks.Task AddUserAsync(string name, string password, int typeOfUser, string email, string address, string phone) {
-            return base.Channel.AddUserAsync(name, password, typeOfUser, email, address, phone);
+        public System.Threading.Tasks.Task AddUserAsync(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc) {
+            return base.Channel.AddUserAsync(name, password, typeOfUser, email, address, phone, bankAcc);
         }
         
         public SaveWorldWPFClient.UserService.User CheckLogin(string email, string pass) {

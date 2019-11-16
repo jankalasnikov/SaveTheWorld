@@ -15,4 +15,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CheckBankAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accNo" type="xs:int" />
+        <xs:element minOccurs="0" name="expiryDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="CCV" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckBankAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckBankAccountResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

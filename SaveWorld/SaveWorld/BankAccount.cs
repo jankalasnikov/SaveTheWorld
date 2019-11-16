@@ -11,6 +11,8 @@ namespace SaveWorldModel
     public class BankAccount
     {
         [DataMember]
+        public int AccountId { get; set; }
+        [DataMember]
         public int AccountNo { get; set; }
         [DataMember]
         public DateTime ExpiryDate { get; set; }

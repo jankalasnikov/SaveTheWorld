@@ -23,6 +23,9 @@ namespace SaveWorldWPFClient.BankAccountService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AccountIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int AccountNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -41,6 +44,19 @@ namespace SaveWorldWPFClient.BankAccountService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AccountId {
+            get {
+                return this.AccountIdField;
+            }
+            set {
+                if ((this.AccountIdField.Equals(value) != true)) {
+                    this.AccountIdField = value;
+                    this.RaisePropertyChanged("AccountId");
+                }
             }
         }
         
@@ -115,6 +131,12 @@ namespace SaveWorldWPFClient.BankAccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccount> GetBankAccountAsync(int accountNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/CheckBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/CheckBankAccountResponse")]
+        bool CheckBankAccount(int accNo, System.DateTime expiryDate, int CCV);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/CheckBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/CheckBankAccountResponse")]
+        System.Threading.Tasks.Task<bool> CheckBankAccountAsync(int accNo, System.DateTime expiryDate, int CCV);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,6 +172,14 @@ namespace SaveWorldWPFClient.BankAccountService {
         
         public System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccount> GetBankAccountAsync(int accountNumber) {
             return base.Channel.GetBankAccountAsync(accountNumber);
+        }
+        
+        public bool CheckBankAccount(int accNo, System.DateTime expiryDate, int CCV) {
+            return base.Channel.CheckBankAccount(accNo, expiryDate, CCV);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckBankAccountAsync(int accNo, System.DateTime expiryDate, int CCV) {
+            return base.Channel.CheckBankAccountAsync(accNo, expiryDate, CCV);
         }
     }
 }

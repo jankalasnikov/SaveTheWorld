@@ -37,7 +37,16 @@ namespace SaveWorldWPFClient
         public string phone;
         private void btn_createProfile(object sender, RoutedEventArgs e)
         {
+
+            if (txt_name.Text == "" || txt_pass.Password == "" || txt_confPass.Password == "" || txt_address.Text == "" || txt_email.Text == ""
+                || txt_phone.Text == "")
+            {
+                MessageBox.Show("Fill all the profiles fields!");
+            }
             var newUser = CreateNewUser();
+            BankAccountService.BankAccount bank = new BankAccountService.BankAccount();
+            BankAccountService.BankAccountServiceClient accountClient = new BankAccountService.BankAccountServiceClient();
+            
          
            
             userInfo[0] = newUser.UserId.ToString();
@@ -58,7 +67,9 @@ namespace SaveWorldWPFClient
         private UserService.User CreateNewUser()
         {
             UserService.User newOne = new UserService.User();
-            BankAccountService.BankAccount bankData = new BankAccountService.BankAccount();
+            
+
+           
 
             if (txt_name != null)
             {
@@ -94,8 +105,71 @@ namespace SaveWorldWPFClient
                 newOne.Phone = txt_phone.Text;
                 phone = txt_phone.Text;
             }
+            bool validAccount = CheckBankAccount();
+            if (validAccount == true)
+            {
+                newOne.BankAccountId = GetIdOfTheBankAccount();
+                
+            }
             return newOne;
+          
 
+        }
+
+        private bool CheckBankAccount()
+        {
+            if (txt_accountNo.Text == "" || txt_CCV.Text == "" || txt_expiryDate.Text == "")
+            {
+                MessageBox.Show("Fill all the bank account fields!");
+            }
+
+            bool validAccount = false;
+            int bankNo=0;
+            DateTime expiryDate = new DateTime(2019,10,9);
+            int CCV=0;
+            BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
+
+            
+
+            if (txt_accountNo != null)
+            {
+                bankNo = Int32.Parse(txt_accountNo.Text);
+            }
+            if (txt_expiryDate != null)
+            {
+                expiryDate = Convert.ToDateTime(txt_expiryDate.Text);
+            }
+            if(txt_CCV!=null)
+            {
+                CCV = Int32.Parse(txt_CCV.Text);
+            }
+          
+
+
+
+            validAccount = bankClient.CheckBankAccount(bankNo,expiryDate,CCV);
+
+            if(validAccount!=true)
+            { 
+                MessageBox.Show("There is no bank account with this information!");
+            }
+            return validAccount;
+
+        }
+
+        private int GetIdOfTheBankAccount()
+        {
+            BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
+            BankAccountService.BankAccount bankOb = new BankAccountService.BankAccount();
+
+          
+          
+            int bankNo = Int32.Parse(txt_accountNo.Text);
+            
+            bankOb=bankClient.GetBankAccount(bankNo);
+            int accId = bankOb.AccountId;
+            return accId;
+           
         }
     }
 }

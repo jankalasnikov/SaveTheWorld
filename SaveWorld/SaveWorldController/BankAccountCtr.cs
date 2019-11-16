@@ -10,15 +10,13 @@ namespace SaveWorldController
 {
    public class BankAccountCtr
     {
+
+        public bool correct = false;
         public BankAccount GetBankAccount(int accountNumber)
         {
             BankAccount accountData = null;
             using (var NWEntities = new SaveWorldEntities())
             {
-
-                /* var currentUser = NWEntities.Ausers.FirstOrDefault(u => u.id == id);
-                 return currentUser;*/
-
 
                 var account = (from p in NWEntities.BankAccounts
                             where p.accountNo == accountNumber
@@ -26,6 +24,7 @@ namespace SaveWorldController
                 if (account != null)
                     accountData = new BankAccount()
                     {
+                        AccountId=account.id,
                         AccountNo = account.accountNo,
                         ExpiryDate = account.expiryDate,
                         CCV = account.ccv,
@@ -38,41 +37,30 @@ namespace SaveWorldController
 
         }
 
-     /* doing the account cheking
-      * public User CheckLogin(string userEmail, string password)
+   
+       public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
         {
-
-            User userCorrect = null;
+          
+          
             using (var NWEntities = new SaveWorldEntities())
             {
 
 
-                var user = NWEntities.Ausers
-                       .FirstOrDefault(u => u.email == userEmail
-                        && u.password == password);
+                var accountValid = NWEntities.BankAccounts
+                       .FirstOrDefault(u => u.accountNo == accNo
+                        && u.expiryDate == expiryDate
+                        && u.ccv == CCV);
 
-                if (user != null)
+                if (accountValid != null)
                 {
-                    userCorrect = new User()
-                    {
-                        UserId = user.id,
-                        Name = user.name,
-                        Password = user.password,
-                        Email = user.email,
-                        Address = user.address,
-                        Phone = user.phoneno,
-
-                    };
+                    correct = true;
                 }
-                   else
-                   {
-                       throw new ArgumentNullException("user is null");
-                   }
+                  
               
 
             }
 
-            return userCorrect;
-        }*/
+            return correct;
+        }
     }
 }

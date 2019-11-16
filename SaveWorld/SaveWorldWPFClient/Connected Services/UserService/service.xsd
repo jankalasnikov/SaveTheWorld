@@ -24,6 +24,7 @@
         <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bankAcc" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
