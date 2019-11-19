@@ -38,12 +38,18 @@ namespace SaveWorldWPFClient
         private void btn_createProfile(object sender, RoutedEventArgs e)
         {
 
-            if (txt_name.Text == "" || txt_pass.Password == "" || txt_confPass.Password == "" || txt_address.Text == "" || txt_email.Text == ""
+            if(txt_name.Text == "" || txt_pass.Password == "" || txt_confPass.Password == "" || txt_address.Text == "" || txt_email.Text == ""
                 || txt_phone.Text == "")
             {
                 MessageBox.Show("Fill all the profiles fields!");
+               // return;
             }
+           
             var newUser = CreateNewUser();
+            if(newUser==null)
+            {
+                return;
+            }
             BankAccountService.BankAccount bank = new BankAccountService.BankAccount();
             BankAccountService.BankAccountServiceClient accountClient = new BankAccountService.BankAccountServiceClient();
             
@@ -111,6 +117,10 @@ namespace SaveWorldWPFClient
                 newOne.BankAccountId = GetIdOfTheBankAccount();
                 
             }
+            else
+            {
+                return null;
+            }
             return newOne;
           
 
@@ -121,6 +131,7 @@ namespace SaveWorldWPFClient
             if (txt_accountNo.Text == "" || txt_CCV.Text == "" || txt_expiryDate.Text == "")
             {
                 MessageBox.Show("Fill all the bank account fields!");
+                return false;
             }
 
             bool validAccount = false;
@@ -133,15 +144,42 @@ namespace SaveWorldWPFClient
 
             if (txt_accountNo != null)
             {
-                bankNo = Int32.Parse(txt_accountNo.Text);
+                try
+                {
+                    bankNo = Int32.Parse(txt_accountNo.Text);
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show("Please provide number only");
+                    return false;
+                }
             }
+           
             if (txt_expiryDate != null)
             {
-                expiryDate = Convert.ToDateTime(txt_expiryDate.Text);
+                try
+                {
+                    expiryDate = Convert.ToDateTime(txt_expiryDate.Text);
+                }
+                catch (Exception h)
+
+                {
+                    MessageBox.Show("Please insert date like this yyyy-mm-yy!");
+                    return false;
+                }
             }
             if(txt_CCV!=null)
             {
-                CCV = Int32.Parse(txt_CCV.Text);
+                try
+                {
+                    CCV = Int32.Parse(txt_CCV.Text);
+                }
+                catch (Exception h)
+
+                {
+                    MessageBox.Show("Please insert only numbers like this 111!");
+                    return false;
+                }
             }
           
 

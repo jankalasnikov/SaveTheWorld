@@ -17,10 +17,6 @@ namespace SaveWorldController
             User userData = null;
             using (var NWEntities = new SaveWorldEntities())
             {
-
-                 /* var currentUser = NWEntities.Ausers.FirstOrDefault(u => u.id == id);
-                  return currentUser;*/
-
                
                 var user = (from p in NWEntities.Ausers
                                 where p.id == id

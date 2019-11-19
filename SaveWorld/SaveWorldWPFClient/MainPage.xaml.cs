@@ -49,7 +49,8 @@ namespace SaveWorldWPFClient
         }
         private void btn_Disaster(object sender, RoutedEventArgs e)
         {
-
+            DisasterPage disasterPage = new DisasterPage();
+            mainFrame.Navigate(disasterPage);
 
         }
         private void btn_Subscription(object sender, RoutedEventArgs e)

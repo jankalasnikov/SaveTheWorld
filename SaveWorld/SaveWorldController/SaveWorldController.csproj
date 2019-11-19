@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccountCtr.cs" />
+    <Compile Include="DisasterCtr.cs" />
     <Compile Include="ProductCtr.cs" />
     <Compile Include="UserCtr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

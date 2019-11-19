@@ -223,7 +223,17 @@ insert into product(productName, price, description, minStock) values ('Shirt4',
 insert into product(productName, price, description, minStock) values ('Shirt5',20.20,'very cool shirt',10);
 
 
-insert into category(nameOfCategory) values('pyrva categoria');
+insert into category(nameOfCategory) values('Fire');
+insert into category(nameOfCategory) values('Flood');
+insert into category(nameOfCategory) values('Earthquake');
+insert into category(nameOfCategory) values('Tornadoes');
+
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Amazon fire','Very bad fire', 'Amazonka', 1, 1, 10,5);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Italy Eartquake','Very bad situation at the moment', 'Verona', 3, 2, 15,6);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Venezia flood','A lot of water on san marco', 'Venezia', 2, 1, 0,7);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Usa tornadoes', 'the wind is crazy', 'Usa', 4, 4, 5,8);
+
+
 
 /*
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Petyr Borisov','ul. Vasil Levski','10','Varna','+35900123456');

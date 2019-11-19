@@ -9,6 +9,7 @@
 
 namespace SaveWorldDAL
 {
+    using SaveWorldModel;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -28,7 +29,7 @@ namespace SaveWorldDAL
         public virtual DbSet<auser> Ausers { get; set; }
         public virtual DbSet<bankAccount> BankAccounts { get; set; }
         public virtual DbSet<category> category { get; set; }
-        public virtual DbSet<disaster> disaster { get; set; }
+        public virtual DbSet<disaster> Disasters { get; set; }
         public virtual DbSet<invoice> invoice { get; set; }
         public virtual DbSet<orderLine> orderLine { get; set; }
         public virtual DbSet<product> Products { get; set; }

@@ -77,12 +77,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DisasterPage.xaml.cs">
+      <DependentUpon>DisasterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShopPage.xaml.cs">
       <DependentUpon>ShopPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="DisasterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LogInPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,6 +236,14 @@
     <ProjectReference Include="..\SaveWorldController\SaveWorldController.csproj">
       <Project>{74BA135C-FC14-4A11-A3DB-D61EECA0EF14}</Project>
       <Name>SaveWorldController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaveWorldDAL\SaveWorldDAL.csproj">
+      <Project>{50F2B601-1F7B-40C0-A7C5-78254A574CF1}</Project>
+      <Name>SaveWorldDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaveWorld\SaveWorldModel.csproj">
+      <Project>{D7D40C80-67CC-4AD5-8899-97B7F5BA4696}</Project>
+      <Name>SaveWorldModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
