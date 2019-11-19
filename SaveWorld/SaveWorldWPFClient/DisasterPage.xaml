@@ -9,8 +9,22 @@
       Title="DisasterPage">
 
     <Grid>
-        <Label Content="Disaster List" HorizontalAlignment="Left" Margin="47,63,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="287" Margin="47,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Name="txt_allDisasters"/>
+        <Label Content="Disaster List" HorizontalAlignment="Left" Margin="413,81,0,0" VerticalAlignment="Top" Height="28" Width="86"/>
+        <TextBox HorizontalAlignment="Left" Height="194" Margin="413,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Name="txt_allDisasters"/>
+        <Button Content="Select" HorizontalAlignment="Left" Margin="466,341,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="823,114,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="823,210,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="823,311,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="707,114,0,0" VerticalAlignment="Top" Height="28" Width="86"/>
+        <Label Content="Region" HorizontalAlignment="Left" Margin="707,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="707,311,0,0" VerticalAlignment="Top"/>
+        <Label Content="Priority" HorizontalAlignment="Left" Margin="707,409,0,0" VerticalAlignment="Top"/>
+        <Label Content="Victims" HorizontalAlignment="Left" Margin="706,510,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="823,510,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="823,409,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="413,456,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
+        <Label Content="Amount" HorizontalAlignment="Left" Margin="466,425,0,0" VerticalAlignment="Top"/>
+        <Button Content="Donate" HorizontalAlignment="Left" Margin="466,521,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
 
     </Grid>

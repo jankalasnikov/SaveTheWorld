@@ -28,29 +28,34 @@ namespace SaveWorldWPFClient
            // loadAllDisasters();
         }
 
-      /*  private void loadAllDisasters()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-          DisasterCtr disctr = new DisasterCtr();
-           
-            string result = "";
+
+        }
+
+        /*  private void loadAllDisasters()
+          {
+            DisasterCtr disctr = new DisasterCtr();
+
+              string result = "";
 
 
 
-           // List<Disaster> dis = disctr.ReadAll();
+             // List<Disaster> dis = disctr.ReadAll();
 
-                var sb = new StringBuilder();
-               foreach(Disaster d in dis)
-                {
-                    sb.Append("Disaster Name:" +
-                  d.Name + "\r\n");
-                  
-                    sb.Append(" ");
-                }
-          
+                  var sb = new StringBuilder();
+                 foreach(Disaster d in dis)
+                  {
+                      sb.Append("Disaster Name:" +
+                    d.Name + "\r\n");
 
-              
-                result = sb.ToString();
-            txt_allDisasters.Text = result;
-        }*/
+                      sb.Append(" ");
+                  }
+
+
+
+                  result = sb.ToString();
+              txt_allDisasters.Text = result;
+          }*/
     }
 }
