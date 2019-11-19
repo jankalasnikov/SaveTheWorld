@@ -23,11 +23,32 @@ namespace SaveWorldWPFClient
         public ShopPage()
         {
             InitializeComponent();
+         //   LoadAllProducts();
         }
 
+      /*  private void LoadAllProducts()
+        {
+            ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
+            List<ProductService.Product> allprod = GetAllProduct();
+          
+            foreach (ProductService.Product prod in allprod)
+            {
+                listBox.Items.Add(prod.ProductName.ToString());
+
+
+            }
+            listBox.Items.Add("asd");
+            listBox.Items.Add("Valentin");
+        }
+        */
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

@@ -31,6 +31,31 @@ namespace SaveWorldController
             }
             return prodData;
         }
+
+/*
+        public List<Product> GetAllProduct()
+        {
+            List<Product> all = new List<Product>();
+            Product prodData = null;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var product = (from p in NWEntities.Products
+                               select p).FirstOrDefault();
+                if (product != null)
+                    prodData = new Product()
+                    {
+                        ProductId = product.id,
+                        ProductName = product.productName,
+                        ProductDescription = product.description,
+                        Price = product.price,
+                        Stock = product.minStock,
+                        
+                    };
+                all.Add(prodData);
+            }
+            return all;
+        }
+        */
       /*  public void AddProduct(int productId, string name, double price, string productDescription, int stock)
         {
 
