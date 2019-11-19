@@ -9,128 +9,23 @@
 //------------------------------------------------------------------------------
 
 namespace SaveWorldWPFClient.ProductService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/SaveWorldModel")]
-    [System.SerializableAttribute()]
-    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double PriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProductDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProductIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProductNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StockField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Price {
-            get {
-                return this.PriceField;
-            }
-            set {
-                if ((this.PriceField.Equals(value) != true)) {
-                    this.PriceField = value;
-                    this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ProductDescription {
-            get {
-                return this.ProductDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProductDescriptionField, value) != true)) {
-                    this.ProductDescriptionField = value;
-                    this.RaisePropertyChanged("ProductDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProductId {
-            get {
-                return this.ProductIdField;
-            }
-            set {
-                if ((this.ProductIdField.Equals(value) != true)) {
-                    this.ProductIdField = value;
-                    this.RaisePropertyChanged("ProductId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ProductName {
-            get {
-                return this.ProductNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
-                    this.ProductNameField = value;
-                    this.RaisePropertyChanged("ProductName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Stock {
-            get {
-                return this.StockField;
-            }
-            set {
-                if ((this.StockField.Equals(value) != true)) {
-                    this.StockField = value;
-                    this.RaisePropertyChanged("Stock");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductService.IProductService")]
     public interface IProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProduct", ReplyAction="http://tempuri.org/IProductService/GetProductResponse")]
-        SaveWorldWPFClient.ProductService.Product GetProduct(int id);
+        SaveWorldModel.Product GetProduct(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProduct", ReplyAction="http://tempuri.org/IProductService/GetProductResponse")]
-        System.Threading.Tasks.Task<SaveWorldWPFClient.ProductService.Product> GetProductAsync(int id);
+        System.Threading.Tasks.Task<SaveWorldModel.Product> GetProductAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProduct", ReplyAction="http://tempuri.org/IProductService/GetAllProductResponse")]
+        SaveWorldModel.Product[] GetAllProduct();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProduct", ReplyAction="http://tempuri.org/IProductService/GetAllProductResponse")]
+        System.Threading.Tasks.Task<SaveWorldModel.Product[]> GetAllProductAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,12 +55,20 @@ namespace SaveWorldWPFClient.ProductService {
                 base(binding, remoteAddress) {
         }
         
-        public SaveWorldWPFClient.ProductService.Product GetProduct(int id) {
+        public SaveWorldModel.Product GetProduct(int id) {
             return base.Channel.GetProduct(id);
         }
         
-        public System.Threading.Tasks.Task<SaveWorldWPFClient.ProductService.Product> GetProductAsync(int id) {
+        public System.Threading.Tasks.Task<SaveWorldModel.Product> GetProductAsync(int id) {
             return base.Channel.GetProductAsync(id);
+        }
+        
+        public SaveWorldModel.Product[] GetAllProduct() {
+            return base.Channel.GetAllProduct();
+        }
+        
+        public System.Threading.Tasks.Task<SaveWorldModel.Product[]> GetAllProductAsync() {
+            return base.Channel.GetAllProductAsync();
         }
     }
 }

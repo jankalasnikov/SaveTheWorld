@@ -11,13 +11,15 @@ namespace SaveWorldModel
     public class Disaster
     {
         [DataMember]
+        public int DisasterId { get; set; }
+        [DataMember]
         public string Name { get; set; }
         [DataMember]
         public string Description { get; set; }
         [DataMember]
         public string Region { get; set; }
         [DataMember]
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
         [DataMember]
         public int Priority { get; set; }
         [DataMember]

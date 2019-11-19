@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccountService.cs" />
+    <Compile Include="DisasterService.cs" />
     <Compile Include="IBankAccountService.cs" />
+    <Compile Include="IDisasterService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="ProductService.cs" />

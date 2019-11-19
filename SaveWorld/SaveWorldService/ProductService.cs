@@ -34,5 +34,10 @@ namespace SaveWorldService
 
             return prod;
         }
+
+        public List<Product> GetAllProduct()
+        {
+            return prodCtr.GetAllProduct();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaveWorldModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,24 +24,27 @@ namespace SaveWorldWPFClient
         public ShopPage()
         {
             InitializeComponent();
-         //   LoadAllProducts();
+            LoadAllProducts();
         }
 
-      /*  private void LoadAllProducts()
+        private void LoadAllProducts()
         {
             ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
-            List<ProductService.Product> allprod = GetAllProduct();
-          
-            foreach (ProductService.Product prod in allprod)
+
+            string result = "";
+
+            var sb = new StringBuilder();
+            foreach (Product d in prodClient.GetAllProduct())
             {
-                listBox.Items.Add(prod.ProductName.ToString());
-
-
+                sb.Append("Product name: " +
+                d.ProductName + "\r\n");
+                sb.Append(" ");
+                result = sb.ToString();
+                listBox.Items.Add(result);
+                result = "";
+                sb.Clear();
             }
-            listBox.Items.Add("asd");
-            listBox.Items.Add("Valentin");
         }
-        */
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

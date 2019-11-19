@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 namespace SaveWorldService
 {
     [ServiceContract]
-    public interface IProductService
+   public interface IDisasterService
     {
         [OperationContract]
-        Product GetProduct(int id);
+        List<Disaster> GetAllDisasters();
 
-        [OperationContract]
-        List<Product> GetAllProduct();
     }
 }

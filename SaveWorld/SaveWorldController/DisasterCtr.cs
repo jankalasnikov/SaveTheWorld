@@ -10,48 +10,30 @@ using System.Threading.Tasks;
 namespace SaveWorldController
 {
     public class DisasterCtr
-    {/*
-        User userData = null;
-            using (var NWEntities = new SaveWorldEntities())
-            {
-               
-                var user = (from p in NWEntities.Ausers
-                            where p.id == id
-                            select p).FirstOrDefault();
-                if (user != null)
-                    userData = new User()
     {
-        UserId = user.id,
-                        Name = user.name,
-                        Email = user.email,
-                        Password = user.password,
-                        Address = user.address,
-                        Phone = user.phoneno,
-                        TypeOfUser = user.typeOfUser,
-                        BankAccountId = (int)user.accountId,
-
-                    };
-}
-            return userData;*/
-       
-        /*public List<Disaster> ReadAll()
+        public List<Disaster> GetAllDisasters()
         {
-            List<Disaster> dis = null;
-            using (var NWEntities = new SaveWorldEntities())
+            
+            List<Disaster> list = new List<Disaster>();
+            using (SaveWorldEntities NWEntities = new SaveWorldEntities())
             {
-                var users = NWEntities.Disasters.ToList();
-                if(users!=null)
+                var allRows = NWEntities.Disasters.ToList();
+
+                for (int i = 0; i < allRows.Count; i++)
                 {
-                    foreach (var disaster in users)
-                    {
-                        Disaster ob= new Disaster();
-                        ob.Name = disaster.disasterName;
-                        dis.Add(ob);
-                    }
+                    Disaster dis = new Disaster();
+                    dis.Name = allRows[i].disasterName;
+                    dis.DisasterId = allRows[i].id;
+                    dis.Description = allRows[i].description;
+                    dis.CategoryId = (int)allRows[i].categoryId;
+                    dis.Region = allRows[i].region;
+                    dis.Victims = allRows[i].victims;
+                    dis.Priority = allRows[i].priority;
+                    list.Add(dis);
+
                 }
-               
             }
-            return dis;
-        }*/
+            return list;
+        }
     }
 }

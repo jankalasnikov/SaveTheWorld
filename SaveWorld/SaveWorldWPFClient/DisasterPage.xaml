@@ -10,7 +10,6 @@
 
     <Grid>
         <Label Content="Disaster List" HorizontalAlignment="Left" Margin="413,81,0,0" VerticalAlignment="Top" Height="28" Width="86"/>
-        <TextBox HorizontalAlignment="Left" Height="194" Margin="413,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Name="txt_allDisasters"/>
         <Button Content="Select" HorizontalAlignment="Left" Margin="466,341,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <TextBox HorizontalAlignment="Left" Height="50" Margin="823,114,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
         <TextBox HorizontalAlignment="Left" Height="50" Margin="823,210,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
@@ -25,6 +24,7 @@
         <TextBox HorizontalAlignment="Left" Height="50" Margin="413,456,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
         <Label Content="Amount" HorizontalAlignment="Left" Margin="466,425,0,0" VerticalAlignment="Top"/>
         <Button Content="Donate" HorizontalAlignment="Left" Margin="466,521,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <ListBox HorizontalAlignment="Left" Height="192" Margin="413,114,0,0" VerticalAlignment="Top" Width="215" Name="listBox_allDis"/>
 
 
     </Grid>

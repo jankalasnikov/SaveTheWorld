@@ -32,30 +32,31 @@ namespace SaveWorldController
             return prodData;
         }
 
-/*
+
         public List<Product> GetAllProduct()
         {
-            List<Product> all = new List<Product>();
-            Product prodData = null;
-            using (var NWEntities = new SaveWorldEntities())
+            // var db = new SaveWorldEntities();
+            //return db.Products.ToList();
+            List<Product> list = new List<Product>();
+            using (SaveWorldEntities NWEntities = new SaveWorldEntities())
             {
-                var product = (from p in NWEntities.Products
-                               select p).FirstOrDefault();
-                if (product != null)
-                    prodData = new Product()
-                    {
-                        ProductId = product.id,
-                        ProductName = product.productName,
-                        ProductDescription = product.description,
-                        Price = product.price,
-                        Stock = product.minStock,
-                        
-                    };
-                all.Add(prodData);
+                var ptx = (from r in NWEntities.Products select r);
+                var allRows = NWEntities.Products.ToList();
+             
+                for (int i = 0; i < allRows.Count; i++)
+                {
+                    Product pro = new Product();
+                    pro.ProductName = allRows[i].productName;
+                    pro.ProductId = allRows[i].id;
+                    pro.ProductDescription = allRows[i].description;
+                    pro.Price = allRows[i].price;
+                    list.Add(pro);
+                  
+                }
             }
-            return all;
+            return list;
         }
-        */
+        
       /*  public void AddProduct(int productId, string name, double price, string productDescription, int stock)
         {
 

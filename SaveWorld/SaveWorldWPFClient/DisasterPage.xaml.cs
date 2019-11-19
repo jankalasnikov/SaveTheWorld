@@ -25,7 +25,7 @@ namespace SaveWorldWPFClient
         public DisasterPage()
         {
             InitializeComponent();
-           // loadAllDisasters();
+            loadAllDisasters();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,29 +33,26 @@ namespace SaveWorldWPFClient
 
         }
 
-        /*  private void loadAllDisasters()
+          private void loadAllDisasters()
           {
-            DisasterCtr disctr = new DisasterCtr();
+            DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
 
               string result = "";
 
-
-
-             // List<Disaster> dis = disctr.ReadAll();
-
                   var sb = new StringBuilder();
-                 foreach(Disaster d in dis)
+                 foreach(Disaster d in disClient.GetAllDisasters())
                   {
-                      sb.Append("Disaster Name:" +
-                    d.Name + "\r\n");
-
+                      sb.Append("Disaster name: " +
+                      d.Name + "\r\n");
                       sb.Append(" ");
-                  }
+                      result = sb.ToString();
+                      listBox_allDis.Items.Add(result);
+                result = "";
+                sb.Clear();
 
+            }
 
-
-                  result = sb.ToString();
-              txt_allDisasters.Text = result;
-          }*/
+                 
+        }
     }
 }
