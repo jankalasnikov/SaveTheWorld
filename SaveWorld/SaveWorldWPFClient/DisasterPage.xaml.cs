@@ -25,10 +25,10 @@ namespace SaveWorldWPFClient
         public DisasterPage()
         {
             InitializeComponent();
-            loadAllDisasters();
+           // loadAllDisasters();
         }
 
-        private void loadAllDisasters()
+      /*  private void loadAllDisasters()
         {
           DisasterCtr disctr = new DisasterCtr();
            
@@ -36,7 +36,7 @@ namespace SaveWorldWPFClient
 
 
 
-            List<Disaster> dis = disctr.ReadAll();
+           // List<Disaster> dis = disctr.ReadAll();
 
                 var sb = new StringBuilder();
                foreach(Disaster d in dis)
@@ -51,6 +51,6 @@ namespace SaveWorldWPFClient
               
                 result = sb.ToString();
             txt_allDisasters.Text = result;
-        }
+        }*/
     }
 }

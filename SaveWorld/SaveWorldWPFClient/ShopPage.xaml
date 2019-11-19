@@ -9,6 +9,26 @@
       Title="ShopPage">
 
     <Grid>
-        
+        <Label Content="Product List" HorizontalAlignment="Left" Margin="195,65,0,0" VerticalAlignment="Top"/>
+        <ListBox HorizontalAlignment="Left" Height="100" Margin="195,109,0,0" VerticalAlignment="Top" Width="152"/>
+        <Button Content="Select" HorizontalAlignment="Left" Margin="195,242,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="488,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="488,183,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="488,228,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Product description" HorizontalAlignment="Left" Margin="355,109,0,0" VerticalAlignment="Top"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="355,180,0,0" VerticalAlignment="Top"/>
+        <Label Content="Stock" HorizontalAlignment="Left" Margin="355,228,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="488,272,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="355,270,0,0" VerticalAlignment="Top"/>
+        <ListBox HorizontalAlignment="Left" Height="446" Margin="916,87,0,0" VerticalAlignment="Top" Width="260"/>
+        <Label Content="Order " HorizontalAlignment="Left" Margin="916,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="Color" HorizontalAlignment="Left" Margin="355,269,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="273,417,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" Margin="195,415,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.318,1.785"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="195,466,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.365,0.325"/>
+        <Button Content="Finish" HorizontalAlignment="Left" Margin="1007,583,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.365,0.325"/>
+        <Label Content="Size" HorizontalAlignment="Left" Margin="355,314,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="488,317,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+
     </Grid>
 </Page>

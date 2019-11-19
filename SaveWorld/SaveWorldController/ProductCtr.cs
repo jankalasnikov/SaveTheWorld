@@ -31,7 +31,7 @@ namespace SaveWorldController
             }
             return prodData;
         }
-        public void AddProduct(int productId, string name, double price, string productDescription, int stock)
+      /*  public void AddProduct(int productId, string name, double price, string productDescription, int stock)
         {
 
             using (SaveWorldEntities dbEntities = new SaveWorldEntities())
@@ -124,7 +124,7 @@ namespace SaveWorldController
                 };
             }
         }
-
+        */
             
     }
 }

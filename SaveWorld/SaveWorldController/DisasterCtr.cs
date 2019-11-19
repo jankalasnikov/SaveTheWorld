@@ -34,7 +34,7 @@ namespace SaveWorldController
 }
             return userData;*/
        
-        public List<Disaster> ReadAll()
+        /*public List<Disaster> ReadAll()
         {
             List<Disaster> dis = null;
             using (var NWEntities = new SaveWorldEntities())
@@ -52,6 +52,6 @@ namespace SaveWorldController
                
             }
             return dis;
-        }
+        }*/
     }
 }

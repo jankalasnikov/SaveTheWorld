@@ -42,7 +42,7 @@ namespace SaveWorldWPFClient
                 || txt_phone.Text == "")
             {
                 MessageBox.Show("Fill all the profiles fields!");
-               // return;
+                return;
             }
            
             var newUser = CreateNewUser();
