@@ -80,6 +80,9 @@ namespace SaveWorldWPFClient
 
             NavigationService.Navigate(main);
 
+            main.btn_logOut.Visibility = Visibility.Visible;
+            main.btn_log.Visibility = Visibility.Visible;
+
         }
     }
 }

@@ -32,9 +32,12 @@ namespace SaveWorldWPFClient
             username = userInfo[1];
             usernId = userInfo[0];
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+           
 
 
         }
+
+
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             user_name.Content = username;
@@ -67,6 +70,31 @@ namespace SaveWorldWPFClient
             // this.Content = page1; it show only the page in tho whole window
             mainFrame2.Navigate(page1);
 
+        }
+
+        private void btn_LogOut(object sender, RoutedEventArgs e)
+        {
+            string[] userInfo = new string[3];
+            userInfo[0] = null;
+            userInfo[1] = null;
+            userInfo[2] = null;
+
+            this.Content = null;
+            MainPage main = new MainPage(userInfo);
+
+            // HomePage main = new HomePage(userInfo);
+
+            NavigationService.Navigate(main);
+
+        }
+
+        private void vissibilityForBtnLog()
+        {
+            btn_log.Visibility = Visibility.Hidden;
+        }
+        private void vissibilityForBtnLogOut()
+        {
+            btn_log.Visibility = Visibility.Visible;
         }
     }
 }
