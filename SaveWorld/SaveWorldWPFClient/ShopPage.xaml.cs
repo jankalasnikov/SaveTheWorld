@@ -21,30 +21,51 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class ShopPage : Page
     {
+        ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
+        // ProductService.ProductB prodSelect = new ProductService.ProductB();
+        string prodSelect;
         public ShopPage()
         {
             InitializeComponent();
             LoadAllProducts();
+          //  listBox.Items.AddRange(prodClient.GetAllProduct());
         }
 
         private void LoadAllProducts()
         {
-            ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
-
+           
             string result = "";
 
             var sb = new StringBuilder();
-            foreach (Product d in prodClient.GetAllProduct())
+            foreach (ProductService.ProductB d in prodClient.GetAllProduct())
             {
-                sb.Append("Product name: " +
-                d.ProductName + "\r\n");
-                sb.Append(" ");
+                sb.Append( d.ProductName);
+               
                 result = sb.ToString();
                 listBox.Items.Add(result);
                 result = "";
                 sb.Clear();
             }
         }
+        
+        private void productsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+
+
+                ProductService.ProductB p =new ProductService.ProductB();
+                // prodSelect = (ProductService.ProductB)listBox.SelectedItem;
+                prodSelect = (string)listBox.SelectedItem;
+                p = prodClient.GetProductByName(prodSelect);
+                txt_describtion.Text = p.ProductDescription;
+                txt_price.Text = p.Price.ToString();
+                txt_stock.Text = p.Stock.ToString();
+              //  txt_size.Text = prodSelect.Size;
+              
+            }
+        }
+        
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -52,7 +73,20 @@ namespace SaveWorldWPFClient
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (listBox.SelectedItem != null)
+            {
+
+
+                ProductService.ProductB p = new ProductService.ProductB();
+                // prodSelect = (ProductService.ProductB)listBox.SelectedItem;
+                prodSelect = (string)listBox.SelectedItem;
+                p = prodClient.GetProductByName(prodSelect);
+                txt_describtion.Text = p.ProductDescription;
+                txt_price.Text = p.Price.ToString();
+                txt_stock.Text = p.Stock.ToString();
+                //  txt_size.Text = prodSelect.Size;
+
+            }
         }
     }
 }

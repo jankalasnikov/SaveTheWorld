@@ -43,11 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccount.cs" />
-    <Compile Include="Disaster.cs" />
+    <Compile Include="DisasterB.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderLine.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="ProductB.cs" />
     <Compile Include="ProductPropertyValues.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="PropertyValues.cs" />

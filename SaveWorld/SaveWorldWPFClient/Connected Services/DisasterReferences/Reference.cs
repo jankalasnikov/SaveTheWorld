@@ -9,17 +9,166 @@
 //------------------------------------------------------------------------------
 
 namespace SaveWorldWPFClient.DisasterReferences {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DisasterB", Namespace="http://schemas.datacontract.org/2004/07/SaveWorldModel")]
+    [System.SerializableAttribute()]
+    public partial class DisasterB : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DisasterIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int VictimsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DisasterId {
+            get {
+                return this.DisasterIdField;
+            }
+            set {
+                if ((this.DisasterIdField.Equals(value) != true)) {
+                    this.DisasterIdField = value;
+                    this.RaisePropertyChanged("DisasterId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Region {
+            get {
+                return this.RegionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionField, value) != true)) {
+                    this.RegionField = value;
+                    this.RaisePropertyChanged("Region");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Victims {
+            get {
+                return this.VictimsField;
+            }
+            set {
+                if ((this.VictimsField.Equals(value) != true)) {
+                    this.VictimsField = value;
+                    this.RaisePropertyChanged("Victims");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DisasterReferences.IDisasterService")]
     public interface IDisasterService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/GetAllDisasters", ReplyAction="http://tempuri.org/IDisasterService/GetAllDisastersResponse")]
-        SaveWorldModel.Disaster[] GetAllDisasters();
+        SaveWorldWPFClient.DisasterReferences.DisasterB[] GetAllDisasters();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/GetAllDisasters", ReplyAction="http://tempuri.org/IDisasterService/GetAllDisastersResponse")]
-        System.Threading.Tasks.Task<SaveWorldModel.Disaster[]> GetAllDisastersAsync();
+        System.Threading.Tasks.Task<SaveWorldWPFClient.DisasterReferences.DisasterB[]> GetAllDisastersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/GetDisasterByName", ReplyAction="http://tempuri.org/IDisasterService/GetDisasterByNameResponse")]
+        SaveWorldWPFClient.DisasterReferences.DisasterB GetDisasterByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/GetDisasterByName", ReplyAction="http://tempuri.org/IDisasterService/GetDisasterByNameResponse")]
+        System.Threading.Tasks.Task<SaveWorldWPFClient.DisasterReferences.DisasterB> GetDisasterByNameAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +198,20 @@ namespace SaveWorldWPFClient.DisasterReferences {
                 base(binding, remoteAddress) {
         }
         
-        public SaveWorldModel.Disaster[] GetAllDisasters() {
+        public SaveWorldWPFClient.DisasterReferences.DisasterB[] GetAllDisasters() {
             return base.Channel.GetAllDisasters();
         }
         
-        public System.Threading.Tasks.Task<SaveWorldModel.Disaster[]> GetAllDisastersAsync() {
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.DisasterReferences.DisasterB[]> GetAllDisastersAsync() {
             return base.Channel.GetAllDisastersAsync();
+        }
+        
+        public SaveWorldWPFClient.DisasterReferences.DisasterB GetDisasterByName(string name) {
+            return base.Channel.GetDisasterByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.DisasterReferences.DisasterB> GetDisasterByNameAsync(string name) {
+            return base.Channel.GetDisasterByNameAsync(name);
         }
     }
 }

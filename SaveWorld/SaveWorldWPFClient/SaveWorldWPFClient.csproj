@@ -83,6 +83,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ProductService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="DisasterPage.xaml.cs">
       <DependentUpon>DisasterPage.xaml</DependentUpon>
     </Compile>
@@ -111,11 +116,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Connected Services\ProductService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -162,9 +162,6 @@
     <None Include="Connected Services\BankAccountService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BankAccountService\SaveWorldWPFClient.BankAccountService.BankAccount.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\BankAccountService\service.wsdl" />
     <None Include="Connected Services\BankAccountService\service.xsd">
       <SubType>Designer</SubType>
@@ -174,6 +171,9 @@
     </None>
     <None Include="Connected Services\DisasterReferences\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DisasterReferences\SaveWorldWPFClient.DisasterReferences.DisasterB.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DisasterReferences\service.wsdl" />
     <None Include="Connected Services\DisasterReferences\service.xsd">
@@ -185,6 +185,9 @@
     <None Include="Connected Services\ProductService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ProductService\SaveWorldWPFClient.ProductService.ProductB.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ProductService\service.wsdl" />
     <None Include="Connected Services\ProductService\service.xsd">
       <SubType>Designer</SubType>
@@ -195,9 +198,6 @@
     <None Include="Connected Services\UserService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\SaveWorldWPFClient.UserService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\UserService\service.wsdl" />
     <None Include="Connected Services\UserService\service.xsd">
       <SubType>Designer</SubType>
@@ -205,8 +205,10 @@
     <None Include="Connected Services\UserService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\SaveWorldModel.BankAccount.datasource" />
     <None Include="Properties\DataSources\SaveWorldModel.Disaster.datasource" />
     <None Include="Properties\DataSources\SaveWorldModel.Product.datasource" />
+    <None Include="Properties\DataSources\SaveWorldModel.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -232,18 +234,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\UserService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ProductService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ProductService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ProductService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -282,6 +272,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\BankAccountService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace SaveWorldController
 {
-   public class ProductCtr
+   public class ProductCtrB
     {
-        public Product GetProduct(int id)
+        public ProductB GetProduct(int id)
         {
-            Product prodData = null;
+            ProductB prodData = null;
             using (var NWEntities = new SaveWorldEntities())
             {
                 var product = (from p in NWEntities.Products
                                where p.id == id
                                select p).FirstOrDefault();
                 if (product != null)
-                    prodData = new Product()
+                    prodData = new ProductB()
                     {
                         ProductId = product.id,
                         ProductName = product.productName,
@@ -33,11 +33,33 @@ namespace SaveWorldController
         }
 
 
-        public List<Product> GetAllProduct()
+        public ProductB GetProductByName(string name)
+        {
+            ProductB prodData = null;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var product = (from p in NWEntities.Products
+                               where p.productName == name
+                               select p).FirstOrDefault();
+                if (product != null)
+                    prodData = new ProductB()
+                    {
+                        ProductId = product.id,
+                        ProductName = product.productName,
+                        ProductDescription = product.description,
+                        Price = product.price,
+                        Stock = product.minStock,
+
+                    };
+            }
+            return prodData;
+        }
+
+        public List<ProductB> GetAllProduct()
         {
             // var db = new SaveWorldEntities();
             //return db.Products.ToList();
-            List<Product> list = new List<Product>();
+            List<ProductB> list = new List<ProductB>();
             using (SaveWorldEntities NWEntities = new SaveWorldEntities())
             {
                 var ptx = (from r in NWEntities.Products select r);
@@ -45,7 +67,7 @@ namespace SaveWorldController
              
                 for (int i = 0; i < allRows.Count; i++)
                 {
-                    Product pro = new Product();
+                    ProductB pro = new ProductB();
                     pro.ProductName = allRows[i].productName;
                     pro.ProductId = allRows[i].id;
                     pro.ProductDescription = allRows[i].description;

@@ -9,7 +9,21 @@
   <xs:element name="GetAllDisastersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SaveWorldModel" minOccurs="0" name="GetAllDisastersResult" nillable="true" type="q1:ArrayOfDisaster" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SaveWorldModel" minOccurs="0" name="GetAllDisastersResult" nillable="true" type="q1:ArrayOfDisasterB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDisasterByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDisasterByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SaveWorldModel" minOccurs="0" name="GetDisasterByNameResult" nillable="true" type="q2:DisasterB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

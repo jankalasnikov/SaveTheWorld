@@ -22,37 +22,59 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class DisasterPage : Page
     {
+        DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
+        string disSelect;
         public DisasterPage()
         {
             InitializeComponent();
             loadAllDisasters();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
           private void loadAllDisasters()
           {
-            DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
+          
 
               string result = "";
 
                   var sb = new StringBuilder();
-                 foreach(Disaster d in disClient.GetAllDisasters())
+                 foreach(DisasterReferences.DisasterB d in disClient.GetAllDisasters())
                   {
-                      sb.Append("Disaster name: " +
-                      d.Name + "\r\n");
-                      sb.Append(" ");
-                      result = sb.ToString();
-                      listBox_allDis.Items.Add(result);
-                result = "";
-                sb.Clear();
+                        sb.Append(d.Name);
 
-            }
+                        result = sb.ToString();
+                        listBox_allDis.Items.Add(result);
+                        result = "";
+                        sb.Clear();
+
+                  }
 
                  
+        }
+
+        private void ListBox_allDis_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listBox_allDis.SelectedItem != null)
+            {
+
+
+
+                DisasterReferences.DisasterB d = new DisasterReferences.DisasterB();
+                disSelect = (string)listBox_allDis.SelectedItem;
+                d = disClient.GetDisasterByName(disSelect);
+                txt_description.Text = d.Description;
+                txt_category.Text = d.CategoryId.ToString();
+                txt_priority.Text = d.Priority.ToString();
+                txt_region.Text = d.Region;
+                txt_victims.Text = d.Victims.ToString();
+
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

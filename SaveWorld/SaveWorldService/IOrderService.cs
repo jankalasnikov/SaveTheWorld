@@ -1,5 +1,4 @@
-﻿using SaveWorldModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -8,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace SaveWorldService
 {
-    
     [ServiceContract]
-    public interface IDisasterService
+    public interface IOrderService
     {
-
         [OperationContract]
-        List<DisasterB> GetAllDisasters();
-
-        [OperationContract]
-        DisasterB GetDisasterByName(string name);
+        string GetDates();
     }
 }

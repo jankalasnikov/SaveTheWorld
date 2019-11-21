@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace SaveWorldService
 {
-   public class DisasterService : IDisasterService
+    public class DisasterService : IDisasterService
     {
-        DisasterCtr disCtr = new DisasterCtr();
-        public List<Disaster> GetAllDisasters()
+         DisasterCtrB disCtr = new DisasterCtrB();
+            public List<DisasterB> GetAllDisasters()
+            {
+                return disCtr.GetAllDisasters();
+            }
+
+        public DisasterB GetDisasterByName(string name)
         {
-            return disCtr.GetAllDisasters();
+            return disCtr.GetDisasterByName(name);
         }
+        
     }
 }

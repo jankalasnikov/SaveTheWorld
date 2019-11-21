@@ -12,9 +12,12 @@ namespace SaveWorldService
     public interface IProductService
     {
         [OperationContract]
-        Product GetProduct(int id);
+        ProductB GetProduct(int id);
 
         [OperationContract]
-        List<Product> GetAllProduct();
+        ProductB GetProductByName(string name);
+
+        [OperationContract]
+        List<ProductB> GetAllProduct();
     }
 }
