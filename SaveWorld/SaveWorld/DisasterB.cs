@@ -24,5 +24,7 @@ namespace SaveWorldModel
         public int Priority { get; set; }
         [DataMember]
         public int Victims { get; set; }
+        [DataMember]
+        public int DisasterBankAccountId { get; set; }
     }
 }

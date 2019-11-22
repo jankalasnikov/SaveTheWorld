@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaveWorldController;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,23 +25,30 @@ namespace SaveWorldWPFClient
         {
             InitializeComponent();
         }
-
-        public string username;
-        public string usernId;
+        int[] userInfoData = new int[3];
+        public int userId;
+        public int userBankAccId;
+        public int userType;
         public MainPage(string[] userInfo) : this()
         {
-            username = userInfo[1];
-            usernId = userInfo[0];
+            userId = Int32.Parse(userInfo[0]);
+            userBankAccId = Int32.Parse(userInfo[1]);
+            userType = Int32.Parse(userInfo[2]);
+
+            userInfoData[0] = userId;
+            userInfoData[1] = userBankAccId;
+            userInfoData[2] = userType;
+            
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
            
-
-
         }
 
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            user_name.Content = username;
+
+            string name = GetUserName(userId);
+            user_name.Content = name;
         }
 
         private void btn_Shop(object sender, RoutedEventArgs e)
@@ -52,15 +60,13 @@ namespace SaveWorldWPFClient
         }
         private void btn_Disaster(object sender, RoutedEventArgs e)
         {
-            DisasterPage disasterPage = new DisasterPage();
+            DisasterPage disasterPage = new DisasterPage(userInfoData);
             mainFrame.Navigate(disasterPage);
 
         }
         private void btn_Subscription(object sender, RoutedEventArgs e)
         {
-            LogInPage page1 = new LogInPage();
-            // this.Content = page1; it show only the page in tho whole window
-            mainFrame.Navigate(page1);
+           
 
         }
 
@@ -74,16 +80,9 @@ namespace SaveWorldWPFClient
 
         private void btn_LogOut(object sender, RoutedEventArgs e)
         {
-            string[] userInfo = new string[3];
-            userInfo[0] = null;
-            userInfo[1] = null;
-            userInfo[2] = null;
-
+           
             this.Content = null;
-            MainPage main = new MainPage(userInfo);
-
-            // HomePage main = new HomePage(userInfo);
-
+            MainPage main = new MainPage();
             NavigationService.Navigate(main);
 
         }
@@ -95,6 +94,16 @@ namespace SaveWorldWPFClient
         private void vissibilityForBtnLogOut()
         {
             btn_log.Visibility = Visibility.Visible;
+        }
+
+        private string GetUserName(int id)
+        {
+            UserService.UserClient client = new UserService.UserClient();
+            string name = "";
+            UserService.UserB user = new UserService.UserB();
+            user = client.GetUser(id);
+            name = user.Name;
+            return name;
         }
     }
 }

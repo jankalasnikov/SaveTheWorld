@@ -12,9 +12,9 @@ namespace SaveWorldController
     {
 
         public bool correct = false;
-        public BankAccount GetBankAccount(int accountNumber)
+        public BankAccountB GetBankAccount(int accountNumber)
         {
-            BankAccount accountData = null;
+            BankAccountB accountData = null;
             using (var NWEntities = new SaveWorldEntities())
             {
 
@@ -22,7 +22,7 @@ namespace SaveWorldController
                             where p.accountNo == accountNumber
                             select p).FirstOrDefault();
                 if (account != null)
-                    accountData = new BankAccount()
+                    accountData = new BankAccountB()
                     {
                         AccountId=account.id,
                         AccountNo = account.accountNo,
@@ -37,8 +37,52 @@ namespace SaveWorldController
 
         }
 
-   
-       public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
+        public void Update(BankAccountB bankAccountBefore)
+        {
+
+            var NWEntities = new SaveWorldEntities();
+            
+
+                var accountForSave = (from p in NWEntities.BankAccounts
+                               where p.accountNo == bankAccountBefore.AccountId
+                               select p).FirstOrDefault();
+
+
+                accountForSave.accountNo = bankAccountBefore.AccountNo;
+                accountForSave.amount = bankAccountBefore.Amount;
+                accountForSave.ccv = bankAccountBefore.CCV;
+                accountForSave.expiryDate = bankAccountBefore.ExpiryDate;
+
+                NWEntities.SaveChanges();
+            
+        }
+
+        public BankAccountB GetBankAccountById(int id)
+        {
+            BankAccountB accountData = null;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+
+                var account = (from p in NWEntities.BankAccounts
+                               where p.id == id
+                               select p).FirstOrDefault();
+                if (account != null)
+                    accountData = new BankAccountB()
+                    {
+                        AccountId = account.id,
+                        AccountNo = account.accountNo,
+                        ExpiryDate = account.expiryDate,
+                        CCV = account.ccv,
+                        Amount = account.amount,
+
+
+                    };
+            }
+            return accountData;
+
+        }
+
+        public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
         {
           
           
@@ -61,6 +105,32 @@ namespace SaveWorldController
             }
 
             return correct;
+        }
+
+        public bool donateToSpecificDisaster(double amount, int userBankId, int disasterBankId)
+        {
+            BankAccountB userAcc = new BankAccountB();
+            BankAccountCtr ctr = new BankAccountCtr();
+            userAcc = ctr.GetBankAccountById(userBankId);
+
+
+            BankAccountB disasterAcc = new BankAccountB();
+            disasterAcc = ctr.GetBankAccountById(disasterBankId);
+           
+        
+
+            if (userAcc.Amount < amount)
+            {
+                return false;
+            }
+            userAcc.Amount = userAcc.Amount - amount;
+            ctr.Update(userAcc);
+
+            disasterAcc.Amount = disasterAcc.Amount + amount;
+            ctr.Update(disasterAcc);
+            return true;
+            
+
         }
     }
 }

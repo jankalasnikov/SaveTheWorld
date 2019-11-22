@@ -13,7 +13,7 @@ namespace SaveWorldService
     public class UserService : IUser
     {
         UserCtr userCtr = new UserCtr();
-        public User GetUser(int id)
+        public UserB GetUser(int id)
         {
             return userCtr.GetUser(id);
         }
@@ -22,16 +22,16 @@ namespace SaveWorldService
              userCtr.AddUser(name,password,typeOfUser,email,address,phone, bankAcc);
         }
 
-        public User CheckLogin(string email, string pass)
+        public UserB CheckLogin(string email, string pass)
         {
-            User userbd = new User();
+            UserB userbd = new UserB();
 
             userbd = userCtr.CheckLogin(email, pass);
 
             return userbd;
         }
 
-        public void CreateUser(User newUser)
+        public void CreateUser(UserB newUser)
         {
             userCtr.CreateUser(newUser);
         }

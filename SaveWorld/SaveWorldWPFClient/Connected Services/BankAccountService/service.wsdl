@@ -19,6 +19,18 @@
   <wsdl:message name="IBankAccountService_CheckBankAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckBankAccountResponse" />
   </wsdl:message>
+  <wsdl:message name="IBankAccountService_donateToSpecificDisaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:donateToSpecificDisaster" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountService_donateToSpecificDisaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:donateToSpecificDisasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IBankAccountService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBankAccountService">
     <wsdl:operation name="GetBankAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IBankAccountService/GetBankAccount" message="tns:IBankAccountService_GetBankAccount_InputMessage" />
@@ -27,6 +39,14 @@
     <wsdl:operation name="CheckBankAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IBankAccountService/CheckBankAccount" message="tns:IBankAccountService_CheckBankAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBankAccountService/CheckBankAccountResponse" message="tns:IBankAccountService_CheckBankAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="donateToSpecificDisaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankAccountService/donateToSpecificDisaster" message="tns:IBankAccountService_donateToSpecificDisaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankAccountService/donateToSpecificDisasterResponse" message="tns:IBankAccountService_donateToSpecificDisaster_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBankAccountService/Update" message="tns:IBankAccountService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBankAccountService/UpdateResponse" message="tns:IBankAccountService_Update_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBankAccountService" type="tns:IBankAccountService">
@@ -42,6 +62,24 @@
     </wsdl:operation>
     <wsdl:operation name="CheckBankAccount">
       <soap:operation soapAction="http://tempuri.org/IBankAccountService/CheckBankAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="donateToSpecificDisaster">
+      <soap:operation soapAction="http://tempuri.org/IBankAccountService/donateToSpecificDisaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IBankAccountService/Update" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -22,7 +22,7 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class LogInPage : Page
     {
-        private string[] userInfo = new string[3];
+        public string[] userInfo = new string[3];
         public LogInPage()
         {
             InitializeComponent();
@@ -46,26 +46,26 @@ namespace SaveWorldWPFClient
 
             var myUser = new UserClient();
 
-             // UserCtr myUser = new UserCtr();
-            User usr = myUser.CheckLogin(userEmail, originalPassword);
+            // UserCtr myUser = new UserCtr();
+            UserB usr = myUser.CheckLogin(userEmail, originalPassword);
             if (usr != null)
             {
-                // Get the user unique ID from the database and save it to send as an argument
-                int userId = usr.UserId;
-                string userIdS = userId.ToString();
+                string userIdS = usr.UserId.ToString();
                 userInfo[0] = userIdS;
+                string userBankAccIdS = ""+usr.BankAccountId;
+                MessageBox.Show(userBankAccIdS);
+                userInfo[1] = userBankAccIdS;
+                string userTypeS = usr.TypeOfUser.ToString();
+                userInfo[2] = userTypeS;
 
-                // Username to send as an argument
-                userInfo[1] = usr.Name;
+
+                int userId = usr.UserId;
                 string name = usr.Name;
-
-
-                // Get the type of user from the database and save it to send as an argument
                 int typeOfUser = usr.TypeOfUser;
-                string typeOfUserS = typeOfUser.ToString();
-                userInfo[2] = typeOfUserS;
+                int accId = usr.BankAccountId;
+              
 
-                MessageBox.Show(userId + name + typeOfUserS);
+                MessageBox.Show(userId + " " + name + " " + typeOfUser + " "+accId);
             }
             else
             {

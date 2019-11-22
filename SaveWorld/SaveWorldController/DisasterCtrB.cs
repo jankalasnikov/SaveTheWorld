@@ -54,7 +54,7 @@ namespace SaveWorldController
                         Region = dis.region,
                         Victims = dis.victims,
                         CategoryId = (int)dis.categoryId,
-
+                        DisasterBankAccountId = (int)dis.accountId,
                     };
             }
             return disData;

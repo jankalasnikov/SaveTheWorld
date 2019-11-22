@@ -162,6 +162,9 @@
     <None Include="Connected Services\BankAccountService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\BankAccountService\SaveWorldWPFClient.BankAccountService.BankAccountB.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\BankAccountService\service.wsdl" />
     <None Include="Connected Services\BankAccountService\service.xsd">
       <SubType>Designer</SubType>
@@ -197,6 +200,9 @@
     </None>
     <None Include="Connected Services\UserService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService\SaveWorldWPFClient.UserService.UserB.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService\service.wsdl" />
     <None Include="Connected Services\UserService\service.xsd">

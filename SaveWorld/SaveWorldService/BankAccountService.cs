@@ -12,9 +12,9 @@ namespace SaveWorldService
     class BankAccountService : IBankAccountService
     {
         BankAccountCtr bankCtr = new BankAccountCtr();
-        public BankAccount GetBankAccount(int accountNumber)
+        public BankAccountB GetBankAccount(int accountNumber)
         {
-            BankAccount bank = null;
+            BankAccountB bank = null;
             try
             {
                 bank = bankCtr.GetBankAccount(accountNumber);
@@ -57,6 +57,16 @@ namespace SaveWorldService
 
             return bankAccountValid;
 
+        }
+
+        public bool donateToSpecificDisaster(double amount, int userBankAccId, int disasterBankAccId)
+        {
+            return bankCtr.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+        }
+
+        public void Update(BankAccountB bankAccountBefore)
+        {
+            bankCtr.Update(bankAccountBefore);
         }
     }
 }

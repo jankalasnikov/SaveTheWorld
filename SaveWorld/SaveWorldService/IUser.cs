@@ -8,15 +8,15 @@ namespace SaveWorldService
     public interface IUser
     {
         [OperationContract]
-        User GetUser(int id);
+        UserB GetUser(int id);
         [OperationContract]
         void AddUser(string name, string password, int typeOfUser, string email, string address, string phone,int bankAcc);
 
         [OperationContract]
-        User CheckLogin(string email, string pass);
+        UserB CheckLogin(string email, string pass);
 
         [OperationContract]
-        void CreateUser(User newUser);
+        void CreateUser(UserB newUser);
     }
 
 }

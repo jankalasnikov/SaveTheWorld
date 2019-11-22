@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SaveWorldModel
 {
     [DataContract]
-    public class User
+    public class UserB
     {
         [DataMember]
         public int UserId { get; set; }

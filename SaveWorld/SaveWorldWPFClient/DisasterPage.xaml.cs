@@ -22,7 +22,14 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class DisasterPage : Page
     {
+        //private int[] userInfo = new int[3];
+      
+        public int usernId;
+        public int userBankAccId;
+        public int userType;
+
         DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
+        BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
         string disSelect;
         public DisasterPage()
         {
@@ -30,9 +37,14 @@ namespace SaveWorldWPFClient
             loadAllDisasters();
         }
 
-      
+        public DisasterPage(int[] userInfo) : this()
+        {
+            usernId = userInfo[0];
+            userBankAccId = userInfo[1];
+            userType = userInfo[2];
+        }
 
-          private void loadAllDisasters()
+        private void loadAllDisasters()
           {
           
 
@@ -72,8 +84,29 @@ namespace SaveWorldWPFClient
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        
+
+        private void btn_donateClick(object sender, RoutedEventArgs e)
         {
+            double amount = 0.0;
+            amount = double.Parse(txt_amount.Text);
+
+            DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB();
+            DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
+            disaster = disClient.GetDisasterByName(disSelect);
+            int disasterBankAccId = disaster.DisasterBankAccountId;
+
+            MessageBox.Show(userBankAccId.ToString());
+
+            bool donate=bankClient.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+            if(donate)
+            {
+                MessageBox.Show("Donation is succesful!");
+            }
+            else
+            {
+                MessageBox.Show("Failed donation!");
+            }
 
         }
     }

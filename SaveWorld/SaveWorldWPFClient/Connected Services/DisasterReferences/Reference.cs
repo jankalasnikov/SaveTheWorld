@@ -29,6 +29,9 @@ namespace SaveWorldWPFClient.DisasterReferences {
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DisasterBankAccountIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int DisasterIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -75,6 +78,19 @@ namespace SaveWorldWPFClient.DisasterReferences {
                 if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
                     this.DescriptionField = value;
                     this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DisasterBankAccountId {
+            get {
+                return this.DisasterBankAccountIdField;
+            }
+            set {
+                if ((this.DisasterBankAccountIdField.Equals(value) != true)) {
+                    this.DisasterBankAccountIdField = value;
+                    this.RaisePropertyChanged("DisasterBankAccountId");
                 }
             }
         }

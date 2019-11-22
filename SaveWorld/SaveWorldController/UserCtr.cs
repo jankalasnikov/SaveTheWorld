@@ -12,9 +12,9 @@ namespace SaveWorldController
 {
     public class UserCtr
     {
-        public User GetUser(int id)
+        public UserB GetUser(int id)
         {
-            User userData = null;
+            UserB userData = null;
             using (var NWEntities = new SaveWorldEntities())
             {
                
@@ -22,7 +22,7 @@ namespace SaveWorldController
                                 where p.id == id
                                 select p).FirstOrDefault();
                 if (user != null)
-                    userData = new User()
+                    userData = new UserB()
                     {
                         UserId = user.id,
                         Name = user.name,
@@ -81,7 +81,7 @@ namespace SaveWorldController
             }
         }
 
-        public void CreateUser(User newUser)
+        public void CreateUser(UserB newUser)
         {
 
             using (SaveWorldEntities dbEntities = new SaveWorldEntities())
@@ -124,10 +124,10 @@ namespace SaveWorldController
         }
 
 
-        public User CheckLogin(string userEmail, string password)
+        public UserB CheckLogin(string userEmail, string password)
         {
 
-            User userCorrect = null;
+            UserB userCorrect = null;
             using (var NWEntities = new SaveWorldEntities())
             {
                
@@ -138,7 +138,7 @@ namespace SaveWorldController
 
                 if (user != null)
                 {
-                    userCorrect = new User()
+                    userCorrect = new UserB()
                     {
                         UserId = user.id,
                         Name = user.name,
@@ -146,6 +146,7 @@ namespace SaveWorldController
                         Email = user.email,
                         Address = user.address,
                         Phone = user.phoneno,
+                        BankAccountId = (int)user.accountId,
 
                     };
                 }

@@ -50,7 +50,7 @@ namespace SaveWorldWPFClient
             {
                 return;
             }
-            BankAccountService.BankAccount bank = new BankAccountService.BankAccount();
+            BankAccountService.BankAccountB bank = new BankAccountService.BankAccountB();
             BankAccountService.BankAccountServiceClient accountClient = new BankAccountService.BankAccountServiceClient();
             
          
@@ -70,9 +70,9 @@ namespace SaveWorldWPFClient
             NavigationService.Navigate(main);
         }
 
-        private UserService.User CreateNewUser()
+        private UserService.UserB CreateNewUser()
         {
-            UserService.User newOne = new UserService.User();
+            UserService.UserB newOne = new UserService.UserB();
             
 
            
@@ -198,7 +198,7 @@ namespace SaveWorldWPFClient
         private int GetIdOfTheBankAccount()
         {
             BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
-            BankAccountService.BankAccount bankOb = new BankAccountService.BankAccount();
+            BankAccountService.BankAccountB bankOb = new BankAccountService.BankAccountB();
 
           
           
