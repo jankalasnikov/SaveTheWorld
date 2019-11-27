@@ -1,0 +1,15 @@
+﻿<Page x:Class="SaveWorldWPFClient.SubscriptionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SaveWorldWPFClient"
+      mc:Ignorable="d" 
+     d:DesignHeight="643" d:DesignWidth="1414"
+      Title="SubscriptionPage">
+
+    <Grid>
+        <Label Content="Subscription Type" HorizontalAlignment="Left" Margin="114,84,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+
+    </Grid>
+</Page>

@@ -65,7 +65,8 @@ namespace SaveWorldWPFClient
         }
         private void btn_Subscription(object sender, RoutedEventArgs e)
         {
-           
+            SubscriptionPage subscriptionPage = new SubscriptionPage();
+            mainFrame.Navigate(subscriptionPage);
 
         }
 
