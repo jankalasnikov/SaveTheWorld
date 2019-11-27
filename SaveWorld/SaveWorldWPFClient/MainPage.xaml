@@ -12,8 +12,8 @@
     <Grid x:Name="grid">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="695*"/>
-            <ColumnDefinition Width="719*"/>
+            <ColumnDefinition Width="362*"/>
+            <ColumnDefinition Width="349*"/>
         </Grid.ColumnDefinitions>
         <Canvas HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="1422" Grid.ColumnSpan="2" Background="ForestGreen" >
             <Button Content="Shop" Canvas.Left="633" Canvas.Top="10" Width="114" Height="35" RenderTransformOrigin="-0.352,0.741" Click="btn_Shop"/>
@@ -27,7 +27,7 @@
             <Button Content="Profile" Canvas.Left="10" Canvas.Top="10" Width="75" Visibility="Hidden" Name="btn_profile"  Click="Btn_profile_Click"/>
         </Canvas>
         <Frame  HorizontalAlignment="Left" Height="643" Margin="0,52,0,0" VerticalAlignment="Top" Width="1414" Grid.ColumnSpan="2" Name="mainFrame"/>
-        <Frame  HorizontalAlignment="Left" Height="726" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="1422" Grid.ColumnSpan="2" Name="mainFrame2" RenderTransformOrigin="0.5,0.5"/>
+        <Frame  HorizontalAlignment="Left" Height="726" VerticalAlignment="Top" Width="1422" Grid.ColumnSpan="2" Name="mainFrame2" RenderTransformOrigin="0.5,0.5"/>
 
 
     </Grid>

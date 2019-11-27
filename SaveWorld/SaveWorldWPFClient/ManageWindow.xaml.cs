@@ -23,5 +23,13 @@ namespace SaveWorldWPFClient
         {
             InitializeComponent();
         }
+
+        private void btn_Disaster(object sender, RoutedEventArgs e)
+        {
+            ManageDisasterPage disPage = new ManageDisasterPage();
+            mainFrame.Navigate(disPage);
+
+        }
+
     }
 }

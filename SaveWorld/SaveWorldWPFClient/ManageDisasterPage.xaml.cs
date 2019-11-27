@@ -26,6 +26,7 @@ namespace SaveWorldWPFClient
         public ManageDisasterPage()
         {
             InitializeComponent();
+            loadAllDisasters(); 
         }
 
         private void loadAllDisasters()
@@ -46,6 +47,7 @@ namespace SaveWorldWPFClient
 
             }
 
+            
 
         }
     }
