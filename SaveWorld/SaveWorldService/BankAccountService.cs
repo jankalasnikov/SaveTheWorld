@@ -38,21 +38,13 @@ namespace SaveWorldService
         public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
         {
             bool bankAccountValid = false;
-            try
-            {
+            
                 bankAccountValid = bankCtr.CheckBankAccount(accNo, expiryDate, CCV);
-            }
-            catch
-            {
-
-                var reason = "GetBankAccount Exception";
-                throw new FaultException(reason);
-            }
+            
 
             if (bankAccountValid == false)
             {
-                var reason = "GetBankAccount empty account";
-                throw new FaultException(reason);
+                return false;
             }
 
             return bankAccountValid;

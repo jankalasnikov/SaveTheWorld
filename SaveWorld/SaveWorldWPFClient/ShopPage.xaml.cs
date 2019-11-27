@@ -28,7 +28,12 @@ namespace SaveWorldWPFClient
         {
             InitializeComponent();
             LoadAllProducts();
-          //  listBox.Items.AddRange(prodClient.GetAllProduct());
+            //  listBox.Items.AddRange(prodClient.GetAllProduct());
+
+            Information_label.Content = "Everyone who wants to donate money but doesn't know for which disaster, he is more then welcome to our online \r\n" +
+                                       "shop where all the money of his purchase will be equally distributed in the \r\n" +
+                                       "bank accounts of all disasters. With this option the \r\n" +
+                                       "user will help to all of the disasters.";
         }
 
         private void LoadAllProducts()

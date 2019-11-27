@@ -52,20 +52,27 @@ namespace SaveWorldWPFClient
             }
             BankAccountService.BankAccountB bank = new BankAccountService.BankAccountB();
             BankAccountService.BankAccountServiceClient accountClient = new BankAccountService.BankAccountServiceClient();
-            
-         
-           
-            userInfo[0] = newUser.UserId.ToString();
-            userInfo[1] = newUser.Name;
-            MessageBox.Show(userInfo[1]);
-            userInfo[2] = newUser.Email;
 
-             client.CreateUser(newUser);
-            //client.AddUser(name, pas, 2, email, address, phone);
+            client.CreateUser(newUser);
+            int idOfUser = client.GetUserIDByName(newUser.Name);
+
+            /* userInfo[0] = newUser.UserId.ToString();
+             userInfo[1] = newUser.BankAccountId.ToString();
+             MessageBox.Show(userInfo[1]);
+             userInfo[2] = newUser.TypeOfUser.ToString();*/
+
+            string userIdS = idOfUser.ToString();
+            userInfo[0] = userIdS;
+            string userBankAccIdS = "" + newUser.BankAccountId;
+          
+            userInfo[1] = userBankAccIdS;
+            string userTypeS = newUser.TypeOfUser.ToString();
+            userInfo[2] = userTypeS;
+
+           
+        
             this.Content = null;
             MainPage main = new MainPage(userInfo);
-
-            // HomePage main = new HomePage(userInfo);
 
             NavigationService.Navigate(main);
         }
@@ -208,6 +215,18 @@ namespace SaveWorldWPFClient
             int accId = bankOb.AccountId;
             return accId;
            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage mainPage = new MainPage();
+            NavigationService.Navigate(mainPage);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LogInPage logInPage = new LogInPage();
+            NavigationService.Navigate(logInPage);
         }
     }
 }
