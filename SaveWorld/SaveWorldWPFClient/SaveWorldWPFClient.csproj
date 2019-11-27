@@ -93,7 +93,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\UserServiceReference\Reference.cs">
+    <Compile Include="Connected Services\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -245,17 +245,17 @@
     <None Include="Connected Services\ProductService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserServiceReference\SaveWorldModel.xsd">
+    <None Include="Connected Services\UserService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserServiceReference\SaveWorldWPFClient.UserServiceReference.UserB.datasource">
+    <None Include="Connected Services\UserService\SaveWorldWPFClient.UserService.UserB.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserServiceReference\service.wsdl" />
-    <None Include="Connected Services\UserServiceReference\service.xsd">
+    <None Include="Connected Services\UserService\service.wsdl" />
+    <None Include="Connected Services\UserService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserServiceReference\service1.xsd">
+    <None Include="Connected Services\UserService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\SaveWorldModel.BankAccount.datasource" />
@@ -278,7 +278,7 @@
     <WCFMetadataStorage Include="Connected Services\DisasterReferences\" />
     <WCFMetadataStorage Include="Connected Services\OrderServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\ProductService\" />
-    <WCFMetadataStorage Include="Connected Services\UserServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\UserService\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SaveWorldController\SaveWorldController.csproj">
@@ -288,6 +288,10 @@
     <ProjectReference Include="..\SaveWorldDAL\SaveWorldDAL.csproj">
       <Project>{50F2B601-1F7B-40C0-A7C5-78254A574CF1}</Project>
       <Name>SaveWorldDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaveWorldService\SaveWorldService.csproj">
+      <Project>{808A0CC6-B1CE-4888-A367-BCBDD98C3EE1}</Project>
+      <Name>SaveWorldService</Name>
     </ProjectReference>
     <ProjectReference Include="..\SaveWorld\SaveWorldModel.csproj">
       <Project>{D7D40C80-67CC-4AD5-8899-97B7F5BA4696}</Project>
@@ -355,13 +359,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\UserService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\UserService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserServiceReference\Reference.svcmap">
+    <None Include="Connected Services\UserService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

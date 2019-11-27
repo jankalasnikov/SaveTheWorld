@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaveWorldWPFClient.UserServiceReference {
+namespace SaveWorldWPFClient.UserService {
     using System.Runtime.Serialization;
     using System;
     
@@ -171,14 +171,14 @@ namespace SaveWorldWPFClient.UserServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserServiceReference.IUser")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IUser")]
     public interface IUser {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUser", ReplyAction="http://tempuri.org/IUser/GetUserResponse")]
-        SaveWorldWPFClient.UserServiceReference.UserB GetUser(int id);
+        SaveWorldWPFClient.UserService.UserB GetUser(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUser", ReplyAction="http://tempuri.org/IUser/GetUserResponse")]
-        System.Threading.Tasks.Task<SaveWorldWPFClient.UserServiceReference.UserB> GetUserAsync(int id);
+        System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB> GetUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/AddUser", ReplyAction="http://tempuri.org/IUser/AddUserResponse")]
         void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc);
@@ -187,16 +187,16 @@ namespace SaveWorldWPFClient.UserServiceReference {
         System.Threading.Tasks.Task AddUserAsync(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CheckLogin", ReplyAction="http://tempuri.org/IUser/CheckLoginResponse")]
-        SaveWorldWPFClient.UserServiceReference.UserB CheckLogin(string email, string pass);
+        SaveWorldWPFClient.UserService.UserB CheckLogin(string email, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CheckLogin", ReplyAction="http://tempuri.org/IUser/CheckLoginResponse")]
-        System.Threading.Tasks.Task<SaveWorldWPFClient.UserServiceReference.UserB> CheckLoginAsync(string email, string pass);
+        System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB> CheckLoginAsync(string email, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CreateUser", ReplyAction="http://tempuri.org/IUser/CreateUserResponse")]
-        void CreateUser(SaveWorldWPFClient.UserServiceReference.UserB newUser);
+        void CreateUser(SaveWorldWPFClient.UserService.UserB newUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CreateUser", ReplyAction="http://tempuri.org/IUser/CreateUserResponse")]
-        System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserServiceReference.UserB newUser);
+        System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.UserB newUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserIDByName", ReplyAction="http://tempuri.org/IUser/GetUserIDByNameResponse")]
         int GetUserIDByName(string name);
@@ -206,12 +206,12 @@ namespace SaveWorldWPFClient.UserServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserChannel : SaveWorldWPFClient.UserServiceReference.IUser, System.ServiceModel.IClientChannel {
+    public interface IUserChannel : SaveWorldWPFClient.UserService.IUser, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserClient : System.ServiceModel.ClientBase<SaveWorldWPFClient.UserServiceReference.IUser>, SaveWorldWPFClient.UserServiceReference.IUser {
+    public partial class UserClient : System.ServiceModel.ClientBase<SaveWorldWPFClient.UserService.IUser>, SaveWorldWPFClient.UserService.IUser {
         
         public UserClient() {
         }
@@ -232,11 +232,11 @@ namespace SaveWorldWPFClient.UserServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public SaveWorldWPFClient.UserServiceReference.UserB GetUser(int id) {
+        public SaveWorldWPFClient.UserService.UserB GetUser(int id) {
             return base.Channel.GetUser(id);
         }
         
-        public System.Threading.Tasks.Task<SaveWorldWPFClient.UserServiceReference.UserB> GetUserAsync(int id) {
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB> GetUserAsync(int id) {
             return base.Channel.GetUserAsync(id);
         }
         
@@ -248,19 +248,19 @@ namespace SaveWorldWPFClient.UserServiceReference {
             return base.Channel.AddUserAsync(name, password, typeOfUser, email, address, phone, bankAcc);
         }
         
-        public SaveWorldWPFClient.UserServiceReference.UserB CheckLogin(string email, string pass) {
+        public SaveWorldWPFClient.UserService.UserB CheckLogin(string email, string pass) {
             return base.Channel.CheckLogin(email, pass);
         }
         
-        public System.Threading.Tasks.Task<SaveWorldWPFClient.UserServiceReference.UserB> CheckLoginAsync(string email, string pass) {
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB> CheckLoginAsync(string email, string pass) {
             return base.Channel.CheckLoginAsync(email, pass);
         }
         
-        public void CreateUser(SaveWorldWPFClient.UserServiceReference.UserB newUser) {
+        public void CreateUser(SaveWorldWPFClient.UserService.UserB newUser) {
             base.Channel.CreateUser(newUser);
         }
         
-        public System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserServiceReference.UserB newUser) {
+        public System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.UserB newUser) {
             return base.Channel.CreateUserAsync(newUser);
         }
         
