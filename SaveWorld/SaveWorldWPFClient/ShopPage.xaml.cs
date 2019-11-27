@@ -113,9 +113,17 @@ namespace SaveWorldWPFClient
                     string content = (listBox.Items[productID] as ListBoxItem).Content.ToString()
                         + " x " + txt_quntity.Text;
                     listBoxItem.Content = content;
+                    listBoxItem.Tag = productID;
                     listBox_OrderLines.Items.Add(listBoxItem);
                 }
             }
+        }
+
+        private void btn_Remove_Click(object sender, RoutedEventArgs e)
+        {
+            int productIDSelected = Convert.ToInt32((listBox_OrderLines.SelectedItem as ListBoxItem).Tag);
+            orderClient.RemoveOrderLine(productIDSelected);
+            listBox_OrderLines.Items.Remove(listBox_OrderLines.SelectedItem);
         }
     }
 }

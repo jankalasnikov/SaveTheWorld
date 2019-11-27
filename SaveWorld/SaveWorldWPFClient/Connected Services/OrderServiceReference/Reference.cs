@@ -26,6 +26,12 @@ namespace SaveWorldWPFClient.OrderServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrderLine", ReplyAction="http://tempuri.org/IOrderService/AddOrderLineResponse")]
         System.Threading.Tasks.Task AddOrderLineAsync(int productId, int quantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/RemoveOrderLine", ReplyAction="http://tempuri.org/IOrderService/RemoveOrderLineResponse")]
+        void RemoveOrderLine(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/RemoveOrderLine", ReplyAction="http://tempuri.org/IOrderService/RemoveOrderLineResponse")]
+        System.Threading.Tasks.Task RemoveOrderLineAsync(int productId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace SaveWorldWPFClient.OrderServiceReference {
         
         public System.Threading.Tasks.Task AddOrderLineAsync(int productId, int quantity) {
             return base.Channel.AddOrderLineAsync(productId, quantity);
+        }
+        
+        public void RemoveOrderLine(int productId) {
+            base.Channel.RemoveOrderLine(productId);
+        }
+        
+        public System.Threading.Tasks.Task RemoveOrderLineAsync(int productId) {
+            return base.Channel.RemoveOrderLineAsync(productId);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SaveWorldModel
     {
         [DataMember]
         public int Quantity { get; set; }
-
+        [DataMember]
         public int ProductID { get; set; }
 
 

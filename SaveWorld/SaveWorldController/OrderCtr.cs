@@ -36,5 +36,10 @@ namespace SaveWorldController
             }
 
         }
+
+        public void RemoveOrderLine(int productId)
+        {
+            Order.OrderLines.RemoveAll(orderLine => orderLine.ProductID == productId);
+        }
     }
 }

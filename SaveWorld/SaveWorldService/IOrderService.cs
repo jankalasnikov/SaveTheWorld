@@ -15,5 +15,8 @@ namespace SaveWorldService
 
         [OperationContract]
         void AddOrderLine(int productId, int quantity);
+        [OperationContract]
+        void RemoveOrderLine(int productId);
+ 
     }
 }

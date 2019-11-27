@@ -25,5 +25,10 @@ namespace SaveWorldService
         {
             return ord;
         }
+
+        public void RemoveOrderLine(int productId)
+        {
+            orderCtr.RemoveOrderLine(productId);
+        }
     }
 }

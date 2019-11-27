@@ -33,6 +33,16 @@
             <Label Name="Information_label" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="1,1,-1,-1"  />
 
         </Border>
+        <Button x:Name="btn_Remove" Content="Remove" HorizontalAlignment="Left" Margin="1227,264,0,0" VerticalAlignment="Top" Width="75" ClipToBounds="True" RenderTransformOrigin="0.5,0.5" Click="btn_Remove_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.693"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 </Page>
