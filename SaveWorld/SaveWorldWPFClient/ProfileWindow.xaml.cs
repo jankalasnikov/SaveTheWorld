@@ -64,6 +64,7 @@ namespace SaveWorldWPFClient
         {
             
             UserService.UserB user = new UserService.UserB();
+            user.UserId = userId;
             user.Name = txt_profileName.Text;
             user.Email = txt_profileEmail.Text;
             user.Address = txt_profileAddress.Text;
@@ -78,9 +79,46 @@ namespace SaveWorldWPFClient
                 return;
             }
             int bankNo = Int32.Parse(txt_profileBankNumber.Text);
-       //     bankClient.CheckBankAccount(bankNo,)
+            DateTime expiryDate = Convert.ToDateTime(txt_profileExpiryDate.Text);
+            int CCV = Int32.Parse(txt_profileCCv.Text);
             
-            client.UpdateUser(user);
+            if(bankClient.CheckBankAccount(bankNo, expiryDate, CCV))
+            {
+                user.BankAccountId = GetIdOfTheBankAccount();
+            }
+            else
+            {
+                MessageBox.Show("Wrong Bank Account Information!");
+                return;
+            }
+            
+           bool updated = client.UpdateUser(user);
+            if(updated)
+            {
+                MessageBox.Show("Your profile was updated!");
+                txt_profileConfirmPass.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong!");
+            }
         }
+
+        private int GetIdOfTheBankAccount()
+        {
+            BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
+            BankAccountService.BankAccountB bankOb = new BankAccountService.BankAccountB();
+
+
+
+            int bankNo = Int32.Parse(txt_profileBankNumber.Text);
+
+            bankOb = bankClient.GetBankAccount(bankNo);
+            int accId = bankOb.AccountId;
+            return accId;
+
+        }
+
+       
     }
 }
