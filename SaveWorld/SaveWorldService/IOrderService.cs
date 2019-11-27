@@ -12,5 +12,8 @@ namespace SaveWorldService
     {
         [OperationContract]
         string GetDates();
+
+        [OperationContract]
+        void AddOrderLine(int productId, int quantity);
     }
 }

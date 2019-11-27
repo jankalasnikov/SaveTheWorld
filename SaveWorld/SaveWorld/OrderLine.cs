@@ -5,13 +5,15 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaveTheWorldModelL
+namespace SaveWorldModel
 {
     [DataContract]
     public class OrderLine
     {
         [DataMember]
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
+
+        public int ProductID { get; set; }
 
 
     }

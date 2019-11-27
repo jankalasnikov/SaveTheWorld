@@ -83,7 +83,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\OrderServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ProductService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -128,11 +138,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Connected Services\UserService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
@@ -213,6 +218,13 @@
     <None Include="Connected Services\DisasterReferences\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\OrderServiceReference\service.wsdl" />
+    <None Include="Connected Services\OrderServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ProductService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -226,17 +238,17 @@
     <None Include="Connected Services\ProductService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\SaveWorldModel.xsd">
+    <None Include="Connected Services\UserServiceReference\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\SaveWorldWPFClient.UserService.UserB.datasource">
+    <None Include="Connected Services\UserServiceReference\SaveWorldWPFClient.UserServiceReference.UserB.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\service.wsdl" />
-    <None Include="Connected Services\UserService\service.xsd">
+    <None Include="Connected Services\UserServiceReference\service.wsdl" />
+    <None Include="Connected Services\UserServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\service1.xsd">
+    <None Include="Connected Services\UserServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\SaveWorldModel.BankAccount.datasource" />
@@ -257,20 +269,9 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\BankAccountService\" />
     <WCFMetadataStorage Include="Connected Services\DisasterReferences\" />
+    <WCFMetadataStorage Include="Connected Services\OrderServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\ProductService\" />
-    <WCFMetadataStorage Include="Connected Services\UserService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <WCFMetadataStorage Include="Connected Services\UserServiceReference\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SaveWorldController\SaveWorldController.csproj">
@@ -330,6 +331,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\DisasterReferences\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

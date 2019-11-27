@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f2ae39d0-704f-4694-92ba-bb1f7a83b694" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="23a16704-f41f-4383-8e37-b491571ea9de" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,12 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/SaveWorldService/UserService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/SaveWorldService/OrderService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="5900f5c3-16f3-4876-bb85-f221f714cb08" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="104c1939-18cf-44ff-8531-a43d60753efa" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6a453abe-0a35-4a84-82ff-6ad0b8d479b0" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/mex" />
-    <MetadataFile FileName="SaveWorldModel.xsd" MetadataType="Schema" ID="1324f329-0973-4908-af2b-b07aa9adb850" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="649c780e-effb-465a-b0fd-133c39c00e22" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/OrderService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="af4247b5-e4cf-4fc0-bbb0-069e48bf5277" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/OrderService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d5081029-8c6b-49bc-b4a9-16c0678c110f" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/OrderService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
