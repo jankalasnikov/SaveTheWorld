@@ -10,12 +10,12 @@
 
     <Grid>
         <ListBox HorizontalAlignment="Left" Height="298" Margin="96,67,0,0" VerticalAlignment="Top" Width="235"/>
-        <TextBox Name="txt_Name" HorizontalAlignment="Left" Height="23" Margin="418,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="418,113,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Password" HorizontalAlignment="Left" Height="23" Margin="418,171,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="418,222,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_PhoneNo" HorizontalAlignment="Left" Height="23" Margin="418,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_TypeOfUser" HorizontalAlignment="Left" Height="23" Margin="418,342,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Name" HorizontalAlignment="Left" Height="23" Margin="418,67,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="418,113,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Password" HorizontalAlignment="Left" Height="23" Margin="418,171,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="418,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_PhoneNo" HorizontalAlignment="Left" Height="23" Margin="418,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_TypeOfUser" HorizontalAlignment="Left" Height="23" Margin="418,342,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="418,406,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="528,406,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
