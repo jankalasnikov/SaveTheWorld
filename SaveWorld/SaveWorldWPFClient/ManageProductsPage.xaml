@@ -9,7 +9,7 @@
       Title="ManageProductsPage">
 
     <Grid>
-    <ListBox HorizontalAlignment="Left" Height="298" Margin="96,67,0,0" VerticalAlignment="Top" Width="235"/>
+        <ListBox Name="txt_prodList" HorizontalAlignment="Left" Height="298" Margin="96,67,0,0" VerticalAlignment="Top" Width="235"/>
         <TextBox Name="txt_Name" HorizontalAlignment="Left" Height="23" Margin="418,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="txt_Description" HorizontalAlignment="Left" Height="23" Margin="418,113,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="txt_Si" HorizontalAlignment="Left" Height="23" Margin="418,171,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>

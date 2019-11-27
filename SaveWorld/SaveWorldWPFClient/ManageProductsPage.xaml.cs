@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaveWorldWPFClient.ProductService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,29 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class ManageProductsPage : Page
     {
+        ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
         public ManageProductsPage()
         {
             InitializeComponent();
+            loadAllProducts();
+        }
+
+        private void loadAllProducts()
+        {
+            string result = "";
+
+            var sb = new StringBuilder();
+            foreach (ProductService.ProductB d in prodClient.GetAllProduct())
+            {
+                sb.Append(d.ProductName);
+
+                result = sb.ToString();
+                txt_prodList.Items.Add(result);
+                result = "";
+                sb.Clear();
+
+            }
+
         }
     }
 }

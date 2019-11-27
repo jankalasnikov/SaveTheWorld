@@ -46,5 +46,9 @@ namespace SaveWorldService
             return userCtr.UpdateUser(user);
         }
 
+        //public string GetAllUsers()
+        //{
+        //    return userCtr.GetAllUsers(name);
+        //}
     }
 }

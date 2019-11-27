@@ -39,8 +39,34 @@ namespace SaveWorldController
            
         }
 
+        //public DisasterB GetAllUsers(string name)
+        //{
+        //    UserB userName = null;
+        //    using (var NWEntities = new SaveWorldEntities())
+        //    {
 
-        public int GetUserIDByName(string name)
+        //        var user = (from p in NWEntities.Ausers
+        //                    where p.name == name
+        //                    select p).FirstOrDefault();
+        //        if (user != null)
+        //            userName = new UserB()
+        //            {
+        //                UserId = user.id,
+        //                Name = user.name,
+        //                Email = user.email,
+        //                Password = user.password,
+        //                Address = user.address,
+        //                Phone = user.phoneno,
+        //                TypeOfUser = user.typeOfUser,
+        //                BankAccountId = (int)user.accountId,
+
+        //            };
+        //    }
+        //    return userName;
+        //}
+
+
+            public int GetUserIDByName(string name)
         {
             int id = 0;
             using (var NWEntities = new SaveWorldEntities())

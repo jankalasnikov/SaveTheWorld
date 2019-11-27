@@ -31,5 +31,17 @@ namespace SaveWorldWPFClient
             ManageDisasterPage disPage = new ManageDisasterPage();
             mainFrame.Navigate(disPage);
         }
+        private void ManageProd(object sender, RoutedEventArgs e)
+        {
+            ManageProductsPage managePage = new ManageProductsPage();
+            mainFrame.Navigate(managePage);
+        }
+        private void MangeUsr(object sender, RoutedEventArgs e)
+        {
+            ManageUserPage usrPage = new ManageUserPage();
+            mainFrame.Navigate(usrPage);
+        }
+
+
     }
 }

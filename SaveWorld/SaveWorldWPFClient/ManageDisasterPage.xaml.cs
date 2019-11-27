@@ -22,6 +22,7 @@ namespace SaveWorldWPFClient
     {
 
         DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
+        
 
         public ManageDisasterPage()
         {

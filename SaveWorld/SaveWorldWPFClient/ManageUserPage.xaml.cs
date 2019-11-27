@@ -20,9 +20,28 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class ManageUserPage : Page
     {
+        UserService.UserClient usrClient = new UserService.UserClient(); 
         public ManageUserPage()
         {
             InitializeComponent();
+            loadAllUsers(); 
+        }
+
+        private void loadAllUsers()
+        {
+            string result = "";
+
+            var sb = new StringBuilder();
+            foreach (UserService.UserB d in usrClient.())
+            {
+                sb.Append(d.Name);
+
+                result = sb.ToString();
+                userList.Items.Add(result);
+                result = "";
+                sb.Clear();
+
+            }
         }
     }
 }
