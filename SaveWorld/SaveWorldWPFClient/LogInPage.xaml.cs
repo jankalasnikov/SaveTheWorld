@@ -23,6 +23,10 @@ namespace SaveWorldWPFClient
     public partial class LogInPage : Page
     {
         public string[] userInfo = new string[3];
+        public int userId;
+        public string name;
+        public int typeOfUser;
+        public int accId;
         public LogInPage()
         {
             InitializeComponent();
@@ -53,19 +57,18 @@ namespace SaveWorldWPFClient
                 string userIdS = usr.UserId.ToString();
                 userInfo[0] = userIdS;
                 string userBankAccIdS = ""+usr.BankAccountId;
-                MessageBox.Show(userBankAccIdS);
+               
                 userInfo[1] = userBankAccIdS;
                 string userTypeS = usr.TypeOfUser.ToString();
                 userInfo[2] = userTypeS;
 
 
-                int userId = usr.UserId;
-                string name = usr.Name;
-                int typeOfUser = usr.TypeOfUser;
-                int accId = usr.BankAccountId;
+               userId = usr.UserId;
+               typeOfUser = usr.TypeOfUser;
+               accId = usr.BankAccountId;
               
 
-                MessageBox.Show(userId + " " + name + " " + typeOfUser + " "+accId);
+              
             }
             else
             {
@@ -82,6 +85,16 @@ namespace SaveWorldWPFClient
 
             main.btn_logOut.Visibility = Visibility.Visible;
             main.btn_log.Visibility = Visibility.Visible;
+
+            if(typeOfUser==1)
+            {
+                main.btn_profile.Visibility = Visibility.Visible;
+            }
+
+            if (typeOfUser == 2)
+            {
+                main.btn_manage.Visibility = Visibility.Visible;
+            }
 
         }
 

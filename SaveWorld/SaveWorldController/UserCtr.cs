@@ -166,6 +166,7 @@ namespace SaveWorldController
                         Email = user.email,
                         Address = user.address,
                         Phone = user.phoneno,
+                        TypeOfUser = user.typeOfUser,
                         BankAccountId = (int)user.accountId,
 
                     };

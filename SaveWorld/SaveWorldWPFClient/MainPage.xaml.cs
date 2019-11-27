@@ -94,7 +94,7 @@ namespace SaveWorldWPFClient
         {
             btn_log.Visibility = Visibility.Visible;
         }
-
+       
         private string GetUserName(int id)
         {
             UserService.UserClient client = new UserService.UserClient();
@@ -103,6 +103,22 @@ namespace SaveWorldWPFClient
             user = client.GetUser(id);
             name = user.Name;
             return name;
+        }
+
+      
+
+        private void Btn_manage_Click(object sender, RoutedEventArgs e)
+        {
+            ManageWindow manage = new ManageWindow();
+            manage.Show();
+
+        }
+
+        private void Btn_profile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow profile = new ProfileWindow(userInfoData);
+            profile.Show();
+
         }
     }
 }
