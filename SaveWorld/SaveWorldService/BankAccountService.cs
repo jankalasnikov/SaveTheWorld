@@ -35,6 +35,29 @@ namespace SaveWorldService
             return bank;
         }
 
+        public BankAccountB GetBankAccountById(int id)
+        {
+            BankAccountB bank = null;
+            try
+            {
+                bank = bankCtr.GetBankAccountById(id);
+            }
+            catch
+            {
+
+                var reason = "GetBankAccount Exception";
+                throw new FaultException(reason);
+            }
+
+            if (bank == null)
+            {
+                var reason = "GetBankAccount empty account";
+                throw new FaultException(reason);
+            }
+
+            return bank;
+        }
+
         public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
         {
             bool bankAccountValid = false;

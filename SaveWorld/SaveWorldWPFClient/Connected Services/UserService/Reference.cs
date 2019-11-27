@@ -203,6 +203,12 @@ namespace SaveWorldWPFClient.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserIDByName", ReplyAction="http://tempuri.org/IUser/GetUserIDByNameResponse")]
         System.Threading.Tasks.Task<int> GetUserIDByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/UpdateUser", ReplyAction="http://tempuri.org/IUser/UpdateUserResponse")]
+        bool UpdateUser(SaveWorldWPFClient.UserService.UserB user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/UpdateUser", ReplyAction="http://tempuri.org/IUser/UpdateUserResponse")]
+        System.Threading.Tasks.Task<bool> UpdateUserAsync(SaveWorldWPFClient.UserService.UserB user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -270,6 +276,14 @@ namespace SaveWorldWPFClient.UserService {
         
         public System.Threading.Tasks.Task<int> GetUserIDByNameAsync(string name) {
             return base.Channel.GetUserIDByNameAsync(name);
+        }
+        
+        public bool UpdateUser(SaveWorldWPFClient.UserService.UserB user) {
+            return base.Channel.UpdateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateUserAsync(SaveWorldWPFClient.UserService.UserB user) {
+            return base.Channel.UpdateUserAsync(user);
         }
     }
 }

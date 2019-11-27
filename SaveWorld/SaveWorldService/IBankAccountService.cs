@@ -13,6 +13,10 @@ namespace SaveWorldService
     {
         [OperationContract]
         BankAccountB GetBankAccount(int accountNumber);
+
+        [OperationContract]
+        BankAccountB GetBankAccountById(int id);
+
         [OperationContract]
         bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV);
 

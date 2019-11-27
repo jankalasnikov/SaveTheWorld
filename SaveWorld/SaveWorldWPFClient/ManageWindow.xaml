@@ -8,9 +8,9 @@
         Title="ManageWindow" Height="750" Width="1400">
     <Grid>
         <Button Content="Users" HorizontalAlignment="Left" Margin="56,40,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Disasters" HorizontalAlignment="Left" Margin="56,125,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Disasters" HorizontalAlignment="Left" Margin="56,125,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Products" HorizontalAlignment="Left" Margin="56,207,0,0" VerticalAlignment="Top" Width="75"/>
-        <Frame Name="mainFrame" Content="Frame" HorizontalAlignment="Left" Height="640" Margin="244,40,0,0" VerticalAlignment="Top" Width="1120"/>
+        <Frame Name="mainFrame"  HorizontalAlignment="Left" Height="640" Margin="244,40,0,0" VerticalAlignment="Top" Width="1120"/>
 
     </Grid>
 </Window>

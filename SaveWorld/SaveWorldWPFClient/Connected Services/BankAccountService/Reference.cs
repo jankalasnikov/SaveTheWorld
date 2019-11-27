@@ -132,6 +132,12 @@ namespace SaveWorldWPFClient.BankAccountService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountAsync(int accountNumber);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccountById", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountByIdResponse")]
+        SaveWorldWPFClient.BankAccountService.BankAccountB GetBankAccountById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccountById", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountByIdResponse")]
+        System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountByIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/CheckBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/CheckBankAccountResponse")]
         bool CheckBankAccount(int accNo, System.DateTime expiryDate, int CCV);
         
@@ -184,6 +190,14 @@ namespace SaveWorldWPFClient.BankAccountService {
         
         public System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountAsync(int accountNumber) {
             return base.Channel.GetBankAccountAsync(accountNumber);
+        }
+        
+        public SaveWorldWPFClient.BankAccountService.BankAccountB GetBankAccountById(int id) {
+            return base.Channel.GetBankAccountById(id);
+        }
+        
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountByIdAsync(int id) {
+            return base.Channel.GetBankAccountByIdAsync(id);
         }
         
         public bool CheckBankAccount(int accNo, System.DateTime expiryDate, int CCV) {

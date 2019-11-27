@@ -41,6 +41,10 @@ namespace SaveWorldService
             return userCtr.GetUserIDByName(name);
         }
 
+        public bool UpdateUser(UserB user)
+        {
+            return userCtr.UpdateUser(user);
+        }
 
     }
 }

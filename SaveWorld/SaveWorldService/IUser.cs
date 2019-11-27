@@ -20,6 +20,8 @@ namespace SaveWorldService
 
         [OperationContract]
         int GetUserIDByName(string name);
+        [OperationContract]
+        bool UpdateUser(UserB user);
     }
 
 }

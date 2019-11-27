@@ -182,26 +182,45 @@ namespace SaveWorldController
             return userCorrect;
         }
 
-        /*  public void AddUser(User newUser)
-          {
+        public bool UpdateUser(UserB user)
+        {
+           
+            var updated = true;
 
-              auser usern = null;
-              using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var userId = user.UserId;
+                var userDatabase =
+                        (from p
+                        in NWEntities.Ausers
+                         where p.id == userId
+                         select p).FirstOrDefault();
+                // check product
+                if (userDatabase == null)
+                {
+                    throw new Exception("No user with ID " +
+                                        user.UserId);
+                }
 
-              {
-                  User user = new User()
-                  {
-                      UserId = newUser.UserId,
-                      Name = newUser.Name,
-                      Email = newUser.Email,
-                      Password = newUser.Password,
-                      Address = newUser.Address,
-                      Phone = newUser.Phone,
-                      TypeOfUser = newUser.TypeOfUser,
-                  };
-                  dbEntities.Ausers.Add(usern);
-                  dbEntities.SaveChanges();
-              }
-          }*/
+                // update product
+                userDatabase.name = user.Name;
+                userDatabase.email = user.Email;
+                userDatabase.password = user.Password;
+                userDatabase.phoneno = user.Phone;
+                userDatabase.address = user.Address;
+                userDatabase.accountId = user.BankAccountId;
+
+                NWEntities.Ausers.Attach(userDatabase);
+
+                /*If Attach is not called, RowVersion (from the database, not from the client) will be used when submitting to the database, even though you have updated its value before submitting to the database. An update will always succeed, but without a concurrency control.*/
+                NWEntities.Entry(userDatabase).State = System.Data.Entity.EntityState.Modified;
+
+              
+                var num = NWEntities.SaveChanges();
+
+               
+            }
+            return updated;
+        }
     }
 }
