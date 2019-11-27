@@ -54,7 +54,6 @@ namespace SaveWorldWPFClient
         private void btn_Shop(object sender, RoutedEventArgs e)
         {
             ShopPage shopPage = new ShopPage();
-            // this.Content = page1; it show only the page in tho whole window
             mainFrame.Navigate(shopPage);
 
         }
@@ -73,7 +72,7 @@ namespace SaveWorldWPFClient
         private void btn_LogIn(object sender, RoutedEventArgs e)
         {
             LogInPage page1 = new LogInPage();
-            // this.Content = page1; it show only the page in tho whole window
+            mainFrame.Content = null;
             mainFrame2.Navigate(page1);
 
         }

@@ -17,6 +17,9 @@ namespace SaveWorldService
 
         [OperationContract]
         void CreateUser(UserB newUser);
+
+        [OperationContract]
+        int GetUserIDByName(string name);
     }
 
 }

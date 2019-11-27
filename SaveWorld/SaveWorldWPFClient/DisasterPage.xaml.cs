@@ -30,11 +30,15 @@ namespace SaveWorldWPFClient
 
         DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
         BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
-        string disSelect;
+        string disSelect="";
         public DisasterPage()
         {
             InitializeComponent();
             loadAllDisasters();
+            Info_label.Content = "The user who has his aim and he know exactly the disaster that he want to donate he can just \r\n" +
+                "click on the choosen disaster and insert the amount that he want to donate\r\n" +
+                "and the amount will be translated directly from his bank account\r\n" +
+                "to the disaster bank account.  ";
         }
 
         public DisasterPage(int[] userInfo) : this()
@@ -88,6 +92,21 @@ namespace SaveWorldWPFClient
 
         private void btn_donateClick(object sender, RoutedEventArgs e)
         {
+            if(disSelect=="")
+            {
+                MessageBox.Show("You have to choose specific disaster!");
+                return;
+            }
+            if (txt_amount.Text=="")
+            {
+                MessageBox.Show("You have to insert the amount for donation!");
+                return;
+            }
+            if (usernId == 0)
+            {
+                MessageBox.Show("You have to log in before donation!");
+                return;
+            }
             double amount = 0.0;
             amount = double.Parse(txt_amount.Text);
 
@@ -96,8 +115,7 @@ namespace SaveWorldWPFClient
             disaster = disClient.GetDisasterByName(disSelect);
             int disasterBankAccId = disaster.DisasterBankAccountId;
 
-            MessageBox.Show(userBankAccId.ToString());
-
+            
             bool donate=bankClient.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
             if(donate)
             {
@@ -107,6 +125,7 @@ namespace SaveWorldWPFClient
             {
                 MessageBox.Show("Failed donation!");
             }
+            txt_amount.Text = "";
 
         }
     }

@@ -197,6 +197,12 @@ namespace SaveWorldWPFClient.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CreateUser", ReplyAction="http://tempuri.org/IUser/CreateUserResponse")]
         System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.UserB newUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserIDByName", ReplyAction="http://tempuri.org/IUser/GetUserIDByNameResponse")]
+        int GetUserIDByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserIDByName", ReplyAction="http://tempuri.org/IUser/GetUserIDByNameResponse")]
+        System.Threading.Tasks.Task<int> GetUserIDByNameAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -256,6 +262,14 @@ namespace SaveWorldWPFClient.UserService {
         
         public System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.UserB newUser) {
             return base.Channel.CreateUserAsync(newUser);
+        }
+        
+        public int GetUserIDByName(string name) {
+            return base.Channel.GetUserIDByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetUserIDByNameAsync(string name) {
+            return base.Channel.GetUserIDByNameAsync(name);
         }
     }
 }

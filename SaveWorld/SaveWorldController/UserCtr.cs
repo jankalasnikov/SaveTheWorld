@@ -39,6 +39,26 @@ namespace SaveWorldController
            
         }
 
+
+        public int GetUserIDByName(string name)
+        {
+            int id = 0;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+
+                var user = (from p in NWEntities.Ausers
+                            where p.name == name
+                            select p).FirstOrDefault();
+                if (user != null)
+                {
+                    id = user.id;
+                }
+            }
+            return id;
+
+        }
+
+
         public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc)
         {
            

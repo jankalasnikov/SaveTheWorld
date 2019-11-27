@@ -84,5 +84,13 @@ namespace SaveWorldWPFClient
             main.btn_log.Visibility = Visibility.Visible;
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainPage mainPage = new MainPage();
+            NavigationService.Navigate(mainPage);
+
+        }
     }
 }

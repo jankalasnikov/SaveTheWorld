@@ -36,6 +36,11 @@ namespace SaveWorldService
             userCtr.CreateUser(newUser);
         }
 
-      
+        public int GetUserIDByName(string name)
+        {
+            return userCtr.GetUserIDByName(name);
+        }
+
+
     }
 }
