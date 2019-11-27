@@ -20,9 +20,33 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class ManageDisasterPage : Page
     {
+
+        DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
+
         public ManageDisasterPage()
         {
             InitializeComponent();
+        }
+
+        private void loadAllDisasters()
+        {
+
+
+            string result = "";
+
+            var sb = new StringBuilder();
+            foreach (DisasterReferences.DisasterB d in disClient.GetAllDisasters())
+            {
+                sb.Append(d.Name);
+
+                result = sb.ToString();
+                txt_AllDisasters.Items.Add(result);
+                result = "";
+                sb.Clear();
+
+            }
+
+
         }
     }
 }
