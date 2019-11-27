@@ -1,5 +1,4 @@
-﻿using SaveWorldModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +23,9 @@ namespace SaveWorldWPFClient
         ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
         // ProductService.ProductB prodSelect = new ProductService.ProductB();
         string prodSelect;
+        List<int> productIndexes = new List<int>();
+
+        OrderServiceReference.OrderServiceClient orderClient = new OrderServiceReference.OrderServiceClient();
         public ShopPage()
         {
             InitializeComponent();
@@ -48,6 +50,9 @@ namespace SaveWorldWPFClient
                
                 result = sb.ToString();
                 listBox.Items.Add(result);
+
+                productIndexes.Add(d.ProductId);
+
                 result = "";
                 sb.Clear();
             }
@@ -91,6 +96,25 @@ namespace SaveWorldWPFClient
                 txt_stock.Text = p.Stock.ToString();
                 //  txt_size.Text = prodSelect.Size;
 
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem != null && txt_quntity.Text != null)
+            {
+                int quantity = Convert.ToInt32(txt_quntity.Text);
+                int minStock = Convert.ToInt32(txt_stock.Text);
+                if (quantity != 0 && quantity <= minStock)
+                {
+                    int productID = productIndexes[listBox.SelectedIndex];
+                    orderClient.AddOrderLine(productID, quantity);
+                    ListBoxItem listBoxItem = new ListBoxItem();
+                    string content = (listBox.Items[productID] as ListBoxItem).Content.ToString()
+                        + " x " + txt_quntity.Text;
+                    listBoxItem.Content = content;
+                    listBox_OrderLines.Items.Add(listBoxItem);
+                }
             }
         }
     }

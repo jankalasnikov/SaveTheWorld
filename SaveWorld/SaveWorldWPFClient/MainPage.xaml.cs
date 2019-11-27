@@ -97,9 +97,9 @@ namespace SaveWorldWPFClient
        
         private string GetUserName(int id)
         {
-            UserService.UserClient client = new UserService.UserClient();
+            UserServiceReference.UserClient client = new UserServiceReference.UserClient();
             string name = "";
-            UserService.UserB user = new UserService.UserB();
+            UserServiceReference.UserB user = new UserServiceReference.UserB();
             user = client.GetUser(id);
             name = user.Name;
             return name;
