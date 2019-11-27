@@ -91,6 +91,18 @@
     <Compile Include="DisasterPage.xaml.cs">
       <DependentUpon>DisasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageDisasterPage.xaml.cs">
+      <DependentUpon>ManageDisasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageProductsPage.xaml.cs">
+      <DependentUpon>ManageProductsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUserPage.xaml.cs">
+      <DependentUpon>ManageUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageWindow.xaml.cs">
+      <DependentUpon>ManageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +144,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManageDisasterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
