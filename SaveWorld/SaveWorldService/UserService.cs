@@ -31,9 +31,18 @@ namespace SaveWorldService
             return userbd;
         }
 
+        public UserB GetUserByName(string name)
+        {
+            return userCtr.GetUserByName(name);
+        }
         public void CreateUser(UserB newUser)
         {
             userCtr.CreateUser(newUser);
+        }
+
+        public bool CheckEmailIfExists(string email)
+        {
+            return userCtr.CheckEmailIfExists(email);
         }
 
         public int GetUserIDByName(string name)
@@ -46,9 +55,14 @@ namespace SaveWorldService
             return userCtr.UpdateUser(user);
         }
 
-        //public string GetAllUsers()
-        //{
-        //    return userCtr.GetAllUsers(name);
-        //}
+        public void DeleteUser(int id)
+        {
+            userCtr.DeleteUser(id);
+        }
+
+        public List<UserB> GetAllUsers()
+        {
+            return userCtr.GetAllUsers();
+        }
     }
 }

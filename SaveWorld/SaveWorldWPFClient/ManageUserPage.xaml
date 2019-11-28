@@ -9,14 +9,22 @@
       Title="ManageUserPage">
 
     <Grid>
-        <ListBox Name="userList" HorizontalAlignment="Left" Height="298" Margin="96,67,0,0" VerticalAlignment="Top" Width="235"/>
-        <TextBox Name="txt_Name" HorizontalAlignment="Left" Height="23" Margin="418,67,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="418,113,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Password" HorizontalAlignment="Left" Height="23" Margin="418,171,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="418,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_PhoneNo" HorizontalAlignment="Left" Height="23" Margin="418,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_TypeOfUser" HorizontalAlignment="Left" Height="23" Margin="418,342,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="418,406,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="528,406,0,0" VerticalAlignment="Top" Width="75"/>
+        <ListBox Name="userList" HorizontalAlignment="Left" Height="298" Margin="311,85,0,0" VerticalAlignment="Top" Width="235" SelectionChanged="UserList_SelectionChanged"/>
+        <TextBox Name="txt_Name" HorizontalAlignment="Left" Height="23" Margin="705,85,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="705,131,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="705,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_PhoneNo" HorizontalAlignment="Left" Height="23" Margin="705,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Password" HorizontalAlignment="Left" Height="23" Margin="705,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_TypeOfUser" HorizontalAlignment="Left" Height="23" Margin="705,328,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="720,428,0,0" VerticalAlignment="Top" Width="75" Click="Button_Update"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="311,428,0,0" VerticalAlignment="Top" Width="75" Click="Button_Delete"/>
+        <Label Content="User name is" HorizontalAlignment="Left" Margin="599,82,0,0" VerticalAlignment="Top"/>
+        <Label Content="User email is" HorizontalAlignment="Left" Margin="599,128,0,0" VerticalAlignment="Top"/>
+        <Label Content="User address is" HorizontalAlignment="Left" Margin="599,177,0,0" VerticalAlignment="Top"/>
+        <Label Content="User phone is" HorizontalAlignment="Left" Margin="599,228,0,0" VerticalAlignment="Top"/>
+        <Label Content="User password is" HorizontalAlignment="Left" Margin="599,276,0,0" VerticalAlignment="Top"/>
+        <Label Content="User type is" HorizontalAlignment="Left" Margin="599,325,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_ConfirmPass" HorizontalAlignment="Left" Height="23" Margin="975,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="User confirm password is" HorizontalAlignment="Left" Margin="833,276,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

@@ -180,6 +180,24 @@ namespace SaveWorldWPFClient.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUser", ReplyAction="http://tempuri.org/IUser/GetUserResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB> GetUserAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CheckEmailIfExists", ReplyAction="http://tempuri.org/IUser/CheckEmailIfExistsResponse")]
+        bool CheckEmailIfExists(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CheckEmailIfExists", ReplyAction="http://tempuri.org/IUser/CheckEmailIfExistsResponse")]
+        System.Threading.Tasks.Task<bool> CheckEmailIfExistsAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserByName", ReplyAction="http://tempuri.org/IUser/GetUserByNameResponse")]
+        SaveWorldWPFClient.UserService.UserB GetUserByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserByName", ReplyAction="http://tempuri.org/IUser/GetUserByNameResponse")]
+        System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB> GetUserByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetAllUsers", ReplyAction="http://tempuri.org/IUser/GetAllUsersResponse")]
+        SaveWorldWPFClient.UserService.UserB[] GetAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetAllUsers", ReplyAction="http://tempuri.org/IUser/GetAllUsersResponse")]
+        System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB[]> GetAllUsersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/AddUser", ReplyAction="http://tempuri.org/IUser/AddUserResponse")]
         void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc);
         
@@ -197,6 +215,12 @@ namespace SaveWorldWPFClient.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CreateUser", ReplyAction="http://tempuri.org/IUser/CreateUserResponse")]
         System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.UserB newUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/DeleteUser", ReplyAction="http://tempuri.org/IUser/DeleteUserResponse")]
+        void DeleteUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/DeleteUser", ReplyAction="http://tempuri.org/IUser/DeleteUserResponse")]
+        System.Threading.Tasks.Task DeleteUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserIDByName", ReplyAction="http://tempuri.org/IUser/GetUserIDByNameResponse")]
         int GetUserIDByName(string name);
@@ -246,6 +270,30 @@ namespace SaveWorldWPFClient.UserService {
             return base.Channel.GetUserAsync(id);
         }
         
+        public bool CheckEmailIfExists(string email) {
+            return base.Channel.CheckEmailIfExists(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckEmailIfExistsAsync(string email) {
+            return base.Channel.CheckEmailIfExistsAsync(email);
+        }
+        
+        public SaveWorldWPFClient.UserService.UserB GetUserByName(string name) {
+            return base.Channel.GetUserByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB> GetUserByNameAsync(string name) {
+            return base.Channel.GetUserByNameAsync(name);
+        }
+        
+        public SaveWorldWPFClient.UserService.UserB[] GetAllUsers() {
+            return base.Channel.GetAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB[]> GetAllUsersAsync() {
+            return base.Channel.GetAllUsersAsync();
+        }
+        
         public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc) {
             base.Channel.AddUser(name, password, typeOfUser, email, address, phone, bankAcc);
         }
@@ -268,6 +316,14 @@ namespace SaveWorldWPFClient.UserService {
         
         public System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.UserB newUser) {
             return base.Channel.CreateUserAsync(newUser);
+        }
+        
+        public void DeleteUser(int id) {
+            base.Channel.DeleteUser(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteUserAsync(int id) {
+            return base.Channel.DeleteUserAsync(id);
         }
         
         public int GetUserIDByName(string name) {

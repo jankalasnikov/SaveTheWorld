@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="ManageWindow" Height="750" Width="1400">
     <Grid>
-        <Button Content="Users" HorizontalAlignment="Left" Margin="56,40,0,0" VerticalAlignment="Top" Width="75" Click="MangeUsr"/>
-        <Button Content="Disasters" HorizontalAlignment="Left" Margin="56,125,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Products" HorizontalAlignment="Left" Margin="56,207,0,0" VerticalAlignment="Top" Width="75" Click="ManageProd"/>
-        <Frame Name="mainFrame"  HorizontalAlignment="Left" Height="640" Margin="244,40,0,0" VerticalAlignment="Top" Width="1120"/>
+        <Button Content="Users" HorizontalAlignment="Left" Margin="64,60,0,0" VerticalAlignment="Top" Width="76" Click="MangeUsr"/>
+        <Button Content="Disasters" HorizontalAlignment="Left" Margin="64,120,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Products" HorizontalAlignment="Left" Margin="64,180,0,0" VerticalAlignment="Top" Width="75" Click="ManageProd"/>
+        <Frame BorderThickness="1" BorderBrush="Black" Name="mainFrame"  HorizontalAlignment="Left" Height="684" Margin="244,10,0,0" VerticalAlignment="Top" Width="1120"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="684" VerticalAlignment="Top" Width="186" Margin="10,10,0,0"/>
 
     </Grid>
 </Window>

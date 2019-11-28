@@ -75,6 +75,9 @@ namespace SaveWorldWPFClient
             MainPage main = new MainPage(userInfo);
 
             NavigationService.Navigate(main);
+            main.btn_logOut.Visibility = Visibility.Visible;
+            main.btn_log.Visibility = Visibility.Visible;
+            main.btn_profile.Visibility = Visibility.Visible;
         }
 
         private UserService.UserB CreateNewUser()
@@ -104,8 +107,16 @@ namespace SaveWorldWPFClient
             }
             if (txt_email != null)
             {
-                newOne.Email = txt_email.Text;
+               
                 email = txt_email.Text;
+                if(!client.CheckEmailIfExists(email))
+                {
+                    newOne.Email = txt_email.Text;
+                }
+                else
+                {
+                    MessageBox.Show("This email already exists!");
+                }
             }
 
             if (txt_address != null)

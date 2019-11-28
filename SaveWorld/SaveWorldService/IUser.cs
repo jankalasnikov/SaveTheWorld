@@ -1,4 +1,5 @@
 ﻿using SaveWorldModel;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace SaveWorldService
@@ -9,6 +10,16 @@ namespace SaveWorldService
     {
         [OperationContract]
         UserB GetUser(int id);
+
+        [OperationContract]
+        bool CheckEmailIfExists(string email);
+
+        [OperationContract]
+        UserB GetUserByName(string name);
+
+        [OperationContract]
+        List<UserB> GetAllUsers();
+
         [OperationContract]
         void AddUser(string name, string password, int typeOfUser, string email, string address, string phone,int bankAcc);
 
@@ -17,6 +28,9 @@ namespace SaveWorldService
 
         [OperationContract]
         void CreateUser(UserB newUser);
+
+        [OperationContract]
+        void DeleteUser(int id);
 
         [OperationContract]
         int GetUserIDByName(string name);

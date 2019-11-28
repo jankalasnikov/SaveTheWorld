@@ -23,7 +23,7 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="463,89,0,0" TextWrapping="Wrap" x:Name="txt_profileCCv" VerticalAlignment="Top" Width="120"/>
         <Label Content="Expiry date" HorizontalAlignment="Left" Margin="332,137,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="463,140,0,0" TextWrapping="Wrap" x:Name="txt_profileExpiryDate" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="634,361,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="634,361,0,0" VerticalAlignment="Top" Width="75" Click="Button_Update"/>
         <Label Content="Confirm password" HorizontalAlignment="Left" Margin="49,297,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="153,300,0,0" TextWrapping="Wrap" x:Name="txt_profileConfirmPass" VerticalAlignment="Top" Width="120"/>
 

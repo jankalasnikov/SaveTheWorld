@@ -39,34 +39,74 @@ namespace SaveWorldController
            
         }
 
-        //public DisasterB GetAllUsers(string name)
-        //{
-        //    UserB userName = null;
-        //    using (var NWEntities = new SaveWorldEntities())
-        //    {
 
-        //        var user = (from p in NWEntities.Ausers
-        //                    where p.name == name
-        //                    select p).FirstOrDefault();
-        //        if (user != null)
-        //            userName = new UserB()
-        //            {
-        //                UserId = user.id,
-        //                Name = user.name,
-        //                Email = user.email,
-        //                Password = user.password,
-        //                Address = user.address,
-        //                Phone = user.phoneno,
-        //                TypeOfUser = user.typeOfUser,
-        //                BankAccountId = (int)user.accountId,
+        public UserB GetUserByName(string name)
+        {
+            UserB userData = null;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var user = (from p in NWEntities.Ausers
+                           where p.name == name
+                           select p).FirstOrDefault();
+                if (user != null)
+                    userData = new UserB()
+                    {
+                        UserId = user.id,
+                        Name = user.name,
+                        Email = user.email,
+                        Address = user.address,
+                        Phone = user.phoneno,
+                        Password = user.password,
+                        BankAccountId = (int)user.accountId,
+                        TypeOfUser = user.typeOfUser,
+                    };
+            }
+            return userData;
+        }
 
-        //            };
-        //    }
-        //    return userName;
-        //}
+        public List<UserB> GetAllUsers()
+        {
+            List<UserB> list = new List<UserB>();
+            using (SaveWorldEntities NWEntities = new SaveWorldEntities())
+            {
+                var ptx = (from r in NWEntities.Ausers select r);
+                var allRows = NWEntities.Ausers.ToList();
 
+                for (int i = 0; i < allRows.Count; i++)
+                {
+                    UserB usr = new UserB();
+                    usr.Name = allRows[i].name;
+                    usr.UserId = allRows[i].id;
+                    usr.Email = allRows[i].email;
+                    usr.Password = allRows[i].password;
+                    usr.Phone = allRows[i].phoneno;
+                    usr.BankAccountId = (int)allRows[i].accountId;
+                    usr.Address = allRows[i].address;
+                    list.Add(usr);
 
-            public int GetUserIDByName(string name)
+                }
+            }
+            return list;
+        }
+
+        public void DeleteUser(int id)
+        {
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var usr = (from p in NWEntities.Ausers
+                               where p.id == id
+                               select p).FirstOrDefault();
+                if (usr != null)
+
+                {
+
+                    NWEntities.Ausers.Remove(usr);
+                    NWEntities.SaveChanges();
+                };
+            }
+        }
+
+        public int GetUserIDByName(string name)
         {
             int id = 0;
             using (var NWEntities = new SaveWorldEntities())
@@ -104,7 +144,7 @@ namespace SaveWorldController
                     typeOfUser = typeOfUser,
                     accountId = bankAcc,
                 };
-
+                   
                 dbEntities.Ausers.Add(user);
                 dbEntities.SaveChanges();
                
@@ -127,12 +167,26 @@ namespace SaveWorldController
             }
         }
 
+        public bool CheckEmailIfExists(string email)
+        {
+            bool exist = false;
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            {
+                if (dbEntities.Ausers.Any(o => o.email == email))
+                {
+                    exist = true;
+                }
+            }
+            return exist;
+        }
+
         public void CreateUser(UserB newUser)
         {
 
             using (SaveWorldEntities dbEntities = new SaveWorldEntities())
-
             {
+                if (dbEntities.Ausers.Any(o => o.email == newUser.Email))
+                { return; }
 
                 auser user = new auser()
                 {
@@ -221,14 +275,13 @@ namespace SaveWorldController
                         in NWEntities.Ausers
                          where p.id == userId
                          select p).FirstOrDefault();
-                // check product
+            
                 if (userDatabase == null)
                 {
                     throw new Exception("No user with ID " +
                                         user.UserId);
                 }
 
-                // update product
                 userDatabase.name = user.Name;
                 userDatabase.email = user.Email;
                 userDatabase.password = user.Password;
@@ -238,7 +291,7 @@ namespace SaveWorldController
 
                 NWEntities.Ausers.Attach(userDatabase);
 
-                /*If Attach is not called, RowVersion (from the database, not from the client) will be used when submitting to the database, even though you have updated its value before submitting to the database. An update will always succeed, but without a concurrency control.*/
+               
                 NWEntities.Entry(userDatabase).State = System.Data.Entity.EntityState.Modified;
 
               

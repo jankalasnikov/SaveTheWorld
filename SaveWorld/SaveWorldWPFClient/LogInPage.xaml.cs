@@ -73,6 +73,7 @@ namespace SaveWorldWPFClient
             else
             {
                 MessageBox.Show("You entered wrong password or email. Try again!");
+                return;
             }
 
 

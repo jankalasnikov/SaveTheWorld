@@ -164,7 +164,7 @@ namespace SaveWorldController
                                where p.id == id
                                select p).FirstOrDefault();
                 if (product != null)
-                    //prodData = delete Product()
+                   
                     {
                    
                     dbEntities.Aproduct.Remove(product);
