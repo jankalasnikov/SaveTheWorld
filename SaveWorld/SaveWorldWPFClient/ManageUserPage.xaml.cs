@@ -32,7 +32,7 @@ namespace SaveWorldWPFClient
             string result = "";
 
             var sb = new StringBuilder();
-            foreach (UserService.UserB d in usrClient.())
+            /*foreach (UserService.UserB d in usrClient.())
             {
                 sb.Append(d.Name);
 
@@ -41,7 +41,7 @@ namespace SaveWorldWPFClient
                 result = "";
                 sb.Clear();
 
-            }
+            }*/
         }
     }
 }
