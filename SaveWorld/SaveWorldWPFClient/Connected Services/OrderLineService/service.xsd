@@ -15,4 +15,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveOrderLineAndReturnStock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idToRemoveOrderLine" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOrderLineAndReturnStockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveOrderLineAndReturnStockResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

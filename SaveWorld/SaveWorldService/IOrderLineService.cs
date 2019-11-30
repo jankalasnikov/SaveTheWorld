@@ -13,5 +13,7 @@ namespace SaveWorldService
     {
         [OperationContract]
         OrderLine CreateOrderLine(OrderLine newOrderLine);
+        [OperationContract]
+        int RemoveOrderLineAndReturnStock(int idToRemoveOrderLine);
     }
 }

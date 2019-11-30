@@ -165,6 +165,12 @@ namespace SaveWorldWPFClient.ProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/RemoveStockFromProduct", ReplyAction="http://tempuri.org/IProductService/RemoveStockFromProductResponse")]
         System.Threading.Tasks.Task RemoveStockFromProductAsync(int id, int removeQuantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ReturnStock", ReplyAction="http://tempuri.org/IProductService/ReturnStockResponse")]
+        void ReturnStock(int idOfProduct, int returnQuantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ReturnStock", ReplyAction="http://tempuri.org/IProductService/ReturnStockResponse")]
+        System.Threading.Tasks.Task ReturnStockAsync(int idOfProduct, int returnQuantity);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -224,6 +230,14 @@ namespace SaveWorldWPFClient.ProductService {
         
         public System.Threading.Tasks.Task RemoveStockFromProductAsync(int id, int removeQuantity) {
             return base.Channel.RemoveStockFromProductAsync(id, removeQuantity);
+        }
+        
+        public void ReturnStock(int idOfProduct, int returnQuantity) {
+            base.Channel.ReturnStock(idOfProduct, returnQuantity);
+        }
+        
+        public System.Threading.Tasks.Task ReturnStockAsync(int idOfProduct, int returnQuantity) {
+            return base.Channel.ReturnStockAsync(idOfProduct, returnQuantity);
         }
     }
 }
