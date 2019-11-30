@@ -16,5 +16,10 @@ namespace SaveWorldService
           return orderLineCtr.CreateOrderLine(newOrderLine);
 
         }
+
+        public int RemoveOrderLineAndReturnStock(int idToRemoveOrderLine)
+        {
+            return orderLineCtr.RemoveOrderLineAndReturnStock(idToRemoveOrderLine);
+        }
     }
 }

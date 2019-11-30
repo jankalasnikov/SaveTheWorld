@@ -45,5 +45,25 @@ namespace SaveWorldController
 
             }
         }
+
+        public int RemoveOrderLineAndReturnStock(int idToRemoveOrderLine)
+        {
+            int stock=0;
+          
+                using (var NWEntities = new SaveWorldEntities())
+                {
+                    var orderLine = (from p in NWEntities.OrderLine
+                               where p.id == idToRemoveOrderLine
+                               select p).FirstOrDefault();
+                    if (orderLine != null)
+
+                    {
+                        stock = orderLine.quantity;
+                        NWEntities.OrderLine.Remove(orderLine);
+                        NWEntities.SaveChanges();
+                    };
+                }
+            return stock;
+        }
     }
 }

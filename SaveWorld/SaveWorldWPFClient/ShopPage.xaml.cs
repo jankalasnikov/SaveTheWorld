@@ -23,6 +23,7 @@ namespace SaveWorldWPFClient
         public int usernId;
         public int userBankAccId;
         public int userType;
+        public int idToRemoveOrderLine;
 
         OrderLineService.OrderLineServiceClient orderLineClient = new OrderLineService.OrderLineServiceClient();
         ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
@@ -184,7 +185,7 @@ namespace SaveWorldWPFClient
                     removeOrderLine = (string)listBox_OrderLines.SelectedItem;
                     int indexDot = removeOrderLine.IndexOf(".");
                     idOfOrder = removeOrderLine.Substring(0, indexDot);
-               
+                    idToRemoveOrderLine = Int32.Parse(idOfOrder);
                     
 
                 }
@@ -193,6 +194,57 @@ namespace SaveWorldWPFClient
 
         private void btn_Remove_Click(object sender, RoutedEventArgs e)
         {
+
+
+            if (removeOrderLine == null)
+            {
+                MessageBox.Show("You have to choose order line!");
+                return;
+            }
+           
+            if (usernId == 0)
+            {
+                MessageBox.Show("You have to log in before manage order line!");
+                return;
+            }
+
+            int returnStock = 0;
+            int idOfProduct = 0;
+            
+            for (int i=0; i<orderLinesToOrder.Count;i++)
+            {
+               
+                if(orderLinesToOrder[i].OrderLineId==idToRemoveOrderLine)
+                {
+                    returnStock = orderLineClient.RemoveOrderLineAndReturnStock(idToRemoveOrderLine);
+                    idOfProduct = orderLinesToOrder[i].ProductID;
+                    orderLinesToOrder.RemoveAt(i);
+                }
+            }
+            prodClient.ReturnStock(idOfProduct, returnStock);
+
+            listBox_OrderLines.Items.Clear();
+            foreach (OrderLineService.OrderLine ol in orderLinesToOrder)
+            {
+
+                string result = "";
+                var sb = new StringBuilder();
+                ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
+                ProductService.ProductB prod = new ProductService.ProductB();
+                prod = prodClient.GetProduct(ol.ProductID);
+                sb.Append(ol.OrderLineId + ". " + prod.ProductName + " " + ol.Quantity + "x" + prod.Price);
+
+                result = sb.ToString();
+                listBox_OrderLines.Items.Add(result);
+                result = "";
+                sb.Clear();
+
+            }
+            txt_quntity.Text = "";
+            txt_stock.Text = "";
+            txt_price.Text = "";
+            txt_describtion.Text = "";
+            listBox.SelectedItem = null;
 
         }
     }

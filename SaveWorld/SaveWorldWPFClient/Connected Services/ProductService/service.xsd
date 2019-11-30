@@ -54,4 +54,17 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="ReturnStock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idOfProduct" type="xs:int" />
+        <xs:element minOccurs="0" name="returnQuantity" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnStockResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
