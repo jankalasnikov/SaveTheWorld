@@ -83,7 +83,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\OrderServiceReference\Reference.cs">
+    <Compile Include="Connected Services\OrderLineService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -232,11 +232,17 @@
     <None Include="Connected Services\DisasterReferences\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\OrderServiceReference\service.wsdl" />
-    <None Include="Connected Services\OrderServiceReference\service.xsd">
+    <None Include="Connected Services\OrderLineService\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\OrderServiceReference\service1.xsd">
+    <None Include="Connected Services\OrderLineService\SaveWorldWPFClient.OrderLineService.OrderLine.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OrderLineService\service.wsdl" />
+    <None Include="Connected Services\OrderLineService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderLineService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ProductService\SaveWorldModel.xsd">
@@ -283,7 +289,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\BankAccountService\" />
     <WCFMetadataStorage Include="Connected Services\DisasterReferences\" />
-    <WCFMetadataStorage Include="Connected Services\OrderServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\OrderLineService\" />
     <WCFMetadataStorage Include="Connected Services\ProductService\" />
     <WCFMetadataStorage Include="Connected Services\UserService\" />
   </ItemGroup>
@@ -354,18 +360,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\OrderServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\OrderServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\OrderServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\UserService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -373,6 +367,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\UserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderLineService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderLineService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderLineService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

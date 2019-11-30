@@ -25,6 +25,7 @@ namespace SaveWorldWPFClient
     {
         private UserClient client = new UserClient();
         private string[] userInfo = new string[3];
+       /* string regexForEmail = "([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";*/
         public RegistrationPage()
         {
             InitializeComponent();
@@ -166,7 +167,7 @@ namespace SaveWorldWPFClient
                 {
                     bankNo = Int32.Parse(txt_accountNo.Text);
                 }
-                catch (Exception h)
+                catch (Exception )
                 {
                     MessageBox.Show("Please provide number only");
                     return false;
@@ -179,7 +180,7 @@ namespace SaveWorldWPFClient
                 {
                     expiryDate = Convert.ToDateTime(txt_expiryDate.Text);
                 }
-                catch (Exception h)
+                catch (Exception )
 
                 {
                     MessageBox.Show("Please insert date like this yyyy-mm-yy!");
@@ -192,7 +193,7 @@ namespace SaveWorldWPFClient
                 {
                     CCV = Int32.Parse(txt_CCV.Text);
                 }
-                catch (Exception h)
+                catch (Exception)
 
                 {
                     MessageBox.Show("Please insert only numbers like this 111!");

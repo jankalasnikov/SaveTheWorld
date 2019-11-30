@@ -89,7 +89,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
 	CREATE TABLE product (
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 		productName VARCHAR(100) NOT NULL,
-		price FLOAT NOT NULL,
+		price decimal NOT NULL,
 		description VARCHAR(5000) NOT NULL,
 		minStock INT NOT NULL, 
 		/*property int FOREIGN KEY REFERENCES property(id),*/
@@ -103,8 +103,9 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='orderLine' and xtype='U')
 	CREATE TABLE orderLine (
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 		productId int FOREIGN KEY REFERENCES product(id),
-	    quantity float NOT NULL,
+	    quantity int NOT NULL,
 	    orderId int FOREIGN KEY REFERENCES tbOrder(id),
+		price decimal NOT NULL,
 	)
 
 GO

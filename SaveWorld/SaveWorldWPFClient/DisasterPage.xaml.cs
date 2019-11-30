@@ -22,8 +22,6 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class DisasterPage : Page
     {
-        //private int[] userInfo = new int[3];
-      
         public int usernId;
         public int userBankAccId;
         public int userType;

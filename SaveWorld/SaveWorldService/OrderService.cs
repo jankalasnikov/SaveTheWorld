@@ -8,9 +8,9 @@ using SaveWorldModel;
 
 namespace SaveWorldService
 {
-    public class OrderService : IOrderService
+    public class OrderService 
     {
-        OrderCtr orderCtr = new OrderCtr();
+       /* OrderCtr orderCtr = new OrderCtr();
         Order ord = new Order();
         public string GetDates()
         {
@@ -29,6 +29,6 @@ namespace SaveWorldService
         public void RemoveOrderLine(int productId)
         {
             orderCtr.RemoveOrderLine(productId);
-        }
+        }*/
     }
 }

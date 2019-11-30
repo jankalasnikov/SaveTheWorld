@@ -13,7 +13,6 @@ namespace SaveWorldModel
         [DataMember]
         public DateTime orderDate { get; set; }
         [DataMember]
-        public List<OrderLine> OrderLines { get; set; } = new List<OrderLine>();
-
+        public decimal Price { get; set; }
     }
 }

@@ -32,6 +32,27 @@ namespace SaveWorldController
             return prodData;
         }
 
+        public void RemoveStockFromProduct(int id, int removeQuantity)
+        {
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            {
+
+                var product = (from p in dbEntities.Products
+                               where p.id == id
+                               select p).FirstOrDefault();
+                if (product != null)
+                {
+                    product.minStock -= removeQuantity;
+                }
+
+              
+
+                dbEntities.SaveChanges();
+
+               
+
+            }
+        }
 
         public ProductB GetProductByName(string name)
         {

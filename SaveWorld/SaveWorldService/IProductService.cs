@@ -19,5 +19,8 @@ namespace SaveWorldService
 
         [OperationContract]
         List<ProductB> GetAllProduct();
+
+        [OperationContract]
+        void RemoveStockFromProduct(int id, int removeQuantity);
     }
 }

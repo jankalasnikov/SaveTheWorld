@@ -53,7 +53,7 @@ namespace SaveWorldWPFClient
 
         private void btn_Shop(object sender, RoutedEventArgs e)
         {
-            ShopPage shopPage = new ShopPage();
+            ShopPage shopPage = new ShopPage(userInfoData);
             mainFrame.Navigate(shopPage);
 
         }

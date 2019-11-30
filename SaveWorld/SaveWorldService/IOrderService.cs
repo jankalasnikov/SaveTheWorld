@@ -10,13 +10,13 @@ namespace SaveWorldService
     [ServiceContract]
     public interface IOrderService
     {
-        [OperationContract]
+       /* [OperationContract]
         string GetDates();
 
         [OperationContract]
         void AddOrderLine(int productId, int quantity);
         [OperationContract]
         void RemoveOrderLine(int productId);
- 
+ */
     }
 }

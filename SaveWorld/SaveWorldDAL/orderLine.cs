@@ -16,8 +16,9 @@ namespace SaveWorldDAL
     {
         public int id { get; set; }
         public Nullable<int> productId { get; set; }
-        public double quantity { get; set; }
+        public int quantity { get; set; }
         public Nullable<int> orderId { get; set; }
+        public decimal price { get; set; }
     
         public virtual tbOrder tbOrder { get; set; }
         public virtual product product { get; set; }

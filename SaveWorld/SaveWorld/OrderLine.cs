@@ -11,10 +11,15 @@ namespace SaveWorldModel
     public class OrderLine
     {
         [DataMember]
+        public int OrderLineId { get; set; }
+        [DataMember]
         public int Quantity { get; set; }
         [DataMember]
         public int ProductID { get; set; }
-
+        [DataMember]
+        public int OrderID { get; set; }
+        [DataMember]
+        public decimal Price { get; set; }
 
     }
 }

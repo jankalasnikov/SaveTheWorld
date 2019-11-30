@@ -9,40 +9,31 @@
       Title="ShopPage">
 
     <Grid>
-        <Label Content="Product List" HorizontalAlignment="Left" Margin="170,87,0,0" VerticalAlignment="Top"/>
+        <Label Content="Product List" HorizontalAlignment="Left" Margin="170,87,0,0" VerticalAlignment="Top" FontSize="18" FontStyle="Italic" FontWeight="Bold"/>
         <ListBox Name="listBox" HorizontalAlignment="Left" Height="100" Margin="170,131,0,0" VerticalAlignment="Top" Width="152" SelectionChanged="ListBox_SelectionChanged"/>
-        <Button Content="Select" HorizontalAlignment="Left" Margin="170,264,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox Name="txt_describtion" HorizontalAlignment="Left" Height="50" Margin="463,131,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="166"/>
         <TextBox Name="txt_price" HorizontalAlignment="Left" Height="23" Margin="463,205,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_stock" HorizontalAlignment="Left" Height="23" Margin="463,250,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox Name="txt_stock" HorizontalAlignment="Left" Height="23" Margin="463,250,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
         <Label Content="Product description" HorizontalAlignment="Left" Margin="330,131,0,0" VerticalAlignment="Top"/>
         <Label Content="Price" HorizontalAlignment="Left" Margin="330,202,0,0" VerticalAlignment="Top"/>
         <Label Content="Stock" HorizontalAlignment="Left" Margin="330,250,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txt_color" HorizontalAlignment="Left" Height="23" Margin="463,294,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox Name="txt_color" HorizontalAlignment="Left" Height="23" Margin="463,294,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
         <Label Content="" HorizontalAlignment="Left" Margin="330,292,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="listBox_OrderLines" HorizontalAlignment="Left" Height="311" Margin="906,87,0,0" VerticalAlignment="Top" Width="260" />
-        <Label Content="Order " HorizontalAlignment="Left" Margin="906,43,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="listBox_OrderLines" HorizontalAlignment="Left" Height="311" Margin="906,87,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="ListBox_OrderLines_SelectionChanged" />
+        <Label Content="Order " HorizontalAlignment="Left" Margin="906,43,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" FontStyle="Italic"/>
         <Label Content="Color" HorizontalAlignment="Left" Margin="330,291,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txt_quntity" HorizontalAlignment="Left" Height="23" Margin="284,403,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox Name="txt_quntity" HorizontalAlignment="Left" Height="23" Margin="284,403,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="206,401,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.318,1.785"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="499,407,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.365,0.325" Click="Button_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="499,407,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.365,0.325" Click="Button_Add"/>
         <Button Content="Finish" HorizontalAlignment="Left" Margin="906,426,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="-0.365,0.325"/>
         <Label Content="Size" HorizontalAlignment="Left" Margin="330,336,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txt_size" HorizontalAlignment="Left" Height="23" Margin="463,339,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox Name="txt_size" HorizontalAlignment="Left" Height="23" Margin="463,339,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="120" Margin="170,488,0,0" VerticalAlignment="Top" Width="1078">
             <Label Name="Information_label" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="1,1,-1,-1"  />
 
         </Border>
-        <Button x:Name="btn_Remove" Content="Remove" HorizontalAlignment="Left" Margin="1227,264,0,0" VerticalAlignment="Top" Width="75" ClipToBounds="True" RenderTransformOrigin="0.5,0.5" Click="btn_Remove_Click">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.693"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
+        <Button Name="btn_Remove" Content="Remove" HorizontalAlignment="Left" Margin="1014,426,0,0" VerticalAlignment="Top" Width="75"  Click="btn_Remove_Click"/>
+
 
     </Grid>
 </Page>

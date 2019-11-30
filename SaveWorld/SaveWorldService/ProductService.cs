@@ -58,6 +58,11 @@ namespace SaveWorldService
             return prod;
         }
 
+        public void RemoveStockFromProduct(int id, int removeQuantity)
+        {
+            prodCtr.RemoveStockFromProduct(id, removeQuantity);
+        }
+
         public List<ProductB> GetAllProduct()
         {
             return prodCtr.GetAllProduct();

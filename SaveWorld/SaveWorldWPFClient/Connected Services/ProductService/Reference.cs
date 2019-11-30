@@ -23,7 +23,7 @@ namespace SaveWorldWPFClient.ProductService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double PriceField;
+        private decimal PriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductDescriptionField;
@@ -51,7 +51,7 @@ namespace SaveWorldWPFClient.ProductService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Price {
+        public decimal Price {
             get {
                 return this.PriceField;
             }
@@ -159,6 +159,12 @@ namespace SaveWorldWPFClient.ProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProduct", ReplyAction="http://tempuri.org/IProductService/GetAllProductResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.ProductService.ProductB[]> GetAllProductAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/RemoveStockFromProduct", ReplyAction="http://tempuri.org/IProductService/RemoveStockFromProductResponse")]
+        void RemoveStockFromProduct(int id, int removeQuantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/RemoveStockFromProduct", ReplyAction="http://tempuri.org/IProductService/RemoveStockFromProductResponse")]
+        System.Threading.Tasks.Task RemoveStockFromProductAsync(int id, int removeQuantity);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -210,6 +216,14 @@ namespace SaveWorldWPFClient.ProductService {
         
         public System.Threading.Tasks.Task<SaveWorldWPFClient.ProductService.ProductB[]> GetAllProductAsync() {
             return base.Channel.GetAllProductAsync();
+        }
+        
+        public void RemoveStockFromProduct(int id, int removeQuantity) {
+            base.Channel.RemoveStockFromProduct(id, removeQuantity);
+        }
+        
+        public System.Threading.Tasks.Task RemoveStockFromProductAsync(int id, int removeQuantity) {
+            return base.Channel.RemoveStockFromProductAsync(id, removeQuantity);
         }
     }
 }

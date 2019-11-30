@@ -25,6 +25,12 @@
   <wsdl:message name="IProductService_GetAllProduct_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllProductResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_RemoveStockFromProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveStockFromProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_RemoveStockFromProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveStockFromProductResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="GetProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetProduct" message="tns:IProductService_GetProduct_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="GetAllProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetAllProduct" message="tns:IProductService_GetAllProduct_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetAllProductResponse" message="tns:IProductService_GetAllProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStockFromProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/RemoveStockFromProduct" message="tns:IProductService_RemoveStockFromProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/RemoveStockFromProductResponse" message="tns:IProductService_RemoveStockFromProduct_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllProduct">
       <soap:operation soapAction="http://tempuri.org/IProductService/GetAllProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveStockFromProduct">
+      <soap:operation soapAction="http://tempuri.org/IProductService/RemoveStockFromProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

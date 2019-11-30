@@ -9,7 +9,7 @@ namespace SaveWorldController
 {
     public class OrderCtr
     {
-        Order Order { get; set; } = new Order();
+      /*  Order Order { get; set; } = new Order();
         public string GetDate()
         {
             return "today";
@@ -40,6 +40,6 @@ namespace SaveWorldController
         public void RemoveOrderLine(int productId)
         {
             Order.OrderLines.RemoveAll(orderLine => orderLine.ProductID == productId);
-        }
+        }*/
     }
 }
