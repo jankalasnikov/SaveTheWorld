@@ -10,12 +10,12 @@
 
     <Grid>
         <ListBox Name="txt_AllDisasters" HorizontalAlignment="Left" Height="298" Margin="96,67,0,0" VerticalAlignment="Top" Width="235"/>
-        <TextBox Name="txt_ProductName" HorizontalAlignment="Left" Height="23" Margin="418,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_ProductDescription" HorizontalAlignment="Left" Height="23" Margin="418,113,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Price" HorizontalAlignment="Left" Height="23" Margin="418,171,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Stock" HorizontalAlignment="Left" Height="23" Margin="418,222,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Size" HorizontalAlignment="Left" Height="23" Margin="418,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_DisasterName" HorizontalAlignment="Left" Height="23" Margin="418,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_DisasterDescription" HorizontalAlignment="Left" Height="23" Margin="418,113,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Priority" HorizontalAlignment="Left" Height="23" Margin="418,171,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Victims" HorizontalAlignment="Left" Height="23" Margin="418,222,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Region" HorizontalAlignment="Left" Height="23" Margin="418,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="418,350,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="522,351,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="Button_Delete" Content="Delete" HorizontalAlignment="Left" Margin="522,351,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Page>

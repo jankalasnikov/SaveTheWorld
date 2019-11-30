@@ -59,5 +59,75 @@ namespace SaveWorldController
             }
             return disData;
         }
+
+        public bool CheckNameIfExists(string name)
+        {
+            bool exist = false;
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            {
+                if (dbEntities.Disasters.Any(o => o.disasterName == name))
+                {
+                    exist = true;
+                }
+            }
+            return exist;
+        }
+
+        public void DeleteDisaster(string name)
+        {
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var disaster = (from p in NWEntities.Disasters
+                           where p.disasterName == name
+                           select p).FirstOrDefault();
+                if (disaster != null)
+
+                {
+
+                    NWEntities.Disasters.Remove(disaster);
+                    NWEntities.SaveChanges();
+                };
+            }
+        }
+
+        public bool UpdateDisaster(DisasterB disaster)
+        {
+
+            var updated = true;
+
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var disasterId = disaster.DisasterId;
+                var disasterDatabse =
+                        (from p
+                        in NWEntities.Disasters
+                         where p.id == disasterId
+                         select p).FirstOrDefault();
+
+                if (disasterDatabse == null)
+                {
+                    throw new Exception("No disaster with ID " +
+                                        disaster.DisasterId);
+                }
+
+                disasterDatabse.disasterName = disaster.Name;
+                disasterDatabse.description = disaster.Description;
+                disasterDatabse.priority = disaster.Priority;
+                disasterDatabse.region = disaster.Region;
+                disasterDatabse.victims = disaster.Victims;
+
+
+                NWEntities.Disasters.Attach(disasterDatabse);
+
+
+                NWEntities.Entry(disasterDatabse).State = System.Data.Entity.EntityState.Modified;
+
+
+                var num = NWEntities.SaveChanges();
+
+
+            }
+            return updated;
+        }
     }
 }

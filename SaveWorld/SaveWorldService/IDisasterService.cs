@@ -18,5 +18,14 @@ namespace SaveWorldService
 
         [OperationContract]
         DisasterB GetDisasterByName(string name);
+
+        [OperationContract]
+        bool UpdateDisaster(DisasterB disaster);
+
+        [OperationContract]
+        void DeleteDisaster(string name);
+
+        [OperationContract]
+        bool CheckNameIfExists(string name);
     }
 }

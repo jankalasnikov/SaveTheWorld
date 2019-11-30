@@ -101,7 +101,7 @@ namespace SaveWorldWPFClient
             }
             else
             {
-                MessageBox.Show("Passwords are not match!");
+                MessageBox.Show("Passwords does not match!");
                 return;
             }
           
