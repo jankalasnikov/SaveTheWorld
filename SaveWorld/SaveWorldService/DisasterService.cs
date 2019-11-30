@@ -20,6 +20,21 @@ namespace SaveWorldService
         {
             return disCtr.GetDisasterByName(name);
         }
-        
+
+        public bool CheckNameIfExists(string name)
+        {
+            return disCtr.CheckNameIfExists(name);
+        }
+
+        public bool UpdateDisaster(DisasterB disaster)
+        {
+            return disCtr.UpdateDisaster(disaster);
+        }
+
+        public void DeleteDisaster(string name)
+        {
+            disCtr.DeleteDisaster(name);
+        }
+
     }
 }

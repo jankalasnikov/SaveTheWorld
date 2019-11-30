@@ -21,8 +21,9 @@ namespace SaveWorldWPFClient
     public partial class ManageDisasterPage : Page
     {
 
+        string disSelect = "";
         DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
-        
+        DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB(); 
 
         public ManageDisasterPage()
         {
@@ -45,11 +46,81 @@ namespace SaveWorldWPFClient
                 txt_AllDisasters.Items.Add(result);
                 result = "";
                 sb.Clear();
+            }
+        }
 
+            /* FOR SOME REASON THIS LINE OF CODE DISAPPEARS EACH TIME PROGRAM IS RUN, ITS NECESSARY TO HAVE IT IN ORDER TO LIST THE DISASTER IN TEXT BOXES
+             * IT BELONGS TO ManageDisasterPage.g.cs
+             * 
+            #line 12 "..\..\ManageDisasterPage.xaml"
+            this.txt_AllDisasters.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.DisasterList_SelectionChanged);
+
+            #line default
+            #line hidden
+            */
+
+        private void DisasterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (txt_AllDisasters.SelectedItem != null)
+            {
+                disSelect = (string)txt_AllDisasters.SelectedItem;
+                disaster = disClient.GetDisasterByName(disSelect);
+                txt_DisasterName.Text = disaster.Name;
+                txt_DisasterDescription.Text = disaster.Description;
+                txt_Priority.Text = disaster.Priority.ToString();
+                txt_Victims.Text = disaster.Victims.ToString();
+                txt_Region.Text = disaster.Region; 
+            }
+        }
+
+        private void Button_Update(object sender, RoutedEventArgs e)
+        {
+
+            DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB();
+            disaster.Name = txt_DisasterName.Text; 
+            disaster.Description = txt_DisasterDescription.Text;
+            txt_Priority.Text = disaster.Priority.ToString();
+            txt_Victims.Text = disaster.Victims.ToString();
+            disaster.Region = txt_Region.Text;           
+            if (txt_DisasterName.Text != Name)
+            {
+                if (!disClient.CheckNameIfExists(txt_DisasterName.Text))
+                {
+                    disaster.Name = txt_DisasterName.Text;
+                }
+                else
+                {
+                    MessageBox.Show("This name already exists!");
+                    return;
+                }
+            }
+            else
+            {
+                disaster.Name = txt_DisasterName.Text;
             }
 
-            
-
+            bool updated = disClient.UpdateDisaster(disaster);
+            if (updated)
+            {
+                MessageBox.Show("disaster was updated!");
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong!");
+            }
+            txt_AllDisasters.Items.Clear();
+            loadAllDisasters();
         }
+
+        /*
+        private void Button_Delete(object sender, RoutedEventArgs e)
+        {
+            disClient.DeleteDisaster();
+            MessageBox.Show(disaster.Name + " was deleted!");
+            txt_AllDisasters.Items.Clear();
+            loadAllDisasters();
+        }
+        */
+
     }
 }

@@ -185,6 +185,24 @@ namespace SaveWorldWPFClient.DisasterReferences {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/GetDisasterByName", ReplyAction="http://tempuri.org/IDisasterService/GetDisasterByNameResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.DisasterReferences.DisasterB> GetDisasterByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/UpdateDisaster", ReplyAction="http://tempuri.org/IDisasterService/UpdateDisasterResponse")]
+        bool UpdateDisaster(SaveWorldWPFClient.DisasterReferences.DisasterB disaster);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/UpdateDisaster", ReplyAction="http://tempuri.org/IDisasterService/UpdateDisasterResponse")]
+        System.Threading.Tasks.Task<bool> UpdateDisasterAsync(SaveWorldWPFClient.DisasterReferences.DisasterB disaster);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/DeleteDisaster", ReplyAction="http://tempuri.org/IDisasterService/DeleteDisasterResponse")]
+        void DeleteDisaster(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/DeleteDisaster", ReplyAction="http://tempuri.org/IDisasterService/DeleteDisasterResponse")]
+        System.Threading.Tasks.Task DeleteDisasterAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/CheckNameIfExists", ReplyAction="http://tempuri.org/IDisasterService/CheckNameIfExistsResponse")]
+        bool CheckNameIfExists(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/CheckNameIfExists", ReplyAction="http://tempuri.org/IDisasterService/CheckNameIfExistsResponse")]
+        System.Threading.Tasks.Task<bool> CheckNameIfExistsAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -228,6 +246,30 @@ namespace SaveWorldWPFClient.DisasterReferences {
         
         public System.Threading.Tasks.Task<SaveWorldWPFClient.DisasterReferences.DisasterB> GetDisasterByNameAsync(string name) {
             return base.Channel.GetDisasterByNameAsync(name);
+        }
+        
+        public bool UpdateDisaster(SaveWorldWPFClient.DisasterReferences.DisasterB disaster) {
+            return base.Channel.UpdateDisaster(disaster);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateDisasterAsync(SaveWorldWPFClient.DisasterReferences.DisasterB disaster) {
+            return base.Channel.UpdateDisasterAsync(disaster);
+        }
+        
+        public void DeleteDisaster(string name) {
+            base.Channel.DeleteDisaster(name);
+        }
+        
+        public System.Threading.Tasks.Task DeleteDisasterAsync(string name) {
+            return base.Channel.DeleteDisasterAsync(name);
+        }
+        
+        public bool CheckNameIfExists(string name) {
+            return base.Channel.CheckNameIfExists(name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckNameIfExistsAsync(string name) {
+            return base.Channel.CheckNameIfExistsAsync(name);
         }
     }
 }
