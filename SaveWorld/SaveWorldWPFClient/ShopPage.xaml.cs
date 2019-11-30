@@ -24,11 +24,15 @@ namespace SaveWorldWPFClient
         public int userBankAccId;
         public int userType;
         public int idToRemoveOrderLine;
+        public decimal totalPrice=0;
+        public int[] userInfoData = new int[3];
 
         OrderLineService.OrderLineServiceClient orderLineClient = new OrderLineService.OrderLineServiceClient();
         OrderService.OrderServiceClient orderClient = new OrderService.OrderServiceClient();
         ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
         ProductService.ProductB productLine = new ProductService.ProductB();
+        BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
+
         // ProductService.ProductB prodSelect = new ProductService.ProductB();
         string prodSelect;
         string removeOrderLine;
@@ -52,6 +56,11 @@ namespace SaveWorldWPFClient
             usernId = userInfo[0];
             userBankAccId = userInfo[1];
             userType = userInfo[2];
+
+            userInfoData[0] = userInfo[0];
+            userInfoData[1] = userInfo[1];
+            userInfoData[2] = userInfo[2];
+
         }
 
         private void LoadAllProducts()
@@ -80,7 +89,7 @@ namespace SaveWorldWPFClient
                 prodSelect = (string)listBox.SelectedItem;
                 productLine = prodClient.GetProductByName(prodSelect);
                 txt_describtion.Text = productLine.ProductDescription;
-                txt_price.Text = productLine.Price.ToString();
+                txt_price.Text = productLine.Price.ToString("0.00");
                 txt_stock.Text = productLine.Stock.ToString();
                 //  txt_size.Text = prodSelect.Size;
 
@@ -141,6 +150,10 @@ namespace SaveWorldWPFClient
                 return;
             }
             prodClient.RemoveStockFromProduct(prodId, quantity);
+
+            totalPrice += (quantity * productLine.Price);
+            
+          
             orderLine.Price = productLine.Price * quantity;
             orderLine.ProductID = prodId;
             orderLine.Quantity = quantity;
@@ -251,6 +264,12 @@ namespace SaveWorldWPFClient
 
         private void Button_Finish(object sender, RoutedEventArgs e)
         {
+            if (usernId == 0)
+            {
+                MessageBox.Show("You have to log in before manage order!");
+                return;
+            }
+
             OrderService.Order order = new OrderService.Order();
             order.OrderDate = DateTime.Now;
             order.UserId = usernId;
@@ -263,11 +282,24 @@ namespace SaveWorldWPFClient
                 orderLineClient.UpdateOrderLine(line);
             }
 
+            bool pay = true;
+
+           pay = bankClient.donateMoneyToAllDisasters(totalPrice, userBankAccId);
+
+            if(pay)
+            {
+                MessageBox.Show("Your order was paid!");
+            }
+
             MessageBox.Show("Your order was finished!");
 
             listBox.SelectedItem = null;
             listBox_OrderLines.SelectedItem = null;
             listBox_OrderLines.Items.Clear();
+            orderLinesToOrder = null;
+            this.Content = null;
+            ShopPage refreshPage = new ShopPage(userInfoData);
+            NavigationService.Navigate(refreshPage);
         }
     }
 }

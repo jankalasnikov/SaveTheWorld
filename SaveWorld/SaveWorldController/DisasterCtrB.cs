@@ -28,6 +28,7 @@ namespace SaveWorldController
                     dis.Region = allRows[i].region;
                     dis.Victims = allRows[i].victims;
                     dis.Priority = allRows[i].priority;
+                    dis.DisasterBankAccountId = (int)allRows[i].accountId;
                     list.Add(dis);
 
                 }

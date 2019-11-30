@@ -48,7 +48,7 @@
   <xs:element name="donateToSpecificDisaster">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="amount" type="xs:double" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
         <xs:element minOccurs="0" name="userBankAccId" type="xs:int" />
         <xs:element minOccurs="0" name="disasterBankAccId" type="xs:int" />
       </xs:sequence>
@@ -71,6 +71,21 @@
   <xs:element name="UpdateResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="donateMoneyToAllDisasters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="userBankId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="donateMoneyToAllDisastersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="donateMoneyToAllDisastersResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

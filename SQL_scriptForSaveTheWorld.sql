@@ -36,7 +36,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='bankAccount' and xtype='U')
 		accountNo INT NOT NULL,
 		expiryDate DATE NOT NULL,
 		ccv int NOT NULL,
-		amount float NOT NULL,
+		amount decimal(38,2) NOT NULL,
 	
 	)
 
@@ -89,7 +89,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
 	CREATE TABLE product (
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 		productName VARCHAR(100) NOT NULL,
-		price decimal NOT NULL,
+		price decimal(38,2) NOT NULL,
 		description VARCHAR(5000) NOT NULL,
 		minStock INT NOT NULL, 
 		/*property int FOREIGN KEY REFERENCES property(id),*/
@@ -105,7 +105,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='orderLine' and xtype='U')
 		productId int FOREIGN KEY REFERENCES product(id),
 	    quantity int NOT NULL,
 	    orderId int FOREIGN KEY REFERENCES tbOrder(id),
-		price decimal NOT NULL,
+		price decimal(38,2) NOT NULL,
 	)
 
 GO
@@ -203,28 +203,30 @@ insert into tbOrder(userId, date) values (null,'2019-02-20');
 
 
 --Bank accounts that will be used for users
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1,'2019-02-20', 123, 501.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (2,'2019-02-20', 123, 502.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (3,'2019-02-20', 123, 503.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (4,'2019-02-20', 123, 504.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1,'2019-02-20', 123, '501.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (2,'2019-02-20', 123, '2.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (3,'2019-02-20', 123, '503.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (4,'2019-02-20', 123, '504.00');
 
 
 --Bank accounts that will be used for disasters
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (5,'2019-02-20', 123, 1.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (6,'2019-02-20', 123, 2.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (7,'2019-02-20', 123, 3.00);
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (8,'2019-02-20', 123, 4.00);
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (5,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (6,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (7,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (8,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (9,'2019-02-20', 123, '0.00');
+
 
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 2, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Yordan','123', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
 
 
-insert into product(productName, price, description, minStock) values ('Shirt1',20.20,'very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt2',20.20,'very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt3',20.20,'very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt4',20.20,'very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt5',20.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt1',5.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt2','20.20','very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt3','20.20','very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt4','20.20','very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt5','20.20','very cool shirt',10);
 
 
 insert into category(nameOfCategory) values('Fire');
@@ -236,7 +238,7 @@ insert into disaster(disasterName, description, region, categoryId, priority, vi
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Italy Eartquake','Very bad situation at the moment', 'Verona', 3, 2, 15,6);
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Venezia flood','A lot of water on san marco', 'Venezia', 2, 1, 0,7);
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Usa tornadoes', 'the wind is crazy', 'Usa', 4, 4, 5,8);
-
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Storm', 'the wind is crazy', 'Usa', 4, 4, 5,9);
 
 
 /*

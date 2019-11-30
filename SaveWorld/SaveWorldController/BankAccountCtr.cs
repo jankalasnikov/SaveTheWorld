@@ -44,7 +44,7 @@ namespace SaveWorldController
             
 
                 var accountForSave = (from p in NWEntities.BankAccounts
-                               where p.accountNo == bankAccountBefore.AccountId
+                               where p.accountNo == bankAccountBefore.AccountNo
                                select p).FirstOrDefault();
 
 
@@ -107,7 +107,7 @@ namespace SaveWorldController
             return correct;
         }
 
-        public bool donateToSpecificDisaster(double amount, int userBankId, int disasterBankId)
+        public bool donateToSpecificDisaster(decimal amount, int userBankId, int disasterBankId)
         {
             BankAccountB userAcc = new BankAccountB();
             BankAccountCtr ctr = new BankAccountCtr();
@@ -131,6 +131,39 @@ namespace SaveWorldController
             return true;
             
 
+        }
+
+
+        public bool donateMoneyToAllDisasters(decimal totalPrice, int userBankId)
+        {
+            BankAccountB userAcc = new BankAccountB();
+            BankAccountCtr bankCtr = new BankAccountCtr();
+            DisasterCtrB disasterCtr = new DisasterCtrB();
+            List<DisasterB> allDis = new List<DisasterB>();
+            userAcc = bankCtr.GetBankAccountById(userBankId);
+            decimal moneyForOneDisaster = 0;
+
+            if (userAcc.Amount < totalPrice)
+            {
+                return false;
+            }
+            userAcc.Amount = userAcc.Amount - totalPrice;
+            bankCtr.Update(userAcc);
+            allDis = disasterCtr.GetAllDisasters();
+
+            moneyForOneDisaster = totalPrice / allDis.Count;
+
+            foreach (DisasterB dis in allDis)
+            {
+                BankAccountB disAcc = new BankAccountB();
+                disAcc=bankCtr.GetBankAccountById(dis.DisasterBankAccountId);
+                disAcc.Amount =disAcc.Amount +moneyForOneDisaster; 
+                bankCtr.Update(disAcc);
+            }
+
+
+
+            return true;
         }
     }
 }

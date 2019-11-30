@@ -74,9 +74,14 @@ namespace SaveWorldService
 
         }
 
-        public bool donateToSpecificDisaster(double amount, int userBankAccId, int disasterBankAccId)
+        public bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId)
         {
             return bankCtr.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+        }
+
+        public bool donateMoneyToAllDisasters(decimal amount, int userBankId)
+        {
+            return bankCtr.donateMoneyToAllDisasters(amount, userBankId);
         }
 
         public void Update(BankAccountB bankAccountBefore)

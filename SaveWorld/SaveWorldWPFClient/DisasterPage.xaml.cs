@@ -105,8 +105,8 @@ namespace SaveWorldWPFClient
                 MessageBox.Show("You have to log in before donation!");
                 return;
             }
-            double amount = 0.0;
-            amount = double.Parse(txt_amount.Text);
+            decimal amount = 0;
+            amount = decimal.Parse(txt_amount.Text);
 
             DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB();
             DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();

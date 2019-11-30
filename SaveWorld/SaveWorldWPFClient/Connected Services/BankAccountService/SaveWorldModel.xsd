@@ -4,7 +4,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AccountId" type="xs:int" />
       <xs:element minOccurs="0" name="AccountNo" type="xs:int" />
-      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
       <xs:element minOccurs="0" name="CCV" type="xs:int" />
       <xs:element minOccurs="0" name="ExpiryDate" type="xs:dateTime" />
     </xs:sequence>
