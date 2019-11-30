@@ -137,6 +137,12 @@ namespace SaveWorldWPFClient.OrderLineService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/RemoveOrderLineAndReturnStock", ReplyAction="http://tempuri.org/IOrderLineService/RemoveOrderLineAndReturnStockResponse")]
         System.Threading.Tasks.Task<int> RemoveOrderLineAndReturnStockAsync(int idToRemoveOrderLine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/UpdateOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/UpdateOrderLineResponse")]
+        void UpdateOrderLine(SaveWorldWPFClient.OrderLineService.OrderLine orderLine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/UpdateOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/UpdateOrderLineResponse")]
+        System.Threading.Tasks.Task UpdateOrderLineAsync(SaveWorldWPFClient.OrderLineService.OrderLine orderLine);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -180,6 +186,14 @@ namespace SaveWorldWPFClient.OrderLineService {
         
         public System.Threading.Tasks.Task<int> RemoveOrderLineAndReturnStockAsync(int idToRemoveOrderLine) {
             return base.Channel.RemoveOrderLineAndReturnStockAsync(idToRemoveOrderLine);
+        }
+        
+        public void UpdateOrderLine(SaveWorldWPFClient.OrderLineService.OrderLine orderLine) {
+            base.Channel.UpdateOrderLine(orderLine);
+        }
+        
+        public System.Threading.Tasks.Task UpdateOrderLineAsync(SaveWorldWPFClient.OrderLineService.OrderLine orderLine) {
+            return base.Channel.UpdateOrderLineAsync(orderLine);
         }
     }
 }

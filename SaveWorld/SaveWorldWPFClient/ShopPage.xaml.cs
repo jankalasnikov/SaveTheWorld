@@ -26,6 +26,7 @@ namespace SaveWorldWPFClient
         public int idToRemoveOrderLine;
 
         OrderLineService.OrderLineServiceClient orderLineClient = new OrderLineService.OrderLineServiceClient();
+        OrderService.OrderServiceClient orderClient = new OrderService.OrderServiceClient();
         ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
         ProductService.ProductB productLine = new ProductService.ProductB();
         // ProductService.ProductB prodSelect = new ProductService.ProductB();
@@ -246,6 +247,27 @@ namespace SaveWorldWPFClient
             txt_describtion.Text = "";
             listBox.SelectedItem = null;
 
+        }
+
+        private void Button_Finish(object sender, RoutedEventArgs e)
+        {
+            OrderService.Order order = new OrderService.Order();
+            order.OrderDate = DateTime.Now;
+            order.UserId = usernId;
+
+            int orderId =orderClient.CreateOrderAndReturnId(order);
+
+            foreach (OrderLineService.OrderLine line in orderLinesToOrder)
+            {
+                line.OrderID = orderId;
+                orderLineClient.UpdateOrderLine(line);
+            }
+
+            MessageBox.Show("Your order was finished!");
+
+            listBox.SelectedItem = null;
+            listBox_OrderLines.SelectedItem = null;
+            listBox_OrderLines.Items.Clear();
         }
     }
 }

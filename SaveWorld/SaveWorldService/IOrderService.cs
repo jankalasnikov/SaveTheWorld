@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaveWorldModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -10,6 +11,10 @@ namespace SaveWorldService
     [ServiceContract]
     public interface IOrderService
     {
+        [OperationContract]
+        int CreateOrderAndReturnId(Order newOrder);
+
+
        /* [OperationContract]
         string GetDates();
 

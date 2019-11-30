@@ -25,7 +25,7 @@
         <TextBox Name="txt_quntity" HorizontalAlignment="Left" Height="23" Margin="284,403,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="206,401,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.318,1.785"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="499,407,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.365,0.325" Click="Button_Add"/>
-        <Button Content="Finish" HorizontalAlignment="Left" Margin="906,426,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="-0.365,0.325"/>
+        <Button Content="Finish" HorizontalAlignment="Left" Margin="906,426,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="-0.365,0.325" Click="Button_Finish"/>
         <Label Content="Size" HorizontalAlignment="Left" Margin="330,336,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txt_size" HorizontalAlignment="Left" Height="23" Margin="463,339,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="120" Margin="170,488,0,0" VerticalAlignment="Top" Width="1078">

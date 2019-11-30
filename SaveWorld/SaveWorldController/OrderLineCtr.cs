@@ -46,6 +46,43 @@ namespace SaveWorldController
             }
         }
 
+        public void UpdateOrderLine(OrderLine orderLine)
+        {
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var orderLineId = orderLine.OrderLineId;
+                var orderLineDatabase =
+                        (from p
+                        in NWEntities.OrderLine
+                         where p.id == orderLineId
+                         select p).FirstOrDefault();
+
+                if (orderLineDatabase == null)
+                {
+                    throw new Exception("No orderLine with ID " +
+                                        orderLine.OrderLineId);
+                }
+
+                orderLineDatabase.id = orderLine.OrderLineId;
+                orderLineDatabase.orderId = orderLine.OrderID;
+                orderLineDatabase.price = orderLine.Price;
+                orderLineDatabase.productId = orderLine.ProductID;
+                orderLineDatabase.quantity = orderLine.Quantity;
+               
+
+                NWEntities.OrderLine.Attach(orderLineDatabase);
+
+
+                NWEntities.Entry(orderLineDatabase).State = System.Data.Entity.EntityState.Modified;
+
+
+                var num = NWEntities.SaveChanges();
+
+
+            }
+          
+        }
+
         public int RemoveOrderLineAndReturnStock(int idToRemoveOrderLine)
         {
             int stock=0;

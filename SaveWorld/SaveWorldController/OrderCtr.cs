@@ -1,4 +1,5 @@
-﻿using SaveWorldModel;
+﻿using SaveWorldDAL;
+using SaveWorldModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,37 +10,62 @@ namespace SaveWorldController
 {
     public class OrderCtr
     {
-      /*  Order Order { get; set; } = new Order();
-        public string GetDate()
-        {
-            return "today";
-        }
-
-        public void AddOrderLine(int productID, int quantity)
+        public int CreateOrderAndReturnId(Order newOrder)
         {
 
-            List<OrderLine> existingOrderLines = Order.OrderLines.Where(orderLine => orderLine.ProductID == productID).ToList();
-            if (existingOrderLines.Count > 0)
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
             {
-                existingOrderLines.ForEach(orderLine => orderLine.Quantity += quantity);
-            }
-            else
-            {
-                if (existingOrderLines.Count == 0)
+                
+
+                    tbOrder order = new tbOrder()
                 {
-                    Order.OrderLines.Add(new OrderLine()
-                    {
-                        ProductID = productID,
-                        Quantity = quantity
-                    });
-                }
-            }
 
+                    userId = newOrder.UserId,
+                    date = newOrder.OrderDate,
+                   
+                   
+                };
+
+                dbEntities.TbOrder.Add(order);
+ 
+                dbEntities.SaveChanges();
+
+                return order.id;
+                
+            }
         }
 
-        public void RemoveOrderLine(int productId)
-        {
-            Order.OrderLines.RemoveAll(orderLine => orderLine.ProductID == productId);
-        }*/
+        /*  Order Order { get; set; } = new Order();
+          public string GetDate()
+          {
+              return "today";
+          }
+
+          public void AddOrderLine(int productID, int quantity)
+          {
+
+              List<OrderLine> existingOrderLines = Order.OrderLines.Where(orderLine => orderLine.ProductID == productID).ToList();
+              if (existingOrderLines.Count > 0)
+              {
+                  existingOrderLines.ForEach(orderLine => orderLine.Quantity += quantity);
+              }
+              else
+              {
+                  if (existingOrderLines.Count == 0)
+                  {
+                      Order.OrderLines.Add(new OrderLine()
+                      {
+                          ProductID = productID,
+                          Quantity = quantity
+                      });
+                  }
+              }
+
+          }
+
+          public void RemoveOrderLine(int productId)
+          {
+              Order.OrderLines.RemoveAll(orderLine => orderLine.ProductID == productId);
+          }*/
     }
 }

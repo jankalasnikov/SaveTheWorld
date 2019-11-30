@@ -19,6 +19,12 @@
   <wsdl:message name="IOrderLineService_RemoveOrderLineAndReturnStock_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveOrderLineAndReturnStockResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderLineService_UpdateOrderLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderLine" />
+  </wsdl:message>
+  <wsdl:message name="IOrderLineService_UpdateOrderLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderLineResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderLineService">
     <wsdl:operation name="CreateOrderLine">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/CreateOrderLine" message="tns:IOrderLineService_CreateOrderLine_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="RemoveOrderLineAndReturnStock">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/RemoveOrderLineAndReturnStock" message="tns:IOrderLineService_RemoveOrderLineAndReturnStock_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/RemoveOrderLineAndReturnStockResponse" message="tns:IOrderLineService_RemoveOrderLineAndReturnStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderLine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/UpdateOrderLine" message="tns:IOrderLineService_UpdateOrderLine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/UpdateOrderLineResponse" message="tns:IOrderLineService_UpdateOrderLine_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderLineService" type="tns:IOrderLineService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveOrderLineAndReturnStock">
       <soap:operation soapAction="http://tempuri.org/IOrderLineService/RemoveOrderLineAndReturnStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderLine">
+      <soap:operation soapAction="http://tempuri.org/IOrderLineService/UpdateOrderLine" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

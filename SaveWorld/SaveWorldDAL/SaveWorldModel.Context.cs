@@ -36,7 +36,7 @@ namespace SaveWorldDAL
         public virtual DbSet<property> property { get; set; }
         public virtual DbSet<propertyValues> propertyValues { get; set; }
         public virtual DbSet<subscription> subscription { get; set; }
-        public virtual DbSet<tbOrder> tbOrder { get; set; }
+        public virtual DbSet<tbOrder> TbOrder { get; set; }
         public virtual DbSet<typeOfSubscription> typeOfSubscription { get; set; }
     }
 }

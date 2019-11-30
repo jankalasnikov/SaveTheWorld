@@ -8,8 +8,15 @@ using SaveWorldModel;
 
 namespace SaveWorldService
 {
-    public class OrderService 
+    public class OrderService : IOrderService
     {
+        OrderCtr orderCtr = new OrderCtr();
+        public int CreateOrderAndReturnId(Order newOrder)
+        {
+            return orderCtr.CreateOrderAndReturnId(newOrder);
+        }
+
+
        /* OrderCtr orderCtr = new OrderCtr();
         Order ord = new Order();
         public string GetDates()
