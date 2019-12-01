@@ -204,7 +204,7 @@ insert into tbOrder(userId, date) values (null,'2019-02-20');
 
 --Bank accounts that will be used for users
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (1,'2019-02-20', 123, '501.00');
-insert into bankAccount(accountNo,expiryDate, ccv, amount) values (2,'2019-02-20', 123, '2.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (2,'2019-02-20', 123, '20.00');
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (3,'2019-02-20', 123, '503.00');
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (4,'2019-02-20', 123, '504.00');
 
@@ -222,11 +222,11 @@ insert into auser(name, password, typeOfUser, email, address, phoneno, accountId
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Yordan','123', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
 
 
-insert into product(productName, price, description, minStock) values ('Shirt1',5.20,'very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt1','5.20','very cool shirt',10);
 insert into product(productName, price, description, minStock) values ('Shirt2','20.20','very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt3','20.20','very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt4','20.20','very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt5','20.20','very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt3','10.50','very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt4','35.11','very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt5','2.58','very cool shirt',10);
 
 
 insert into category(nameOfCategory) values('Fire');

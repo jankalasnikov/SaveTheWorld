@@ -32,6 +32,7 @@ namespace SaveWorldWPFClient
         ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
         ProductService.ProductB productLine = new ProductService.ProductB();
         BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
+        UserService.UserClient userClient = new UserService.UserClient();
 
         // ProductService.ProductB prodSelect = new ProductService.ProductB();
         string prodSelect;
@@ -167,7 +168,6 @@ namespace SaveWorldWPFClient
 
                 string result = "";
                 var sb = new StringBuilder();
-                ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
                 ProductService.ProductB prod = new ProductService.ProductB();
                 prod = prodClient.GetProduct(ol.ProductID);
                 sb.Append(ol.OrderLineId+". "+prod.ProductName + " "+ol.Quantity+"x"+prod.Price);
@@ -236,6 +236,9 @@ namespace SaveWorldWPFClient
                 }
             }
             prodClient.ReturnStock(idOfProduct, returnStock);
+            ProductService.ProductB pro = new ProductService.ProductB();
+            pro=prodClient.GetProduct(idOfProduct);
+            totalPrice = totalPrice - (returnStock * pro.Price);
 
             listBox_OrderLines.Items.Clear();
             foreach (OrderLineService.OrderLine ol in orderLinesToOrder)
@@ -243,8 +246,8 @@ namespace SaveWorldWPFClient
 
                 string result = "";
                 var sb = new StringBuilder();
-                ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
                 ProductService.ProductB prod = new ProductService.ProductB();
+               
                 prod = prodClient.GetProduct(ol.ProductID);
                 sb.Append(ol.OrderLineId + ". " + prod.ProductName + " " + ol.Quantity + "x" + prod.Price);
 
@@ -267,6 +270,20 @@ namespace SaveWorldWPFClient
             if (usernId == 0)
             {
                 MessageBox.Show("You have to log in before manage order!");
+                return;
+            }
+            if(orderLinesToOrder.Count==0)
+            {
+                MessageBox.Show("You have to add products to order before finish it!");
+                return;
+            }
+
+            BankAccountService.BankAccountB bank = new BankAccountService.BankAccountB();
+            bank = bankClient.GetBankAccountById(userBankAccId);
+            
+            if(totalPrice>bank.Amount)
+            {
+                MessageBox.Show("Your balance is less than the total price, you have to remove some order lines!");
                 return;
             }
 
