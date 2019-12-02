@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SaveWorldModel
 {
     [DataContract]
-    public class Disaster
+    public class DisasterB
     {
         [DataMember]
         public int DisasterId { get; set; }
@@ -24,5 +24,7 @@ namespace SaveWorldModel
         public int Priority { get; set; }
         [DataMember]
         public int Victims { get; set; }
+        [DataMember]
+        public int DisasterBankAccountId { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SaveWorldModel
 {
     [DataContract]
-    public    class Product
+    public class ProductB
         {
 
             [DataMember]
@@ -16,10 +16,12 @@ namespace SaveWorldModel
             [DataMember]
             public string ProductName { get; set; }
             [DataMember]
-            public double Price { get; set; }
+            public decimal Price { get; set; }
             [DataMember]
             public string ProductDescription { get; set; }
             [DataMember]
             public int Stock { get; set; }
-        }
+            [DataMember]
+            public string Size { get; set; }
+    }
 }

@@ -8,11 +8,24 @@ using System.Threading.Tasks;
 
 namespace SaveWorldService
 {
+    
     [ServiceContract]
-   public interface IDisasterService
+    public interface IDisasterService
     {
-        [OperationContract]
-        List<Disaster> GetAllDisasters();
 
+        [OperationContract]
+        List<DisasterB> GetAllDisasters();
+
+        [OperationContract]
+        DisasterB GetDisasterByName(string name);
+
+        [OperationContract]
+        bool UpdateDisaster(DisasterB disaster);
+
+        [OperationContract]
+        void DeleteDisaster(int id);
+
+        [OperationContract]
+        bool CheckNameIfExists(string name);
     }
 }

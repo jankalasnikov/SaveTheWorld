@@ -22,7 +22,11 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class LogInPage : Page
     {
-        private string[] userInfo = new string[3];
+        public string[] userInfo = new string[3];
+        public int userId;
+        public string name;
+        public int typeOfUser;
+        public int accId;
         public LogInPage()
         {
             InitializeComponent();
@@ -46,30 +50,30 @@ namespace SaveWorldWPFClient
 
             var myUser = new UserClient();
 
-             // UserCtr myUser = new UserCtr();
-            User usr = myUser.CheckLogin(userEmail, originalPassword);
+            // UserCtr myUser = new UserCtr();
+            UserB usr = myUser.CheckLogin(userEmail, originalPassword);
             if (usr != null)
             {
-                // Get the user unique ID from the database and save it to send as an argument
-                int userId = usr.UserId;
-                string userIdS = userId.ToString();
+                string userIdS = usr.UserId.ToString();
                 userInfo[0] = userIdS;
+                string userBankAccIdS = ""+usr.BankAccountId;
+               
+                userInfo[1] = userBankAccIdS;
+                string userTypeS = usr.TypeOfUser.ToString();
+                userInfo[2] = userTypeS;
 
-                // Username to send as an argument
-                userInfo[1] = usr.Name;
-                string name = usr.Name;
 
+               userId = usr.UserId;
+               typeOfUser = usr.TypeOfUser;
+               accId = usr.BankAccountId;
+              
 
-                // Get the type of user from the database and save it to send as an argument
-                int typeOfUser = usr.TypeOfUser;
-                string typeOfUserS = typeOfUser.ToString();
-                userInfo[2] = typeOfUserS;
-
-                MessageBox.Show(userId + name + typeOfUserS);
+              
             }
             else
             {
                 MessageBox.Show("You entered wrong password or email. Try again!");
+                return;
             }
 
 
@@ -79,6 +83,27 @@ namespace SaveWorldWPFClient
             // HomePage main = new HomePage(userInfo);
 
             NavigationService.Navigate(main);
+
+            main.btn_logOut.Visibility = Visibility.Visible;
+            main.btn_log.Visibility = Visibility.Visible;
+
+            if(typeOfUser==1)
+            {
+                main.btn_profile.Visibility = Visibility.Visible;
+            }
+
+            if (typeOfUser == 2)
+            {
+                main.btn_manage.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainPage mainPage = new MainPage();
+            NavigationService.Navigate(mainPage);
 
         }
     }

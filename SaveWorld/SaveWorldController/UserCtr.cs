@@ -12,9 +12,9 @@ namespace SaveWorldController
 {
     public class UserCtr
     {
-        public User GetUser(int id)
+        public UserB GetUser(int id)
         {
-            User userData = null;
+            UserB userData = null;
             using (var NWEntities = new SaveWorldEntities())
             {
                
@@ -22,7 +22,7 @@ namespace SaveWorldController
                                 where p.id == id
                                 select p).FirstOrDefault();
                 if (user != null)
-                    userData = new User()
+                    userData = new UserB()
                     {
                         UserId = user.id,
                         Name = user.name,
@@ -38,6 +38,92 @@ namespace SaveWorldController
             return userData;
            
         }
+
+
+        public UserB GetUserByName(string name)
+        {
+            UserB userData = null;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var user = (from p in NWEntities.Ausers
+                           where p.name == name
+                           select p).FirstOrDefault();
+                if (user != null)
+                    userData = new UserB()
+                    {
+                        UserId = user.id,
+                        Name = user.name,
+                        Email = user.email,
+                        Address = user.address,
+                        Phone = user.phoneno,
+                        Password = user.password,
+                        BankAccountId = (int)user.accountId,
+                        TypeOfUser = user.typeOfUser,
+                    };
+            }
+            return userData;
+        }
+
+        public List<UserB> GetAllUsers()
+        {
+            List<UserB> list = new List<UserB>();
+            using (SaveWorldEntities NWEntities = new SaveWorldEntities())
+            {
+                var ptx = (from r in NWEntities.Ausers select r);
+                var allRows = NWEntities.Ausers.ToList();
+
+                for (int i = 0; i < allRows.Count; i++)
+                {
+                    UserB usr = new UserB();
+                    usr.Name = allRows[i].name;
+                    usr.UserId = allRows[i].id;
+                    usr.Email = allRows[i].email;
+                    usr.Password = allRows[i].password;
+                    usr.Phone = allRows[i].phoneno;
+                    usr.BankAccountId = (int)allRows[i].accountId;
+                    usr.Address = allRows[i].address;
+                    list.Add(usr);
+
+                }
+            }
+            return list;
+        }
+
+        public void DeleteUser(int id)
+        {
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var usr = (from p in NWEntities.Ausers
+                               where p.id == id
+                               select p).FirstOrDefault();
+                if (usr != null)
+
+                {
+
+                    NWEntities.Ausers.Remove(usr);
+                    NWEntities.SaveChanges();
+                };
+            }
+        }
+
+        public int GetUserIDByName(string name)
+        {
+            int id = 0;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+
+                var user = (from p in NWEntities.Ausers
+                            where p.name == name
+                            select p).FirstOrDefault();
+                if (user != null)
+                {
+                    id = user.id;
+                }
+            }
+            return id;
+
+        }
+
 
         public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc)
         {
@@ -58,7 +144,7 @@ namespace SaveWorldController
                     typeOfUser = typeOfUser,
                     accountId = bankAcc,
                 };
-
+                   
                 dbEntities.Ausers.Add(user);
                 dbEntities.SaveChanges();
                
@@ -81,12 +167,26 @@ namespace SaveWorldController
             }
         }
 
-        public void CreateUser(User newUser)
+        public bool CheckEmailIfExists(string email)
+        {
+            bool exist = false;
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            {
+                if (dbEntities.Ausers.Any(o => o.email == email))
+                {
+                    exist = true;
+                }
+            }
+            return exist;
+        }
+
+        public void CreateUser(UserB newUser)
         {
 
             using (SaveWorldEntities dbEntities = new SaveWorldEntities())
-
             {
+                if (dbEntities.Ausers.Any(o => o.email == newUser.Email))
+                { return; }
 
                 auser user = new auser()
                 {
@@ -124,10 +224,10 @@ namespace SaveWorldController
         }
 
 
-        public User CheckLogin(string userEmail, string password)
+        public UserB CheckLogin(string userEmail, string password)
         {
 
-            User userCorrect = null;
+            UserB userCorrect = null;
             using (var NWEntities = new SaveWorldEntities())
             {
                
@@ -138,7 +238,7 @@ namespace SaveWorldController
 
                 if (user != null)
                 {
-                    userCorrect = new User()
+                    userCorrect = new UserB()
                     {
                         UserId = user.id,
                         Name = user.name,
@@ -146,6 +246,8 @@ namespace SaveWorldController
                         Email = user.email,
                         Address = user.address,
                         Phone = user.phoneno,
+                        TypeOfUser = user.typeOfUser,
+                        BankAccountId = (int)user.accountId,
 
                     };
                 }
@@ -160,26 +262,44 @@ namespace SaveWorldController
             return userCorrect;
         }
 
-        /*  public void AddUser(User newUser)
-          {
+        public bool UpdateUser(UserB user)
+        {
+           
+            var updated = true;
 
-              auser usern = null;
-              using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var userId = user.UserId;
+                var userDatabase =
+                        (from p
+                        in NWEntities.Ausers
+                         where p.id == userId
+                         select p).FirstOrDefault();
+            
+                if (userDatabase == null)
+                {
+                    throw new Exception("No user with ID " +
+                                        user.UserId);
+                }
 
-              {
-                  User user = new User()
-                  {
-                      UserId = newUser.UserId,
-                      Name = newUser.Name,
-                      Email = newUser.Email,
-                      Password = newUser.Password,
-                      Address = newUser.Address,
-                      Phone = newUser.Phone,
-                      TypeOfUser = newUser.TypeOfUser,
-                  };
-                  dbEntities.Ausers.Add(usern);
-                  dbEntities.SaveChanges();
-              }
-          }*/
+                userDatabase.name = user.Name;
+                userDatabase.email = user.Email;
+                userDatabase.password = user.Password;
+                userDatabase.phoneno = user.Phone;
+                userDatabase.address = user.Address;
+                userDatabase.accountId = user.BankAccountId;
+
+                NWEntities.Ausers.Attach(userDatabase);
+
+               
+                NWEntities.Entry(userDatabase).State = System.Data.Entity.EntityState.Modified;
+
+              
+                var num = NWEntities.SaveChanges();
+
+               
+            }
+            return updated;
+        }
     }
 }

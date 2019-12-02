@@ -12,9 +12,9 @@ namespace SaveWorldService
     class BankAccountService : IBankAccountService
     {
         BankAccountCtr bankCtr = new BankAccountCtr();
-        public BankAccount GetBankAccount(int accountNumber)
+        public BankAccountB GetBankAccount(int accountNumber)
         {
-            BankAccount bank = null;
+            BankAccountB bank = null;
             try
             {
                 bank = bankCtr.GetBankAccount(accountNumber);
@@ -35,12 +35,12 @@ namespace SaveWorldService
             return bank;
         }
 
-        public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
+        public BankAccountB GetBankAccountById(int id)
         {
-            bool bankAccountValid = false;
+            BankAccountB bank = null;
             try
             {
-                bankAccountValid = bankCtr.CheckBankAccount(accNo, expiryDate, CCV);
+                bank = bankCtr.GetBankAccountById(id);
             }
             catch
             {
@@ -49,14 +49,44 @@ namespace SaveWorldService
                 throw new FaultException(reason);
             }
 
-            if (bankAccountValid == false)
+            if (bank == null)
             {
                 var reason = "GetBankAccount empty account";
                 throw new FaultException(reason);
             }
 
+            return bank;
+        }
+
+        public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
+        {
+            bool bankAccountValid = false;
+            
+                bankAccountValid = bankCtr.CheckBankAccount(accNo, expiryDate, CCV);
+            
+
+            if (bankAccountValid == false)
+            {
+                return false;
+            }
+
             return bankAccountValid;
 
+        }
+
+        public bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId)
+        {
+            return bankCtr.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+        }
+
+        public bool donateMoneyToAllDisasters(decimal amount, int userBankId)
+        {
+            return bankCtr.donateMoneyToAllDisasters(amount, userBankId);
+        }
+
+        public void Update(BankAccountB bankAccountBefore)
+        {
+            bankCtr.Update(bankAccountBefore);
         }
     }
 }

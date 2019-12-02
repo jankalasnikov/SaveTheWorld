@@ -13,7 +13,7 @@ namespace SaveWorldService
     public class UserService : IUser
     {
         UserCtr userCtr = new UserCtr();
-        public User GetUser(int id)
+        public UserB GetUser(int id)
         {
             return userCtr.GetUser(id);
         }
@@ -22,20 +22,47 @@ namespace SaveWorldService
              userCtr.AddUser(name,password,typeOfUser,email,address,phone, bankAcc);
         }
 
-        public User CheckLogin(string email, string pass)
+        public UserB CheckLogin(string email, string pass)
         {
-            User userbd = new User();
+            UserB userbd = new UserB();
 
             userbd = userCtr.CheckLogin(email, pass);
 
             return userbd;
         }
 
-        public void CreateUser(User newUser)
+        public UserB GetUserByName(string name)
+        {
+            return userCtr.GetUserByName(name);
+        }
+        public void CreateUser(UserB newUser)
         {
             userCtr.CreateUser(newUser);
         }
 
-      
+        public bool CheckEmailIfExists(string email)
+        {
+            return userCtr.CheckEmailIfExists(email);
+        }
+
+        public int GetUserIDByName(string name)
+        {
+            return userCtr.GetUserIDByName(name);
+        }
+
+        public bool UpdateUser(UserB user)
+        {
+            return userCtr.UpdateUser(user);
+        }
+
+        public void DeleteUser(int id)
+        {
+            userCtr.DeleteUser(id);
+        }
+
+        public List<UserB> GetAllUsers()
+        {
+            return userCtr.GetAllUsers();
+        }
     }
 }

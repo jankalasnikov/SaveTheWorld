@@ -15,9 +15,9 @@ namespace SaveWorldWPFClient.BankAccountService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BankAccount", Namespace="http://schemas.datacontract.org/2004/07/SaveWorldModel")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BankAccountB", Namespace="http://schemas.datacontract.org/2004/07/SaveWorldModel")]
     [System.SerializableAttribute()]
-    public partial class BankAccount : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class BankAccountB : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -29,7 +29,7 @@ namespace SaveWorldWPFClient.BankAccountService {
         private int AccountNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double AmountField;
+        private decimal AmountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CCVField;
@@ -74,7 +74,7 @@ namespace SaveWorldWPFClient.BankAccountService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Amount {
+        public decimal Amount {
             get {
                 return this.AmountField;
             }
@@ -127,16 +127,40 @@ namespace SaveWorldWPFClient.BankAccountService {
     public interface IBankAccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountResponse")]
-        SaveWorldWPFClient.BankAccountService.BankAccount GetBankAccount(int accountNumber);
+        SaveWorldWPFClient.BankAccountService.BankAccountB GetBankAccount(int accountNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountResponse")]
-        System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccount> GetBankAccountAsync(int accountNumber);
+        System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountAsync(int accountNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccountById", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountByIdResponse")]
+        SaveWorldWPFClient.BankAccountService.BankAccountB GetBankAccountById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/GetBankAccountById", ReplyAction="http://tempuri.org/IBankAccountService/GetBankAccountByIdResponse")]
+        System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/CheckBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/CheckBankAccountResponse")]
         bool CheckBankAccount(int accNo, System.DateTime expiryDate, int CCV);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/CheckBankAccount", ReplyAction="http://tempuri.org/IBankAccountService/CheckBankAccountResponse")]
         System.Threading.Tasks.Task<bool> CheckBankAccountAsync(int accNo, System.DateTime expiryDate, int CCV);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/donateToSpecificDisaster", ReplyAction="http://tempuri.org/IBankAccountService/donateToSpecificDisasterResponse")]
+        bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/donateToSpecificDisaster", ReplyAction="http://tempuri.org/IBankAccountService/donateToSpecificDisasterResponse")]
+        System.Threading.Tasks.Task<bool> donateToSpecificDisasterAsync(decimal amount, int userBankAccId, int disasterBankAccId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/Update", ReplyAction="http://tempuri.org/IBankAccountService/UpdateResponse")]
+        void Update(SaveWorldWPFClient.BankAccountService.BankAccountB bankAccountBefore);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/Update", ReplyAction="http://tempuri.org/IBankAccountService/UpdateResponse")]
+        System.Threading.Tasks.Task UpdateAsync(SaveWorldWPFClient.BankAccountService.BankAccountB bankAccountBefore);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/donateMoneyToAllDisasters", ReplyAction="http://tempuri.org/IBankAccountService/donateMoneyToAllDisastersResponse")]
+        bool donateMoneyToAllDisasters(decimal amount, int userBankId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBankAccountService/donateMoneyToAllDisasters", ReplyAction="http://tempuri.org/IBankAccountService/donateMoneyToAllDisastersResponse")]
+        System.Threading.Tasks.Task<bool> donateMoneyToAllDisastersAsync(decimal amount, int userBankId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,12 +190,20 @@ namespace SaveWorldWPFClient.BankAccountService {
                 base(binding, remoteAddress) {
         }
         
-        public SaveWorldWPFClient.BankAccountService.BankAccount GetBankAccount(int accountNumber) {
+        public SaveWorldWPFClient.BankAccountService.BankAccountB GetBankAccount(int accountNumber) {
             return base.Channel.GetBankAccount(accountNumber);
         }
         
-        public System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccount> GetBankAccountAsync(int accountNumber) {
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountAsync(int accountNumber) {
             return base.Channel.GetBankAccountAsync(accountNumber);
+        }
+        
+        public SaveWorldWPFClient.BankAccountService.BankAccountB GetBankAccountById(int id) {
+            return base.Channel.GetBankAccountById(id);
+        }
+        
+        public System.Threading.Tasks.Task<SaveWorldWPFClient.BankAccountService.BankAccountB> GetBankAccountByIdAsync(int id) {
+            return base.Channel.GetBankAccountByIdAsync(id);
         }
         
         public bool CheckBankAccount(int accNo, System.DateTime expiryDate, int CCV) {
@@ -180,6 +212,30 @@ namespace SaveWorldWPFClient.BankAccountService {
         
         public System.Threading.Tasks.Task<bool> CheckBankAccountAsync(int accNo, System.DateTime expiryDate, int CCV) {
             return base.Channel.CheckBankAccountAsync(accNo, expiryDate, CCV);
+        }
+        
+        public bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId) {
+            return base.Channel.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> donateToSpecificDisasterAsync(decimal amount, int userBankAccId, int disasterBankAccId) {
+            return base.Channel.donateToSpecificDisasterAsync(amount, userBankAccId, disasterBankAccId);
+        }
+        
+        public void Update(SaveWorldWPFClient.BankAccountService.BankAccountB bankAccountBefore) {
+            base.Channel.Update(bankAccountBefore);
+        }
+        
+        public System.Threading.Tasks.Task UpdateAsync(SaveWorldWPFClient.BankAccountService.BankAccountB bankAccountBefore) {
+            return base.Channel.UpdateAsync(bankAccountBefore);
+        }
+        
+        public bool donateMoneyToAllDisasters(decimal amount, int userBankId) {
+            return base.Channel.donateMoneyToAllDisasters(amount, userBankId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> donateMoneyToAllDisastersAsync(decimal amount, int userBankId) {
+            return base.Channel.donateMoneyToAllDisastersAsync(amount, userBankId);
         }
     }
 }

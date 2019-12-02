@@ -11,10 +11,10 @@ namespace SaveWorldService
 {
     public class ProductService : IProductService
     {
-        ProductCtr prodCtr = new ProductCtr();
-        public Product GetProduct(int id)
+        ProductCtrB prodCtr = new ProductCtrB();
+        public ProductB GetProduct(int id)
         {
-            Product prod = null;
+            ProductB prod = null;
             try
             {
                 prod = prodCtr.GetProduct(id);
@@ -35,7 +35,40 @@ namespace SaveWorldService
             return prod;
         }
 
-        public List<Product> GetAllProduct()
+        public ProductB GetProductByName(string name)
+        {
+            ProductB prod = null;
+            try
+            {
+                prod = prodCtr.GetProductByName(name);
+            }
+            catch
+            {
+
+                var reason = "GetUser Exception";
+                throw new FaultException(reason);
+            }
+
+            if (prod == null)
+            {
+                var reason = "GetUser empty user";
+                throw new FaultException(reason);
+            }
+
+            return prod;
+        }
+
+        public void RemoveStockFromProduct(int id, int removeQuantity)
+        {
+            prodCtr.RemoveStockFromProduct(id, removeQuantity);
+        }
+
+        public void ReturnStock(int idOfProduct, int returnQuantity)
+        {
+            prodCtr.ReturnStock(idOfProduct, returnQuantity);
+        }
+
+        public List<ProductB> GetAllProduct()
         {
             return prodCtr.GetAllProduct();
         }

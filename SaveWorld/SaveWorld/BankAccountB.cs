@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SaveWorldModel
 {
     [DataContract]
-    public class BankAccount
+    public class BankAccountB
     {
         [DataMember]
         public int AccountId { get; set; }
@@ -19,7 +19,7 @@ namespace SaveWorldModel
         [DataMember]
         public int CCV { get; set; }
         [DataMember]
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
 
 
       

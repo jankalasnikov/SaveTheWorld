@@ -25,6 +25,7 @@ namespace SaveWorldWPFClient
     {
         private UserClient client = new UserClient();
         private string[] userInfo = new string[3];
+       /* string regexForEmail = "([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))";*/
         public RegistrationPage()
         {
             InitializeComponent();
@@ -50,29 +51,39 @@ namespace SaveWorldWPFClient
             {
                 return;
             }
-            BankAccountService.BankAccount bank = new BankAccountService.BankAccount();
+            BankAccountService.BankAccountB bank = new BankAccountService.BankAccountB();
             BankAccountService.BankAccountServiceClient accountClient = new BankAccountService.BankAccountServiceClient();
-            
-         
-           
-            userInfo[0] = newUser.UserId.ToString();
-            userInfo[1] = newUser.Name;
-            MessageBox.Show(userInfo[1]);
-            userInfo[2] = newUser.Email;
 
-             client.CreateUser(newUser);
-            //client.AddUser(name, pas, 2, email, address, phone);
+            client.CreateUser(newUser);
+            int idOfUser = client.GetUserIDByName(newUser.Name);
+
+            /* userInfo[0] = newUser.UserId.ToString();
+             userInfo[1] = newUser.BankAccountId.ToString();
+             MessageBox.Show(userInfo[1]);
+             userInfo[2] = newUser.TypeOfUser.ToString();*/
+
+            string userIdS = idOfUser.ToString();
+            userInfo[0] = userIdS;
+            string userBankAccIdS = "" + newUser.BankAccountId;
+          
+            userInfo[1] = userBankAccIdS;
+            string userTypeS = newUser.TypeOfUser.ToString();
+            userInfo[2] = userTypeS;
+
+           
+        
             this.Content = null;
             MainPage main = new MainPage(userInfo);
 
-            // HomePage main = new HomePage(userInfo);
-
             NavigationService.Navigate(main);
+            main.btn_logOut.Visibility = Visibility.Visible;
+            main.btn_log.Visibility = Visibility.Visible;
+            main.btn_profile.Visibility = Visibility.Visible;
         }
 
-        private UserService.User CreateNewUser()
+        private UserService.UserB CreateNewUser()
         {
-            UserService.User newOne = new UserService.User();
+            UserService.UserB newOne = new UserService.UserB();
             
 
            
@@ -97,8 +108,16 @@ namespace SaveWorldWPFClient
             }
             if (txt_email != null)
             {
-                newOne.Email = txt_email.Text;
+               
                 email = txt_email.Text;
+                if(!client.CheckEmailIfExists(email))
+                {
+                    newOne.Email = txt_email.Text;
+                }
+                else
+                {
+                    MessageBox.Show("This email already exists!");
+                }
             }
 
             if (txt_address != null)
@@ -148,7 +167,7 @@ namespace SaveWorldWPFClient
                 {
                     bankNo = Int32.Parse(txt_accountNo.Text);
                 }
-                catch (Exception h)
+                catch (Exception )
                 {
                     MessageBox.Show("Please provide number only");
                     return false;
@@ -161,7 +180,7 @@ namespace SaveWorldWPFClient
                 {
                     expiryDate = Convert.ToDateTime(txt_expiryDate.Text);
                 }
-                catch (Exception h)
+                catch (Exception )
 
                 {
                     MessageBox.Show("Please insert date like this yyyy-mm-yy!");
@@ -174,7 +193,7 @@ namespace SaveWorldWPFClient
                 {
                     CCV = Int32.Parse(txt_CCV.Text);
                 }
-                catch (Exception h)
+                catch (Exception)
 
                 {
                     MessageBox.Show("Please insert only numbers like this 111!");
@@ -198,7 +217,7 @@ namespace SaveWorldWPFClient
         private int GetIdOfTheBankAccount()
         {
             BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
-            BankAccountService.BankAccount bankOb = new BankAccountService.BankAccount();
+            BankAccountService.BankAccountB bankOb = new BankAccountService.BankAccountB();
 
           
           
@@ -208,6 +227,18 @@ namespace SaveWorldWPFClient
             int accId = bankOb.AccountId;
             return accId;
            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage mainPage = new MainPage();
+            NavigationService.Navigate(mainPage);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LogInPage logInPage = new LogInPage();
+            NavigationService.Navigate(logInPage);
         }
     }
 }

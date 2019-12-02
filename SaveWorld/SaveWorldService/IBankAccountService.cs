@@ -12,9 +12,21 @@ namespace SaveWorldService
     public interface IBankAccountService
     {
         [OperationContract]
-        BankAccount GetBankAccount(int accountNumber);
+        BankAccountB GetBankAccount(int accountNumber);
+
+        [OperationContract]
+        BankAccountB GetBankAccountById(int id);
+
         [OperationContract]
         bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV);
 
+        [OperationContract]
+        bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId);
+
+        [OperationContract]
+        void Update(BankAccountB bankAccountBefore);
+
+        [OperationContract]
+        bool donateMoneyToAllDisasters(decimal amount, int userBankId);
     }
 }
