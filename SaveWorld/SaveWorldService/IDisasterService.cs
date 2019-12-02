@@ -23,7 +23,7 @@ namespace SaveWorldService
         bool UpdateDisaster(DisasterB disaster);
 
         [OperationContract]
-        void DeleteDisaster(string name);
+        void DeleteDisaster(int id);
 
         [OperationContract]
         bool CheckNameIfExists(string name);

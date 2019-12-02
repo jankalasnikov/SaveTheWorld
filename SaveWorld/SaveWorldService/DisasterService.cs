@@ -31,9 +31,9 @@ namespace SaveWorldService
             return disCtr.UpdateDisaster(disaster);
         }
 
-        public void DeleteDisaster(string name)
+        public void DeleteDisaster(int id)
         {
-            disCtr.DeleteDisaster(name);
+            disCtr.DeleteDisaster(id);
         }
 
     }

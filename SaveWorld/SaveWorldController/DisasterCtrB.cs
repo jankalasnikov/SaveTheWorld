@@ -74,12 +74,12 @@ namespace SaveWorldController
             return exist;
         }
 
-        public void DeleteDisaster(string name)
+        public void DeleteDisaster(int id)
         {
             using (var NWEntities = new SaveWorldEntities())
             {
                 var disaster = (from p in NWEntities.Disasters
-                           where p.disasterName == name
+                           where p.id == id
                            select p).FirstOrDefault();
                 if (disaster != null)
 

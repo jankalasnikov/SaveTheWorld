@@ -59,7 +59,7 @@ namespace SaveWorldWPFClient
             #line hidden
             */
 
-        private void DisasterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Txt_AllDisasters_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (txt_AllDisasters.SelectedItem != null)
             {
@@ -76,7 +76,7 @@ namespace SaveWorldWPFClient
         private void Button_Update(object sender, RoutedEventArgs e)
         {
 
-            DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB();
+            //DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB();
             disaster.Name = txt_DisasterName.Text; 
             disaster.Description = txt_DisasterDescription.Text;
             txt_Priority.Text = disaster.Priority.ToString();
@@ -112,15 +112,57 @@ namespace SaveWorldWPFClient
             loadAllDisasters();
         }
 
-        /*
-        private void Button_Delete(object sender, RoutedEventArgs e)
+        private void Btn_update_Click(object sender, RoutedEventArgs e)
         {
-            disClient.DeleteDisaster();
+
+            DisasterReferences.DisasterB disasterUpdated = new DisasterReferences.DisasterB();
+            disasterUpdated.DisasterId = disaster.DisasterId;
+            disasterUpdated.Name = txt_DisasterName.Text;
+            disasterUpdated.Description = txt_DisasterDescription.Text;
+            txt_Priority.Text = disasterUpdated.Priority.ToString();
+            txt_Victims.Text = disasterUpdated.Victims.ToString();
+            disasterUpdated.Region = txt_Region.Text;
+            if (txt_DisasterName.Text != Name)
+            {
+                if (!disClient.CheckNameIfExists(txt_DisasterName.Text))
+                {
+                    disaster.Name = txt_DisasterName.Text;
+                }
+                else
+                {
+                    MessageBox.Show("This name already exists!");
+                    return;
+                }
+            }
+            else
+            {
+                disasterUpdated.Name = txt_DisasterName.Text;
+            }
+
+            bool updated = disClient.UpdateDisaster(disasterUpdated);
+            if (updated)
+            {
+                MessageBox.Show("disaster was updated!");
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong!");
+            }
+            txt_AllDisasters.Items.Clear();
+            loadAllDisasters();
+        }
+
+
+
+        
+       
+
+        private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            disClient.DeleteDisaster(disaster.DisasterId);
             MessageBox.Show(disaster.Name + " was deleted!");
             txt_AllDisasters.Items.Clear();
             loadAllDisasters();
         }
-        */
-
     }
 }

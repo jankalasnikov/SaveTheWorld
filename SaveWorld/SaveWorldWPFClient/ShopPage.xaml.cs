@@ -34,17 +34,16 @@ namespace SaveWorldWPFClient
         BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
         UserService.UserClient userClient = new UserService.UserClient();
 
-        // ProductService.ProductB prodSelect = new ProductService.ProductB();
         string prodSelect;
         string removeOrderLine;
         List<OrderLineService.OrderLine> orderLinesToOrder = new List<OrderLineService.OrderLine>();
 
-        //OrderServiceReference.OrderServiceClient orderClient = new OrderServiceReference.OrderServiceClient();
+       
         public ShopPage()
         {
             InitializeComponent();
             LoadAllProducts();
-            //  listBox.Items.AddRange(prodClient.GetAllProduct());
+           
 
             Information_label.Content = "Everyone who wants to donate money but doesn't know for which disaster, he is more then welcome to our online \r\n" +
                                        "shop where all the money of his purchase will be equally distributed in the \r\n" +

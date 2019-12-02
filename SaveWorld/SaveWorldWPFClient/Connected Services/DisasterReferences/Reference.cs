@@ -193,10 +193,10 @@ namespace SaveWorldWPFClient.DisasterReferences {
         System.Threading.Tasks.Task<bool> UpdateDisasterAsync(SaveWorldWPFClient.DisasterReferences.DisasterB disaster);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/DeleteDisaster", ReplyAction="http://tempuri.org/IDisasterService/DeleteDisasterResponse")]
-        void DeleteDisaster(string name);
+        void DeleteDisaster(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/DeleteDisaster", ReplyAction="http://tempuri.org/IDisasterService/DeleteDisasterResponse")]
-        System.Threading.Tasks.Task DeleteDisasterAsync(string name);
+        System.Threading.Tasks.Task DeleteDisasterAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/CheckNameIfExists", ReplyAction="http://tempuri.org/IDisasterService/CheckNameIfExistsResponse")]
         bool CheckNameIfExists(string name);
@@ -256,12 +256,12 @@ namespace SaveWorldWPFClient.DisasterReferences {
             return base.Channel.UpdateDisasterAsync(disaster);
         }
         
-        public void DeleteDisaster(string name) {
-            base.Channel.DeleteDisaster(name);
+        public void DeleteDisaster(int id) {
+            base.Channel.DeleteDisaster(id);
         }
         
-        public System.Threading.Tasks.Task DeleteDisasterAsync(string name) {
-            return base.Channel.DeleteDisasterAsync(name);
+        public System.Threading.Tasks.Task DeleteDisasterAsync(int id) {
+            return base.Channel.DeleteDisasterAsync(id);
         }
         
         public bool CheckNameIfExists(string name) {
