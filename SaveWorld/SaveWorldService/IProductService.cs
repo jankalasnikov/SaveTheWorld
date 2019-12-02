@@ -25,5 +25,9 @@ namespace SaveWorldService
 
         [OperationContract]
         void ReturnStock(int idOfProduct, int returnQuantity);
+        [OperationContract]
+        void DeleteProduct(int id);
+        [OperationContract]
+        bool UpdateProduct(ProductB product);
     }
 }

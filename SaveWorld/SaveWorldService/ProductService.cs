@@ -72,5 +72,20 @@ namespace SaveWorldService
         {
             return prodCtr.GetAllProduct();
         }
+
+        public void DeleteProduct(int id)
+        {
+            prodCtr.DeleteProduct(id);
+        }
+
+        public bool UpdateProduct(ProductB product)
+        {
+            return prodCtr.UpdateProduct(product);
+        }
+
+        public bool CheckIfNameExists(string name)
+        {
+            return prodCtr.CheckIfNameExists(name);
+        }
     }
 }

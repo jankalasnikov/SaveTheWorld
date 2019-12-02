@@ -120,85 +120,99 @@ namespace SaveWorldController
             }
             return list;
         }
-        
-      /*  public void AddProduct(int productId, string name, double price, string productDescription, int stock)
+
+        public bool CheckIfNameExists(string name)
         {
-
+            bool exists = false;
             using (SaveWorldEntities dbEntities = new SaveWorldEntities())
-
             {
-                try
+                if (dbEntities.Disasters.Any(pr => pr.ProductName == name))
                 {
-                    aproduct product = new aproduct()
-                    {
-
-                        name = name,
-                        price = price,
-                        productDescription = productDescription,
-                        stock = stock,
-                    };
-
-                    dbEntities.Aproduct.Add(product);
-                    dbEntities.SaveChanges();
-
-
-                }
-                catch (DbEntityValidationException e)
-                {
-                    foreach (var eve in e.EntityValidationErrors)
-                    {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
-                        }
-                    }
-                    throw;
+                    exists = true;
                 }
             }
-        }
-        public void CreateProduct(Product newProduct)
-        {
-
-            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
-
-            {
-
-                aproduct product = new aproduct()
-                {
-
-                    name = newProduct.Name,
-                    price = newProduct.Price,
-                    productDescription = newProduct.ProductDescription,
-                    stock = newProduct.Stock,
-                };
-
-                dbEntities.Aproduct.Add(product);
-
-                try
-                {
-                    dbEntities.SaveChanges();
-                }
-                catch (DbEntityValidationException e)
-                {
-                    foreach (var eve in e.EntityValidationErrors)
-                    {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
-                        }
-                    }
-
-                }
-            }
+            return exists;
         }
 
-         public Product DeleteProduct(int id)
+
+        /*  public void AddProduct(int productId, string name, double price, string productDescription, int stock)
+          {
+
+              using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+
+              {
+                  try
+                  {
+                      aproduct product = new aproduct()
+                      {
+
+                          name = name,
+                          price = price,
+                          productDescription = productDescription,
+                          stock = stock,
+                      };
+
+                      dbEntities.Aproduct.Add(product);
+                      dbEntities.SaveChanges();
+
+
+                  }
+                  catch (DbEntityValidationException e)
+                  {
+                      foreach (var eve in e.EntityValidationErrors)
+                      {
+                          Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                              eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                          foreach (var ve in eve.ValidationErrors)
+                          {
+                              Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                  ve.PropertyName, ve.ErrorMessage);
+                          }
+                      }
+                      throw;
+                  }
+              }
+          }
+          public void CreateProduct(Product newProduct)
+          {
+
+              using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+
+              {
+
+                  aproduct product = new aproduct()
+                  {
+
+                      name = newProduct.Name,
+                      price = newProduct.Price,
+                      productDescription = newProduct.ProductDescription,
+                      stock = newProduct.Stock,
+                  };
+
+                  dbEntities.Aproduct.Add(product);
+
+                  try
+                  {
+                      dbEntities.SaveChanges();
+                  }
+                  catch (DbEntityValidationException e)
+                  {
+                      foreach (var eve in e.EntityValidationErrors)
+                      {
+                          Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                              eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                          foreach (var ve in eve.ValidationErrors)
+                          {
+                              Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                  ve.PropertyName, ve.ErrorMessage);
+                          }
+                      }
+
+                  }
+              }
+          }
+          */
+        public void DeleteProduct(int id)
         {
             using (var NWEntities = new SaveWorldEntities())
             {
@@ -209,12 +223,44 @@ namespace SaveWorldController
                    
                     {
                    
-                    dbEntities.Aproduct.Remove(product);
-                    dbEntities.SaveChanges();
+                    NWEntities.Products.Remove(product);
+                    NWEntities.SaveChanges();
                 };
             }
         }
-        */
-            
+
+
+        public bool UpdateProduct(ProductB product)
+        {
+            var updated = true;
+
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var productId = product.ProductId;
+                var productDatabase =
+                        (from p
+                        in NWEntities.Products
+                        where p.id == productId
+                        select p).FirstOrDefault();
+
+                if (productDatabase == null)
+                {
+                    throw new Exception("No product with ID " + product.ProductId);
+                }
+                productDatabase.productName = product.ProductName;
+                productDatabase.price = product.Price;
+                productDatabase.description = product.ProductDescription;
+                productDatabase.minStock = product.Stock;
+                productDatabase.size = product.Size;
+
+                NWEntities.Products.Attach(productDatabase);
+
+                NWEntities.Entry(productDatabase).State = System.Data.Entity.EntityState.Modified;
+
+                var num = NWEntities.SaveChanges();
+            }
+            return updated;
+        }
+
     }
 }

@@ -21,7 +21,10 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class ManageProductsPage : Page
     {
+        string prodSelect = "";
         ProductService.ProductServiceClient prodClient = new ProductService.ProductServiceClient();
+        ProductService.ProductB product = new ProductService.ProductB();
+
         public ManageProductsPage()
         {
             InitializeComponent();
@@ -45,5 +48,69 @@ namespace SaveWorldWPFClient
             }
 
         }
-    }
+
+        private void txt_prodList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (txt_prodList.SelectedItem != null)
+            {
+                prodSelect = (string)txt_prodList.SelectedItem;
+                product = prodClient.GetProductByName(prodSelect);
+                txt_Name.Text = product.ProductName;
+                txt_Price.Text = product.Price.ToString();
+                txt_ProductDescription.Text = product.ProductDescription;
+                txt_Stock.Text = product.Stock.ToString();
+                txt_Size.Text = product.Size;
+            }
+        }
+
+
+
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            prodClient.DeleteProduct(product.ProductId);
+            MessageBox.Show(product.ProductId + " was deleted!");//or this MessageBox.Show(product.ProductName + " was deleted!");
+            txt_prodList.Items.Clear();
+            loadAllProducts();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ProductService.ProductB productUpdated = new ProductService.ProductB();
+            productUpdated.ProductId = product.ProductId;
+            productUpdated.ProductName = txt_Name.Text;
+            txt_Price.Text = productUpdated.Price.ToString();
+            productUpdated.ProductDescription = product.ProductDescription;
+            txt_Stock.Text = productUpdated.Stock.ToString();
+            productUpdated.Size = product.Size;
+            if (product.ProductName != Name)
+            {
+                if (!prodClient.CheckIfNameExists(txt_Name.Text))
+                {
+                    product.ProductName = txt_Name.Text;
+                }
+                else
+                {
+                    MessageBox.Show("This name already exists!");
+                }
+            }
+            else
+            {
+                productUpdated.ProductName = txt_Name.Text;
+            }
+            bool updated = prodClient.UpdateProduct(productUpdated);
+            if (updated)
+            {
+                MessageBox.Show("Product was updated!");
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong!");
+            }
+            txt_prodList.Items.Clear();
+            loadAllProducts();
+        }
+
+    } 
 }
