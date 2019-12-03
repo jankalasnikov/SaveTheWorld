@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ea1f5086-45cd-43bb-bf99-d8cc5bc17756" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/SaveWorldService/BankAccountService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BankAccountService.wsdl" MetadataType="Wsdl" ID="6ade171c-da66-48f2-9b62-0336f3d9cd0f" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/BankAccountService/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="4d1eed8b-992f-4263-9a1e-e47397de204a" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/BankAccountService/?xsd=xsd2" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="4c851e88-75c7-43bf-8e0a-0451e5b9c1a3" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/BankAccountService/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="5031407a-33b4-47bb-a8f3-97482ab0b562" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/BankAccountService/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="ef63b365-e80a-4863-8520-189b80e0af75" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/BankAccountService/?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

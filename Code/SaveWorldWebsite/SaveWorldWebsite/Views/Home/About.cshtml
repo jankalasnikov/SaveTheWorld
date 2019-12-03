@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Donate";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<div class="container">
+
+    @if (ViewBag.massError != null)
+    {
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="alert alert-danger">@ViewBag.massError</div>
+            </div>
+        </div>
+    }
+    @if (ViewBag.successMessage != null)
+    {
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="alert alert-success">@ViewBag.successMessage</div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            @foreach (var product in ViewBag.products)
+            {
+                <div class="col-md-3 col-lg-offset-1 product-block">
+                    <div class="timer">
+                        <span class="hidden">@(Math.Floor((DateTime.UtcNow - product.EndDate).TotalSeconds * -1))</span>
+                        <span class="days"></span>
+                        <span class="hours"></span>
+                        <span> : </span>
+                        <span class="minutes"></span>
+                        <span> : </span>
+                        <span class="seconds"></span>
+                        <span class="product-id hidden">@product.Id</span>
+                    </div>
+                    <div class="product-name">@product.Name</div>
+                    <div class="price-block">Current bid: <span class="price">@product.Price</span></div>
+                    <div class="product-description">@product.Description</div>
+                    <form action=@Url.Action("Index", "Product") method="post" id="make-bid-@product.Id">
+                        <input type="hidden" name="form-index" value="1" />
+                        <input type="hidden" name="product-id" value="@product.Id" />
+                        <div class="form-group">
+                            <input type="number" name="coins" class="form-control" id="name" placeholder="Insert Bid amount"
+                                   value="
+                                   @if (ViewBag.coins != null && ViewBag.coins.ContainsKey(product.Id)) { double number = 0; ViewBag.coins.TryGetValue(product.Id, out number); @number ; }">
+                            <small id="errorWithCoins" class="form-text error">
+                                @if (ViewBag.coinsError != null && ViewBag.coinsError.ContainsKey(product.Id) != null)
+                                {
+                                    var error = string.Empty;
+                                    ViewBag.coinsError.TryGetValue(product.Id, out error);
+                                    @error;
+                                }
+                                &nbsp;
+                            </small>
+                        </div>
+                        <input type="hidden" name="user-id" value="@ViewBag.userId" />
+                    </form>
+                    <div class="buttons-block">
+                        <button type="button" class="btn btn-default width-49" onclick="location='/products/@product.Id'">Read more</button>
+                        <button type="button" class="btn btn-success width-49" onclick="jQuery('#make-bid-@product.Id').submit()">Bid</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function postToBidExpired(productId) {
+
+        var form = document.createElement("form")
+        form.setAttribute("method", "POST")
+        form.setAttribute("class", "hidden")
+        form.setAttribute("action", '@Url.Action("BidExpired", "Product")')
+
+        let hiddenField = document.createElement("input")
+        hiddenField.setAttribute("type", "hidden")
+        hiddenField.setAttribute("name", "product-id")
+        hiddenField.setAttribute("value", productId)
+
+        form.appendChild(hiddenField);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    //gets all timers then in foreach loop sets a timer foreach one of them
+    jQuery('document').ready(() => {
+
+        var timers = jQuery('.timer')
+        let intervals = []
+        for (let i = 0; i < timers.length; i++) {
+            intervals[i] = setInterval(countdown, 1000, timers[i]);
+            countdown(timers[i]);
+            function countdown(element) {
+                timer = element;
+                let timeLeft = element.childNodes[1].innerHTML;
+                if (timeLeft <= 0) {
+                    let productId
+                    for (var i = 0; i < element.childNodes.length; i++) {
+                        if (element.childNodes[i].className === "product-id") {
+                            productId = element.childNodes[i].innerHTML
+                            break;
+                        }
+                    }
+                    productId = element.childNodes[15].innerHTML
+
+                    console.log(intervals)
+                    for (let j = 0; j < timers.length; j++) {
+                        clearInterval(intervals[j]);
+                    }
+                    if (productId != null) {
+                        postToBidExpired(productId)
+                    }
+                } else {
+                    timeLeft--;
+
+                    let days = Math.floor(timeLeft / (3600 * 24))
+                    let hours = Math.floor((timeLeft / 3600) % 24) > 9 ? Math.floor((timeLeft / 3600) % 24) : "0" + Math.floor((timeLeft / 3600) % 24)
+                    let minutes = Math.floor((timeLeft % 3600) / 60) > 9 ? Math.floor((timeLeft % 3600) / 60) : "0" + Math.floor((timeLeft % 3600) / 60)
+                    let seconds = Math.floor((timeLeft % 3600) % 60) > 9 ? Math.floor((timeLeft % 3600) % 60) : "0" + Math.floor((timeLeft % 3600) % 60)
+
+                    for (var i = 0; i < timer.childNodes.length; i++) {
+                        if (timer.childNodes[i].className === "hidden") {
+                            timer.childNodes[i].innerHTML = timeLeft;
+                            break;
+                        }
+                    }
+
+                    for (var i = 0; i < timer.childNodes.length; i++) {
+                        if (timer.childNodes[i].className === "days") {
+                            timer.childNodes[i].innerHTML = days + "d  "
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < timer.childNodes.length; i++) {
+                        if (timer.childNodes[i].className === "hours") {
+                            timer.childNodes[i].innerHTML = hours
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < timer.childNodes.length; i++) {
+                        if (timer.childNodes[i].className === "minutes") {
+                            timer.childNodes[i].innerHTML = minutes
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < timer.childNodes.length; i++) {
+                        if (timer.childNodes[i].className === "seconds") {
+                            timer.childNodes[i].innerHTML = seconds
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+</script>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="987a4e73-df71-48c8-9d0d-dda58c110350" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/SaveWorldService/UserService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="fad6dffe-1011-4727-afa6-3c8a2d794632" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="50b04b45-98f3-4391-922f-7cca1de43f87" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/?xsd=xsd1" />
+    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="a377accf-f33d-4d26-8bb3-3d7e52b66ad2" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="57268b89-f989-4fbf-b56a-344dcb38bd66" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="4de7fc81-4a03-4b75-99de-803552316e31" SourceId="1" SourceUrl="http://localhost:8080/SaveWorldService/UserService/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
