@@ -87,5 +87,10 @@ namespace SaveWorldService
         {
             return prodCtr.CheckIfNameExists(name);
         }
+
+        public bool CreateProduct(ProductB newProduct)
+        {
+            return prodCtr.CreateProduct(newProduct);
+        }
     }
 }

@@ -32,5 +32,9 @@ namespace SaveWorldService
 
         [OperationContract]
         bool CheckIfNameExists(string name);
+
+        [OperationContract]
+        bool CreateProduct(ProductB newProduct);
+
     }
 }

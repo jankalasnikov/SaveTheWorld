@@ -189,6 +189,12 @@ namespace SaveWorldWPFClient.ProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CheckIfNameExists", ReplyAction="http://tempuri.org/IProductService/CheckIfNameExistsResponse")]
         System.Threading.Tasks.Task<bool> CheckIfNameExistsAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CreateProduct", ReplyAction="http://tempuri.org/IProductService/CreateProductResponse")]
+        bool CreateProduct(SaveWorldWPFClient.ProductService.ProductB newProduct);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CreateProduct", ReplyAction="http://tempuri.org/IProductService/CreateProductResponse")]
+        System.Threading.Tasks.Task<bool> CreateProductAsync(SaveWorldWPFClient.ProductService.ProductB newProduct);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -280,6 +286,14 @@ namespace SaveWorldWPFClient.ProductService {
         
         public System.Threading.Tasks.Task<bool> CheckIfNameExistsAsync(string name) {
             return base.Channel.CheckIfNameExistsAsync(name);
+        }
+        
+        public bool CreateProduct(SaveWorldWPFClient.ProductService.ProductB newProduct) {
+            return base.Channel.CreateProduct(newProduct);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateProductAsync(SaveWorldWPFClient.ProductService.ProductB newProduct) {
+            return base.Channel.CreateProductAsync(newProduct);
         }
     }
 }

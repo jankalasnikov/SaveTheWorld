@@ -1,6 +1,7 @@
 ﻿using SaveWorldWPFClient.ProductService;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,7 +60,7 @@ namespace SaveWorldWPFClient
                 txt_Price.Text = product.Price.ToString();
                 txt_ProductDescription.Text = product.ProductDescription;
                 txt_Stock.Text = product.Stock.ToString();
-                txt_Size.Text = product.Size;
+                //txt_Size.Text = product.Size;
             }
         }
 
@@ -75,15 +76,17 @@ namespace SaveWorldWPFClient
             loadAllProducts();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Update(object sender, RoutedEventArgs e)
         {
             ProductService.ProductB productUpdated = new ProductService.ProductB();
             productUpdated.ProductId = product.ProductId;
             productUpdated.ProductName = txt_Name.Text;
-            txt_Price.Text = productUpdated.Price.ToString();
+           
+            productUpdated.Price = decimal.Parse(txt_Price.Text);
+            productUpdated.Stock = Int32.Parse(txt_Stock.Text);
             productUpdated.ProductDescription = product.ProductDescription;
-            txt_Stock.Text = productUpdated.Stock.ToString();
-            productUpdated.Size = product.Size;
+           
+            //productUpdated.Size = product.Size;
             if (product.ProductName != Name)
             {
                 if (!prodClient.CheckIfNameExists(txt_Name.Text))
@@ -112,5 +115,46 @@ namespace SaveWorldWPFClient
             loadAllProducts();
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            txt_Name.Text = "";
+            txt_ProductDescription.Text = "";
+            txt_Price.Text = "";
+            txt_Stock.Text = "";
+        }
+
+        private void btn_save_Click(object sender, RoutedEventArgs e)
+        {
+            if (txt_Name.Text == "" || txt_ProductDescription.Text == "" || txt_Price.Text == "" || txt_Stock.Text == "")
+            {
+                MessageBox.Show("Fill all the fields!");
+                return;
+            }
+
+            bool created = false;
+            ProductService.ProductB product = new ProductService.ProductB();
+            product.ProductName = txt_Name.Text;
+            product.ProductDescription = txt_ProductDescription.Text;
+            product.Price = Decimal.Parse(txt_Price.Text, NumberStyles.AllowDecimalPoint |  NumberStyles.AllowThousands | NumberStyles.AllowCurrencySymbol);
+            product.Stock = Int32.Parse(txt_Stock.Text);
+
+            created = prodClient.CreateProduct(product);
+            if (created)
+            {
+                MessageBox.Show("The new product has been created!");
+            }
+            else
+            {
+                MessageBox.Show("The name of the product already exists!");
+                return;
+            }
+
+            txt_Name.Text = "";
+            txt_ProductDescription.Text = "";
+            txt_Price.Text = "";
+            txt_Stock.Text = "";
+            txt_prodList.Items.Clear();
+            loadAllProducts();
+        }       
     } 
 }

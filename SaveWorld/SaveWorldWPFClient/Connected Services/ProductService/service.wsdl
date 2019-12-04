@@ -55,6 +55,12 @@
   <wsdl:message name="IProductService_CheckIfNameExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckIfNameExistsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_CreateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProductResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="GetProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetProduct" message="tns:IProductService_GetProduct_InputMessage" />
@@ -87,6 +93,10 @@
     <wsdl:operation name="CheckIfNameExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/CheckIfNameExists" message="tns:IProductService_CheckIfNameExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/CheckIfNameExistsResponse" message="tns:IProductService_CheckIfNameExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/CreateProduct" message="tns:IProductService_CreateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/CreateProductResponse" message="tns:IProductService_CreateProduct_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
@@ -156,6 +166,15 @@
     </wsdl:operation>
     <wsdl:operation name="CheckIfNameExists">
       <soap:operation soapAction="http://tempuri.org/IProductService/CheckIfNameExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProduct">
+      <soap:operation soapAction="http://tempuri.org/IProductService/CreateProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

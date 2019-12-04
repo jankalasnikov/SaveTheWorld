@@ -262,5 +262,29 @@ namespace SaveWorldController
             return updated;
         }
 
+        public bool CreateProduct(ProductB newProduct)
+        {
+
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            {
+                if (dbEntities.Products.Any(o => o.productName == newProduct.ProductName))
+                { return false; }
+
+
+                product Product = new product()
+                {
+                    productName = newProduct.ProductName,
+                    description = newProduct.ProductDescription,
+                    price = newProduct.Price,
+                    minStock = newProduct.Stock,
+                };
+
+                dbEntities.Products.Add(Product);
+
+                dbEntities.SaveChanges();
+            }
+            return true;
+        }
+
     }
 }
