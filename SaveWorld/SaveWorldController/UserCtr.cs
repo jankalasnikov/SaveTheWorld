@@ -264,6 +264,16 @@ namespace SaveWorldController
             return userCorrect;
         }
 
+       /* public bool IsCookieValid(string cookieId)
+        {
+            CoreValidator.ThrowIfNullOrEmpty(cookieId, nameof(cookieId));
+            using (var db = new AuctionContext())
+            {
+                return db.Users.Any(u => u.RememberToken == cookieId);
+            }
+        }
+        */
+
         public bool UpdateUser(UserB user)
         {
            

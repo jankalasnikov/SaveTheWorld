@@ -64,5 +64,11 @@ namespace SaveWorldService
         {
             return userCtr.GetAllUsers();
         }
+
+        /*public bool IsCookieValid(string cookieId)
+        {
+            return userCtr.Instance().IsCookieValid(cookieId);
+        }
+        */
     }
 }
