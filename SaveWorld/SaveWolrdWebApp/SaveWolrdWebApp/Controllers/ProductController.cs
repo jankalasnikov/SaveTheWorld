@@ -15,5 +15,29 @@ namespace SaveWolrdWebApp.Controllers
 
             return View(obj.GetAllProduct());
         }
+
+        public ActionResult Details(ProductController product)
+        {
+            return View();
+        }
+
+        public ActionResult Create(ProductController product)
+        {
+
+            return View();
+        }
+
+        public ActionResult Delete(ProductController product)
+        {
+
+            return View();
+        }
+
+        public ActionResult Edit(ProductController product)
+        {
+
+            return View();
+        }
+
     }
 }

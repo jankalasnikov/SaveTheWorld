@@ -9,6 +9,8 @@ namespace SaveWolrdWebApp.Controllers
 {
     public class DisasterController : Controller
     {
+        DisasterServiceReference.DisasterServiceClient disasterService = new DisasterServiceReference.DisasterServiceClient(); 
+        
         // GET: Disaster
         public ActionResult Index()
         {
@@ -17,28 +19,27 @@ namespace SaveWolrdWebApp.Controllers
             return View(obj.GetAllDisasters());
         }
 
-
-
-        // GET: PersonalDetails/Delete/5
-        [HttpPost, ActionName("Delete")]
-        public void DeleteDisaster(int id)
+        public ActionResult Details(DisasterController disaster)
         {
-            using (var NWEntities = new SaveWorldEntities())
-            {
-                var disaster = (from p in NWEntities.Disasters
-                                where p.id == id
-                                select p).FirstOrDefault();
-                if (disaster != null)
-
-                {
-
-                    NWEntities.Disasters.Remove(disaster);
-                    NWEntities.SaveChanges();
-                };
-            }
+            return View();
         }
 
-        // POST: PersonalDetails/Delete/5     
-       
+        public ActionResult Create(DisasterController disaster)
+        {
+        
+            return View();
+        }
+
+        public ActionResult Delete(DisasterController disaster)
+        {  
+            return View();
+        }
+
+        public ActionResult Edit(DisasterController disaster)
+        {
+
+            return View();
+        }
     }
+
 }

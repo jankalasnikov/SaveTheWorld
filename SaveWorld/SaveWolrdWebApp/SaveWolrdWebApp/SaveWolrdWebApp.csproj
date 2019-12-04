@@ -358,6 +358,18 @@
     <Content Include="Views\Auth\Index.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Disaster\Create.cshtml" />
+    <Content Include="Views\Disaster\Details.cshtml" />
+    <Content Include="Views\Disaster\Delete.cshtml" />
+    <Content Include="Views\Disaster\Edit.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

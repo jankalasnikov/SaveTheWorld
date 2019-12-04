@@ -34,7 +34,7 @@ namespace SaveWolrdWebApp.Controllers
             return View("Login");
         }
 
-        [HttpPost]
+     /*   [HttpPost]
         public ActionResult Login(FormCollection collection)
         {
 
@@ -102,5 +102,6 @@ namespace SaveWolrdWebApp.Controllers
                 Response.Redirect("~/");
             }
         }
+        */
     }
 }

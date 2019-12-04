@@ -15,5 +15,28 @@ namespace SaveWolrdWebApp.Controllers
 
             return View(obj.GetAllUsers());
         }
+
+        public ActionResult Details(UserController user)
+        {
+            return View();
+        }
+
+        public ActionResult Create(UserController user)
+        {
+
+            return View();
+        }
+
+        public ActionResult Delete(UserController user)
+        {
+
+            return View();
+        }
+
+        public ActionResult Edit(UserController user)
+        {
+
+            return View();
+        }
     }
 }
