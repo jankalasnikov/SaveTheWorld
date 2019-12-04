@@ -29,5 +29,8 @@ namespace SaveWorldService
         void DeleteProduct(int id);
         [OperationContract]
         bool UpdateProduct(ProductB product);
+
+        [OperationContract]
+        bool CheckIfNameExists(string name);
     }
 }

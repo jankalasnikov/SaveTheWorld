@@ -177,6 +177,18 @@ namespace SaveWorldWPFClient.ProductService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProduct", ReplyAction="http://tempuri.org/IProductService/DeleteProductResponse")]
         System.Threading.Tasks.Task DeleteProductAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/UpdateProduct", ReplyAction="http://tempuri.org/IProductService/UpdateProductResponse")]
+        bool UpdateProduct(SaveWorldWPFClient.ProductService.ProductB product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/UpdateProduct", ReplyAction="http://tempuri.org/IProductService/UpdateProductResponse")]
+        System.Threading.Tasks.Task<bool> UpdateProductAsync(SaveWorldWPFClient.ProductService.ProductB product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CheckIfNameExists", ReplyAction="http://tempuri.org/IProductService/CheckIfNameExistsResponse")]
+        bool CheckIfNameExists(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CheckIfNameExists", ReplyAction="http://tempuri.org/IProductService/CheckIfNameExistsResponse")]
+        System.Threading.Tasks.Task<bool> CheckIfNameExistsAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -252,6 +264,22 @@ namespace SaveWorldWPFClient.ProductService {
         
         public System.Threading.Tasks.Task DeleteProductAsync(int id) {
             return base.Channel.DeleteProductAsync(id);
+        }
+        
+        public bool UpdateProduct(SaveWorldWPFClient.ProductService.ProductB product) {
+            return base.Channel.UpdateProduct(product);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateProductAsync(SaveWorldWPFClient.ProductService.ProductB product) {
+            return base.Channel.UpdateProductAsync(product);
+        }
+        
+        public bool CheckIfNameExists(string name) {
+            return base.Channel.CheckIfNameExists(name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckIfNameExistsAsync(string name) {
+            return base.Channel.CheckIfNameExistsAsync(name);
         }
     }
 }

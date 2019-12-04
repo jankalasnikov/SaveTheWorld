@@ -126,7 +126,7 @@ namespace SaveWorldController
             bool exists = false;
             using (SaveWorldEntities dbEntities = new SaveWorldEntities())
             {
-                if (dbEntities.Disasters.Any(pr => pr.ProductName == name))
+                if (dbEntities.Products.Any(pr => pr.productName == name))
                 {
                     exists = true;
                 }
@@ -251,7 +251,7 @@ namespace SaveWorldController
                 productDatabase.price = product.Price;
                 productDatabase.description = product.ProductDescription;
                 productDatabase.minStock = product.Stock;
-                productDatabase.size = product.Size;
+               
 
                 NWEntities.Products.Attach(productDatabase);
 
