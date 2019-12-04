@@ -24,7 +24,7 @@ namespace SaveWorldController
                     dis.Name = allRows[i].disasterName;
                     dis.DisasterId = allRows[i].id;
                     dis.Description = allRows[i].description;
-                   // dis.CategoryId = (int)allRows[i].categoryId;
+                    dis.CategoryId = (int)allRows[i].categoryId;
                     dis.Region = allRows[i].region;
                     dis.Victims = allRows[i].victims;
                     dis.Priority = allRows[i].priority;
@@ -145,7 +145,7 @@ namespace SaveWorldController
                 {
 
                     disasterName = newDisaster.Name,
-                    //categoryId = newDisaster.CategoryId,
+                    categoryId = newDisaster.CategoryId,
                     description = newDisaster.Description,
                     priority = newDisaster.Priority,
                     region = newDisaster.Region,

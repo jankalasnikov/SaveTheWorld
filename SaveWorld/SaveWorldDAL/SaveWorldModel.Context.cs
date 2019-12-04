@@ -27,7 +27,7 @@ namespace SaveWorldDAL
     
         public virtual DbSet<auser> Ausers { get; set; }
         public virtual DbSet<bankAccount> BankAccounts { get; set; }
-        public virtual DbSet<category> category { get; set; }
+        public virtual DbSet<category> Category { get; set; }
         public virtual DbSet<disaster> Disasters { get; set; }
         public virtual DbSet<invoice> invoice { get; set; }
         public virtual DbSet<orderLine> OrderLine { get; set; }

@@ -78,6 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\CategoryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\DisasterReferences\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -224,6 +229,19 @@
     <None Include="Connected Services\BankAccountService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\CategoryService\SaveWorldModel.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CategoryService\SaveWorldWPFClient.CategoryService.Category.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CategoryService\service.wsdl" />
+    <None Include="Connected Services\CategoryService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CategoryService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\DisasterReferences\SaveWorldModel.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -303,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\BankAccountService\" />
+    <WCFMetadataStorage Include="Connected Services\CategoryService\" />
     <WCFMetadataStorage Include="Connected Services\DisasterReferences\" />
     <WCFMetadataStorage Include="Connected Services\OrderLineService\" />
     <WCFMetadataStorage Include="Connected Services\OrderService\" />
@@ -407,6 +426,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\OrderService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CategoryService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CategoryService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CategoryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

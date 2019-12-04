@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccountCtr.cs" />
+    <Compile Include="CategoryCtr.cs" />
     <Compile Include="DisasterCtrB.cs" />
     <Compile Include="OrderCtr.cs" />
     <Compile Include="OrderLineCtr.cs" />

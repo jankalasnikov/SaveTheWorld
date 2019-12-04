@@ -11,19 +11,19 @@
     <Grid>
         <ListBox Name="txt_AllDisasters" HorizontalAlignment="Left" Height="298" Margin="96,67,0,0" VerticalAlignment="Top" Width="235" SelectionChanged="Txt_AllDisasters_SelectionChanged"/>
         <TextBox Name="txt_DisasterName" HorizontalAlignment="Left" Height="23" Margin="525,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_DisasterDescription" HorizontalAlignment="Left" Height="23" Margin="525,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Priority" HorizontalAlignment="Left" Height="23" Margin="525,171,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Victims" HorizontalAlignment="Left" Height="23" Margin="525,222,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_Region" HorizontalAlignment="Left" Height="23" Margin="525,280,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Button Name="btn_update" Content="Update" HorizontalAlignment="Left" Margin="491,345,0,0" VerticalAlignment="Top" Width="75" Click="Btn_update_Click"/>
-        <Button Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="595,346,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Delete_Click"/>
+        <TextBox Name="txt_DisasterDescription" HorizontalAlignment="Left" Height="94" Margin="525,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Priority" HorizontalAlignment="Left" Height="23" Margin="525,232,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Victims" HorizontalAlignment="Left" Height="23" Margin="525,284,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_Region" HorizontalAlignment="Left" Height="23" Margin="525,342,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Name="btn_update" Content="Update" HorizontalAlignment="Left" Margin="491,406,0,0" VerticalAlignment="Top" Width="75" Click="Btn_update_Click"/>
+        <Button Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="595,407,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Delete_Click"/>
         <Label Content="Disaster name" HorizontalAlignment="Left" Margin="389,64,0,0" VerticalAlignment="Top"/>
         <Label Content="Disaster description" HorizontalAlignment="Left" Margin="389,113,0,0" VerticalAlignment="Top"/>
-        <Label Content="Disaster priority" HorizontalAlignment="Left" Margin="389,168,0,0" VerticalAlignment="Top"/>
-        <Label Content="Disaster victims" HorizontalAlignment="Left" Margin="389,219,0,0" VerticalAlignment="Top"/>
-        <Label Content="Disaster region" HorizontalAlignment="Left" Margin="389,277,0,0" VerticalAlignment="Top"/>
-        <Button Name="btn_save" Content="Save" HorizontalAlignment="Left" Margin="700,345,0,0" VerticalAlignment="Top" Width="75" Click="Btn_save_Click" />
-        <Button Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="394,346,0,0" VerticalAlignment="Top" Width="75" Click="Btn_clear_Click" />
+        <Label Content="Disaster priority" HorizontalAlignment="Left" Margin="389,229,0,0" VerticalAlignment="Top"/>
+        <Label Content="Disaster victims" HorizontalAlignment="Left" Margin="389,280,0,0" VerticalAlignment="Top"/>
+        <Label Content="Disaster region" HorizontalAlignment="Left" Margin="389,339,0,0" VerticalAlignment="Top"/>
+        <Button Name="btn_save" Content="Save" HorizontalAlignment="Left" Margin="700,406,0,0" VerticalAlignment="Top" Width="75" Click="Btn_save_Click" />
+        <Button Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="394,407,0,0" VerticalAlignment="Top" Width="75" Click="Btn_clear_Click" />
         <Label Content="Disaster list" HorizontalAlignment="Left" Margin="96,23,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" FontStyle="Italic"/>
         <Label Content="Account №" HorizontalAlignment="Left" Margin="731,67,0,0" VerticalAlignment="Top"/>
         <Label Content="Expiry date" HorizontalAlignment="Left" Margin="731,117,0,0" VerticalAlignment="Top"/>
@@ -31,5 +31,9 @@
         <TextBox x:Name="txt_accountNo" HorizontalAlignment="Left" Height="23" Margin="834,67,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txt_expiryDate" Text="{Binding DateTimeValue, StringFormat=yyyy-dd-mm}" HorizontalAlignment="Left" Height="23" Margin="834,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txt_CCV" HorizontalAlignment="Left" Height="23" Margin="834,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ListBox Name="list_AllCategories" HorizontalAlignment="Left" Height="50" Margin="834,229,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="List_AllCategories_SelectionChanged"/>
+        <Label Content="Category list" HorizontalAlignment="Left" Margin="731,229,0,0" VerticalAlignment="Top"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="731,307,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_category" HorizontalAlignment="Left" Height="23" Margin="834,307,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Page>

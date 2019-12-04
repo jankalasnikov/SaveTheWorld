@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccountB.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="DisasterB.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="Order.cs" />

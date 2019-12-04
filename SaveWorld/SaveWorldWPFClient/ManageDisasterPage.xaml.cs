@@ -21,18 +21,23 @@ namespace SaveWorldWPFClient
     public partial class ManageDisasterPage : Page
     {
         int disAccountId;
+        int catId;
         int disAccNo;
         DateTime disAccDate;
         int disAccCCV;
         string disSelect = "";
+        string catSelect = "";
         DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
         DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB();
         BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
+        CategoryService.CategoryServiceClient categoryClient = new CategoryService.CategoryServiceClient();
+        CategoryService.Category categoryB = new CategoryService.Category();
 
         public ManageDisasterPage()
         {
             InitializeComponent();
-            loadAllDisasters(); 
+            loadAllDisasters();
+            loadAllCategories();
         }
 
         private void loadAllDisasters()
@@ -53,15 +58,25 @@ namespace SaveWorldWPFClient
             }
         }
 
-            /* FOR SOME REASON THIS LINE OF CODE DISAPPEARS EACH TIME PROGRAM IS RUN, ITS NECESSARY TO HAVE IT IN ORDER TO LIST THE DISASTER IN TEXT BOXES
-             * IT BELONGS TO ManageDisasterPage.g.cs
-             * 
-            #line 12 "..\..\ManageDisasterPage.xaml"
-            this.txt_AllDisasters.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.DisasterList_SelectionChanged);
+        private void loadAllCategories()
+        {
 
-            #line default
-            #line hidden
-            */
+
+            string result = "";
+
+            var sb = new StringBuilder();
+            foreach (CategoryService.Category d in categoryClient.GetAllCategories())
+            {
+                sb.Append(d.NameOfCategory);
+
+                result = sb.ToString();
+                list_AllCategories.Items.Add(result);
+                result = "";
+                sb.Clear();
+            }
+        }
+
+       
 
         private void GetAccountInfo(int accountId)
         {
@@ -88,6 +103,7 @@ namespace SaveWorldWPFClient
                 txt_accountNo.Text = disAccNo.ToString();
                 txt_expiryDate.Text = disAccDate.ToString();
                 txt_CCV.Text = disAccCCV.ToString();
+                
             }
         }
 
@@ -99,8 +115,10 @@ namespace SaveWorldWPFClient
             disasterUpdated.DisasterId = disaster.DisasterId;
             disasterUpdated.Name = txt_DisasterName.Text;
             disasterUpdated.Description = txt_DisasterDescription.Text;
-            txt_Priority.Text = disasterUpdated.Priority.ToString();
-            txt_Victims.Text = disasterUpdated.Victims.ToString();
+         
+            disasterUpdated.Priority = Int32.Parse(txt_Priority.Text);
+            disasterUpdated.Victims = Int32.Parse(txt_Victims.Text);
+            disasterUpdated.CategoryId = catId;
             disasterUpdated.Region = txt_Region.Text;
             if (txt_DisasterName.Text != Name)
             {
@@ -155,12 +173,13 @@ namespace SaveWorldWPFClient
             txt_Region.Text = "";
             txt_Victims.Text = "";
             txt_accountNo.Text = "";
+            txt_category.Text = "";
         }
 
         private void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             if (txt_DisasterName.Text == "" || txt_DisasterDescription.Text == "" || txt_Priority.Text== "" || txt_Region.Text == "" || txt_Victims.Text == ""
-               || txt_expiryDate.Text == "" || txt_CCV.Text == "" || txt_accountNo.Text == "")
+               || txt_expiryDate.Text == "" || txt_CCV.Text == "" || txt_accountNo.Text == "" || txt_category.Text=="")
             {
                 MessageBox.Show("Fill all the fields!");
                 return;
@@ -173,6 +192,7 @@ namespace SaveWorldWPFClient
             disaster.Priority = Int32.Parse(txt_Priority.Text);
             disaster.Victims = Int32.Parse(txt_Victims.Text);
             disaster.Region = txt_Region.Text;
+            disaster.CategoryId = categoryB.CatogoryId;
 
             if(CheckBankAccount())
             {
@@ -204,6 +224,7 @@ namespace SaveWorldWPFClient
             txt_Victims.Text = "";
             txt_accountNo.Text = "";
             txt_AllDisasters.Items.Clear();
+            txt_category.Text = "";
             loadAllDisasters();
         }
 
@@ -289,6 +310,17 @@ namespace SaveWorldWPFClient
             int accId = bankOb.AccountId;
             return accId;
 
+        }
+
+        private void List_AllCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (list_AllCategories.SelectedItem != null)
+            {
+                catSelect = (string)list_AllCategories.SelectedItem;
+                categoryB = categoryClient.GetCategoryByName(catSelect);
+                catId = categoryB.CatogoryId;
+                txt_category.Text = categoryB.NameOfCategory;
+            }
         }
     }
 }

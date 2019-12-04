@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccountService.cs" />
+    <Compile Include="CategoryService.cs" />
     <Compile Include="DisasterService.cs" />
     <Compile Include="IBankAccountService.cs" />
+    <Compile Include="ICategoryService.cs" />
     <Compile Include="IDisasterService.cs" />
     <Compile Include="IOrderLineService.cs" />
     <Compile Include="IOrderService.cs" />
