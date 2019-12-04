@@ -37,6 +37,12 @@
   <wsdl:message name="IDisasterService_CheckNameIfExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckNameIfExistsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDisasterService_CreateDisaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDisaster" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_CreateDisaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDisasterResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDisasterService">
     <wsdl:operation name="GetAllDisasters">
       <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/GetAllDisasters" message="tns:IDisasterService_GetAllDisasters_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="CheckNameIfExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/CheckNameIfExists" message="tns:IDisasterService_CheckNameIfExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/CheckNameIfExistsResponse" message="tns:IDisasterService_CheckNameIfExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDisaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/CreateDisaster" message="tns:IDisasterService_CreateDisaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/CreateDisasterResponse" message="tns:IDisasterService_CreateDisaster_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDisasterService" type="tns:IDisasterService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="CheckNameIfExists">
       <soap:operation soapAction="http://tempuri.org/IDisasterService/CheckNameIfExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDisaster">
+      <soap:operation soapAction="http://tempuri.org/IDisasterService/CreateDisaster" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -24,7 +24,7 @@ namespace SaveWorldController
                     dis.Name = allRows[i].disasterName;
                     dis.DisasterId = allRows[i].id;
                     dis.Description = allRows[i].description;
-                    dis.CategoryId = (int)allRows[i].categoryId;
+                   // dis.CategoryId = (int)allRows[i].categoryId;
                     dis.Region = allRows[i].region;
                     dis.Victims = allRows[i].victims;
                     dis.Priority = allRows[i].priority;
@@ -130,5 +130,37 @@ namespace SaveWorldController
             }
             return updated;
         }
+
+        public bool CreateDisaster(DisasterB newDisaster)
+        {
+
+            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
+            {
+                if (dbEntities.Disasters.Any(o => o.disasterName == newDisaster.Name))
+                { return false; }
+
+
+
+                disaster disaster = new disaster()
+                {
+
+                    disasterName = newDisaster.Name,
+                    //categoryId = newDisaster.CategoryId,
+                    description = newDisaster.Description,
+                    priority = newDisaster.Priority,
+                    region = newDisaster.Region,
+                    victims = newDisaster.Victims,
+                    accountId = newDisaster.DisasterBankAccountId,
+                };
+
+                dbEntities.Disasters.Add(disaster);
+
+               
+                dbEntities.SaveChanges();
+             
+            }
+            return true;
+        }
+
     }
 }

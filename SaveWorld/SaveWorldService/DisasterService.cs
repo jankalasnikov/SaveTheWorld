@@ -36,5 +36,10 @@ namespace SaveWorldService
             disCtr.DeleteDisaster(id);
         }
 
+        public bool CreateDisaster(DisasterB newDisaster)
+        {
+           return disCtr.CreateDisaster(newDisaster);
+        }
+
     }
 }

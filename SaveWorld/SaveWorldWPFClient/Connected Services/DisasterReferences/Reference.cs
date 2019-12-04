@@ -203,6 +203,12 @@ namespace SaveWorldWPFClient.DisasterReferences {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/CheckNameIfExists", ReplyAction="http://tempuri.org/IDisasterService/CheckNameIfExistsResponse")]
         System.Threading.Tasks.Task<bool> CheckNameIfExistsAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/CreateDisaster", ReplyAction="http://tempuri.org/IDisasterService/CreateDisasterResponse")]
+        bool CreateDisaster(SaveWorldWPFClient.DisasterReferences.DisasterB newDisaster);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisasterService/CreateDisaster", ReplyAction="http://tempuri.org/IDisasterService/CreateDisasterResponse")]
+        System.Threading.Tasks.Task<bool> CreateDisasterAsync(SaveWorldWPFClient.DisasterReferences.DisasterB newDisaster);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -270,6 +276,14 @@ namespace SaveWorldWPFClient.DisasterReferences {
         
         public System.Threading.Tasks.Task<bool> CheckNameIfExistsAsync(string name) {
             return base.Channel.CheckNameIfExistsAsync(name);
+        }
+        
+        public bool CreateDisaster(SaveWorldWPFClient.DisasterReferences.DisasterB newDisaster) {
+            return base.Channel.CreateDisaster(newDisaster);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateDisasterAsync(SaveWorldWPFClient.DisasterReferences.DisasterB newDisaster) {
+            return base.Channel.CreateDisasterAsync(newDisaster);
         }
     }
 }

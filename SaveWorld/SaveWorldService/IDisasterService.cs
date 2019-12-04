@@ -27,5 +27,8 @@ namespace SaveWorldService
 
         [OperationContract]
         bool CheckNameIfExists(string name);
+
+        [OperationContract]
+        bool CreateDisaster(DisasterB newDisaster);
     }
 }

@@ -188,12 +188,14 @@ namespace SaveWorldController
                 if (dbEntities.Ausers.Any(o => o.email == newUser.Email))
                 { return; }
 
+                
+
                 auser user = new auser()
                 {
   
                         name= newUser.Name,
                         email = newUser.Email,
-                        password = newUser.Password,
+                        password = newUser.Password, 
                         address = newUser.Address,
                         phoneno = newUser.Phone,
                         typeOfUser = 1,

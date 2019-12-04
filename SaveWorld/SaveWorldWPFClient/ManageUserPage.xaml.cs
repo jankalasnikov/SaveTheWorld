@@ -23,6 +23,7 @@ namespace SaveWorldWPFClient
         string userSelect = "";
         string currentEmail;
         int userId;
+        string password="";
         int accID;
         UserService.UserClient usrClient = new UserService.UserClient();
         UserService.UserB user = new UserService.UserB();
@@ -56,11 +57,11 @@ namespace SaveWorldWPFClient
                 userSelect = (string)userList.SelectedItem;
                 user = usrClient.GetUserByName(userSelect);
                 userId = user.UserId;
+                password = user.Password;
                 txt_Name.Text = user.Name;
                 txt_Email.Text = user.Email;
                 currentEmail = user.Email;
                 txt_Address.Text = user.Address;
-                txt_Password.Text = user.Password;
                 txt_PhoneNo.Text = user.Phone.ToString();
                 txt_TypeOfUser.Text = user.TypeOfUser.ToString();
                 accID = user.BankAccountId;
@@ -72,6 +73,7 @@ namespace SaveWorldWPFClient
         {
 
             UserService.UserB user = new UserService.UserB();
+            user.Password = password;
             user.UserId = userId;
             user.Name = txt_Name.Text;
             user.BankAccountId = accID;
@@ -95,22 +97,15 @@ namespace SaveWorldWPFClient
                 user.Email = txt_Email.Text;
             }
 
-            if (txt_Password.Text == txt_ConfirmPass.Text)
-            {
-                user.Password = txt_ConfirmPass.Text;
-            }
-            else
-            {
-                MessageBox.Show("Passwords does not match!");
-                return;
-            }
+           
+           
           
 
             bool updated = usrClient.UpdateUser(user);
             if (updated)
             {
                 MessageBox.Show("User profile was updated!");
-                txt_ConfirmPass.Text = "";
+               
             }
             else
             {
