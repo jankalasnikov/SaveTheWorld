@@ -16,5 +16,8 @@ namespace SaveWorldService
 
         [OperationContract]
         Category GetCategoryByName(string name);
+
+        [OperationContract]
+        string GetCategoryNameById(int id);
     }
 }

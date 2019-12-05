@@ -21,5 +21,10 @@ namespace SaveWorldService
         {
             return categoryCtr.GetCategoryByName(name);
         }
+
+        public string GetCategoryNameById(int id)
+        {
+            return categoryCtr.GetCategoryNameById(id);
+        }
     }
 }

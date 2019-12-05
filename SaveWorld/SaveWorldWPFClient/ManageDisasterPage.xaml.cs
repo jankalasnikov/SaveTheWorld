@@ -103,6 +103,9 @@ namespace SaveWorldWPFClient
                 txt_accountNo.Text = disAccNo.ToString();
                 txt_expiryDate.Text = disAccDate.ToString();
                 txt_CCV.Text = disAccCCV.ToString();
+
+                string nameOfCat = categoryClient.GetCategoryNameById(disaster.CategoryId);
+                txt_category.Text = nameOfCat;
                 
             }
         }
@@ -148,6 +151,15 @@ namespace SaveWorldWPFClient
             }
             txt_AllDisasters.Items.Clear();
             loadAllDisasters();
+            txt_DisasterDescription.Text = "";
+            txt_DisasterName.Text = "";
+            txt_expiryDate.Text = "";
+            txt_CCV.Text = "";
+            txt_Priority.Text = "";
+            txt_Region.Text = "";
+            txt_Victims.Text = "";
+            txt_accountNo.Text = "";
+            txt_category.Text = "";
         }
 
 

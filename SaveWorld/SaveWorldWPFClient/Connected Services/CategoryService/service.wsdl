@@ -19,6 +19,12 @@
   <wsdl:message name="ICategoryService_GetCategoryByName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCategoryByNameResponse" />
   </wsdl:message>
+  <wsdl:message name="ICategoryService_GetCategoryNameById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryNameById" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetCategoryNameById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryNameByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICategoryService">
     <wsdl:operation name="GetAllCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/GetAllCategories" message="tns:ICategoryService_GetAllCategories_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="GetCategoryByName">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/GetCategoryByName" message="tns:ICategoryService_GetCategoryByName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/GetCategoryByNameResponse" message="tns:ICategoryService_GetCategoryByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryNameById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/GetCategoryNameById" message="tns:ICategoryService_GetCategoryNameById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/GetCategoryNameByIdResponse" message="tns:ICategoryService_GetCategoryNameById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICategoryService" type="tns:ICategoryService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCategoryByName">
       <soap:operation soapAction="http://tempuri.org/ICategoryService/GetCategoryByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryNameById">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/GetCategoryNameById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

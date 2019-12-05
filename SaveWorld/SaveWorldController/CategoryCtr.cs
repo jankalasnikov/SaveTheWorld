@@ -32,6 +32,28 @@ namespace SaveWorldController
 
         }
 
+        public string GetCategoryNameById(int id)
+        {
+            Category category = null;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+
+                var cat = (from p in NWEntities.Category
+                           where p.id == id
+                           select p).FirstOrDefault();
+                if (cat != null)
+                    category = new Category()
+                    {
+                        CatogoryId = cat.id,
+                        NameOfCategory = cat.nameOfCategory,
+
+
+                    };
+            }
+            return category.NameOfCategory;
+
+        }
+
         public List<Category> GetAllCategories()
         {
             List<Category> list = new List<Category>();

@@ -89,6 +89,12 @@ namespace SaveWorldWPFClient.CategoryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetCategoryByName", ReplyAction="http://tempuri.org/ICategoryService/GetCategoryByNameResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.CategoryService.Category> GetCategoryByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetCategoryNameById", ReplyAction="http://tempuri.org/ICategoryService/GetCategoryNameByIdResponse")]
+        string GetCategoryNameById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetCategoryNameById", ReplyAction="http://tempuri.org/ICategoryService/GetCategoryNameByIdResponse")]
+        System.Threading.Tasks.Task<string> GetCategoryNameByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -132,6 +138,14 @@ namespace SaveWorldWPFClient.CategoryService {
         
         public System.Threading.Tasks.Task<SaveWorldWPFClient.CategoryService.Category> GetCategoryByNameAsync(string name) {
             return base.Channel.GetCategoryByNameAsync(name);
+        }
+        
+        public string GetCategoryNameById(int id) {
+            return base.Channel.GetCategoryNameById(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetCategoryNameByIdAsync(int id) {
+            return base.Channel.GetCategoryNameByIdAsync(id);
         }
     }
 }
