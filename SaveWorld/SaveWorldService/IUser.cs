@@ -30,7 +30,7 @@ namespace SaveWorldService
         void CreateUser(UserB newUser);
 
         [OperationContract]
-        void DeleteUser(int id);
+        int DeleteUser(int id);
 
         [OperationContract]
         int GetUserIDByName(string name);

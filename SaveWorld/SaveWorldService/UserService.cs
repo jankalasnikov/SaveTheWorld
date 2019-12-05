@@ -55,9 +55,9 @@ namespace SaveWorldService
             return userCtr.UpdateUser(user);
         }
 
-        public void DeleteUser(int id)
+        public int DeleteUser(int id)
         {
-            userCtr.DeleteUser(id);
+           return userCtr.DeleteUser(id);
         }
 
         public List<UserB> GetAllUsers()

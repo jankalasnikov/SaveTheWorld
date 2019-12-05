@@ -217,10 +217,10 @@ namespace SaveWolrdWebApp.UserServiceReference {
         System.Threading.Tasks.Task CreateUserAsync(SaveWolrdWebApp.UserServiceReference.UserB newUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/DeleteUser", ReplyAction="http://tempuri.org/IUser/DeleteUserResponse")]
-        void DeleteUser(int id);
+        int DeleteUser(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/DeleteUser", ReplyAction="http://tempuri.org/IUser/DeleteUserResponse")]
-        System.Threading.Tasks.Task DeleteUserAsync(int id);
+        System.Threading.Tasks.Task<int> DeleteUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserIDByName", ReplyAction="http://tempuri.org/IUser/GetUserIDByNameResponse")]
         int GetUserIDByName(string name);
@@ -318,11 +318,11 @@ namespace SaveWolrdWebApp.UserServiceReference {
             return base.Channel.CreateUserAsync(newUser);
         }
         
-        public void DeleteUser(int id) {
-            base.Channel.DeleteUser(id);
+        public int DeleteUser(int id) {
+            return base.Channel.DeleteUser(id);
         }
         
-        public System.Threading.Tasks.Task DeleteUserAsync(int id) {
+        public System.Threading.Tasks.Task<int> DeleteUserAsync(int id) {
             return base.Channel.DeleteUserAsync(id);
         }
         

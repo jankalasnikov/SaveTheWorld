@@ -89,7 +89,7 @@ namespace SaveWorldController
             return list;
         }
 
-        public void DeleteUser(int id)
+        public int DeleteUser(int id)
         {
             using (var NWEntities = new SaveWorldEntities())
             {
@@ -104,6 +104,8 @@ namespace SaveWorldController
                     NWEntities.SaveChanges();
                 };
             }
+
+            return id; 
         }
 
         public int GetUserIDByName(string name)
