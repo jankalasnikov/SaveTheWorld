@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Request.Cookies["auth"] != null)
+                    {
+                        <li>@Html.ActionLink("Catalog", "Index", "Product")</li>
+                        if (ViewBag.user != null && ViewBag.user.IsAdmin)
+                        {
+                            <li>@Html.ActionLink("Create product", "Create", "Product")</li>
+                        }
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Request.Cookies["auth"] != null)
+                    {
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@(ViewBag.user.Name ?? "") - @(ViewBag.user.Coins ?? "") Coins</a>
+                            <div class="dropdown-menu navbar-inverse custom-dropdown">
+                                <div class="container">
+                                    <a class="dropdown-item" href="@Url.Action("Edit", "User", new { userId = ViewBag.user.Id})">My Profile</a>
+                                    <hr style="border: 0.5px solid lightslategrey;" />
+                                    <a class="dropdown-item button" onclick="jQuery('#logout-form').submit()">Log out</a>
+                                    <form action=@Url.Action("Logout", "Auth") method="post" id="logout-form"></form>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Auth")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Auth")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p id="copyright">&copy; @DateTime.Now.Year - SaveTheWorld</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

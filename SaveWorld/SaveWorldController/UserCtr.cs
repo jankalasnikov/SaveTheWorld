@@ -235,7 +235,6 @@ namespace SaveWorldController
             using (var NWEntities = new SaveWorldEntities())
             {
                
-
                 var user = NWEntities.Ausers
                        .FirstOrDefault(u => u.email == userEmail
                         && u.password == password);
@@ -255,12 +254,7 @@ namespace SaveWorldController
 
                     };
                 }
-                /*   else
-                   {
-                       throw new ArgumentNullException("user is null");
-                   }
-              */
-
+               
             }
 
             return userCorrect;

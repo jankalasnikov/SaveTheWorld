@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DisasterService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8080/SaveWorldService/DisasterService/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/SaveWorldService/DisasterService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/SaveWorldService/DisasterService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SaveWorldModel" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDisasterService_GetAllDisasters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDisasters" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_GetAllDisasters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDisastersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_GetDisasterByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDisasterByName" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_GetDisasterByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDisasterByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_UpdateDisaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDisaster" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_UpdateDisaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDisasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_DeleteDisaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDisaster" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_DeleteDisaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDisasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_CheckNameIfExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckNameIfExists" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_CheckNameIfExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckNameIfExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_CreateDisaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDisaster" />
+  </wsdl:message>
+  <wsdl:message name="IDisasterService_CreateDisaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDisasterResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDisasterService">
+    <wsdl:operation name="GetAllDisasters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/GetAllDisasters" message="tns:IDisasterService_GetAllDisasters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/GetAllDisastersResponse" message="tns:IDisasterService_GetAllDisasters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDisasterByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/GetDisasterByName" message="tns:IDisasterService_GetDisasterByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/GetDisasterByNameResponse" message="tns:IDisasterService_GetDisasterByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDisaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/UpdateDisaster" message="tns:IDisasterService_UpdateDisaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/UpdateDisasterResponse" message="tns:IDisasterService_UpdateDisaster_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDisaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/DeleteDisaster" message="tns:IDisasterService_DeleteDisaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/DeleteDisasterResponse" message="tns:IDisasterService_DeleteDisaster_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckNameIfExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/CheckNameIfExists" message="tns:IDisasterService_CheckNameIfExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/CheckNameIfExistsResponse" message="tns:IDisasterService_CheckNameIfExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDisaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisasterService/CreateDisaster" message="tns:IDisasterService_CreateDisaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisasterService/CreateDisasterResponse" message="tns:IDisasterService_CreateDisaster_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDisasterService" type="tns:IDisasterService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllDisasters">
+      <soap:operation soapAction="http://tempuri.org/IDisasterService/GetAllDisasters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDisasterByName">
+      <soap:operation soapAction="http://tempuri.org/IDisasterService/GetDisasterByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDisaster">
+      <soap:operation soapAction="http://tempuri.org/IDisasterService/UpdateDisaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDisaster">
+      <soap:operation soapAction="http://tempuri.org/IDisasterService/DeleteDisaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckNameIfExists">
+      <soap:operation soapAction="http://tempuri.org/IDisasterService/CheckNameIfExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDisaster">
+      <soap:operation soapAction="http://tempuri.org/IDisasterService/CreateDisaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DisasterService">
+    <wsdl:port name="BasicHttpBinding_IDisasterService" binding="tns:BasicHttpBinding_IDisasterService">
+      <soap:address location="http://localhost:8080/SaveWorldService/DisasterService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
