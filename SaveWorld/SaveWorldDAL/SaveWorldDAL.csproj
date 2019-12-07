@@ -62,19 +62,24 @@
     <Compile Include="category.cs">
       <DependentUpon>SaveWorldModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BankAccountDAL.cs" />
+    <Compile Include="CategoryDAL.cs" />
     <Compile Include="disaster.cs">
       <DependentUpon>SaveWorldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DisasterDAL.cs" />
     <Compile Include="invoice.cs">
       <DependentUpon>SaveWorldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderDAL.cs" />
     <Compile Include="orderLine.cs">
       <DependentUpon>SaveWorldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderLineDAL.cs" />
     <Compile Include="product.cs">
       <DependentUpon>SaveWorldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductDAL.cs" />
     <Compile Include="productPropertyValues.cs">
       <DependentUpon>SaveWorldModel.tt</DependentUpon>
     </Compile>
@@ -109,6 +114,7 @@
     <Compile Include="typeOfSubscription.cs">
       <DependentUpon>SaveWorldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

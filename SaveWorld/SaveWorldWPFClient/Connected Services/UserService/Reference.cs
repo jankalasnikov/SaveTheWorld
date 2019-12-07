@@ -198,12 +198,6 @@ namespace SaveWorldWPFClient.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetAllUsers", ReplyAction="http://tempuri.org/IUser/GetAllUsersResponse")]
         System.Threading.Tasks.Task<SaveWorldWPFClient.UserService.UserB[]> GetAllUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/AddUser", ReplyAction="http://tempuri.org/IUser/AddUserResponse")]
-        void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/AddUser", ReplyAction="http://tempuri.org/IUser/AddUserResponse")]
-        System.Threading.Tasks.Task AddUserAsync(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/CheckLogin", ReplyAction="http://tempuri.org/IUser/CheckLoginResponse")]
         SaveWorldWPFClient.UserService.UserB CheckLogin(string email, string pass);
         
@@ -217,10 +211,10 @@ namespace SaveWorldWPFClient.UserService {
         System.Threading.Tasks.Task CreateUserAsync(SaveWorldWPFClient.UserService.UserB newUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/DeleteUser", ReplyAction="http://tempuri.org/IUser/DeleteUserResponse")]
-        void DeleteUser(int id);
+        int DeleteUser(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/DeleteUser", ReplyAction="http://tempuri.org/IUser/DeleteUserResponse")]
-        System.Threading.Tasks.Task DeleteUserAsync(int id);
+        System.Threading.Tasks.Task<int> DeleteUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUser/GetUserIDByName", ReplyAction="http://tempuri.org/IUser/GetUserIDByNameResponse")]
         int GetUserIDByName(string name);
@@ -294,14 +288,6 @@ namespace SaveWorldWPFClient.UserService {
             return base.Channel.GetAllUsersAsync();
         }
         
-        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc) {
-            base.Channel.AddUser(name, password, typeOfUser, email, address, phone, bankAcc);
-        }
-        
-        public System.Threading.Tasks.Task AddUserAsync(string name, string password, int typeOfUser, string email, string address, string phone, int bankAcc) {
-            return base.Channel.AddUserAsync(name, password, typeOfUser, email, address, phone, bankAcc);
-        }
-        
         public SaveWorldWPFClient.UserService.UserB CheckLogin(string email, string pass) {
             return base.Channel.CheckLogin(email, pass);
         }
@@ -318,11 +304,11 @@ namespace SaveWorldWPFClient.UserService {
             return base.Channel.CreateUserAsync(newUser);
         }
         
-        public void DeleteUser(int id) {
-            base.Channel.DeleteUser(id);
+        public int DeleteUser(int id) {
+            return base.Channel.DeleteUser(id);
         }
         
-        public System.Threading.Tasks.Task DeleteUserAsync(int id) {
+        public System.Threading.Tasks.Task<int> DeleteUserAsync(int id) {
             return base.Channel.DeleteUserAsync(id);
         }
         

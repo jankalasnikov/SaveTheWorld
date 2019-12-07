@@ -21,9 +21,6 @@ namespace SaveWorldService
         List<UserB> GetAllUsers();
 
         [OperationContract]
-        void AddUser(string name, string password, int typeOfUser, string email, string address, string phone,int bankAcc);
-
-        [OperationContract]
         UserB CheckLogin(string email, string pass);
 
         [OperationContract]

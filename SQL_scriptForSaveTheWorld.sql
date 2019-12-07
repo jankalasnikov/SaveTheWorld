@@ -215,6 +215,11 @@ insert into bankAccount(accountNo,expiryDate, ccv, amount) values (6,'2019-02-20
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (7,'2019-02-20', 123, '0.00');
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (8,'2019-02-20', 123, '0.00');
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (9,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (10,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (11,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (12,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (13,'2019-02-20', 123, '0.00');
+insert into bankAccount(accountNo,expiryDate, ccv, amount) values (14,'2019-02-20', 123, '0.00');
 
 
 insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 2, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
@@ -239,6 +244,12 @@ insert into disaster(disasterName, description, region, categoryId, priority, vi
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Venezia flood','A lot of water on san marco', 'Venezia', 2, 1, 0,7);
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Usa tornadoes', 'the wind is crazy', 'Usa', 4, 4, 5,8);
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Storm', 'the wind is crazy', 'Usa', 4, 4, 5,9);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Big Fire in Cambodja',' fire', 'Amazonka', 1, 1, 10,10);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Italy Eartquake2','Very bad situation at the moment', 'Verona', 3, 2, 15,11);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Venezia flood2','A lot of water on san marco', 'Venezia', 2, 1, 0,12);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Usa tornadoes2', 'the wind is crazy', 'Usa', 4, 4, 5,13);
+insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Storm2', 'the wind is crazy', 'Usa', 4, 4, 5,14);
+
 
 
 /*

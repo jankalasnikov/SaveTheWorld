@@ -10,62 +10,12 @@ namespace SaveWorldController
 {
     public class OrderCtr
     {
+        OrderDAL orderDal = new OrderDAL();
         public int CreateOrderAndReturnId(Order newOrder)
         {
-
-            using (SaveWorldEntities dbEntities = new SaveWorldEntities())
-            {
-                
-
-                    tbOrder order = new tbOrder()
-                {
-
-                    userId = newOrder.UserId,
-                    date = newOrder.OrderDate,
-                   
-                   
-                };
-
-                dbEntities.TbOrder.Add(order);
- 
-                dbEntities.SaveChanges();
-
-                return order.id;
-                
-            }
+            return orderDal.CreateOrderAndReturnId(newOrder);
         }
 
-        /*  Order Order { get; set; } = new Order();
-          public string GetDate()
-          {
-              return "today";
-          }
-
-          public void AddOrderLine(int productID, int quantity)
-          {
-
-              List<OrderLine> existingOrderLines = Order.OrderLines.Where(orderLine => orderLine.ProductID == productID).ToList();
-              if (existingOrderLines.Count > 0)
-              {
-                  existingOrderLines.ForEach(orderLine => orderLine.Quantity += quantity);
-              }
-              else
-              {
-                  if (existingOrderLines.Count == 0)
-                  {
-                      Order.OrderLines.Add(new OrderLine()
-                      {
-                          ProductID = productID,
-                          Quantity = quantity
-                      });
-                  }
-              }
-
-          }
-
-          public void RemoveOrderLine(int productId)
-          {
-              Order.OrderLines.RemoveAll(orderLine => orderLine.ProductID == productId);
-          }*/
+        
     }
 }

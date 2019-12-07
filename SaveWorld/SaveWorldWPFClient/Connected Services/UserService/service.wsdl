@@ -31,12 +31,6 @@
   <wsdl:message name="IUser_GetAllUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="IUser_AddUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddUser" />
-  </wsdl:message>
-  <wsdl:message name="IUser_AddUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddUserResponse" />
-  </wsdl:message>
   <wsdl:message name="IUser_CheckLogin_InputMessage">
     <wsdl:part name="parameters" element="tns:CheckLogin" />
   </wsdl:message>
@@ -83,10 +77,6 @@
     <wsdl:operation name="GetAllUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IUser/GetAllUsers" message="tns:IUser_GetAllUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUser/GetAllUsersResponse" message="tns:IUser_GetAllUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUser/AddUser" message="tns:IUser_AddUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUser/AddUserResponse" message="tns:IUser_AddUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CheckLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IUser/CheckLogin" message="tns:IUser_CheckLogin_InputMessage" />
@@ -140,15 +130,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllUsers">
       <soap:operation soapAction="http://tempuri.org/IUser/GetAllUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddUser">
-      <soap:operation soapAction="http://tempuri.org/IUser/AddUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

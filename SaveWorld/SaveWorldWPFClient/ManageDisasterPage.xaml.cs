@@ -123,7 +123,7 @@ namespace SaveWorldWPFClient
             disasterUpdated.Victims = Int32.Parse(txt_Victims.Text);
             disasterUpdated.CategoryId = catId;
             disasterUpdated.Region = txt_Region.Text;
-            if (txt_DisasterName.Text != Name)
+            if (txt_DisasterName.Text != disaster.Name)
             {
                 if (!disClient.CheckNameIfExists(txt_DisasterName.Text))
                 {

@@ -9,18 +9,18 @@ using System.Text;
 
 namespace SaveWorldService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
+                  ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class UserService : IUser
     {
+        readonly object ThisLock = new object();
+
         UserCtr userCtr = new UserCtr();
         public UserB GetUser(int id)
         {
             return userCtr.GetUser(id);
         }
-        public void AddUser(string name, string password, int typeOfUser, string email, string address, string phone,int bankAcc)
-        {
-             userCtr.AddUser(name,password,typeOfUser,email,address,phone, bankAcc);
-        }
+
 
         public UserB CheckLogin(string email, string pass)
         {
@@ -55,11 +55,15 @@ namespace SaveWorldService
             return userCtr.UpdateUser(user);
         }
 
+        
         public int DeleteUser(int id)
         {
-           return userCtr.DeleteUser(id);
+            lock (ThisLock)
+            {
+                return userCtr.DeleteUser(id);
+            }
         }
-
+    
         public List<UserB> GetAllUsers()
         {
             return userCtr.GetAllUsers();
