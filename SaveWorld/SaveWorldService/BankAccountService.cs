@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace SaveWorldService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
-                  ConcurrencyMode = ConcurrencyMode.Multiple)]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
     class BankAccountService : IBankAccountService
     {
         readonly object ThisLock = new object();
