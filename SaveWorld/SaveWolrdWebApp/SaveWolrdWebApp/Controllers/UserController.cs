@@ -40,13 +40,12 @@ namespace SaveWolrdWebApp.Controllers
             }
         }
 
-        public ActionResult Delete(UserController user)
+        public ActionResult Delete(UserServiceReference.UserB user)
         {
-            using (UserServiceReference.UserClient wcf = new UserServiceReference.UserClient())
-            {
-             //   wcf.DeleteUser(user); 
-            }
-            
+            UserServiceReference.UserClient userClient = new UserServiceReference.UserClient();
+
+            userClient.DeleteUser(user.UserId);
+
             return View();
         }
 

@@ -16,8 +16,12 @@ namespace SaveWolrdWebApp.Controllers
             return View(obj.GetAllProduct());
         }
 
-        public ActionResult Details(ProductController product)
+        public ActionResult Details(ProductServiceReference.ProductB product)
         {
+            ProductServiceReference.ProductServiceClient disClient = new ProductServiceReference.ProductServiceClient();
+
+            //disClient.GetProduct(product.ProductId); 
+
             return View();
         }
 
@@ -27,10 +31,16 @@ namespace SaveWolrdWebApp.Controllers
             return View();
         }
 
-        public ActionResult Delete(ProductController product)
+        public ActionResult Delete(ProductServiceReference.ProductB product)
         {
+            
+            ProductServiceReference.ProductServiceClient disClient = new ProductServiceReference.ProductServiceClient();
+
+            disClient.DeleteProduct(product.ProductId);
+
 
             return View();
+
         }
 
         public ActionResult Edit(ProductController product)
