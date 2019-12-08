@@ -21,13 +21,8 @@ namespace SaveWorldModel
         public int CCV { get; set; }
         [DataMember]
         public decimal Amount { get; set; }
-<<<<<<< HEAD
         [DataMember]
         public byte[] RowVersion { get; set; }
 
-      
-=======
-
->>>>>>> 3a48c8be6e4582dbfda1dffc21e8a0166de806a2
     }
 }
