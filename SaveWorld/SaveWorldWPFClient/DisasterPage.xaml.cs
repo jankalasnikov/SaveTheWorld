@@ -91,7 +91,8 @@ namespace SaveWorldWPFClient
 
         private void btn_donateClick(object sender, RoutedEventArgs e)
         {
-            if(disSelect=="")
+
+            if (disSelect=="")
             {
                 MessageBox.Show("You have to choose specific disaster!");
                 return;
@@ -127,5 +128,7 @@ namespace SaveWorldWPFClient
             txt_amount.Text = "";
 
         }
+
+
     }
 }

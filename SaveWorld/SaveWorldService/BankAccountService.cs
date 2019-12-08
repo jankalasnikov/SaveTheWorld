@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace SaveWorldService
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
+                 ConcurrencyMode = ConcurrencyMode.Single)]
     class BankAccountService : IBankAccountService
     {
       

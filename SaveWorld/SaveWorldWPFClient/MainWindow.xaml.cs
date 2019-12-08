@@ -25,8 +25,7 @@ namespace SaveWorldWPFClient
         {
             InitializeComponent();
             Load();
-            Thread th = new Thread(new ThreadStart(Load));
-            th.Start();
+            
         }
         public void Load()
         {
