@@ -17,6 +17,8 @@ namespace SaveWorldModel
         [DataMember]
         public string Password { get; set; }
         [DataMember]
+        public string Salt { get; set; }
+        [DataMember]
         public int TypeOfUser { get; set; }
         [DataMember]
         public string Email { get; set; }

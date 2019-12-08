@@ -114,8 +114,15 @@ namespace SaveWorldWPFClient
             DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
             disaster = disClient.GetDisasterByName(disSelect);
             int disasterBankAccId = disaster.DisasterBankAccountId;
+            BankAccountService.BankAccountB userAcc = new BankAccountService.BankAccountB();
+            userAcc = bankClient.GetBankAccountById(userBankAccId);
 
-            
+            if (amount > userAcc.Amount)
+            {
+                MessageBox.Show("You don't haave enough money. Change the amount!");
+                return;
+            }
+
             bool donate=bankClient.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
             if(donate)
             {

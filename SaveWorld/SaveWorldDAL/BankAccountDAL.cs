@@ -28,7 +28,7 @@ namespace SaveWorldDAL
                         ExpiryDate = account.expiryDate,
                         CCV = account.ccv,
                         Amount = account.amount,
-
+                        RowVersion=account.rowVersion,
 
                     };
             }
@@ -51,6 +51,12 @@ namespace SaveWorldDAL
             accountForSave.amount = bankAccountBefore.Amount;
             accountForSave.ccv = bankAccountBefore.CCV;
             accountForSave.expiryDate = bankAccountBefore.ExpiryDate;
+            accountForSave.rowVersion = bankAccountBefore.RowVersion;
+
+            NWEntities.BankAccounts.Attach(accountForSave);
+
+           
+            NWEntities.Entry(accountForSave).State = System.Data.Entity.EntityState.Modified;
 
             NWEntities.SaveChanges();
 

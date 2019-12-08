@@ -37,7 +37,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='bankAccount' and xtype='U')
 		expiryDate DATE NOT NULL,
 		ccv int NOT NULL,
 		amount decimal(38,2) NOT NULL,
-	
+	    rowVersion timestamp NOT NULL,
 	)
 
 GO
@@ -47,12 +47,13 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='auser' and xtype='U')
 		id INT PRIMARY KEY IDENTITY(1,1),
 		name varchar(75) not null,
 		password varchar(400) not null,
+		salt varchar(15) NOT NULL,
 		typeOfUser int not null,
 		email varchar (200) not null unique,
 		address VARCHAR(200) NOT NULL,
 		phoneno VARCHAR(15) NOT NULL,
 		accountId int FOREIGN KEY REFERENCES bankAccount(id),
-		
+		rowVersion timestamp NOT NULL,
     )
 GO
 
@@ -61,7 +62,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='tbOrder' and xtype='U')
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 		userId int FOREIGN KEY REFERENCES auser(id),
 		date DATE NOT NULL,
-		
+		   
 	)
 
 GO
@@ -92,7 +93,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='product' and xtype='U')
 		price decimal(38,2) NOT NULL,
 		description VARCHAR(5000) NOT NULL,
 		minStock INT NOT NULL, 
-		/*property int FOREIGN KEY REFERENCES property(id),*/
+		rowVersion timestamp NOT NULL,
 	)
 GO
 
@@ -149,6 +150,7 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='disaster' and xtype='U')
 		priority int NOT NULL,
 		victims int NOT NULL,
 		accountId int FOREIGN KEY REFERENCES bankAccount(id),
+		rowVersion timestamp NOT NULL,
 	)
 
 GO
@@ -222,9 +224,9 @@ insert into bankAccount(accountNo,expiryDate, ccv, amount) values (13,'2019-02-2
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (14,'2019-02-20', 123, '0.00');
 
 
-insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','123', 2, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
-insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Valentin','123', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
-insert into auser(name, password, typeOfUser, email, address, phoneno, accountId) values ('Yordan','123', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','81cd38eaa18fb4a41d5b179f584ffbfe81bbe5c5a9733d4390e3915b33c651f4','JcEdZMgy0V', 2, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Valentin','087a3a6b86894c0293d646488e6bde33c998238cf18d2704fe7b1eed5dd55f64', 'r5az7oFpjY', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Yordan','d0ba9735945f8e4fee281b8a6517ba9e1bbfed2057ba223349e6c1da4daf64f0', 'zB8gSE079m', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
 
 
 insert into product(productName, price, description, minStock) values ('Shirt1','5.20','very cool shirt',10);

@@ -24,7 +24,7 @@ namespace SaveWorldDAL
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<auser> Ausers { get; set; }
         public virtual DbSet<bankAccount> BankAccounts { get; set; }
         public virtual DbSet<category> Category { get; set; }
