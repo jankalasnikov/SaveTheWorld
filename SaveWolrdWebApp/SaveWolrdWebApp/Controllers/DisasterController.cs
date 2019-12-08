@@ -25,9 +25,11 @@ namespace SaveWolrdWebApp.Controllers
             return View();
         }
 
-        public ActionResult Create(DisasterController disaster)
+        public ActionResult Create(DisasterServiceReference.DisasterB disaster)
         {
-        
+            DisasterServiceReference.DisasterServiceClient disClient = new DisasterServiceReference.DisasterServiceClient();
+            disClient.CreateDisaster();
+
             return View();
         }
         public ActionResult Donate(int disasterAccId, decimal amount)
@@ -52,7 +54,6 @@ namespace SaveWolrdWebApp.Controllers
         {
             BankAccountServiceReference.BankAccountServiceClient bank = new BankAccountServiceReference.BankAccountServiceClient();
             bank.donateToSpecificDisaster(2, 2, 5);
-            return View();
             return View();
         }
     }
