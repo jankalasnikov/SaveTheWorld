@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace SaveWorldService
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
-                 ConcurrencyMode = ConcurrencyMode.Single)]
+                 ConcurrencyMode = ConcurrencyMode.Multiple)]
     class BankAccountService : IBankAccountService
     {
       
@@ -23,10 +23,9 @@ namespace SaveWorldService
             BankAccountB bank = null;
             try
             {
-                lock (ThisLock)
-                {
+               
                     bank = bankCtr.GetBankAccount(accountNumber);
-                }
+                
             }
             catch
             {
@@ -49,10 +48,9 @@ namespace SaveWorldService
             BankAccountB bank = null;
             try
             {
-                lock (ThisLock)
-                {
+               
                     bank = bankCtr.GetBankAccountById(id);
-                }
+                
             }
             catch
             {
@@ -74,10 +72,9 @@ namespace SaveWorldService
         {
 
             bool bankAccountValid = false;
-            lock (ThisLock)
-            {
+            
                 bankAccountValid = bankCtr.CheckBankAccount(accNo, expiryDate, CCV);
-            }
+            
 
             if (bankAccountValid == false)
             {
@@ -98,7 +95,10 @@ namespace SaveWorldService
 
         public bool donateMoneyToAllDisasters(decimal amount, int userBankId)
         {
-            return bankCtr.donateMoneyToAllDisasters(amount, userBankId);
+            lock (ThisLock)
+            {
+                return bankCtr.donateMoneyToAllDisasters(amount, userBankId);
+            }
         }
 
         public void Update(BankAccountB bankAccountBefore)
