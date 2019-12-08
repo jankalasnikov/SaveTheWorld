@@ -20,7 +20,10 @@ namespace SaveWorldService
             BankAccountB bank = null;
             try
             {
-                bank = bankCtr.GetBankAccount(accountNumber);
+                lock (ThisLock)
+                {
+                    bank = bankCtr.GetBankAccount(accountNumber);
+                }
             }
             catch
             {
@@ -43,7 +46,10 @@ namespace SaveWorldService
             BankAccountB bank = null;
             try
             {
-                bank = bankCtr.GetBankAccountById(id);
+                lock (ThisLock)
+                {
+                    bank = bankCtr.GetBankAccountById(id);
+                }
             }
             catch
             {
@@ -63,10 +69,12 @@ namespace SaveWorldService
 
         public bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV)
         {
+
             bool bankAccountValid = false;
-            
+            lock (ThisLock)
+            {
                 bankAccountValid = bankCtr.CheckBankAccount(accNo, expiryDate, CCV);
-            
+            }
 
             if (bankAccountValid == false)
             {
@@ -92,7 +100,10 @@ namespace SaveWorldService
 
         public void Update(BankAccountB bankAccountBefore)
         {
-            bankCtr.Update(bankAccountBefore);
+            lock (ThisLock)
+            {
+                bankCtr.Update(bankAccountBefore);
+            }
         }
     }
 }
