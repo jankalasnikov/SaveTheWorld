@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,9 +25,12 @@ namespace SaveWorldWPFClient
         {
             InitializeComponent();
             Load();
+            Thread th = new Thread(new ThreadStart(Load));
+            th.Start();
         }
         public void Load()
         {
+            
             MainPage mainPage = new MainPage();
             this.Content = mainPage;
         }

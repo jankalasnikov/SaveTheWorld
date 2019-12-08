@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SaveWorldService
@@ -12,7 +13,9 @@ namespace SaveWorldService
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
     class BankAccountService : IBankAccountService
     {
+      
         readonly object ThisLock = new object();
+     
         BankAccountCtr bankCtr = new BankAccountCtr();
         public BankAccountB GetBankAccount(int accountNumber)
         {
