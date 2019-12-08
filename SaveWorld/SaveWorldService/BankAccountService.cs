@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 
 namespace SaveWorldService
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
+                  ConcurrencyMode = ConcurrencyMode.Multiple)]
     class BankAccountService : IBankAccountService
     {
+        readonly object ThisLock = new object();
         BankAccountCtr bankCtr = new BankAccountCtr();
         public BankAccountB GetBankAccount(int accountNumber)
         {
@@ -76,7 +79,10 @@ namespace SaveWorldService
 
         public bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId)
         {
-            return bankCtr.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+            lock (ThisLock)
+            {
+                return bankCtr.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+            }
         }
 
         public bool donateMoneyToAllDisasters(decimal amount, int userBankId)
