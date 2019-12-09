@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace SaveWorldService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
-                 ConcurrencyMode = ConcurrencyMode.Multiple)]
+    //[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
+    //             ConcurrencyMode = ConcurrencyMode.Multiple)]
     class BankAccountService : IBankAccountService
     {
       
-        readonly object ThisLock = new object();
+       // readonly object ThisLock = new object();
      
         BankAccountCtr bankCtr = new BankAccountCtr();
         public BankAccountB GetBankAccount(int accountNumber)
@@ -87,26 +87,23 @@ namespace SaveWorldService
 
         public bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId)
         {
-            lock (ThisLock)
-            {
+           
                 return bankCtr.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
-            }
+           
         }
 
         public bool donateMoneyToAllDisasters(decimal amount, int userBankId)
         {
-            lock (ThisLock)
-            {
+           
                 return bankCtr.donateMoneyToAllDisasters(amount, userBankId);
-            }
+            
         }
 
         public void Update(BankAccountB bankAccountBefore)
         {
-            lock (ThisLock)
-            {
+           
                 bankCtr.Update(bankAccountBefore);
-            }
+            
         }
     }
 }

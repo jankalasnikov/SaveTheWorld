@@ -373,7 +373,7 @@
           <Property Name="amount" Type="Decimal" Nullable="false" Precision="38" Scale="2" />
           <NavigationProperty Name="auser" Relationship="Self.FK__auser__accountId__2724C5F0" FromRole="bankAccount" ToRole="auser" />
           <NavigationProperty Name="disaster" Relationship="Self.FK__disaster__accoun__3D14070F" FromRole="bankAccount" ToRole="disaster" />
-          <Property Name="rowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="category">
           <Key>
@@ -397,7 +397,7 @@
           <Property Name="accountId" Type="Int32" />
           <NavigationProperty Name="bankAccount" Relationship="Self.FK__disaster__accoun__3D14070F" FromRole="disaster" ToRole="bankAccount" />
           <NavigationProperty Name="category" Relationship="Self.FK__disaster__catego__3C1FE2D6" FromRole="disaster" ToRole="category" />
-          <Property Name="rowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -433,7 +433,7 @@
           <Property Name="minStock" Type="Int32" Nullable="false" />
           <NavigationProperty Name="orderLine" Relationship="Self.FK__orderLine__produ__338A9CD5" FromRole="product" ToRole="orderLine" />
           <NavigationProperty Name="productPropertyValues" Relationship="Self.FK__productPr__produ__45A94D10" FromRole="product" ToRole="productPropertyValues" />
-          <Property Name="rowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="productPropertyValues">
           <Key>

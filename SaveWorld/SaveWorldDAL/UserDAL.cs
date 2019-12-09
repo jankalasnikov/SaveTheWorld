@@ -55,6 +55,7 @@ namespace SaveWorldDAL
                             Email = user.email,
                             Address = user.address,
                             Phone = user.phoneno,
+                            Salt = user.salt,
                             Password = user.password,
                             BankAccountId = (int)user.accountId,
                             TypeOfUser = user.typeOfUser,
@@ -160,7 +161,7 @@ namespace SaveWorldDAL
                 hash.Append(chunk.ToString("x2"));
             return hash.ToString();
         }
-
+       
         public void CreateUser(UserB newUser)
             {
             string salted = SaltGenerator(10);

@@ -36,30 +36,35 @@ namespace SaveWorldDAL
 
         }
 
-        public void Update(BankAccountB bankAccountBefore)
+        public bool Update(BankAccountB bankAccountBefore)
         {
+            bool update = true;
+            using (var NWEntities = new SaveWorldEntities())
+            {
 
-            var NWEntities = new SaveWorldEntities();
+                var accountForSave = (from p in NWEntities.BankAccounts
+                                      where p.id == bankAccountBefore.AccountId
+                                      select p).FirstOrDefault();
 
 
-            var accountForSave = (from p in NWEntities.BankAccounts
-                                  where p.accountNo == bankAccountBefore.AccountNo
-                                  select p).FirstOrDefault();
+                accountForSave.accountNo = bankAccountBefore.AccountNo;
+                accountForSave.amount = bankAccountBefore.Amount;
+                accountForSave.ccv = bankAccountBefore.CCV;
+                accountForSave.expiryDate = bankAccountBefore.ExpiryDate;
+                accountForSave.rowVersion = bankAccountBefore.RowVersion;
 
+                NWEntities.BankAccounts.Attach(accountForSave);
+                NWEntities.Entry(accountForSave).State = System.Data.Entity.EntityState.Modified;
+                var num = NWEntities.SaveChanges();
+                bankAccountBefore.RowVersion = accountForSave.rowVersion;
 
-            accountForSave.accountNo = bankAccountBefore.AccountNo;
-            accountForSave.amount = bankAccountBefore.Amount;
-            accountForSave.ccv = bankAccountBefore.CCV;
-            accountForSave.expiryDate = bankAccountBefore.ExpiryDate;
-            accountForSave.rowVersion = bankAccountBefore.RowVersion;
-
-            NWEntities.BankAccounts.Attach(accountForSave);
-
-           
-            NWEntities.Entry(accountForSave).State = System.Data.Entity.EntityState.Modified;
-
-            NWEntities.SaveChanges();
-
+                if (num != 1)
+                {
+                    update = false;
+                   
+                }
+            }
+            return update;
         }
 
         public BankAccountB GetBankAccountById(int id)
@@ -79,7 +84,7 @@ namespace SaveWorldDAL
                         ExpiryDate = account.expiryDate,
                         CCV = account.ccv,
                         Amount = account.amount,
-
+                        RowVersion = account.rowVersion,
 
                     };
             }
@@ -153,10 +158,15 @@ namespace SaveWorldDAL
                 return false;
             }
             userAcc.Amount = userAcc.Amount - amount;
-            dal.Update(userAcc);
+            bool userUpdate=dal.Update(userAcc);
 
             disasterAcc.Amount = disasterAcc.Amount + amount;
-            dal.Update(disasterAcc);
+           bool disasterUpdate= dal.Update(disasterAcc);
+
+            if(userUpdate==false || disasterUpdate==false)
+            {
+                return false;
+            }
             return true;
 
 
