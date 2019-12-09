@@ -170,9 +170,9 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='subscription' and xtype='U')
 	CREATE TABLE subscription (
 		id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 		typeOfSubscriptionId int FOREIGN KEY REFERENCES typeOfSubscription(id),
-		amount float NOT NULL,
+		amount decimal NOT NULL,
 	    startDate Date NOT NULL,
-		
+		userID int FOREIGN KEY REFERENCES auser(id),
 	)
 
 GO
@@ -252,8 +252,10 @@ insert into disaster(disasterName, description, region, categoryId, priority, vi
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Usa tornadoes2', 'the wind is crazy', 'Usa', 4, 4, 5,13);
 insert into disaster(disasterName, description, region, categoryId, priority, victims, accountId) values ('Storm2', 'the wind is crazy', 'Usa', 4, 4, 5,14);
 
-
-
+insert into typeOfSubscription(name, periodOfTimeInDays) values ('One month', 30);
+insert into typeOfSubscription(name, periodOfTimeInDays) values ('Three month', 90);
+insert into typeOfSubscription(name, periodOfTimeInDays) values ('Six month', 180);
+insert into typeOfSubscription(name, periodOfTimeInDays) values ('One year', 365);
 /*
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Petyr Borisov','ul. Vasil Levski','10','Varna','+35900123456');
 insert into customer(name, street, numberOnStreet, city, phoneno) values ('Boyko Borissov','ul. Tsar Osvoboditel','13','Varna','+35900567488');

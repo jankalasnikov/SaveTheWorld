@@ -18,6 +18,7 @@ namespace SaveWorldDAL
         public auser()
         {
             this.tbOrder = new HashSet<tbOrder>();
+            this.subscription = new HashSet<subscription>();
         }
     
         public int id { get; set; }
@@ -34,5 +35,7 @@ namespace SaveWorldDAL
         public virtual bankAccount bankAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbOrder> tbOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<subscription> subscription { get; set; }
     }
 }

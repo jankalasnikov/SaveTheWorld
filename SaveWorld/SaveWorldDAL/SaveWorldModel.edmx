@@ -113,8 +113,9 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="typeOfSubscriptionId" Type="int" />
-          <Property Name="amount" Type="float" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="startDate" Type="date" Nullable="false" />
+          <Property Name="userID" Type="int" />
         </EntityType>
         <EntityType Name="tbOrder">
           <Key>
@@ -132,7 +133,7 @@
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="periodOfTimeInDays" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__auser__accountId__519AEE00">
+        <Association Name="FK__auser__accountId__503CB573">
           <End Role="bankAccount" Type="Self.bankAccount" Multiplicity="0..1" />
           <End Role="auser" Type="Self.auser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,7 +145,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__disaster__accoun__678A2F1F">
+        <Association Name="FK__disaster__accoun__662BF692">
           <End Role="bankAccount" Type="Self.bankAccount" Multiplicity="0..1" />
           <End Role="disaster" Type="Self.disaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,7 +157,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__disaster__catego__66960AE6">
+        <Association Name="FK__disaster__catego__6537D259">
           <End Role="category" Type="Self.category" Multiplicity="0..1" />
           <End Role="disaster" Type="Self.disaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +169,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__invoice__orderId__61D155C9">
+        <Association Name="FK__invoice__orderId__60731D3C">
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="0..1" />
           <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,7 +181,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orderLine__order__5EF4E91E">
+        <Association Name="FK__orderLine__order__5D96B091">
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="0..1" />
           <End Role="orderLine" Type="Self.orderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,7 +193,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orderLine__produ__5E00C4E5">
+        <Association Name="FK__orderLine__produ__5CA28C58">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="orderLine" Type="Self.orderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__productPr__produ__701F7520">
+        <Association Name="FK__productPr__produ__6FB560CC">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="productPropertyValues" Type="Self.productPropertyValues" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__productPr__prope__6F2B50E7">
+        <Association Name="FK__productPr__prope__6EC13C93">
           <End Role="propertyValues" Type="Self.propertyValues" Multiplicity="0..1" />
           <End Role="productPropertyValues" Type="Self.productPropertyValues" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__property__proper__593C0FC8">
+        <Association Name="FK__property__proper__57DDD73B">
           <End Role="propertyValues" Type="Self.propertyValues" Multiplicity="0..1" />
           <End Role="property" Type="Self.property" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +241,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__subscript__typeO__6C4EE43C">
+        <Association Name="FK__subscript__typeO__6AF0ABAF">
           <End Role="typeOfSubscription" Type="Self.typeOfSubscription" Multiplicity="0..1" />
           <End Role="subscription" Type="Self.subscription" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +253,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbOrder__userId__54775AAB">
+        <Association Name="FK__subscript__userI__6BE4CFE8">
+          <End Role="auser" Type="Self.auser" Multiplicity="0..1" />
+          <End Role="subscription" Type="Self.subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="subscription">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbOrder__userId__5319221E">
           <End Role="auser" Type="Self.auser" Multiplicity="0..1" />
           <End Role="tbOrder" Type="Self.tbOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -278,47 +291,51 @@
           <EntitySet Name="subscription" EntityType="Self.subscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbOrder" EntityType="Self.tbOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="typeOfSubscription" EntityType="Self.typeOfSubscription" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__auser__accountId__519AEE00" Association="Self.FK__auser__accountId__519AEE00">
+          <AssociationSet Name="FK__auser__accountId__503CB573" Association="Self.FK__auser__accountId__503CB573">
             <End Role="bankAccount" EntitySet="bankAccount" />
             <End Role="auser" EntitySet="auser" />
           </AssociationSet>
-          <AssociationSet Name="FK__disaster__accoun__678A2F1F" Association="Self.FK__disaster__accoun__678A2F1F">
+          <AssociationSet Name="FK__disaster__accoun__662BF692" Association="Self.FK__disaster__accoun__662BF692">
             <End Role="bankAccount" EntitySet="bankAccount" />
             <End Role="disaster" EntitySet="disaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__disaster__catego__66960AE6" Association="Self.FK__disaster__catego__66960AE6">
+          <AssociationSet Name="FK__disaster__catego__6537D259" Association="Self.FK__disaster__catego__6537D259">
             <End Role="category" EntitySet="category" />
             <End Role="disaster" EntitySet="disaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__invoice__orderId__61D155C9" Association="Self.FK__invoice__orderId__61D155C9">
+          <AssociationSet Name="FK__invoice__orderId__60731D3C" Association="Self.FK__invoice__orderId__60731D3C">
             <End Role="tbOrder" EntitySet="tbOrder" />
             <End Role="invoice" EntitySet="invoice" />
           </AssociationSet>
-          <AssociationSet Name="FK__orderLine__order__5EF4E91E" Association="Self.FK__orderLine__order__5EF4E91E">
+          <AssociationSet Name="FK__orderLine__order__5D96B091" Association="Self.FK__orderLine__order__5D96B091">
             <End Role="tbOrder" EntitySet="tbOrder" />
             <End Role="orderLine" EntitySet="orderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__orderLine__produ__5E00C4E5" Association="Self.FK__orderLine__produ__5E00C4E5">
+          <AssociationSet Name="FK__orderLine__produ__5CA28C58" Association="Self.FK__orderLine__produ__5CA28C58">
             <End Role="product" EntitySet="product" />
             <End Role="orderLine" EntitySet="orderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__productPr__produ__701F7520" Association="Self.FK__productPr__produ__701F7520">
+          <AssociationSet Name="FK__productPr__produ__6FB560CC" Association="Self.FK__productPr__produ__6FB560CC">
             <End Role="product" EntitySet="product" />
             <End Role="productPropertyValues" EntitySet="productPropertyValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__productPr__prope__6F2B50E7" Association="Self.FK__productPr__prope__6F2B50E7">
+          <AssociationSet Name="FK__productPr__prope__6EC13C93" Association="Self.FK__productPr__prope__6EC13C93">
             <End Role="propertyValues" EntitySet="propertyValues" />
             <End Role="productPropertyValues" EntitySet="productPropertyValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__property__proper__593C0FC8" Association="Self.FK__property__proper__593C0FC8">
+          <AssociationSet Name="FK__property__proper__57DDD73B" Association="Self.FK__property__proper__57DDD73B">
             <End Role="propertyValues" EntitySet="propertyValues" />
             <End Role="property" EntitySet="property" />
           </AssociationSet>
-          <AssociationSet Name="FK__subscript__typeO__6C4EE43C" Association="Self.FK__subscript__typeO__6C4EE43C">
+          <AssociationSet Name="FK__subscript__typeO__6AF0ABAF" Association="Self.FK__subscript__typeO__6AF0ABAF">
             <End Role="typeOfSubscription" EntitySet="typeOfSubscription" />
             <End Role="subscription" EntitySet="subscription" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbOrder__userId__54775AAB" Association="Self.FK__tbOrder__userId__54775AAB">
+          <AssociationSet Name="FK__subscript__userI__6BE4CFE8" Association="Self.FK__subscript__userI__6BE4CFE8">
+            <End Role="auser" EntitySet="auser" />
+            <End Role="subscription" EntitySet="subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbOrder__userId__5319221E" Association="Self.FK__tbOrder__userId__5319221E">
             <End Role="auser" EntitySet="auser" />
             <End Role="tbOrder" EntitySet="tbOrder" />
           </AssociationSet>
@@ -343,6 +360,7 @@
           <NavigationProperty Name="tbOrder" Relationship="Self.FK__tbOrder__userId__2A01329B" FromRole="auser" ToRole="tbOrder" />
           <Property Name="rowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="salt" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="subscription" Relationship="SaveWorldModel.FK__subscript__userI__46B34B39" FromRole="auser" ToRole="subscription" />
         </EntityType>
         <EntityType Name="bankAccount">
           <Key>
@@ -452,9 +470,11 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="typeOfSubscriptionId" Type="Int32" />
-          <Property Name="amount" Type="Double" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" />
           <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="typeOfSubscription" Relationship="Self.FK__subscript__typeO__41D8BC2C" FromRole="subscription" ToRole="typeOfSubscription" />
+          <Property Name="userID" Type="Int32" />
+          <NavigationProperty Name="auser" Relationship="SaveWorldModel.FK__subscript__userI__46B34B39" FromRole="subscription" ToRole="auser" />
         </EntityType>
         <EntityType Name="tbOrder">
           <Key>
@@ -666,7 +686,23 @@
             <End Role="typeOfSubscription" EntitySet="typeOfSubscription" />
             <End Role="subscription" EntitySet="subscription" />
           </AssociationSet>
+          <AssociationSet Name="FK__subscript__userI__46B34B39" Association="SaveWorldModel.FK__subscript__userI__46B34B39">
+            <End Role="auser" EntitySet="auser" />
+            <End Role="subscription" EntitySet="subscription" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__subscript__userI__46B34B39">
+          <End Type="SaveWorldModel.auser" Role="auser" Multiplicity="0..1" />
+          <End Type="SaveWorldModel.subscription" Role="subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="subscription">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -788,6 +824,7 @@
           <EntitySetMapping Name="subscription">
             <EntityTypeMapping TypeName="SaveWorldModel.subscription">
               <MappingFragment StoreEntitySet="subscription">
+                <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeOfSubscriptionId" ColumnName="typeOfSubscriptionId" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
