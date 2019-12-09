@@ -106,6 +106,30 @@ namespace SaveWorldDAL
             return correct;
         }
 
+        public bool CheckBankAccountw(int accNo, int CCV)
+        {
+
+
+            using (var NWEntities = new SaveWorldEntities())
+            {
+
+
+                bankAccount accountValid = NWEntities.BankAccounts
+                       .FirstOrDefault(u => u.accountNo == accNo
+                        && u.ccv == CCV);
+
+                if (accountValid != null)
+                {
+                    correct = true;
+                }
+
+
+
+            }
+
+            return correct;
+        }
+
         public bool donateToSpecificDisaster(decimal amount, int userBankId, int disasterBankId)
         {
             BankAccountB userAcc = new BankAccountB();

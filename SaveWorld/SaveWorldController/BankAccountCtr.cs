@@ -22,6 +22,7 @@ namespace SaveWorldController
             bankDal.Update(bankAccountBefore);
         }
 
+
         public BankAccountB GetBankAccountById(int id)
         {
             return bankDal.GetBankAccountById(id);
@@ -32,6 +33,10 @@ namespace SaveWorldController
            return bankDal.CheckBankAccount(accNo, expiryDate, CCV);
         }
 
+        public bool CheckBankAccountw(int accNo, int CCV)
+        {
+            return bankDal.CheckBankAccountw(accNo, CCV);
+        }
         public bool donateToSpecificDisaster(decimal amount, int userBankId, int disasterBankId)
         {
            return bankDal.donateToSpecificDisaster(amount, userBankId, disasterBankId);
