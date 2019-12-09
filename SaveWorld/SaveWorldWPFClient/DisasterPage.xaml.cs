@@ -26,6 +26,7 @@ namespace SaveWorldWPFClient
         public int usernId;
         public int userBankAccId;
         public int userType;
+        DisasterReferences.DisasterB d = new DisasterReferences.DisasterB();
 
         DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
         BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
@@ -75,7 +76,7 @@ namespace SaveWorldWPFClient
 
 
 
-                DisasterReferences.DisasterB d = new DisasterReferences.DisasterB();
+               
                 disSelect = (string)listBox_allDis.SelectedItem;
                 d = disClient.GetDisasterByName(disSelect);
                 txt_description.Text = d.Description;
@@ -136,6 +137,11 @@ namespace SaveWorldWPFClient
 
         }
 
-
+        private void Btn_checkBalanse_Click(object sender, RoutedEventArgs e)
+        {
+            BankAccountService.BankAccountB bankd = new BankAccountService.BankAccountB();
+            bankd = bankClient.GetBankAccountById(d.DisasterBankAccountId);
+            txt_balance.Text = bankd.Amount.ToString();
+        }
     }
 }
