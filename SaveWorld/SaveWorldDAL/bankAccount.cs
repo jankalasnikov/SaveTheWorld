@@ -26,6 +26,7 @@ namespace SaveWorldDAL
         public System.DateTime expiryDate { get; set; }
         public int ccv { get; set; }
         public decimal amount { get; set; }
+        public byte[] rowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<auser> auser { get; set; }

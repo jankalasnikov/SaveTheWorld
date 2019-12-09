@@ -22,6 +22,7 @@ namespace SaveWorldDAL
         public int priority { get; set; }
         public int victims { get; set; }
         public Nullable<int> accountId { get; set; }
+        public byte[] rowVersion { get; set; }
     
         public virtual bankAccount bankAccount { get; set; }
         public virtual category category { get; set; }

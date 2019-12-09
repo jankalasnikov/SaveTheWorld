@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -20,8 +21,8 @@ namespace SaveWorldModel
         public int CCV { get; set; }
         [DataMember]
         public decimal Amount { get; set; }
+        [DataMember]
+        public byte[] RowVersion { get; set; }
 
-
-      
     }
 }

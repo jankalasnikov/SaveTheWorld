@@ -53,7 +53,7 @@ namespace SaveWorldWPFClient
             txt_profileEmail.Text = user.Email;
             currentEmail = user.Email;
             txt_profileAddress.Text = user.Address;
-            txt_profilePassword.Text = user.Password;
+          
             txt_profilePhone.Text = user.Phone;
 
             txt_profileBankNumber.Text = account.AccountNo.ToString();

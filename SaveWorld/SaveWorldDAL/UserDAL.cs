@@ -26,6 +26,7 @@ namespace SaveWorldDAL
                             Name = user.name,
                             Email = user.email,
                             Password = user.password,
+                            Salt=user.salt,
                             Address = user.address,
                             Phone = user.phoneno,
                             TypeOfUser = user.typeOfUser,
@@ -139,8 +140,31 @@ namespace SaveWorldDAL
                 return exist;
             }
 
-            public void CreateUser(UserB newUser)
+
+        public string SaltGenerator(int size)
+        {
+            string salt = "";
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random random = new Random();
+            for (int i = 0; i < size; i++)
+                salt += chars[random.Next(chars.Length)];
+            return salt;
+        }
+        //Hashes the input using SHA256
+        public string Hasher(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            System.Security.Cryptography.SHA256Managed sha = new System.Security.Cryptography.SHA256Managed();
+            byte[] crypted = sha.ComputeHash(Encoding.UTF8.GetBytes(input), 0, Encoding.UTF8.GetByteCount(input));
+            foreach (byte chunk in crypted)
+                hash.Append(chunk.ToString("x2"));
+            return hash.ToString();
+        }
+
+        public void CreateUser(UserB newUser)
             {
+            string salted = SaltGenerator(10);
+            string passHash = Hasher(newUser.Password + salted);
 
                 using (SaveWorldEntities dbEntities = new SaveWorldEntities())
                 {
@@ -154,7 +178,8 @@ namespace SaveWorldDAL
 
                         name = newUser.Name,
                         email = newUser.Email,
-                        password = newUser.Password,
+                        password = passHash,
+                        salt=salted,
                         address = newUser.Address,
                         phoneno = newUser.Phone,
                         typeOfUser = 1,
@@ -189,12 +214,14 @@ namespace SaveWorldDAL
             {
 
                 UserB userCorrect = null;
+
                 using (var NWEntities = new SaveWorldEntities())
                 {
 
                     var user = NWEntities.Ausers
-                           .FirstOrDefault(u => u.email == userEmail
-                            && u.password == password);
+                           .FirstOrDefault(u => u.email == userEmail);
+                if (user.password == Hasher(password + user.salt))
+                {
 
                     if (user != null)
                     {
@@ -203,6 +230,7 @@ namespace SaveWorldDAL
                             UserId = user.id,
                             Name = user.name,
                             Password = user.password,
+                            Salt = user.salt,
                             Email = user.email,
                             Address = user.address,
                             Phone = user.phoneno,
@@ -211,6 +239,7 @@ namespace SaveWorldDAL
 
                         };
                     }
+                }
 
                 }
 
@@ -229,8 +258,10 @@ namespace SaveWorldDAL
 
             public bool UpdateUser(UserB user)
             {
+            string salted = SaltGenerator(10);
+            string passHash = Hasher(user.Password + salted);
 
-                var updated = true;
+            var updated = true;
 
                 using (var NWEntities = new SaveWorldEntities())
                 {
@@ -249,7 +280,8 @@ namespace SaveWorldDAL
 
                     userDatabase.name = user.Name;
                     userDatabase.email = user.Email;
-                    userDatabase.password = user.Password;
+                    userDatabase.password = passHash;
+                    userDatabase.salt = salted;
                     userDatabase.phoneno = user.Phone;
                     userDatabase.address = user.Address;
                     userDatabase.accountId = user.BankAccountId;

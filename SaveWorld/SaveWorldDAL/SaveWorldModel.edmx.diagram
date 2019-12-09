@@ -29,6 +29,7 @@
         <AssociationConnector Association="SaveWorldModel.FK__productPr__prope__44B528D7" ManuallyRouted="false" />
         <AssociationConnector Association="SaveWorldModel.FK__property__proper__2EC5E7B8" ManuallyRouted="false" />
         <AssociationConnector Association="SaveWorldModel.FK__subscript__typeO__41D8BC2C" ManuallyRouted="false" />
+        <AssociationConnector Association="SaveWorldModel.FK__subscript__userI__46B34B39" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

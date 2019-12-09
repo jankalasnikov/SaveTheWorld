@@ -16,9 +16,11 @@ namespace SaveWorldDAL
     {
         public int id { get; set; }
         public Nullable<int> typeOfSubscriptionId { get; set; }
-        public double amount { get; set; }
+        public decimal amount { get; set; }
         public System.DateTime startDate { get; set; }
+        public Nullable<int> userID { get; set; }
     
         public virtual typeOfSubscription typeOfSubscription { get; set; }
+        public virtual auser auser { get; set; }
     }
 }

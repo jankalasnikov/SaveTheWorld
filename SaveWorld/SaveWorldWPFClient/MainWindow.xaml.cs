@@ -21,12 +21,14 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
             Load();
             
         }
+      
         public void Load()
         {
             
