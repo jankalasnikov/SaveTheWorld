@@ -57,8 +57,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckLoginTest.cs" />
+    <Compile Include="CreatingProductTest.cs" />
+    <Compile Include="DisasterCheckTest.cs" />
     <Compile Include="DonateToSpecificDisasterTest.cs" />
-    <Compile Include="TestBankAccount.cs" />
+    <Compile Include="BankAccountTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

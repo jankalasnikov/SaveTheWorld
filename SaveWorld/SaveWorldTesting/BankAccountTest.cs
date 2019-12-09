@@ -10,16 +10,13 @@ using System.Threading.Tasks;
 namespace SaveWorldTesting
 {
     [TestClass]
-    public class TestBankAccount
+    public class BankAccountTest
     {
         [TestMethod]
         public void CheckDonation()
-        {
-           
-            DateTime exDate = new DateTime(2012, 02, 20);
-           
+        {          
             BankAccountCtr bankCtr = new BankAccountCtr();
-            Assert.AreEqual(true, bankCtr.CheckBankAccountw(2, 23));
+            Assert.AreEqual(true, bankCtr.CheckBankAccountw(2, 123));
         }
     }
 }
