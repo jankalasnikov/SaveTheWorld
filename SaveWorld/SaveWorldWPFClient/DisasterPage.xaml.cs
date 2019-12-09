@@ -26,11 +26,15 @@ namespace SaveWorldWPFClient
         public int usernId;
         public int userBankAccId;
         public int userType;
+        public int[] userInfoData = new int[3];
         DisasterReferences.DisasterB d = new DisasterReferences.DisasterB();
-
+        BankAccountService.BankAccountB disasterAcc = new BankAccountService.BankAccountB();
         DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
         BankAccountService.BankAccountServiceClient bankClient = new BankAccountService.BankAccountServiceClient();
         string disSelect="";
+
+        BankAccountService.BankAccountB userAcc = new BankAccountService.BankAccountB();
+        
         public DisasterPage()
         {
             InitializeComponent();
@@ -39,6 +43,7 @@ namespace SaveWorldWPFClient
                 "click on the choosen disaster and insert the amount that he want to donate\r\n" +
                 "and the amount will be translated directly from his bank account\r\n" +
                 "to the disaster bank account.  ";
+          
         }
 
         public DisasterPage(int[] userInfo) : this()
@@ -46,6 +51,11 @@ namespace SaveWorldWPFClient
             usernId = userInfo[0];
             userBankAccId = userInfo[1];
             userType = userInfo[2];
+
+            userInfoData[0] = userInfo[0];
+            userInfoData[1] = userInfo[1];
+            userInfoData[2] = userInfo[2];
+            userAcc = bankClient.GetBankAccountById(userBankAccId);
         }
 
         private void loadAllDisasters()
@@ -74,9 +84,6 @@ namespace SaveWorldWPFClient
             if (listBox_allDis.SelectedItem != null)
             {
 
-
-
-               
                 disSelect = (string)listBox_allDis.SelectedItem;
                 d = disClient.GetDisasterByName(disSelect);
                 txt_description.Text = d.Description;
@@ -84,7 +91,8 @@ namespace SaveWorldWPFClient
                 txt_priority.Text = d.Priority.ToString();
                 txt_region.Text = d.Region;
                 txt_victims.Text = d.Victims.ToString();
-
+             
+                disasterAcc = bankClient.GetBankAccountById(d.DisasterBankAccountId);
             }
         }
 
@@ -111,12 +119,7 @@ namespace SaveWorldWPFClient
             decimal amount = 0;
             amount = decimal.Parse(txt_amount.Text);
 
-            DisasterReferences.DisasterB disaster = new DisasterReferences.DisasterB();
-            DisasterReferences.DisasterServiceClient disClient = new DisasterReferences.DisasterServiceClient();
-            disaster = disClient.GetDisasterByName(disSelect);
-            int disasterBankAccId = disaster.DisasterBankAccountId;
-            BankAccountService.BankAccountB userAcc = new BankAccountService.BankAccountB();
-            userAcc = bankClient.GetBankAccountById(userBankAccId);
+           
 
             if (amount > userAcc.Amount)
             {
@@ -124,24 +127,44 @@ namespace SaveWorldWPFClient
                 return;
             }
 
-            bool donate=bankClient.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
-            if(donate)
+            //bool donate=bankClient.donateToSpecificDisaster(amount, userAcc, disasterAcc);
+            BankAccountService.BankAccountServiceClient bankCliente = new BankAccountService.BankAccountServiceClient();
+            userAcc.Amount = userAcc.Amount - amount;
+            bool updatedUserAcc = bankCliente.Update(userAcc);
+            if (!updatedUserAcc)
+            {
+                MessageBox.Show("Failed donation!It can not update user account! Your page will be refreshed!");
+                this.Content = null;
+                DisasterPage refreshPage = new DisasterPage(userInfoData);
+                NavigationService.Navigate(refreshPage);
+                return;
+            }
+            userAcc = bankCliente.GetBankAccountById(userBankAccId);
+            disasterAcc.Amount = disasterAcc.Amount + amount;
+            bool updatedDisasterAcc = bankCliente.Update(disasterAcc);
+            
+            if (!updatedDisasterAcc)
+            {
+                MessageBox.Show("Failed donation!It can not update disaster account! Your page will be refreshed!");
+                this.Content = null;
+                DisasterPage refreshPage = new DisasterPage(userInfoData);
+                NavigationService.Navigate(refreshPage);
+                return;
+            }
+            disasterAcc = bankCliente.GetBankAccountById(disasterAcc.AccountId);
+            if (updatedDisasterAcc == true && updatedUserAcc ==true)
             {
                 MessageBox.Show("Donation is succesful!");
             }
-            else
-            {
-                MessageBox.Show("Failed donation!");
-            }
+          
             txt_amount.Text = "";
 
         }
 
         private void Btn_checkBalanse_Click(object sender, RoutedEventArgs e)
         {
-            BankAccountService.BankAccountB bankd = new BankAccountService.BankAccountB();
-            bankd = bankClient.GetBankAccountById(d.DisasterBankAccountId);
-            txt_balance.Text = bankd.Amount.ToString();
+           
+            txt_balance.Text = disasterAcc.Amount.ToString();
         }
     }
 }

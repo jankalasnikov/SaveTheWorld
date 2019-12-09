@@ -85,10 +85,10 @@ namespace SaveWorldService
 
         }
 
-        public bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId)
+        public bool donateToSpecificDisaster(decimal amount, BankAccountB userBankAcc, BankAccountB disasterBankAcc)
         {
            
-                return bankCtr.donateToSpecificDisaster(amount, userBankAccId, disasterBankAccId);
+                return bankCtr.donateToSpecificDisaster(amount, userBankAcc, disasterBankAcc);
            
         }
 
@@ -99,10 +99,10 @@ namespace SaveWorldService
             
         }
 
-        public void Update(BankAccountB bankAccountBefore)
+        public bool Update(BankAccountB bankAccountBefore)
         {
            
-                bankCtr.Update(bankAccountBefore);
+               return bankCtr.Update(bankAccountBefore);
             
         }
     }
