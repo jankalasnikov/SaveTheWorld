@@ -49,8 +49,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="amount" type="xs:decimal" />
-        <xs:element minOccurs="0" name="userBankAccId" type="xs:int" />
-        <xs:element minOccurs="0" name="disasterBankAccId" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SaveWorldModel" minOccurs="0" name="userBankAcc" nillable="true" type="q3:BankAccountB" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SaveWorldModel" minOccurs="0" name="disasterBankAcc" nillable="true" type="q4:BankAccountB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -64,13 +64,15 @@
   <xs:element name="Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SaveWorldModel" minOccurs="0" name="bankAccountBefore" nillable="true" type="q3:BankAccountB" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SaveWorldModel" minOccurs="0" name="bankAccountBefore" nillable="true" type="q5:BankAccountB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="donateMoneyToAllDisasters">

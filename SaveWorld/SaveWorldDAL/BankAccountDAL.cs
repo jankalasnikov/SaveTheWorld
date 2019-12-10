@@ -1,6 +1,7 @@
 ﻿using SaveWorldModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace SaveWorldDAL
                         ExpiryDate = account.expiryDate,
                         CCV = account.ccv,
                         Amount = account.amount,
-
+                        RowVersion=account.rowVersion,
 
                     };
             }
@@ -36,24 +37,45 @@ namespace SaveWorldDAL
 
         }
 
-        public void Update(BankAccountB bankAccountBefore)
+        public bool Update(BankAccountB bankAccountBefore)
         {
+            bool update = true;
+            using (var NWEntities = new SaveWorldEntities())
+            {
+                var bankId = bankAccountBefore.AccountId;
+                var accountForSave = (from p in NWEntities.BankAccounts
+                                      where p.id == bankId
+                                      select p).FirstOrDefault();
 
-            var NWEntities = new SaveWorldEntities();
 
+                    accountForSave.accountNo = bankAccountBefore.AccountNo;
+                    accountForSave.amount = bankAccountBefore.Amount;
+                    accountForSave.ccv = bankAccountBefore.CCV;
+                    accountForSave.expiryDate = bankAccountBefore.ExpiryDate;
+                    accountForSave.rowVersion = bankAccountBefore.RowVersion;
 
-            var accountForSave = (from p in NWEntities.BankAccounts
-                                  where p.accountNo == bankAccountBefore.AccountNo
-                                  select p).FirstOrDefault();
+                    NWEntities.BankAccounts.Attach(accountForSave);
+                    NWEntities.Entry(accountForSave).State = System.Data.Entity.EntityState.Modified;
+                try
+                {
 
+                     NWEntities.SaveChanges();
+                }
+                catch
+                {
+                    update = false;
+                }
 
-            accountForSave.accountNo = bankAccountBefore.AccountNo;
-            accountForSave.amount = bankAccountBefore.Amount;
-            accountForSave.ccv = bankAccountBefore.CCV;
-            accountForSave.expiryDate = bankAccountBefore.ExpiryDate;
+                   // bankAccountBefore.RowVersion = accountForSave.rowVersion;
+               
 
-            NWEntities.SaveChanges();
-
+             /*  if (num != 1)
+                {
+                    update = false;
+                   
+                }*/
+            }
+            return update;
         }
 
         public BankAccountB GetBankAccountById(int id)
@@ -73,7 +95,7 @@ namespace SaveWorldDAL
                         ExpiryDate = account.expiryDate,
                         CCV = account.ccv,
                         Amount = account.amount,
-
+                        RowVersion = account.rowVersion,
 
                     };
             }
@@ -106,27 +128,44 @@ namespace SaveWorldDAL
             return correct;
         }
 
-        public bool donateToSpecificDisaster(decimal amount, int userBankId, int disasterBankId)
+        public bool CheckBankAccountw(int accNo, int CCV)
         {
-            BankAccountB userAcc = new BankAccountB();
-            BankAccountDAL dal = new BankAccountDAL();
-            userAcc = dal.GetBankAccountById(userBankId);
 
 
-            BankAccountB disasterAcc = new BankAccountB();
-            disasterAcc = dal.GetBankAccountById(disasterBankId);
+            using (var NWEntities = new SaveWorldEntities())
+            {
+
+
+                bankAccount accountValid = NWEntities.BankAccounts
+                       .FirstOrDefault(u => u.accountNo == accNo
+                        && u.ccv == CCV);
+
+                if (accountValid != null)
+                {
+                    correct = true;
+                }
 
 
 
-            if (userAcc.Amount < amount)
+            }
+
+            return correct;
+        }
+
+        public bool donateToSpecificDisaster(decimal amount, BankAccountB userBankAcc, BankAccountB disasterBankAcc)
+        {
+            BankAccountDAL bankDal = new BankAccountDAL();
+            
+            userBankAcc.Amount = userBankAcc.Amount - amount;
+            bool userUpdate= bankDal.Update(userBankAcc);
+
+            disasterBankAcc.Amount = disasterBankAcc.Amount + amount;
+           bool disasterUpdate= bankDal.Update(disasterBankAcc);
+
+            if(userUpdate==false || disasterUpdate==false)
             {
                 return false;
             }
-            userAcc.Amount = userAcc.Amount - amount;
-            dal.Update(userAcc);
-
-            disasterAcc.Amount = disasterAcc.Amount + amount;
-            dal.Update(disasterAcc);
             return true;
 
 

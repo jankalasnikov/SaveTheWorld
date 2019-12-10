@@ -20,9 +20,34 @@ namespace SaveWorldWPFClient
     /// </summary>
     public partial class SubscriptionPage : Page
     {
+        public int usernId;
+        public int userBankAccId;
+        public int userType;
+
+        string typeSelect = "";
+
         public SubscriptionPage()
         {
             InitializeComponent();
+        }
+
+        public SubscriptionPage(int[] userInfo) : this()
+        {
+            usernId = userInfo[0];
+            userBankAccId = userInfo[1];
+            userType = userInfo[2];
+        }
+
+        private void Listbox_subType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listbox_subType.SelectedItem != null)
+            {
+
+                typeSelect = (string)listbox_subType.SelectedItem;
+               // productLine = prodClient.GetProductByName(prodSelect);
+               
+
+            }
         }
     }
 }

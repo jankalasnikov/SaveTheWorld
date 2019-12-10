@@ -21,6 +21,8 @@ namespace SaveWorldModel
         public int CCV { get; set; }
         [DataMember]
         public decimal Amount { get; set; }
+        [DataMember]
+        public byte[] RowVersion { get; set; }
 
     }
 }

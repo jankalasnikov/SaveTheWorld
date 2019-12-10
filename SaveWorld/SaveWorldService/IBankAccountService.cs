@@ -22,10 +22,10 @@ namespace SaveWorldService
         bool CheckBankAccount(int accNo, DateTime expiryDate, int CCV);
 
         [OperationContract]
-        bool donateToSpecificDisaster(decimal amount, int userBankAccId, int disasterBankAccId);
+        bool donateToSpecificDisaster(decimal amount, BankAccountB userBankAcc, BankAccountB disasterBankAcc);
 
         [OperationContract]
-        void Update(BankAccountB bankAccountBefore);
+        bool Update(BankAccountB bankAccountBefore);
 
         [OperationContract]
         bool donateMoneyToAllDisasters(decimal amount, int userBankId);

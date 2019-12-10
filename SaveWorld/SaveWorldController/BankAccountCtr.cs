@@ -17,10 +17,11 @@ namespace SaveWorldController
            return bankDal.GetBankAccount(accountNumber);
         }
 
-        public void Update(BankAccountB bankAccountBefore)
+        public bool Update(BankAccountB bankAccountBefore)
         {
-            bankDal.Update(bankAccountBefore);
+           return bankDal.Update(bankAccountBefore);
         }
+
 
         public BankAccountB GetBankAccountById(int id)
         {
@@ -32,9 +33,13 @@ namespace SaveWorldController
            return bankDal.CheckBankAccount(accNo, expiryDate, CCV);
         }
 
-        public bool donateToSpecificDisaster(decimal amount, int userBankId, int disasterBankId)
+        public bool CheckBankAccountw(int accNo, int CCV)
         {
-           return bankDal.donateToSpecificDisaster(amount, userBankId, disasterBankId);
+            return bankDal.CheckBankAccountw(accNo, CCV);
+        }
+        public bool donateToSpecificDisaster(decimal amount, BankAccountB userBankAcc, BankAccountB disasterBankAcc)
+        {
+           return bankDal.donateToSpecificDisaster(amount, userBankAcc, disasterBankAcc);
         }
 
 
