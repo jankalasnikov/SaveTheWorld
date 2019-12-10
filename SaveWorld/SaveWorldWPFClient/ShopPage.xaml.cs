@@ -300,7 +300,7 @@ namespace SaveWorldWPFClient
 
             bool pay = true;
 
-           pay = bankClient.donateMoneyToAllDisasters(totalPrice, userBankAccId);
+            pay = bankClient.donateMoneyToAllDisasters(totalPrice, userBankAccId);
 
             if(pay)
             {

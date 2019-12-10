@@ -24,7 +24,7 @@ namespace SaveWorldWPFClient
     public partial class DisasterPage : Page
     {
         public int usernId;
-        public int userBankAccId;
+        public int userBankAccId=0;
         public int userType;
         public int[] userInfoData = new int[3];
         DisasterReferences.DisasterB d = new DisasterReferences.DisasterB();
@@ -55,7 +55,10 @@ namespace SaveWorldWPFClient
             userInfoData[0] = userInfo[0];
             userInfoData[1] = userInfo[1];
             userInfoData[2] = userInfo[2];
-            userAcc = bankClient.GetBankAccountById(userBankAccId);
+            if (userBankAccId != 0)
+            {
+                userAcc = bankClient.GetBankAccountById(userBankAccId);
+            }
         }
 
         private void loadAllDisasters()

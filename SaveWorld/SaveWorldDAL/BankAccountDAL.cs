@@ -58,7 +58,6 @@ namespace SaveWorldDAL
                     NWEntities.Entry(accountForSave).State = System.Data.Entity.EntityState.Modified;
                 try
                 {
-
                      NWEntities.SaveChanges();
                 }
                 catch
@@ -66,14 +65,7 @@ namespace SaveWorldDAL
                     update = false;
                 }
 
-                   // bankAccountBefore.RowVersion = accountForSave.rowVersion;
-               
-
-             /*  if (num != 1)
-                {
-                    update = false;
-                   
-                }*/
+                
             }
             return update;
         }
