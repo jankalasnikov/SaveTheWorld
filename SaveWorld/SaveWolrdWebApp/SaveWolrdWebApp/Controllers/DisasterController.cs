@@ -54,7 +54,6 @@ namespace SaveWolrdWebApp.Controllers
         public ActionResult Edit(DisasterServiceReference.DisasterB disaster)
         {
 
-
             return View();
         }
 
@@ -67,6 +66,16 @@ namespace SaveWolrdWebApp.Controllers
             return View();
         }
 
+        public ActionResult DropDown(DisasterServiceReference.DisasterB disaster)
+        {
+            DisasterServiceReference.DisasterServiceClient disClient = new DisasterServiceReference.DisasterServiceClient();
+
+            var getNameList = disaster.Name.ToList();
+            SelectList list = new SelectList(getNameList,"Id","Name");
+            ViewBag.namelistname = list;
+
+            return View();
+        }
     }
 
 }
