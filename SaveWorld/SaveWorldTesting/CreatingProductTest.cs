@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace SaveWorldTesting
 {
-    
 
+    [TestClass]
     public class CreatingProductTest
     {
         [TestMethod]
@@ -22,7 +22,6 @@ namespace SaveWorldTesting
             prod.ProductDescription = "a very nice umbrella";
             prod.Stock = 10;
             prod.Price = 10.35M;
-            prod.ProductId = 6;
             Assert.IsNotNull(productCtr.CreateProduct(prod));
         }
     }

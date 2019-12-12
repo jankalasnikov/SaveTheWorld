@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SaveWorldController;
+using SaveWorldModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,9 @@ namespace SaveWorldTesting
         [TestMethod]
         public void CheckLoginData()
         {
-
+            UserB user = new UserB();
+            UserCtr userCtr = new UserCtr();
+            Assert.IsNotNull(userCtr.CheckLogin("asdasd@as.dk", "123"));
         }
 
     }
