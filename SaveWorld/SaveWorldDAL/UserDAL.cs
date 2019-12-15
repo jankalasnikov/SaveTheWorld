@@ -213,17 +213,12 @@ namespace SaveWorldDAL
 
             public UserB CheckLogin(string userEmail, string password)
             {
-
                 UserB userCorrect = null;
-
                 using (var NWEntities = new SaveWorldEntities())
                 {
-
-                    var user = NWEntities.Ausers
-                           .FirstOrDefault(u => u.email == userEmail);
+                    var user = NWEntities.Ausers.FirstOrDefault(u => u.email == userEmail);
                 if (user.password == Hasher(password + user.salt))
                 {
-
                     if (user != null)
                     {
                         userCorrect = new UserB()
@@ -237,13 +232,10 @@ namespace SaveWorldDAL
                             Phone = user.phoneno,
                             TypeOfUser = user.typeOfUser,
                             BankAccountId = (int)user.accountId,
-
                         };
                     }
                 }
-
                 }
-
                 return userCorrect;
             }
 

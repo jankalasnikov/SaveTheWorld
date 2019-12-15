@@ -164,10 +164,5 @@ namespace SaveWorldWPFClient
 
         }
 
-        private void Btn_checkBalanse_Click(object sender, RoutedEventArgs e)
-        {
-           
-            txt_balance.Text = disasterAcc.Amount.ToString();
-        }
     }
 }

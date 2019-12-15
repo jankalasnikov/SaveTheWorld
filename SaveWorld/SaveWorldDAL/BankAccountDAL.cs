@@ -47,7 +47,6 @@ namespace SaveWorldDAL
                                       where p.id == bankId
                                       select p).FirstOrDefault();
 
-
                     accountForSave.accountNo = bankAccountBefore.AccountNo;
                     accountForSave.amount = bankAccountBefore.Amount;
                     accountForSave.ccv = bankAccountBefore.CCV;
@@ -65,7 +64,6 @@ namespace SaveWorldDAL
                     update = false;
                 }
 
-                
             }
             return update;
         }

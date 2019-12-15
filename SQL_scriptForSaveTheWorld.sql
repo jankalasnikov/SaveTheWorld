@@ -189,16 +189,6 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='productPropertyValues' and x
 GO
 
 
-/*
-insert into store(storeName, address) values ('store1','address1');
-insert into store(storeName, address) values ('store2','address2');
-insert into store(storeName, address) values ('store3','address3');
-insert into store(storeName, address) values ('store4','address4');
-insert into store(storeName, address) values ('store5','address5');
-insert into store(storeName, address) values ('store6','address6');
-
-
-*/
 
 
 insert into tbOrder(userId, date) values (null,'2019-02-20');
@@ -224,16 +214,18 @@ insert into bankAccount(accountNo,expiryDate, ccv, amount) values (13,'2019-02-2
 insert into bankAccount(accountNo,expiryDate, ccv, amount) values (14,'2019-02-20', 123, '0.00');
 
 
-insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Lyudmil','81cd38eaa18fb4a41d5b179f584ffbfe81bbe5c5a9733d4390e3915b33c651f4','JcEdZMgy0V', 2, 'asdasd@as.dk', 'somewhere 1', 121231, 1);
-insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Valentin','087a3a6b86894c0293d646488e6bde33c998238cf18d2704fe7b1eed5dd55f64', 'r5az7oFpjY', 1, 'asddasd@as.dk', 'somewhere 1', 08956441, 2);
-insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Yordan','d0ba9735945f8e4fee281b8a6517ba9e1bbfed2057ba223349e6c1da4daf64f0', 'zB8gSE079m', 1, 'asdassd@as.dk', 'somewhere 1', 654546, 3);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Ivan','81cd38eaa18fb4a41d5b179f584ffbfe81bbe5c5a9733d4390e3915b33c651f4','JcEdZMgy0V', 2, 'email1@as.dk', 'Somewhere 1', 121231, 1);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Valentin','087a3a6b86894c0293d646488e6bde33c998238cf18d2704fe7b1eed5dd55f64', 'r5az7oFpjY', 2, 'email2@as.dk', 'Somewhere 2', 08956441, 2);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Denis','d0ba9735945f8e4fee281b8a6517ba9e1bbfed2057ba223349e6c1da4daf64f0', 'zB8gSE079m', 1, 'email3@as.dk', 'Somewhere 3', 654546, 3);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Jan','81cd38eaa18fb4a41d5b179f584ffbfe81bbe5c5a9733d4390e3915b33c651f4','JcEdZMgy0V', 1, 'email4@as.dk', 'Somewhere 4', 121231, 1);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Henrik','087a3a6b86894c0293d646488e6bde33c998238cf18d2704fe7b1eed5dd55f64', 'r5az7oFpjY', 1, 'email5@as.dk', 'Somewhere 5', 08956441, 2);
+insert into auser(name, password, salt, typeOfUser, email, address, phoneno, accountId) values ('Yordan','d0ba9735945f8e4fee281b8a6517ba9e1bbfed2057ba223349e6c1da4daf64f0', 'zB8gSE079m', 1, 'email6@as.dk', 'Somewhere 6', 654546, 3);
 
-
-insert into product(productName, price, description, minStock) values ('Shirt1','5.20','very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt2','20.20','very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt3','10.50','very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt4','35.11','very cool shirt',10);
-insert into product(productName, price, description, minStock) values ('Shirt5','2.58','very cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt1','5.20','red cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt2','20.20','blue cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt3','10.50','green cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt4','35.11','black cool shirt',10);
+insert into product(productName, price, description, minStock) values ('Shirt5','2.58','white cool shirt',10);
 
 
 insert into category(nameOfCategory) values('Fire');
@@ -256,12 +248,3 @@ insert into typeOfSubscription(name, periodOfTimeInDays) values ('One month', 30
 insert into typeOfSubscription(name, periodOfTimeInDays) values ('Three month', 90);
 insert into typeOfSubscription(name, periodOfTimeInDays) values ('Six month', 180);
 insert into typeOfSubscription(name, periodOfTimeInDays) values ('One year', 365);
-/*
-insert into customer(name, street, numberOnStreet, city, phoneno) values ('Petyr Borisov','ul. Vasil Levski','10','Varna','+35900123456');
-insert into customer(name, street, numberOnStreet, city, phoneno) values ('Boyko Borissov','ul. Tsar Osvoboditel','13','Varna','+35900567488');
-insert into customer(name, street, numberOnStreet, city, phoneno) values ('Hristo Stoichkov','ul. Doyran','22','Varna','+359654098');
-insert into customer(name, street, numberOnStreet, city, phoneno) values ('Blagoy Makendzhiev','ul. Makedonia','13','Varna','+359999234651');
-insert into customer(name, street, numberOnStreet, city, phoneno) values ('Nikolay Dimitrov','ul. Drin','19','Varna','+3595323963');
-insert into customer(name, street, numberOnStreet, city, phoneno) values ('Svetoslav Kovachev','ul. Baba Tonka','2','Varna','+359123456789');
-insert into customer(name, street, numberOnStreet, city, phoneno) values ('Martin Raynov','ul. Nikola Kanev','9','Varna','+359765321009');
-*/
